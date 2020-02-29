@@ -3,31 +3,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="16dp"
-    android:orientation="vertical"
+    android:layout_margin="6dp"
     android:background="@android:color/white"
+    android:orientation="vertical"
     tools:context="com.mppl.banksampah.LoginActivity">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:layout_gravity="center_horizontal"
-        android:orientation="horizontal"
-        android:layout_marginBottom="25dp">
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="25dp"
+        android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
             android:src="@drawable/logo" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="@string/bank_sampah"
-            android:textSize="25sp"
             android:textColor="@color/colorPrimary"
-            android:layout_gravity="center" />
+            android:textSize="25sp" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <ProgressBar
@@ -35,43 +35,66 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <EditText
         android:id="@+id/tv_email"
-        android:layout_width="fill_parent"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:hint="@string/email"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20px"
         android:background="@drawable/style"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
         android:paddingLeft="15dp"
-        android:layout_margin="20px"/>
+        android:textColorHint="@color/colorPrimary" />
 
     <EditText
         android:id="@+id/tv_pass"
-        android:layout_width="fill_parent"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20px"
         android:background="@drawable/style"
         android:hint="@string/password"
+        android:inputType="textPassword"
         android:paddingLeft="15dp"
-        android:layout_margin="20px"/>
+        android:textColorHint="@color/colorPrimary" />
 
-    <Button
-        android:id="@+id/btn_masuk"
-        android:layout_width="300px"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/login"
-        android:layout_margin="20px"
-        android:padding="10px"
-        android:background="@drawable/btn_style"
-        android:textColor="@android:color/white"
-        android:layout_gravity="center_horizontal" />
+        android:layout_marginTop="10dp"
+        android:gravity="end"
+        android:orientation="horizontal"
+        android:paddingEnd="40dp">
+
+        <Button
+            android:id="@+id/btn_batal"
+            android:layout_width="250px"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/cancel_btn_style"
+            android:padding="10px"
+            android:text="@string/batal"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/btn_masuk"
+            android:layout_width="250px"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/btn_style"
+            android:text="@string/masuk"
+            android:textColor="@android:color/white" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
 
     <ImageView
         android:layout_width="600dp"
         android:layout_height="wrap_content"
-        android:src="@drawable/banner_image"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/banner_image" />
 
 </LinearLayout>

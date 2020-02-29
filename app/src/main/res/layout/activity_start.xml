@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="6dp"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    tools:context="com.mppl.banksampah.LoginActivity">
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/logo"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/bank_sampah"
+        android:textColor="@color/colorPrimary"
+        android:textSize="35sp"
+        android:layout_marginBottom="60dp"/>
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_daftar"
+            android:layout_width="250px"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/btn_style"
+            android:padding="10px"
+            android:text="@string/daftar"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/btn_masuk"
+            android:layout_width="250px"
+            android:layout_height="40dp"
+            android:layout_marginLeft="50dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/btn_style"
+            android:padding="10px"
+            android:text="@string/masuk"
+            android:textColor="@android:color/white" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <ImageView
+        android:layout_width="600dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/banner_image" />
+
+</LinearLayout>

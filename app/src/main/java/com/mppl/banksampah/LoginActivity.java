@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "LoginActivity";
 
     private DatabaseReference database;
@@ -28,26 +28,24 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText edtEmail;
     private EditText edtPass;
     private Button btnLogin;
-    private Button btnRegister;
+    private Button btnCancel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        //variabel tadi untuk memanggil fungsi
         database = FirebaseDatabase.getInstance().getReference();
         auth = FirebaseAuth.getInstance();
 
-        // diatur sesuai id komponennya
         edtEmail = findViewById(R.id.tv_email);
         edtPass = findViewById(R.id.tv_pass);
         btnLogin = findViewById(R.id.btn_masuk);
+        btnCancel = findViewById(R.id.btn_batal);
 
-        //nambahin method onClick, biar tombolnya bisa diklik
+
         btnLogin.setOnClickListener(this);
-        //btnRegister.setOnClickListener(this);
-
+        btnCancel.setOnClickListener(this);
     }
 
     //fungsi signin untuk mengkonfirmasi data pengguna yang sudah mendaftar sebelumnya
@@ -77,9 +75,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     }
                 });
     }
-
-    //fungsi ini untuk mendaftarkan data pengguna ke Firebase
-
 
     //fungsi dipanggil ketika proses Authentikasi berhasil
     private void onAuthSuccess(FirebaseUser user) {
@@ -134,16 +129,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
 
-
     @Override
     public void onClick(View v) {
         int i = v.getId();
         if (i == R.id.btn_masuk) {
             signIn();
-        } /*else if (i == R.id.btn_daftar) {
-            *//*Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-            startActivity(intent);*//*
-        }*/
+        } else if (i == R.id.btn_batal) {
+            Intent intent = new Intent(LoginActivity.this, StartActivity.class);
+            startActivity(intent);
+        }
     }
 
 }
