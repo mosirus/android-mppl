@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -29,6 +30,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText edtPass;
     private Button btnLogin;
     private Button btnCancel;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +44,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         edtPass = findViewById(R.id.tv_pass);
         btnLogin = findViewById(R.id.btn_masuk);
         btnCancel = findViewById(R.id.btn_batal);
-
+        progressBar = findViewById(R.id.loadingProgress);
 
         btnLogin.setOnClickListener(this);
         btnCancel.setOnClickListener(this);
@@ -50,12 +52,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     //fungsi signin untuk mengkonfirmasi data pengguna yang sudah mendaftar sebelumnya
     private void signIn() {
+        progressBar.setVisibility(View.VISIBLE);
         Log.d(TAG, "signIn");
         if (!validateForm()) {
+            progressBar.setVisibility(View.GONE);
             return;
         }
-
         //showProgressDialog();
+
         String email = edtEmail.getText().toString();
         String password = edtPass.getText().toString();
 
@@ -71,6 +75,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         } else {
                             Toast.makeText(LoginActivity.this, "Sign In Failed",
                                     Toast.LENGTH_SHORT).show();
+                            progressBar.setVisibility(View.GONE);
                         }
                     }
                 });
@@ -124,7 +129,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         } else {
             edtPass.setError(null);
         }
-
         return result;
     }
 
@@ -133,7 +137,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         int i = v.getId();
         if (i == R.id.btn_masuk) {
+
             signIn();
+
         } else if (i == R.id.btn_batal) {
             Intent intent = new Intent(LoginActivity.this, StartActivity.class);
             startActivity(intent);
