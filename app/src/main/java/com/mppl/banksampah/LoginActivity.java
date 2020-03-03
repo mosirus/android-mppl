@@ -30,6 +30,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText edtPass;
     private Button btnLogin;
     private Button btnCancel;
+    private ProgressBar progressBar;
 
 
 
@@ -45,7 +46,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         edtPass = findViewById(R.id.tv_pass);
         btnLogin = findViewById(R.id.btn_masuk);
         btnCancel = findViewById(R.id.btn_batal);
-
+        progressBar = findViewById(R.id.loadingProgress);
 
         btnLogin.setOnClickListener(this);
         btnCancel.setOnClickListener(this);
@@ -53,12 +54,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     //fungsi signin untuk mengkonfirmasi data pengguna yang sudah mendaftar sebelumnya
     private void signIn() {
+        progressBar.setVisibility(View.VISIBLE);
         Log.d(TAG, "signIn");
         if (!validateForm()) {
+            progressBar.setVisibility(View.GONE);
             return;
         }
-
         //showProgressDialog();
+
         String email = edtEmail.getText().toString();
         String password = edtPass.getText().toString();
 
@@ -74,6 +77,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         } else {
                             Toast.makeText(LoginActivity.this, "Sign In Failed",
                                     Toast.LENGTH_SHORT).show();
+                            progressBar.setVisibility(View.GONE);
                         }
                     }
                 });
@@ -127,7 +131,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         } else {
             edtPass.setError(null);
         }
-
         return result;
     }
 
@@ -136,9 +139,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         int i = v.getId();
         if (i == R.id.btn_masuk) {
+
             signIn();
+<<<<<<< HEAD
         }
         if (i == R.id.btn_batal) {
+=======
+
+        } else if (i == R.id.btn_batal) {
+>>>>>>> 0b4763ee3a4fbe29d921aeb92b8821d0ddc1c5c7
             Intent intent = new Intent(LoginActivity.this, StartActivity.class);
             startActivity(intent);
         }

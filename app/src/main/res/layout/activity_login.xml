@@ -30,12 +30,6 @@
             android:textSize="25sp" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <ProgressBar
-        android:id="@+id/loadingProgress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:visibility="gone" />
 
     <EditText
         android:id="@+id/tv_email"
@@ -90,11 +84,27 @@
             android:textColor="@android:color/white" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:layout_width="600dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/banner_image" />
+        <ProgressBar
+            android:id="@+id/loadingProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:translationZ="180dp"
+            android:visibility="gone" />
+
+
+        <ImageView
+            android:layout_width="600dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/banner_image" />
+
+    </FrameLayout>
+
 
 </LinearLayout>
