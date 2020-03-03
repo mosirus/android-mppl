@@ -18,13 +18,25 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
 
         btnLogin = findViewById(R.id.btn_masuk);
         btnLogin.setOnClickListener(this);
+
+        btnRegister = findViewById(R.id.btn_daftar);
+        btnRegister.setOnClickListener(this);
     }
+
 
     @Override
     public void onClick(View v) {
+        //Intent ke Halaman Login
         if (v.getId() == R.id.btn_masuk) {
-            Intent intent = new Intent(StartActivity.this, LoginActivity.class);
-            startActivity(intent);
+            Intent IntentLogin = new Intent(StartActivity.this, LoginActivity.class);
+            startActivity(IntentLogin);
+        }
+
+        if (v.getId() == R.id.btn_daftar) {
+            Intent IntentDaftar = new Intent(StartActivity.this, RegisterActivity.class);
+            startActivity(IntentDaftar);
         }
     }
+
+    //Intent Ke Halaman Register
 }

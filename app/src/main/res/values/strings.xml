@@ -6,4 +6,8 @@
     <string name="masuk">Masuk</string>
     <string name="batal">Batal</string>
     <string name="daftar">Daftar</string>
+    <string name="nama">Nama Lengkap</string>
+    <string name="no_telp">No. Telepon</string>
+    <string name="username">Username</string>
+    <string name="register">Register</string>
 </resources>

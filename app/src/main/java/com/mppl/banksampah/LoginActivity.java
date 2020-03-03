@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -29,6 +30,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText edtPass;
     private Button btnLogin;
     private Button btnCancel;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,7 +137,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         int i = v.getId();
         if (i == R.id.btn_masuk) {
             signIn();
-        } else if (i == R.id.btn_batal) {
+        }
+        if (i == R.id.btn_batal) {
             Intent intent = new Intent(LoginActivity.this, StartActivity.class);
             startActivity(intent);
         }
