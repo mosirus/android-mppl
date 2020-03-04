@@ -6,4 +6,27 @@
     <string name="masuk">Masuk</string>
     <string name="batal">Batal</string>
     <string name="daftar">Daftar</string>
+    <string name="nama">Nama Lengkap</string>
+    <string name="no_telp">No. Telepon</string>
+    <string name="username">Username</string>
+    <string name="register">Register</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="poin">Poin</string>
+    <string name="tukar">Tukar Poin</string>
+    <string name="riwayat">Riwayat</string>
+    <string name="jenis_sampah">Jenis sampah beserta Poin</string>
+    <string name="next">Lainnya</string>
+    <string name="botol_t">Botol Plastik</string>
+    <string name="text_info">Penukaran sampah plastik :</string>
+    <string name="petunjuk_satu">1. Kumpulkan sampah anda</string>
+    <string name="petunjuk_dua">2. Pilih menu antar atau jemput</string>
+    <string name="petunjuk_tiga">3. Dapatkan Poin dari hasil penukaran sampah</string>
+    <string name="awal_petunjuk">3 Langkah Mudah Tukar Sampah Anda</string>
+    <string name="banner_image">Banner Image</string>
+    <string name="app_logo">App Logo</string>
+    <string name="my_point">Poinku :</string>
+    <string name="point_info">Info Poin</string>
 </resources>

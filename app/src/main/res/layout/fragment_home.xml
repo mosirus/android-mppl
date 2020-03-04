@@ -1,19 +1,279 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/text_home"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/dashboard_banner"
+            android:layout_width="match_parent"
+            android:layout_height="230dp">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                android:contentDescription="@string/banner_image"
+                android:src="@drawable/dashboard_banner"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/walpaperlogo"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:contentDescription="@string/app_logo"
+                android:src="@drawable/logo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.43"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:text="@string/bank_sampah"
+                android:textColor="#FFD700"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.2"
+                app:layout_constraintStart_toEndOf="@+id/walpaperlogo"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.06999999" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/point_section"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:background="@color/grey">
+
+            <ImageView
+                android:id="@+id/coin"
+                android:layout_width="52dp"
+                android:layout_height="55dp"
+                android:src="@drawable/coin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.044"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.120000005" />
+
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/my_point"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.063"
+                app:layout_constraintStart_toEndOf="@+id/coin"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.19999999" />
+
+            <TextView
+                android:id="@+id/info_poin"
+                android:layout_width="103dp"
+                android:layout_height="wrap_content"
+                android:background="@color/info_poin"
+                android:paddingStart="5dp"
+                android:text="@string/point_info"
+                android:textColor="@color/spalshbag"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/in_date"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/coin"
+                app:layout_constraintVertical_bias="0.288"
+                tools:ignore="RtlSymmetry" />
+
+            <EditText
+                android:id="@+id/in_date"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="140dp"
+                android:layout_marginBottom="32dp"
+                android:layout_toRightOf="@+id/info_poin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/txt_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:layout_marginEnd="220dp"
+                android:layout_toEndOf="@id/in_date"
+                android:text="@string/text_info"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.941"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/info_poin"
+                app:layout_constraintVertical_bias="0.0" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <RelativeLayout
+            android:id="@+id/menu_pilih"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="3dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/spalshbag">
+
+            <ImageView
+                android:id="@+id/img_antar"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="35dp"
+                android:src="@drawable/deliver" />
+
+            <ImageView
+                android:id="@+id/img_jemput"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="55dp"
+                android:layout_toRightOf="@id/img_antar"
+                android:src="@drawable/pick_up" />
+
+            <ImageView
+                android:id="@+id/img_tukar"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="55dp"
+                android:layout_marginEnd="35dp"
+                android:layout_toRightOf="@id/img_jemput"
+                android:src="@drawable/exchange" />
+
+            <Button
+                android:id="@+id/btn_antar"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="45dp"
+                android:layout_marginTop="110dp"
+                android:background="@drawable/btn_style"
+                android:text="antar" />
+
+            <Button
+                android:id="@+id/btn_jemput"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="45dp"
+                android:layout_marginTop="110dp"
+                android:layout_toEndOf="@id/btn_antar"
+                android:background="@drawable/btn_style"
+                android:text="jemput" />
+
+            <Button
+                android:id="@+id/btn_tukar"
+                android:layout_width="90dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="45dp"
+                android:layout_marginTop="110dp"
+                android:layout_toEndOf="@id/btn_jemput"
+                android:background="@drawable/btn_style"
+                android:text="tukar poin" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/txt_petunjuk"
+            android:layout_width="match_parent"
+            android:layout_height="453dp"
+            android:background="@color/grey">
+
+            <TextView
+                android:id="@+id/txt_petunjuk1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/awal_petunjuk"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/img_petunjuk1"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="50dp"
+                android:src="@drawable/guide1" />
+
+            <TextView
+                android:id="@+id/txt_petunjuksatu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="80dp"
+                android:layout_toEndOf="@id/img_petunjuk1"
+                android:text="@string/petunjuk_satu" />
+
+            <ImageView
+                android:id="@+id/img_petunjuk2"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="-79dp"
+                android:layout_marginTop="160dp"
+                android:layout_toEndOf="@id/img_petunjuk1"
+                android:src="@drawable/guide2" />
+
+            <TextView
+                android:id="@+id/txt_petunjuk2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="190dp"
+                android:layout_toEndOf="@id/img_petunjuk2"
+                android:text="@string/petunjuk_dua" />
+
+            <ImageView
+                android:id="@+id/img_petunjuk3"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="-79dp"
+                android:layout_marginTop="270dp"
+                android:layout_toEndOf="@id/img_petunjuk1"
+                android:src="@drawable/guide4" />
+
+            <TextView
+                android:id="@+id/txt_petunjuk3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="300dp"
+                android:layout_toEndOf="@id/img_petunjuk3"
+                android:text="@string/petunjuk_tiga" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>

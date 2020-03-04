@@ -3,4 +3,13 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="spalshbag">#ffff</color>
+    <color name="poinku">#FFA07A</color>
+    <color name="antar">#3CB371</color>
+    <color name="jemput">#32CD32</color>
+    <color name="grey">#E7E7E7</color>
+    <color name="dark_grey">#D3D3D3</color>
+    <color name="info_poin">#228B22</color>
 </resources>
+
