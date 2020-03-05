@@ -141,13 +141,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (i == R.id.btn_masuk) {
 
             signIn();
-<<<<<<< HEAD
         }
         if (i == R.id.btn_batal) {
-=======
 
         } else if (i == R.id.btn_batal) {
->>>>>>> 0b4763ee3a4fbe29d921aeb92b8821d0ddc1c5c7
             Intent intent = new Intent(LoginActivity.this, StartActivity.class);
             startActivity(intent);
         }

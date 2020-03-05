@@ -14,24 +14,35 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
+    public User user;
+
     private Button btnDaftar;
+
+    //Komponen User
     private EditText namaLengkap;
     private EditText editTextEmail;
     private EditText notelp;
     private EditText username;
     private EditText editTextPassword;
+    private double point = 0;
+
     private TextView textViewSignin;
 
     private ProgressDialog progressDialog;
 
     private FirebaseAuth firebaseAuth;
+    private DatabaseReference database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +53,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         firebaseAuth = FirebaseAuth.getInstance();
 
+
         btnDaftar =  findViewById(R.id.btn_register);
         namaLengkap = findViewById(R.id.tv_nama);
         editTextEmail = findViewById(R.id.tv_email);
@@ -49,6 +61,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         username = findViewById(R.id.username);
         editTextPassword = findViewById(R.id.tv_pass);
         textViewSignin = findViewById(R.id.text_signup);
+
+        database = FirebaseDatabase.getInstance().getReference();
 
         btnDaftar.setOnClickListener(this);
         textViewSignin.setOnClickListener(this);
@@ -94,34 +108,38 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         return result;
     }
 
-    private void registerUSer() {
-        String email = editTextEmail.getText().toString().trim();
-        String password = editTextPassword.getText().toString().trim();
+    private void registerUser(User user){
+        /*
+        Kode untuk mengirimkan data ke Firebase Realtime Database
+        */
+        String acNamaLengkap = namaLengkap.getText().toString().trim();
+        String acEmail = editTextEmail.getText().toString().trim();
+        String acNoTelp = notelp.getText().toString().trim();
+        String acUsername = username.getText().toString().trim();
+        String acPassword = editTextPassword.getText().toString().trim();
+        int firstPoint = 0;
 
-        if (!validateForm()) {
-            return;
-        }
+        user = new User(acNamaLengkap,acEmail,acUsername,acNoTelp,acPassword,firstPoint);
 
-        progressDialog.setMessage("Registering User...");
-        progressDialog.show();
+        database.child("Users").push().setValue(user).addOnSuccessListener(this, new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                namaLengkap.setText("");
+                editTextEmail.setText("");
+                notelp.setText("");
+                username.setText("");
+                editTextPassword.setText("");
+                Snackbar.make(findViewById(R.id.btn_daftar),"Data berhasil didaftarkan",Snackbar.LENGTH_LONG).show();
+                Toast.makeText(RegisterActivity.this, "Register succesfully", Toast.LENGTH_SHORT).show();
+            }
+        });
 
-        firebaseAuth.createUserWithEmailAndPassword(email,password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
-                            Toast.makeText(RegisterActivity.this, "Register succesfully", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(RegisterActivity.this, "Could not register. Please try again", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
     }
 
     @Override
     public void onClick(View view) {
         if (view == btnDaftar) {
-            registerUSer();
+            registerUser(user);
         }
 
         if(view == textViewSignin) {
