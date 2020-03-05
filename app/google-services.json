@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "356326466320-5retsdrm5h5n60abj6cf08ljilep2gkq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mppl.banksampah",
+            "certificate_hash": "24afa6255d8a9613b0b24d5b9479acf1260b7884"
+          }
+        },
+        {
+          "client_id": "356326466320-hk303k7cr7rl0ad1lfaifqr0ur6ua6oq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mppl.banksampah",
+            "certificate_hash": "da82e362754fd4ec2548246438009def83dc9a2d"
+          }
+        },
+        {
           "client_id": "356326466320-qv8d8dt6onntd9p9g6bd8ebr7lpd5tc3.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
