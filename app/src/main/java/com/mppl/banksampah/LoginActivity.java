@@ -32,6 +32,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Button btnCancel;
     private ProgressBar progressBar;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -139,6 +141,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (i == R.id.btn_masuk) {
 
             signIn();
+        }
+        if (i == R.id.btn_batal) {
 
         } else if (i == R.id.btn_batal) {
             Intent intent = new Intent(LoginActivity.this, StartActivity.class);
