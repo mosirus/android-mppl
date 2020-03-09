@@ -73,4 +73,6 @@ public class User implements Serializable{
     public void setPoint(int point) {
         this.point = point;
     }
+
+    //Mencoba mengubah oleh sepe
 }
