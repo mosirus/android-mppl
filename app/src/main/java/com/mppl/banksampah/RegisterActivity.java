@@ -112,12 +112,16 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         /*
         Kode untuk mengirimkan data ke Firebase Realtime Database
         */
-        String acNamaLengkap = namaLengkap.getText().toString().trim();
+        String acNamaLengkap = namaLengkap.getText().toString().tgit rim();
         String acEmail = editTextEmail.getText().toString().trim();
         String acNoTelp = notelp.getText().toString().trim();
         String acUsername = username.getText().toString().trim();
         String acPassword = editTextPassword.getText().toString().trim();
         int firstPoint = 0;
+
+        if(!validateForm()){
+            return;
+        }
 
         user = new User(acNamaLengkap,acEmail,acUsername,acNoTelp,acPassword,firstPoint);
 
@@ -133,6 +137,19 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 Toast.makeText(RegisterActivity.this, "Register succesfully", Toast.LENGTH_SHORT).show();
             }
         });
+
+        // Saat melakukan Register email dan password akan terdaftard di database authentication Firebase
+        firebaseAuth.createUserWithEmailAndPassword(acEmail,acPassword)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()){
+                            Toast.makeText(RegisterActivity.this, "Register succesfully", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(RegisterActivity.this, "Could not register. Please try again", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
 
     }
 

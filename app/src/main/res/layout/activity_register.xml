@@ -95,6 +95,7 @@
         android:layout_marginLeft="100px"
         android:layout_marginRight="100px"/>
 
+
     <Button
         android:id="@+id/btn_register"
         android:layout_width="300px"
