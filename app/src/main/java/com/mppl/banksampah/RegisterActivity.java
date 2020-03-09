@@ -28,6 +28,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     public User user;
 
     private Button btnDaftar;
+    private Button btnBatal;
 
     //Komponen User
     private EditText namaLengkap;
@@ -36,8 +37,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private EditText username;
     private EditText editTextPassword;
     private double point = 0;
-
-    private TextView textViewSignin;
 
     private ProgressDialog progressDialog;
 
@@ -55,17 +54,17 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
 
         btnDaftar =  findViewById(R.id.btn_register);
+        btnBatal = findViewById(R.id.btn_batal);
         namaLengkap = findViewById(R.id.tv_nama);
         editTextEmail = findViewById(R.id.tv_email);
         notelp = findViewById(R.id.tv_notelp);
         username = findViewById(R.id.username);
         editTextPassword = findViewById(R.id.tv_pass);
-        textViewSignin = findViewById(R.id.text_signup);
 
         database = FirebaseDatabase.getInstance().getReference();
 
+        btnBatal.setOnClickListener(this);
         btnDaftar.setOnClickListener(this);
-        textViewSignin.setOnClickListener(this);
     }
 
     private boolean validateForm() {
@@ -158,10 +157,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         if (view == btnDaftar) {
             registerUser(user);
         }
-
-        if(view == textViewSignin) {
-            Intent login = new Intent(RegisterActivity.this, LoginActivity.class);
-            startActivity(login);
+        else if (view == btnBatal) {
+            Intent intent = new Intent(RegisterActivity.this, StartActivity.class);
+            startActivity(intent);
         }
     }
 }

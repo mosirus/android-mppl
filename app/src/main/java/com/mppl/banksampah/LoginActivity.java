@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,6 +29,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private FirebaseAuth auth;
     private EditText edtEmail;
     private EditText edtPass;
+    private TextView tvRegister;
     private Button btnLogin;
     private Button btnCancel;
     private ProgressBar progressBar;
@@ -44,12 +46,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         edtEmail = findViewById(R.id.tv_email);
         edtPass = findViewById(R.id.tv_pass);
+        tvRegister = findViewById(R.id.daftar_sekarang);
         btnLogin = findViewById(R.id.btn_masuk);
         btnCancel = findViewById(R.id.btn_batal);
         progressBar = findViewById(R.id.loadingProgress);
 
         btnLogin.setOnClickListener(this);
         btnCancel.setOnClickListener(this);
+        tvRegister.setOnClickListener(this);
     }
 
     //fungsi signin untuk mengkonfirmasi data pengguna yang sudah mendaftar sebelumnya
@@ -139,15 +143,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         int i = v.getId();
         if (i == R.id.btn_masuk) {
-
             signIn();
         }
-        if (i == R.id.btn_batal) {
-
-        } else if (i == R.id.btn_batal) {
+        else if (i == R.id.btn_batal) {
             Intent intent = new Intent(LoginActivity.this, StartActivity.class);
             startActivity(intent);
         }
+        else if (i == R.id.daftar_sekarang) {
+            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+            startActivity(intent);
+        }
+
     }
 
 }
