@@ -1,125 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="16dp"
-    android:background="@android:color/white">
+    android:layout_height="wrap_content">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_gravity="center_horizontal"
-        android:orientation="horizontal"
-        android:layout_marginBottom="25dp">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="6dp"
+        android:background="@android:color/white">
 
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/logo" />
-
-        <ImageView
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/text_sampah"
-            android:layout_gravity="center" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:layout_marginBottom="25dp">
 
-    <EditText
-        android:id="@+id/tv_nama"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:hint="@string/nama"
-        android:background="@drawable/style"
-        android:layout_gravity="center"
-        android:paddingLeft="30dp"
-        android:ems="10"
-        android:layout_marginLeft="100px"
-        android:layout_marginRight="100px"/>
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/logo" />
 
-    <EditText
-        android:id="@+id/tv_email"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:hint="@string/email"
-        android:background="@drawable/style"
-        android:layout_gravity="center"
-        android:paddingLeft="30dp"
-        android:ems="10"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="100px"
-        android:layout_marginRight="100px"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/text_sampah"
+                android:layout_gravity="center" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <EditText
-        android:id="@+id/tv_notelp"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:hint="@string/no_telp"
-        android:background="@drawable/style"
-        android:layout_gravity="center"
-        android:paddingLeft="30dp"
-        android:ems="10"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="100px"
-        android:layout_marginRight="100px"/>
+        <EditText
+            android:id="@+id/tv_nama"
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="@string/nama"
+            android:background="@drawable/style"
+            android:layout_gravity="center"
+            android:paddingLeft="15dp"
+            android:ems="10"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="100dp"
+            android:textColorHint="@color/colorPrimary"/>
 
-    <EditText
-        android:id="@+id/username"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:hint="@string/username"
-        android:background="@drawable/style"
-        android:layout_gravity="center"
-        android:paddingLeft="30dp"
-        android:ems="10"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="100px"
-        android:layout_marginRight="100px"/>
+        <EditText
+            android:id="@+id/tv_email"
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="@string/email"
+            android:background="@drawable/style"
+            android:layout_gravity="center"
+            android:paddingStart="15dp"
+            android:ems="10"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="100dp"
+            android:textColorHint="@color/colorPrimary"/>
 
-    <EditText
-        android:id="@+id/tv_pass"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:hint="@string/password"
-        android:background="@drawable/style"
-        android:layout_gravity="center"
-        android:paddingLeft="30dp"
-        android:ems="10"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="100px"
-        android:layout_marginRight="100px"/>
+        <EditText
+            android:id="@+id/tv_notelp"
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="@string/no_telp"
+            android:background="@drawable/style"
+            android:layout_gravity="center"
+            android:paddingStart="15dp"
+            android:ems="10"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="100dp"
+            android:textColorHint="@color/colorPrimary"/>
 
-    <Button
-        android:id="@+id/btn_register"
-        android:layout_width="300px"
-        android:layout_height="wrap_content"
-        android:text="@string/register"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/button_register"
-        android:padding="10px"
-        android:layout_gravity="center_horizontal" />
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="@string/username"
+            android:background="@drawable/style"
+            android:layout_gravity="center"
+            android:paddingStart="15dp"
+            android:ems="10"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="100dp"
+            android:textColorHint="@color/colorPrimary"/>
 
-    <TextView
-        android:id="@+id/text_signup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="100px"
-        android:layout_marginRight="100px"
-        android:text="Already Register ? Sign In Here !!"
-        android:paddingLeft="45dp"/>
+        <EditText
+            android:id="@+id/tv_pass"
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="@string/password"
+            android:background="@drawable/style"
+            android:layout_gravity="center"
+            android:paddingStart="15dp"
+            android:ems="10"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="100dp"
+            android:textColorHint="@color/colorPrimary"/>
 
-    <ImageView
-        android:layout_width="700dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/banner_image"
-        android:layout_gravity="center_horizontal"/>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="45dp">
 
-</LinearLayout>
+            <Button
+                android:id="@+id/btn_batal"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/cancel_btn_style"
+                android:layout_margin="10dp"
+                android:text="@string/batal"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/btn_register"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:text="@string/register"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/btn_style"
+                android:layout_margin="10dp"
+                android:layout_gravity="center_horizontal" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+        <ImageView
+            android:layout_width="550dp"
+            android:layout_height="350dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/banner_image" />
+
+
+    </LinearLayout>
+</ScrollView>

@@ -43,7 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:text="@string/bank_sampah"
+                android:text="@string/siPahias"
                 android:textColor="#FFD700"
                 android:textSize="19sp"
                 android:textStyle="bold"
