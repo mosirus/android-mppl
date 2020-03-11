@@ -14,6 +14,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_profile">Akun</string>
     <string name="poin">Poin</string>
     <string name="tukar">Tukar Poin</string>
     <string name="riwayat">Riwayat</string>
@@ -30,4 +31,15 @@
     <string name="my_point">Poinku :</string>
     <string name="point_info">Info Poin</string>
     <string name="daftar_sekarang"> <u>Daftar Sekarang</u></string>
+    <string name="keluar">Keluar</string>
+    <string name="katasandi">Kata Sandi</string>
+    <string name="alamat">Alamat</string>
+    <string name="akun">Akun</string>
+    <string name="suntingprofil">Sunting Profil</string>
+    <string name="namalengkap">Nama Lengkap</string>
+    <string name="email1">e-mail</string>
+    <string name="notelepon">No. telepon</string>
+    <string name="pekerjaan">Pekerjaan</string>
+    <string name="identitas">No. Identitas (NIM/NIDN/NIK)</string>
+    <string name="simpan">Simpan</string>
 </resources>

@@ -1,22 +1,22 @@
 package com.mppl.banksampah;
 
 import com.google.firebase.database.IgnoreExtraProperties;
+
 import java.io.Serializable;
 
-public class User implements Serializable{
+public class User implements Serializable {
 
-    public User(String nama_lengkap, String email, String username, String no_telp, String password, int point) {
+    public User(String nama_lengkap, String email, String username, String no_telp, String password,
+                String pekerjaan, String no_identitas, String alamat,int point) {
         this.nama_lengkap = nama_lengkap;
         this.email = email;
         this.username = username;
         this.no_telp = no_telp;
         this.password = password;
+        this.pekerjaan = pekerjaan;
+        this.alamat = alamat;
+        this.no_identitas = no_identitas;
         this.point = point;
-    }
-
-    public User(String name, String email) {
-        this.nama_lengkap = name;
-        this.email = email;
     }
 
     public String nama_lengkap;
@@ -24,6 +24,34 @@ public class User implements Serializable{
     public String email;
     public String no_telp;
     public String password;
+    public String pekerjaan;
+    public String alamat;
+    public String no_identitas;
+
+    public String getPekerjaan() {
+        return pekerjaan;
+    }
+
+    public void setPekerjaan(String pekerjaan) {
+        this.pekerjaan = pekerjaan;
+    }
+
+    public String getAlamat() {
+        return alamat;
+    }
+
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
+    }
+
+    public String getNo_identitas() {
+        return no_identitas;
+    }
+
+    public void setNo_identitas(String no_identitas) {
+        this.no_identitas = no_identitas;
+    }
+
     public int point;
 
     public String getNama_lengkap() {

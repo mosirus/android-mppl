@@ -1,4 +1,4 @@
-package com.mppl.banksampah.ui.akun.home;
+package com.mppl.banksampah.ui.akun;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

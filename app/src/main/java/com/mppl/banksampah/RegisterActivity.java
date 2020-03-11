@@ -1,30 +1,30 @@
 package com.mppl.banksampah;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private final String TAG = "REGISTER";
     public User user;
 
     private Button btnDaftar;
@@ -53,7 +53,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         firebaseAuth = FirebaseAuth.getInstance();
 
 
-        btnDaftar =  findViewById(R.id.btn_register);
+        btnDaftar = findViewById(R.id.btn_register);
         btnBatal = findViewById(R.id.btn_batal);
         namaLengkap = findViewById(R.id.tv_nama);
         editTextEmail = findViewById(R.id.tv_email);
@@ -107,57 +107,81 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         return result;
     }
 
-    private void registerUser(User user){
+
+    private void registerUser() {
         /*
         Kode untuk mengirimkan data ke Firebase Realtime Database
         */
-        String acNamaLengkap = namaLengkap.getText().toString().tgit rim();
+
+        String acEmail = editTextEmail.getText().toString().trim();
+        String acPassword = editTextPassword.getText().toString().trim();
+
+        if (!validateForm()) {
+            return;
+        } else {
+            firebaseAuth.createUserWithEmailAndPassword(acEmail, acPassword)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                // Sign in success, update UI with the signed-in user's information
+                                Log.d(TAG, "createUserWithEmail:success");
+                                onAuthSuccess(task.getResult().getUser());
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                                Toast.makeText(RegisterActivity.this, "Authentication failed.",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+        }
+
+    }
+
+    //fungsi dipanggil ketika proses Authentikasi berhasil
+    private void onAuthSuccess(FirebaseUser user) {
+        String acNamaLengkap = namaLengkap.getText().toString().trim();
         String acEmail = editTextEmail.getText().toString().trim();
         String acNoTelp = notelp.getText().toString().trim();
         String acUsername = username.getText().toString().trim();
         String acPassword = editTextPassword.getText().toString().trim();
         int firstPoint = 0;
+        String acPekerjaan = "";
+        String acNoId = "";
+        String acAlamat = "";
 
-        if(!validateForm()){
-            return;
-        }
+        writeNewUser(user.getUid(), acNamaLengkap, acUsername, acEmail, acNoTelp, acPassword, acNoId, acPekerjaan, acAlamat, firstPoint);
 
-        user = new User(acNamaLengkap,acEmail,acUsername,acNoTelp,acPassword,firstPoint);
+        // Go to MainActivity
+        startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+        finish();
+    }
 
-        database.child("Users").push().setValue(user).addOnSuccessListener(this, new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                namaLengkap.setText("");
-                editTextEmail.setText("");
-                notelp.setText("");
-                username.setText("");
-                editTextPassword.setText("");
-                Snackbar.make(findViewById(R.id.btn_daftar),"Data berhasil didaftarkan",Snackbar.LENGTH_LONG).show();
-                Toast.makeText(RegisterActivity.this, "Register succesfully", Toast.LENGTH_SHORT).show();
-            }
-        });
+    private void writeNewUser(String userId, String nama, String aUsername, String email, String noTelp, String password,
+                              String id, String pekerjaan, String alamat, int point) {
 
-        // Saat melakukan Register email dan password akan terdaftard di database authentication Firebase
-        firebaseAuth.createUserWithEmailAndPassword(acEmail,acPassword)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
-                            Toast.makeText(RegisterActivity.this, "Register succesfully", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(RegisterActivity.this, "Could not register. Please try again", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+        String acNamaLengkap = namaLengkap.getText().toString().trim();
+        String acEmail = editTextEmail.getText().toString().trim();
+        String acNoTelp = notelp.getText().toString().trim();
+        String acUsername = username.getText().toString().trim();
+        String acPassword = editTextPassword.getText().toString().trim();
+        int firstPoint = 0;
+        String acPekerjaan = "";
+        String acNoId = "";
+        String acAlamat = "";
 
+        User customer = new User(acNamaLengkap, acEmail, acUsername, acNoTelp, acPassword, acPekerjaan, acNoId, acAlamat, firstPoint);
+        database.child("Users").child(userId).setValue(customer);
     }
 
     @Override
     public void onClick(View view) {
         if (view == btnDaftar) {
-            registerUser(user);
-        }
-        else if (view == btnBatal) {
+            validateForm();
+            registerUser();
+        } else if (view == btnBatal) {
             Intent intent = new Intent(RegisterActivity.this, StartActivity.class);
             startActivity(intent);
         }

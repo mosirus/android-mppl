@@ -78,6 +78,28 @@
             android:textColor="@android:color/white" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="Belum punya akun ? "/>
+        <TextView
+            android:id="@+id/daftar_sekarang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@android:color/holo_blue_dark"
+            android:text="@string/daftar_sekarang"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
