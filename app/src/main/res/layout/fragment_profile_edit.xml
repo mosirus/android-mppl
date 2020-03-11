@@ -15,9 +15,8 @@
             android:id="@+id/akun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="160dp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
-            android:layout_marginEnd="160dp"
             android:text="@string/akun"
             android:textSize="28sp"
             android:textStyle="bold" />
@@ -38,19 +37,11 @@
             android:layout_gravity="center_horizontal"
             android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/createprofil"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_editprofil" />
-
             <TextView
                 android:id="@+id/txtsunting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
-                android:text="@string/suntingprofil"
+                android:text="@string/ganti_foto_profil"
                 android:textColor="@color/bluedark"
                 android:textSize="20sp" />
         </androidx.appcompat.widget.LinearLayoutCompat>

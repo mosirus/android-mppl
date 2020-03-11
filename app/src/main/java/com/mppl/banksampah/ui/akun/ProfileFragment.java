@@ -24,7 +24,7 @@ import com.mppl.banksampah.User;
 
 public class ProfileFragment extends Fragment implements View.OnClickListener {
 
-    String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    private String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
     private ProfileViewModel homeViewModel;
     private DatabaseReference ref;

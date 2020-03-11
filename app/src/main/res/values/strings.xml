@@ -42,4 +42,5 @@
     <string name="pekerjaan">Pekerjaan</string>
     <string name="identitas">No. Identitas (NIM/NIDN/NIK)</string>
     <string name="simpan">Simpan</string>
+    <string name="ganti_foto_profil">Ganti foto profil</string>
 </resources>

@@ -15,9 +15,8 @@
             android:id="@+id/akun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="160dp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
-            android:layout_marginEnd="160dp"
             android:text="@string/akun"
             android:textSize="28sp"
             android:textStyle="bold" />
@@ -60,7 +59,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="100dp"
             android:gravity="center">
 
             <TextView
@@ -229,20 +227,19 @@
                 android:gravity="center_vertical"
                 android:paddingLeft="15dp"
                 android:textSize="20sp" />
-
-            <Button
-                android:id="@+id/btn_editprofil"
-                android:layout_width="150dp"
-                android:layout_height="40dp"
-                android:layout_below="@id/editkatasandi"
-                android:layout_marginStart="150dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginEnd="150dp"
-                android:background="@drawable/btn_style"
-                android:text="@string/keluar"
-                android:textColor="@android:color/white" />
-
         </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_editprofil"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/editkatasandi"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="95dp"
+            android:background="@drawable/btn_style"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/keluar"
+            android:textColor="@android:color/white" />
 
     </LinearLayout>
 </ScrollView>
