@@ -43,4 +43,6 @@
     <string name="identitas">No. Identitas (NIM/NIDN/NIK)</string>
     <string name="simpan">Simpan</string>
     <string name="ganti_foto_profil">Ganti foto profil</string>
+    <string name="nama_item">Nama Item</string>
+    <string name="harga_item">Harga Item</string>
 </resources>
