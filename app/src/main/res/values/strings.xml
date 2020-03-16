@@ -28,7 +28,7 @@
     <string name="awal_petunjuk">3 Langkah Mudah Tukar Sampah Anda</string>
     <string name="banner_image">Banner Image</string>
     <string name="app_logo">App Logo</string>
-    <string name="my_point">Poinku :</string>
+    <string name="my_point">Poin: </string>
     <string name="point_info">Info Poin</string>
     <string name="daftar_sekarang"> <u>Daftar Sekarang</u></string>
     <string name="keluar">Keluar</string>
@@ -62,6 +62,8 @@
     <string name="no">No</string>
     <string name="rincian">Rincian</string>
     <string name="status">Status</string>
+    <string name="riwayat_poin">Riwayat Poin</string>
+    <string name="tanggal">Tanggal</string>
 
     <string-array name="jenis_sampah">
         <item>Jenis Sampah</item>
