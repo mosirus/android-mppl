@@ -92,7 +92,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         String username = usernameFromEmail(user.getEmail());
 
         // membuat User admin baru
-       // writeNewAdmin(user.getUid(), username, user.getEmail());
+        // writeNewAdmin(user.getUid(), username, user.getEmail());
 
         // Go to MainActivity
         startActivity(new Intent(LoginActivity.this, MainActivity.class));

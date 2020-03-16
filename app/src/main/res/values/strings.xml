@@ -28,7 +28,7 @@
     <string name="awal_petunjuk">3 Langkah Mudah Tukar Sampah Anda</string>
     <string name="banner_image">Banner Image</string>
     <string name="app_logo">App Logo</string>
-    <string name="my_point">Poin: </string>
+    <string name="my_point">Poin :</string>
     <string name="point_info">Info Poin</string>
     <string name="daftar_sekarang"> <u>Daftar Sekarang</u></string>
     <string name="keluar">Keluar</string>
@@ -64,6 +64,11 @@
     <string name="status">Status</string>
     <string name="riwayat_poin">Riwayat Poin</string>
     <string name="tanggal">Tanggal</string>
+    <string name="title_tentang">Tentang</string>
+    <string name="title_info">Info Poin</string>
+    <string name="poinmasuk_tab">Poin Masuk</string>
+    <string name="poinkeluar_tab">Poin Keluar</string>
+    <string name="keterangan">Keterangan</string>
 
     <string-array name="jenis_sampah">
         <item>Jenis Sampah</item>
@@ -78,5 +83,19 @@
         <item>Kardus</item>
         <item>Majalah</item>
         <item>Buku</item>
+    </string-array>
+
+    <string-array name="data_tanggal_masuk">
+        <item>20 Februari 2020</item>
+        <item>25 Februari 2020</item>
+        <item>28 Februari 2020</item>
+        <item>2 Maret 2020</item>
+    </string-array>
+
+    <string-array name="ket_poin_masuk">
+        <item>Penukaran sampah plastik: 6 kg</item>
+        <item>Penukaran sampah plastik: 3 kg</item>
+        <item>Penukaran sampah plastik: 2 kg</item>
+        <item>Penukaran sampah besi: 20 kg</item>
     </string-array>
 </resources>
