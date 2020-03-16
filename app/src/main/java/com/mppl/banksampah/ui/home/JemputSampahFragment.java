@@ -32,6 +32,7 @@ public class JemputSampahFragment extends Fragment implements View.OnClickListen
     private TextView pickedDate;
     private Button btnOk;
     private Button btnBatal;
+    private Button btnStatusJemput;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -55,6 +56,8 @@ public class JemputSampahFragment extends Fragment implements View.OnClickListen
         btnOk.setOnClickListener(this);
         imgBtnDatePicker = root.findViewById(R.id.date_picker_toggle_jemput);
         imgBtnDatePicker.setOnClickListener(this);
+        btnStatusJemput = root.findViewById(R.id.btn_status_jemput);
+        btnStatusJemput.setOnClickListener(this);
 
         return root;
     }
@@ -71,6 +74,16 @@ public class JemputSampahFragment extends Fragment implements View.OnClickListen
                     .addToBackStack(null).commit();
 
         }
+
+        else if (v.getId() == R.id.btn_status_jemput) {
+            StatusJemputFragment fragment = new StatusJemputFragment();
+
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment, StatusJemputFragment.class.getSimpleName())
+                    .addToBackStack(null).commit();
+
+        }
+
     }
 
     private void showDateDialog() {
