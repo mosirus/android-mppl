@@ -21,7 +21,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class AntarSampahFragment extends Fragment implements View.OnClickListener {
+public class JemputSampahFragment extends Fragment implements View.OnClickListener {
 
     private HomeViewModel homeViewModel;
 
@@ -32,13 +32,12 @@ public class AntarSampahFragment extends Fragment implements View.OnClickListene
     private TextView pickedDate;
     private Button btnOk;
     private Button btnBatal;
-    private Button btnStatusAntar;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_form_antar, container, false);
+        View root = inflater.inflate(R.layout.fragment_form_jemput, container, false);
 //        final TextView textView = root.findViewById(R.id.text_home);
 //        homeViewModel.getText().observe(this, new Observer<String>() {
 //            @Override
@@ -50,34 +49,27 @@ public class AntarSampahFragment extends Fragment implements View.OnClickListene
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
 
         pickedDate = root.findViewById(R.id.picked_date);
-        btnBatal = root.findViewById(R.id.btn_batal_antar);
+        btnBatal = root.findViewById(R.id.btn_batal_jemput);
         btnBatal.setOnClickListener(this);
         btnOk = root.findViewById(R.id.btn_ok);
-        imgBtnDatePicker = root.findViewById(R.id.date_picker_toggle);
+        btnOk.setOnClickListener(this);
+        imgBtnDatePicker = root.findViewById(R.id.date_picker_toggle_jemput);
         imgBtnDatePicker.setOnClickListener(this);
-        btnStatusAntar = root.findViewById(R.id.btn_status_antar);
-        btnStatusAntar.setOnClickListener(this);
 
         return root;
     }
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.date_picker_toggle) {
+        if (v.getId() == R.id.date_picker_toggle_jemput) {
             showDateDialog();
-        } else if (v.getId() == R.id.btn_batal_antar) {
+        } else if (v.getId() == R.id.btn_batal_jemput) {
             HomeFragment fragment = new HomeFragment();
 
             FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment, HomeFragment.class.getSimpleName())
                     .addToBackStack(null).commit();
 
-        } else if (v.getId() == R.id.btn_status_antar) {
-            StatusAntarFragment fragment = new StatusAntarFragment();
-
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment, StatusAntarFragment.class.getSimpleName())
-                    .addToBackStack(null).commit();
         }
     }
 

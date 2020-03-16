@@ -22,6 +22,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private HomeViewModel homeViewModel;
 
     private Button btnAntar;
+    private Button btnJemput;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -38,6 +39,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         btnAntar = root.findViewById(R.id.btn_antar);
         btnAntar.setOnClickListener(this);
+        btnJemput = root.findViewById(R.id.btn_jemput);
+        btnJemput.setOnClickListener(this);
 
         return root;
     }
@@ -49,6 +52,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
             FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment, AntarSampahFragment.class.getSimpleName())
+                    .addToBackStack(null).commit();
+        }
+
+        else if (v.getId() == R.id.btn_jemput) {
+            JemputSampahFragment fragment = new JemputSampahFragment();
+
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment, JemputSampahFragment.class.getSimpleName())
                     .addToBackStack(null).commit();
         }
     }

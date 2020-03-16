@@ -59,6 +59,9 @@
     <string name="lokasi_penjemputan">Lokasi Penjemputan</string>
     <string name="kegiatan">Kegiatan</string>
     <string name="SiPahias">SiPahias</string>
+    <string name="no">No</string>
+    <string name="rincian">Rincian</string>
+    <string name="status">Status</string>
 
     <string-array name="jenis_sampah">
         <item>Jenis Sampah</item>

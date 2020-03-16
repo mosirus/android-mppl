@@ -57,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="50dp"
             android:layout_marginEnd="16dp"
             android:orientation="horizontal">
 
@@ -100,8 +100,8 @@
                 android:layout_marginStart="7dp"
                 android:importantForAutofill="no"
                 android:inputType="number"
-                android:text="@string/berat"
-                android:textColor="@color/colorPrimary"
+                android:hint="@string/berat"
+                android:textColorHint="@color/colorPrimary"
                 tools:ignore="LabelFor" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -136,7 +136,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="3dp"
-                     android:text="@string/tanggal_waktu"
+                    android:text="@string/tanggal_waktu"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp" />
 
@@ -150,19 +150,6 @@
                     android:src="@drawable/ic_event_black_24dp" />
 
             </FrameLayout>
-
-            <DatePicker
-                android:id="@+id/date_picker"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginTop="-10dp"
-                android:layout_marginEnd="-30dp"
-                android:scaleType="fitXY"
-                android:scaleX=".8"
-                android:scaleY=".8"
-                android:translationZ="90dp"
-                android:visibility="gone" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
