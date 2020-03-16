@@ -43,4 +43,35 @@
     <string name="identitas">No. Identitas (NIM/NIDN/NIK)</string>
     <string name="simpan">Simpan</string>
     <string name="ganti_foto_profil">Ganti foto profil</string>
+    <string name="tukar_poin">Tukar</string>
+    <string name="antar">Antar</string>
+    <string name="status_antar">Status Antar</string>
+    <string name="isi_form">Isi Form</string>
+
+    <string name="prompt_jenis_sampah">Jenis Sampah</string>
+    <string name="tanggal_waktu">Tanggal/Waktu</string>
+    <string name="berat">Berat</string>
+    <string name="tombol_toggle_date_picker">Tombol toggle date picker</string>
+    <string name="ok">OK</string>
+    <string name="daftar_lokasi_pengantaran_sampah"><u>Daftar Lokasi Pengantaran Sampah</u></string>
+    <string name="status_jemput">Status Jemput</string>
+    <string name="jemput">Jemput</string>
+    <string name="lokasi_penjemputan">Lokasi Penjemputan</string>
+    <string name="kegiatan">Kegiatan</string>
+    <string name="SiPahias">SiPahias</string>
+
+    <string-array name="jenis_sampah">
+        <item>Jenis Sampah</item>
+        <item>Kertas</item>
+        <item>Plastik</item>
+        <item>Logam</item>
+        <item>Lain_lain</item>
+    </string-array>
+
+    <string-array name="detail_sampah">
+        <item>Koran</item>
+        <item>Kardus</item>
+        <item>Majalah</item>
+        <item>Buku</item>
+    </string-array>
 </resources>

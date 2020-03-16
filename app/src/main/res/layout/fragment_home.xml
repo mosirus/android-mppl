@@ -3,17 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/dashboard_banner"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="230dp">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/imageView"
@@ -26,34 +26,41 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+
             <ImageView
                 android:id="@+id/walpaperlogo"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
-                android:contentDescription="@string/app_logo"
-                android:src="@drawable/logo"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.43"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                android:layout_marginStart="-120dp"
+                android:layout_marginLeft="-20dp"
+                android:layout_toEndOf="@id/imageView"
+                android:src="@drawable/logo" />
 
             <TextView
+                android:id="@+id/ju"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:text="@string/siPahias"
+                android:text="@string/SiPahias"
+                android:layout_marginStart="270dp"
+                android:layout_marginTop="50dp"
+                android:layout_below="@id/walpaperlogo"
                 android:textColor="#FFD700"
-                android:textSize="19sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.2"
-                app:layout_constraintStart_toEndOf="@+id/walpaperlogo"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.06999999" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/banksampah"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:text="@string/app_name"
+                android:layout_marginStart="270dp"
+                android:layout_marginTop="95dp"
+                android:textSize="19sp"/>
+
+        </RelativeLayout>
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/point_section"
@@ -142,8 +149,8 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_marginStart="0dp"
-            android:layout_marginEnd="3dp"
             android:layout_marginTop="20dp"
+            android:layout_marginEnd="3dp"
             android:layout_marginBottom="20dp"
             android:background="@color/spalshbag">
 
@@ -152,7 +159,7 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginStart="35dp"
-                android:src="@drawable/deliver" />
+                android:src="@drawable/antar" />
 
             <ImageView
                 android:id="@+id/img_jemput"
@@ -160,7 +167,7 @@
                 android:layout_height="80dp"
                 android:layout_marginStart="55dp"
                 android:layout_toRightOf="@id/img_antar"
-                android:src="@drawable/pick_up" />
+                android:src="@drawable/jemput" />
 
             <ImageView
                 android:id="@+id/img_tukar"
@@ -169,7 +176,7 @@
                 android:layout_marginStart="55dp"
                 android:layout_marginEnd="35dp"
                 android:layout_toRightOf="@id/img_jemput"
-                android:src="@drawable/exchange" />
+                android:src="@drawable/tukarpoin" />
 
             <Button
                 android:id="@+id/btn_antar"
@@ -178,7 +185,8 @@
                 android:layout_marginStart="45dp"
                 android:layout_marginTop="110dp"
                 android:background="@drawable/btn_style"
-                android:text="antar" />
+                android:text="antar"
+                android:textColor="@android:color/white" />
 
             <Button
                 android:id="@+id/btn_jemput"
@@ -188,7 +196,8 @@
                 android:layout_marginTop="110dp"
                 android:layout_toEndOf="@id/btn_antar"
                 android:background="@drawable/btn_style"
-                android:text="jemput" />
+                android:text="jemput"
+                android:textColor="@android:color/white" />
 
             <Button
                 android:id="@+id/btn_tukar"
@@ -198,9 +207,222 @@
                 android:layout_marginTop="110dp"
                 android:layout_toEndOf="@id/btn_jemput"
                 android:background="@drawable/btn_style"
-                android:text="tukar poin" />
+                android:text="tukar poin"
+                android:textColor="@android:color/white" />
 
         </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/text1"
+            android:text="@string/kegiatan"
+            android:layout_marginLeft="24dp"
+            android:textSize="24sp"
+            android:textColor="#294C46"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="4dp"
+            card_view:cardCornerRadius="4dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/img_item_photo"
+                    android:layout_width="150dp"
+                    android:layout_height="220dp"
+                    android:src="@drawable/lelang"
+                    android:layout_marginBottom="4dp"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:id="@+id/tv_item_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_toEndOf="@+id/img_item_photo"
+                    android:layout_toRightOf="@id/img_item_photo"
+                    android:text="Lelang Pakaian"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    tools:ignore="RtlHardcoded" />
+
+                <TextView
+                    android:id="@+id/tv_item_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_item_name"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_toEndOf="@+id/img_item_photo"
+                    android:text="29 Feb 2020"
+                    android:textColor="@android:color/black"/>
+
+                <TextView
+                    android:id="@+id/tv_item_detail_next"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Auditorium IT DEL"
+                    android:layout_below="@+id/tv_item_detail"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_toEndOf="@+id/img_item_photo"
+                    android:layout_toRightOf="@+id/img_item_photo"
+                    android:ellipsize="end"
+                    android:maxLines="5"
+                    android:textColor="@android:color/black"
+                    tools:ignore="RtlHardcoded" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="4dp"
+            android:layout_below="@+id/card_view">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/img_item_photo2"
+                    android:layout_width="150dp"
+                    android:layout_height="220dp"
+                    android:src="@drawable/sale"
+                    android:layout_marginBottom="4dp"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:id="@+id/tv_item_name2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_toEndOf="@+id/img_item_photo2"
+                    android:layout_toRightOf="@+id/img_item_photo2"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:text="Preloved Sale"
+                    tools:ignore="RtlHardcoded"
+                    android:textColor="@android:color/black"/>
+
+                <TextView
+                    android:id="@+id/tv_item_detail2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_item_name2"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_toEndOf="@+id/img_item_photo2"
+                    android:text="14 Mar 2020"
+                    android:textColor="@android:color/black"/>
+
+                <TextView
+                    android:id="@+id/tv_item_detail_next2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_item_detail2"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_toEndOf="@+id/img_item_photo2"
+                    android:layout_toRightOf="@+id/img_item_photo2"
+                    android:ellipsize="end"
+                    android:maxLines="5"
+                    android:text="Auditorium IT DEL "
+                    android:textColor="@android:color/black"
+                    tools:ignore="RtlHardcoded" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="4dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/img_item_photo3"
+                    android:layout_width="150dp"
+                    android:layout_height="220dp"
+                    android:src="@drawable/reduce"
+                    android:layout_marginBottom="4dp"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:id="@+id/tv_item_name3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_toEndOf="@+id/img_item_photo3"
+                    android:layout_toRightOf="@+id/img_item_photo3"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:text="Kegiatan 3R"
+                    android:textColor="@android:color/black"/>
+
+                <TextView
+                    android:id="@+id/tv_item_detail3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_item_name3"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_toEndOf="@+id/img_item_photo3"
+                    android:text="14 Mar 2020"
+                    android:textColor="@android:color/black"/>
+                <TextView
+                    android:id="@+id/tv_item_detail_next3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_item_detail3"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_toEndOf="@+id/img_item_photo3"
+                    android:ellipsize="end"
+                    android:maxLines="5"
+                    android:text="Lapangan Hijau "
+                    android:textColor="@android:color/black"/>
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
 
         <RelativeLayout
             android:id="@+id/txt_petunjuk"

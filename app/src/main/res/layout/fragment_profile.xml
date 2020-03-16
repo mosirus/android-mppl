@@ -21,7 +21,8 @@
             android:textSize="28sp"
             android:textStyle="bold" />
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/fotoprofil"
             android:layout_width="100dp"
             android:layout_height="100dp"
