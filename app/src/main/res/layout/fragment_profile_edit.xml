@@ -21,16 +21,14 @@
             android:textSize="28sp"
             android:textStyle="bold" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/fotoprofiledit"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_below="@id/akun"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:src="@drawable/ic_fotoprofil" />
+            android:src="@drawable/user" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
@@ -223,9 +221,9 @@
                 android:layout_below="@id/katasandilama"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:inputType="textPassword"
                 android:background="@drawable/style"
                 android:gravity="center_vertical"
+                android:inputType="textPassword"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
                 android:textSize="20sp" />
@@ -249,9 +247,9 @@
                 android:layout_below="@id/katasandibaru"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:inputType="textPassword"
                 android:background="@drawable/style"
                 android:gravity="center_vertical"
+                android:inputType="textPassword"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
                 android:textSize="20sp" />
@@ -275,9 +273,9 @@
                 android:layout_below="@id/konfirmasikatasandi"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:inputType="textPassword"
                 android:background="@drawable/style"
                 android:gravity="center_vertical"
+                android:inputType="textPassword"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
                 android:textSize="20sp" />

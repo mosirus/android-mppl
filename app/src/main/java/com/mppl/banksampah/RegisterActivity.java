@@ -117,7 +117,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         /*
         Kode untuk mengirimkan data ke Firebase Realtime Database
         */
-        Toast.makeText(this, username.getText().toString(), Toast.LENGTH_LONG).show();
 
         String acEmail = editTextEmail.getText().toString().trim();
         String acPassword = editTextPassword.getText().toString().trim();

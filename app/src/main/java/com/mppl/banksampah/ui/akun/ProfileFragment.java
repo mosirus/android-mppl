@@ -1,5 +1,7 @@
 package com.mppl.banksampah.ui.akun;
 
+import android.app.DownloadManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -24,6 +26,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -70,23 +73,13 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     FirebaseStorage storage = FirebaseStorage.getInstance();
     StorageReference storageReference = storage.getReference();
 
-    private StorageReference mStorageRef;
+    private StorageReference reference;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
                 ViewModelProviders.of(this).get(ProfileViewModel.class);
         View root = inflater.inflate(R.layout.fragment_profile, container, false);
-//        final TextView textView = root.findViewById(R.id.text_home);
-//        homeViewModel.getText().observe(this, new Observer<String>() {
-//            @Override
-//            public void onChanged(@Nullable String s) {
-//                textView.setText(s);
-//            }
-//        });
-
-
-        mStorageRef = FirebaseStorage.getInstance().getReference();
 
         tv_name = root.findViewById(R.id.editnama);
         tv_email = root.findViewById(R.id.editemail);
@@ -122,27 +115,44 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             }
         });
 
+        reference = storageReference.child(currentuser).child("profile_image");
+        reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                String url = uri.toString();
 
-//        Glide.with(this /* context */)
-//                .asBitmap()
-//                .load()
-//                .into(new CustomTarget<Bitmap>() {
-//                    @Override
-//                    public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
-//                        imageView.setImageBitmap(resource);
-//                    }
-//
-//                    @Override
-//                    public void onLoadCleared(@Nullable Drawable placeholder) {
-//
-//                    }
-//                });
+                if (isAdded()){
+
+                    Glide.with(getParentFragment())
+                            .load(url)
+                            .into(imageView);
+                }
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
+
+
+
 
         editProfile = root.findViewById(R.id.txtsunting);
         editProfile.setOnClickListener(this);
         btn_keluar.setOnClickListener(this);
 
         return root;
+    }
+
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+
+
+        if (isAdded()){
+
+        }
+
     }
 
 
@@ -156,7 +166,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                     .addToBackStack(null).commit();
         }
 
-        if (v.getId() == R.id.btn_keluar){
+        if (v.getId() == R.id.btn_keluar) {
 
             new AlertDialog.Builder(getActivity())
                     .setTitle("Logout")
