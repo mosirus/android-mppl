@@ -6,11 +6,10 @@ import java.io.Serializable;
 
 public class User implements Serializable {
 
-    public User(String nama_lengkap, String email, String username, String no_telp, String password,
+    public User(String nama_lengkap, String email, String no_telp, String password,
                 String pekerjaan, String no_identitas, String alamat,int point) {
         this.nama_lengkap = nama_lengkap;
         this.email = email;
-        this.username = username;
         this.no_telp = no_telp;
         this.password = password;
         this.pekerjaan = pekerjaan;
@@ -20,7 +19,6 @@ public class User implements Serializable {
     }
 
     public String nama_lengkap;
-    public String username;
     public String email;
     public String no_telp;
     public String password;
@@ -60,14 +58,6 @@ public class User implements Serializable {
 
     public void setNama_lengkap(String nama_lengkap) {
         this.nama_lengkap = nama_lengkap;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getEmail() {

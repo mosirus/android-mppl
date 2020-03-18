@@ -76,22 +76,7 @@
             android:textColorHint="@color/colorPrimary" />
 
         <EditText
-            android:id="@+id/username"
-            android:layout_width="340dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="100dp"
-            android:background="@drawable/style"
-            android:ems="10"
-            android:hint="@string/username"
-            android:inputType="textEmailAddress"
-            android:paddingStart="15dp"
-            android:textColorHint="@color/colorPrimary" />
-
-        <EditText
-            android:id="@+id/tv_pass"
+            android:id="@+id/tv_pass_reg"
             android:layout_width="340dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -101,6 +86,21 @@
             android:background="@drawable/style"
             android:ems="10"
             android:hint="@string/password"
+            android:inputType="textPassword"
+            android:paddingStart="15dp"
+            android:textColorHint="@color/colorPrimary" />
+
+        <EditText
+            android:id="@+id/tv_pass_conf"
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="100dp"
+            android:background="@drawable/style"
+            android:ems="10"
+            android:hint="@string/password_conf"
             android:inputType="textPassword"
             android:paddingStart="15dp"
             android:textColorHint="@color/colorPrimary" />

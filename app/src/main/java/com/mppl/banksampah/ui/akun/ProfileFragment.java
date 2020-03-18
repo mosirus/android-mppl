@@ -1,5 +1,7 @@
 package com.mppl.banksampah.ui.akun;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -15,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -34,7 +37,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.mppl.banksampah.MainActivity;
 import com.mppl.banksampah.R;
+import com.mppl.banksampah.StartActivity;
 import com.mppl.banksampah.User;
 
 import java.io.File;
@@ -58,6 +63,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private TextView tv_id_number;
     private TextView tv_address;
     private TextView tv_pass;
+    private Button btn_keluar;
 
     private CircleImageView imageView;
 
@@ -89,6 +95,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         tv_job = root.findViewById(R.id.editpekerjaan);
         tv_id_number = root.findViewById(R.id.editidentitas);
         imageView = root.findViewById(R.id.fotoprofil);
+        btn_keluar = root.findViewById(R.id.btn_keluar);
 
         ref = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser);
         ref.addValueEventListener(new ValueEventListener() {
@@ -133,6 +140,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
         editProfile = root.findViewById(R.id.txtsunting);
         editProfile.setOnClickListener(this);
+        btn_keluar.setOnClickListener(this);
 
         return root;
     }
@@ -146,6 +154,26 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment, EditProfileFragment.class.getSimpleName())
                     .addToBackStack(null).commit();
+        }
+
+        if (v.getId() == R.id.btn_keluar){
+
+            new AlertDialog.Builder(getActivity())
+                    .setTitle("Logout")
+                    .setMessage("Anda akan logout, lanjutkan ?")
+                    .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            FirebaseAuth.getInstance().signOut();
+                            startActivity(new Intent(getActivity(), StartActivity.class));
+                        }
+                    })
+                    .setNegativeButton("Batal", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // user doesn't want to logout
+                        }
+                    })
+                    .show();
+
         }
     }
 }

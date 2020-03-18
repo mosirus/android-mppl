@@ -7,7 +7,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <TextView
@@ -53,7 +53,7 @@
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/form_antar"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="50dp"
@@ -61,7 +61,8 @@
             android:orientation="horizontal">
 
             <FrameLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_weight="0.2"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginEnd="6dp"
@@ -77,7 +78,8 @@
 
 
             <FrameLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_weight="0.25"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="6dp"
@@ -94,7 +96,8 @@
             </FrameLayout>
 
             <EditText
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_weight="0.3"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="7dp"
                 android:importantForAutofill="no"
@@ -185,7 +188,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start|bottom"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="150dp"
+            android:gravity="bottom|left"
             android:text="@string/daftar_lokasi_pengantaran_sampah"
             android:textColor="@color/bluedark"
             android:textSize="18sp" />

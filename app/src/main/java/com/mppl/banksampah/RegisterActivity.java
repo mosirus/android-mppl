@@ -58,8 +58,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         namaLengkap = findViewById(R.id.tv_nama);
         editTextEmail = findViewById(R.id.tv_email);
         notelp = findViewById(R.id.tv_notelp);
-        username = findViewById(R.id.username);
-        editTextPassword = findViewById(R.id.tv_pass);
+        username = findViewById(R.id.tv_pass_conf);
+        editTextPassword = findViewById(R.id.tv_pass_reg);
 
         database = FirebaseDatabase.getInstance().getReference();
 
@@ -94,7 +94,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             username.setError("Required");
             result = false;
         } else {
-            username.setError(null);
+            if (editTextPassword.getText().toString().equals(username.getText().toString())) {
+                username.setError(null);
+            } else {
+                username.setError("The password confirmation does not match");
+                result = false;
+            }
         }
 
         if (TextUtils.isEmpty(editTextPassword.getText().toString())) {
@@ -112,6 +117,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         /*
         Kode untuk mengirimkan data ke Firebase Realtime Database
         */
+        Toast.makeText(this, username.getText().toString(), Toast.LENGTH_LONG).show();
 
         String acEmail = editTextEmail.getText().toString().trim();
         String acPassword = editTextPassword.getText().toString().trim();
@@ -152,14 +158,14 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         String acNoId = "";
         String acAlamat = "";
 
-        writeNewUser(user.getUid(), acNamaLengkap, acUsername, acEmail, acNoTelp, acPassword, acNoId, acPekerjaan, acAlamat, firstPoint);
+        writeNewUser(user.getUid(), acNamaLengkap, acEmail, acNoTelp, acPassword, acNoId, acPekerjaan, acAlamat, firstPoint);
 
         // Go to MainActivity
         startActivity(new Intent(RegisterActivity.this, MainActivity.class));
         finish();
     }
 
-    private void writeNewUser(String userId, String nama, String aUsername, String email, String noTelp, String password,
+    private void writeNewUser(String userId, String nama, String email, String noTelp, String password,
                               String id, String pekerjaan, String alamat, int point) {
 
         String acNamaLengkap = namaLengkap.getText().toString().trim();
@@ -172,7 +178,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         String acNoId = "";
         String acAlamat = "";
 
-        User customer = new User(acNamaLengkap, acEmail, acUsername, acNoTelp, acPassword, acPekerjaan, acNoId, acAlamat, firstPoint);
+        User customer = new User(acNamaLengkap, acEmail, acNoTelp, acPassword, acPekerjaan, acNoId, acAlamat, firstPoint);
         database.child("Users").child(userId).setValue(customer);
     }
 
