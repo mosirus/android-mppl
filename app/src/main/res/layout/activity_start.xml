@@ -41,7 +41,7 @@
 
         <Button
             android:id="@+id/btn_daftar"
-            android:layout_width="250px"
+            android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/btn_style"
@@ -51,7 +51,7 @@
 
         <Button
             android:id="@+id/btn_masuk"
-            android:layout_width="250px"
+            android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_marginLeft="50dp"
             android:layout_gravity="center_horizontal"

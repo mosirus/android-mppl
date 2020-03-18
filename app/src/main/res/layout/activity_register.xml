@@ -42,7 +42,8 @@
             android:ems="10"
             android:hint="@string/nama"
             android:inputType="textEmailAddress"
-            android:paddingLeft="15dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
             android:textColorHint="@color/colorPrimary" />
 
         <EditText
@@ -58,6 +59,7 @@
             android:hint="@string/email"
             android:inputType="textEmailAddress"
             android:paddingStart="15dp"
+            android:paddingEnd="15dp"
             android:textColorHint="@color/colorPrimary" />
 
         <EditText
@@ -73,6 +75,7 @@
             android:hint="@string/no_telp"
             android:inputType="textEmailAddress"
             android:paddingStart="15dp"
+            android:paddingEnd="15dp"
             android:textColorHint="@color/colorPrimary" />
 
         <EditText
@@ -88,6 +91,7 @@
             android:hint="@string/password"
             android:inputType="textPassword"
             android:paddingStart="15dp"
+            android:paddingEnd="15dp"
             android:textColorHint="@color/colorPrimary" />
 
         <EditText
@@ -103,6 +107,7 @@
             android:hint="@string/password_conf"
             android:inputType="textPassword"
             android:paddingStart="15dp"
+            android:paddingEnd="15dp"
             android:textColorHint="@color/colorPrimary" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
