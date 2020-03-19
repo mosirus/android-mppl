@@ -29,4 +29,25 @@
     <string name="app_logo">App Logo</string>
     <string name="my_point">Poinku :</string>
     <string name="point_info">Info Poin</string>
+    <string name="ok">OK</string>
+
+
+    <string name="tentang">Tentang</string>
+    <string name="kegiatan">Kegiatan</string>
+    <string name="pos_pengumpulansampah">Pos Pengumpulan Sampah</string>
+    <string name="gd7">GD 7</string>
+    <string name="nogd7">085363427258</string>
+    <string name="jam_tentang">08.00 - 17.00 WIB</string>
+    <string name="gd9">GD 9</string>
+    <string name="nogd9">083426186478</string>
+    <string name="posstpm1">Pos Satpam 1</string>
+    <string name="nostpm1">086456725846</string>
+    <string name="asnazaret">Asrama Nazareth</string>
+    <string name="nonazaret">085363427258</string>
+    <string name="asmahanaim">Asrama Mahanaim</string>
+    <string name="nomahanaim">086452671575</string>
+    <string name="koperasi">Koperasi</string>
+    <string name="nokoperasi">086454264335</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
