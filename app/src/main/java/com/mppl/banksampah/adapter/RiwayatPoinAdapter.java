@@ -1,7 +1,6 @@
 package com.mppl.banksampah.adapter;
 
 import android.content.Context;
-import android.graphics.Movie;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mppl.banksampah.R;
 import com.mppl.banksampah.RiwayatPoin;
-import com.mppl.banksampah.User;
 
 import java.util.ArrayList;
 

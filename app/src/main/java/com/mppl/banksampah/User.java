@@ -1,7 +1,5 @@
 package com.mppl.banksampah;
 
-import com.google.firebase.database.IgnoreExtraProperties;
-
 import java.io.Serializable;
 
 public class User implements Serializable {

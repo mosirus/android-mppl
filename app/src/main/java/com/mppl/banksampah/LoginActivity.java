@@ -23,6 +23,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.mppl.banksampah.admin.AdminMainActivity;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "LoginActivity";
@@ -91,35 +92,20 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     //fungsi dipanggil ketika proses Authentikasi berhasil
     private void onAuthSuccess(FirebaseUser user) {
-        String username = usernameFromEmail(user.getEmail());
-
-        // membuat User admin baru
-        // writeNewAdmin(user.getUid(), username, user.getEmail());
 
         // Go to MainActivity
-        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-        finish();
-    }
 
-    // menulis ke Database
-//    private void writeNewAdmin(String userId, String name, String email) {
-//        User user = new User(name, email);
-//
-//        database.child("admins").child(userId).setValue(user);
-//    }
-
-    /*
-        ini fungsi buat bikin username dari email
-            contoh email: abcdefg@mail.com
-            maka username nya: abcdefg
-     */
-    private String usernameFromEmail(String email) {
-        if (email.contains("@")) {
-            return email.split("@")[0];
-        } else {
-            return email;
+        if (user.getUid().equals("Ydb0Zv17xzZ0X6VifzYNUJhkF8J2")){
+            startActivity(new Intent(LoginActivity.this, AdminMainActivity.class));
+            finish();
         }
+        else {
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            finish();
+        }
+
     }
+
 
     //fungsi untuk memvalidasi EditText email dan password agar tak kosong dan sesuai format
     private boolean validateForm() {
