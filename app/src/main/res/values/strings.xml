@@ -1,19 +1,18 @@
 <resources>
     <string name="app_name">BankSampah</string>
-    <string name="bank_sampah">Bank Sampah</string>
+    <string name="siPahias">SiPahias</string>
     <string name="email">Email</string>
-    <string name="password">Password</string>
+    <string name="password">Kata Sandi</string>
+    <string name="password_conf">Konfirmasi Kata Sandi</string>
     <string name="masuk">Masuk</string>
     <string name="batal">Batal</string>
     <string name="daftar">Daftar</string>
     <string name="nama">Nama Lengkap</string>
     <string name="no_telp">No. Telepon</string>
-    <string name="username">Username</string>
-    <string name="register">Register</string>
-    <string name="title_activity_main2">Main2Activity</string>
+    <string name="register">Daftar</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_profile">Akun</string>
     <string name="poin">Poin</string>
     <string name="tukar">Tukar Poin</string>
     <string name="riwayat">Riwayat</string>
@@ -27,8 +26,9 @@
     <string name="awal_petunjuk">3 Langkah Mudah Tukar Sampah Anda</string>
     <string name="banner_image">Banner Image</string>
     <string name="app_logo">App Logo</string>
-    <string name="my_point">Poinku :</string>
+    <string name="my_point">Poin :</string>
     <string name="point_info">Info Poin</string>
+
     <string name="ok">OK</string>
 
 
@@ -48,6 +48,76 @@
     <string name="nomahanaim">086452671575</string>
     <string name="koperasi">Koperasi</string>
     <string name="nokoperasi">086454264335</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="daftar_sekarang"> <u>Daftar Sekarang</u></string>
+    <string name="keluar">Keluar</string>
+    <string name="kata_sandi_lama">Kata Sandi Lama</string>
+    <string name="kata_sandi_baru">Kata Sandi Baru</string>
+    <string name="konfirmasi_kata_sandi">Konfirmasi Kata Sandi</string>
+    <string name="alamat">Alamat</string>
+    <string name="akun">Akun</string>
+    <string name="suntingprofil">Sunting Profil</string>
+    <string name="namalengkap">Nama Lengkap</string>
+    <string name="email1">e-mail</string>
+    <string name="notelepon">No. telepon</string>
+    <string name="pekerjaan">Pekerjaan</string>
+    <string name="identitas">No. Identitas (NIM/NIDN/NIK)</string>
+    <string name="simpan">Simpan</string>
+    <string name="ganti_foto_profil">Ganti foto profil</string>
+    <string name="tukar_poin">Tukar</string>
+    <string name="antar">Antar</string>
+    <string name="status_antar">Status Antar</string>
+    <string name="isi_form">Isi Form</string>
+
+    <string name="prompt_jenis_sampah">Jenis Sampah</string>
+    <string name="tanggal_waktu">Tanggal/Waktu</string>
+    <string name="berat">Berat</string>
+    <string name="tombol_toggle_date_picker">Tombol toggle date picker</string>
+    <string name="ok">OK</string>
+    <string name="daftar_lokasi_pengantaran_sampah"><u>Daftar Lokasi Pengantaran Sampah</u></string>
+    <string name="status_jemput">Status Jemput</string>
+    <string name="jemput">Jemput</string>
+    <string name="lokasi_penjemputan">Lokasi Penjemputan</string>
+    <string name="kegiatan">Kegiatan</string>
+    <string name="SiPahias">SiPahias</string>
+    <string name="no">No</string>
+    <string name="rincian">Rincian</string>
+    <string name="status">Status</string>
+    <string name="riwayat_poin">Riwayat Poin</string>
+    <string name="tanggal">Tanggal</string>
+    <string name="title_tentang">Tentang</string>
+    <string name="title_info">Info Poin</string>
+    <string name="poinmasuk_tab">Poin Masuk</string>
+    <string name="poinkeluar_tab">Poin Keluar</string>
+    <string name="keterangan">Keterangan</string>
+
+    <string-array name="jenis_sampah">
+        <item>Jenis Sampah</item>
+        <item>Kertas</item>
+        <item>Plastik</item>
+        <item>Logam</item>
+        <item>Lain_lain</item>
+    </string-array>
+
+    <string-array name="detail_sampah">
+        <item>Koran</item>
+        <item>Kardus</item>
+        <item>Majalah</item>
+        <item>Buku</item>
+    </string-array>
+
+    <string-array name="data_tanggal_masuk">
+        <item>20 Februari 2020</item>
+        <item>25 Februari 2020</item>
+        <item>28 Februari 2020</item>
+        <item>2 Maret 2020</item>
+    </string-array>
+
+    <string-array name="ket_poin_masuk">
+        <item>Penukaran sampah plastik: 6 kg</item>
+        <item>Penukaran sampah plastik: 3 kg</item>
+        <item>Penukaran sampah plastik: 2 kg</item>
+        <item>Penukaran sampah besi: 20 kg</item>
+    </string-array>
 </resources>

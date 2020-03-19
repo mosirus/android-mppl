@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center"
+        android:background="#3A7D77"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:foregroundGravity="center"
+            android:background="@drawable/sipahias_toolbar"
+            android:layout_marginLeft="135dp"
+            android:layout_marginRight="135dp"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/riwayat_poin"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        android:layout_marginTop="20dp"/>
+
+
+    <ImageView
+        android:id="@+id/image_point"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/icon_point"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.105"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/my_point"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/image_point"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView_point"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        tools:text="0"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_riwayat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/image_point"
+        android:layout_marginTop="15dp"
+        app:tabGravity="fill"
+        app:tabMode="fixed"
+        app:tabBackground="@color/item_riwayat"
+        app:tabSelectedTextColor="@color/jemput"
+        app:tabTextColor="@color/colorBlack"
+        app:tabIndicatorColor="@color/tabindicatorcolor"
+        tools:ignore="MissingConstraints" />
+
+
+<!--    <Button-->
+<!--        android:id="@+id/btn_poin_masuk"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="60dp"-->
+<!--        android:layout_marginTop="24dp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textView3"-->
+<!--        android:text="Poin Masuk"-->
+<!--        android:background="@drawable/rectangle"-->
+<!--        android:onClick="jumpToPage"-->
+<!--        tools:ignore="MissingConstraints" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/btn_poin_keluar"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="24dp"-->
+<!--        android:layout_marginEnd="60dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textView3"-->
+<!--        android:text="Poin Keluar"-->
+<!--        android:background="@drawable/rectangle"-->
+<!--        tools:ignore="MissingConstraints" />-->
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager_riwayat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tab_riwayat"
+        android:layout_marginTop="25dp"
+        tools:ignore="MissingConstraints">
+
+    </androidx.viewpager.widget.ViewPager>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

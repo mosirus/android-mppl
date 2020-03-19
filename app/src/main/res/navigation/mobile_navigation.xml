@@ -11,15 +11,16 @@
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
-    <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.mppl.banksampah.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.mppl.banksampah.ui.notifications.NotificationsFragment"
+        android:id="@+id/navigation_infopoin"
+        android:name="com.mppl.banksampah.ui.riwayatpoin.RiwayatPoinFragment"
+        android:label="@string/point_info"
+        tools:layout="@layout/fragment_riwayatpoin" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.mppl.banksampah.ui.akun.ProfileFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_profile" />
 </navigation>

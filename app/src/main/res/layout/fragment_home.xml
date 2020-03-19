@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -11,9 +12,9 @@
         android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/dashboard_banner"
+            android:id="@+id/header"
             android:layout_width="match_parent"
-            android:layout_height="230dp">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/imageView"
@@ -23,196 +24,481 @@
                 android:src="@drawable/dashboard_banner"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/walpaperlogo"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
-                android:contentDescription="@string/app_logo"
+                android:layout_toEndOf="@id/imageView"
                 android:src="@drawable/logo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.43"
+                app:layout_constraintHorizontal_bias="0.837"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imageView"
+                app:layout_constraintVertical_bias="0.091" />
+
+            <TextView
+                android:id="@+id/nama_app"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/walpaperlogo"
+                android:layout_alignParentTop="true"
+                android:text="@string/SiPahias"
+                android:textColor="#FFD700"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/imageView"
+                app:layout_constraintHorizontal_bias="0.914"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/walpaperlogo"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
+                android:id="@+id/banksampah"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:text="@string/bank_sampah"
-                android:textColor="#FFD700"
+                android:text="@string/app_name"
                 android:textSize="19sp"
-                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.2"
-                app:layout_constraintStart_toEndOf="@+id/walpaperlogo"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintHorizontal_bias="0.91"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nama_app"
                 app:layout_constraintVertical_bias="0.06999999" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/point_section"
+
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="130dp"
-            android:background="@color/grey">
+            android:layout_height="wrap_content"
+            android:background="@color/grey"
+            android:orientation="vertical"
+            android:paddingTop="20dp">
 
-            <ImageView
-                android:id="@+id/coin"
-                android:layout_width="52dp"
-                android:layout_height="55dp"
-                android:src="@drawable/coin"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.044"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.120000005" />
-
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/my_point"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.063"
-                app:layout_constraintStart_toEndOf="@+id/coin"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.19999999" />
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/info_poin"
-                android:layout_width="103dp"
+                <ImageView
+                    android:id="@+id/coin"
+                    android:layout_width="52dp"
+                    android:layout_height="55dp"
+                    android:src="@drawable/poin" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:gravity="center"
+                    android:text="@string/my_point"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/jumlah_poin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textSize="18sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/info_poin"
-                android:paddingStart="5dp"
-                android:text="@string/point_info"
-                android:textColor="@color/spalshbag"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/in_date"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/coin"
-                app:layout_constraintVertical_bias="0.288"
-                tools:ignore="RtlSymmetry" />
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/poin_section_style"
+                android:orientation="vertical"
+                android:paddingBottom="5dp">
 
-            <EditText
-                android:id="@+id/in_date"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="140dp"
-                android:layout_marginBottom="32dp"
-                android:layout_toRightOf="@+id/info_poin"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0" />
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/txt_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="9dp"
-                android:layout_marginEnd="220dp"
-                android:layout_toEndOf="@id/in_date"
-                android:text="@string/text_info"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.941"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/info_poin"
-                app:layout_constraintVertical_bias="0.0" />
+                    <TextView
+                        android:id="@+id/info_poin"
+                        android:layout_width="103dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:background="@color/info_poin"
+                        android:gravity="center"
+                        android:paddingTop="11dp"
+                        android:paddingBottom="10dp"
+                        android:text="@string/riwayat_poin"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/in_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:hint="@string/tanggal" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <TextView
+                    android:id="@+id/txt_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="15dp"
+                    android:text="@string/text_info" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <RelativeLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/menu_pilih"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginStart="0dp"
-            android:layout_marginEnd="3dp"
-            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
-            android:background="@color/spalshbag">
+            android:background="@color/spalshbag"
+            android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/img_antar"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="35dp"
-                android:src="@drawable/deliver" />
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/menu_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="0.2"
+                android:background="@drawable/main_menu_btn_style"
+                android:elevation="20dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
 
-            <ImageView
-                android:id="@+id/img_jemput"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="55dp"
-                android:layout_toRightOf="@id/img_antar"
-                android:src="@drawable/pick_up" />
+                <ImageView
+                    android:id="@+id/img_antar"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:src="@drawable/antar" />
 
-            <ImageView
-                android:id="@+id/img_tukar"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="55dp"
-                android:layout_marginEnd="35dp"
-                android:layout_toRightOf="@id/img_jemput"
-                android:src="@drawable/exchange" />
+                <Button
+                    android:id="@+id/btn_antar"
+                    android:layout_width="80dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/btn_style"
+                    android:text="antar"
+                    android:textColor="@android:color/white" />
 
-            <Button
-                android:id="@+id/btn_antar"
-                android:layout_width="80dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="45dp"
-                android:layout_marginTop="110dp"
-                android:background="@drawable/btn_style"
-                android:text="antar" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <Button
-                android:id="@+id/btn_jemput"
-                android:layout_width="80dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="45dp"
-                android:layout_marginTop="110dp"
-                android:layout_toEndOf="@id/btn_antar"
-                android:background="@drawable/btn_style"
-                android:text="jemput" />
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/menu_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="0.2"
+                android:background="@drawable/main_menu_btn_style"
+                android:elevation="10dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
 
-            <Button
-                android:id="@+id/btn_tukar"
-                android:layout_width="90dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="45dp"
-                android:layout_marginTop="110dp"
-                android:layout_toEndOf="@id/btn_jemput"
-                android:background="@drawable/btn_style"
-                android:text="tukar poin" />
+                <ImageView
+                    android:id="@+id/img_jemput"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:src="@drawable/jemput" />
 
-        </RelativeLayout>
+                <Button
+                    android:id="@+id/btn_jemput"
+                    android:layout_width="80dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/btn_style"
+                    android:text="jemput"
+                    android:textColor="@android:color/white" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/menu_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_weight="0.2"
+                android:background="@drawable/main_menu_btn_style"
+                android:elevation="10dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+
+                <ImageView
+                    android:id="@+id/img_tukar"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:src="@drawable/tukarpoin" />
+
+                <Button
+                    android:id="@+id/btn_tukar"
+                    android:layout_width="90dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toEndOf="@id/btn_jemput"
+                    android:background="@drawable/btn_style"
+                    android:text="tukar poin"
+                    android:textColor="@android:color/white" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/kegiatan"
+            android:textColor="#294C46"
+            android:textSize="24sp" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="4dp"
+            card_view:cardCornerRadius="4dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/img_item_photo"
+                    android:layout_width="150dp"
+                    android:layout_height="220dp"
+                    android:layout_marginBottom="4dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/lelang" />
+
+                <TextView
+                    android:id="@+id/tv_item_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_toEndOf="@+id/img_item_photo"
+                    android:layout_toRightOf="@id/img_item_photo"
+                    android:text="Lelang Pakaian"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    tools:ignore="RtlHardcoded" />
+
+                <TextView
+                    android:id="@+id/tv_item_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_item_name"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_toEndOf="@+id/img_item_photo"
+                    android:text="29 Feb 2020"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/tv_item_detail_next"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/tv_item_detail"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_toEndOf="@+id/img_item_photo"
+                    android:layout_toRightOf="@+id/img_item_photo"
+                    android:ellipsize="end"
+                    android:maxLines="5"
+                    android:text="Auditorium IT DEL"
+                    android:textColor="@android:color/black"
+                    tools:ignore="RtlHardcoded" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="4dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/img_item_photo2"
+                    android:layout_width="150dp"
+                    android:layout_height="220dp"
+                    android:layout_marginBottom="4dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/sale" />
+
+                <TextView
+                    android:id="@+id/tv_item_name2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_toEndOf="@+id/img_item_photo2"
+                    android:layout_toRightOf="@+id/img_item_photo2"
+                    android:text="Preloved Sale"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    tools:ignore="RtlHardcoded" />
+
+                <TextView
+                    android:id="@+id/tv_item_detail2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_item_name2"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_toEndOf="@+id/img_item_photo2"
+                    android:text="14 Mar 2020"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/tv_item_detail_next2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_item_detail2"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_toEndOf="@+id/img_item_photo2"
+                    android:layout_toRightOf="@+id/img_item_photo2"
+                    android:ellipsize="end"
+                    android:maxLines="5"
+                    android:text="Auditorium IT DEL "
+                    android:textColor="@android:color/black"
+                    tools:ignore="RtlHardcoded" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="4dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/img_item_photo3"
+                    android:layout_width="150dp"
+                    android:layout_height="220dp"
+                    android:layout_marginBottom="4dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/reduce" />
+
+                <TextView
+                    android:id="@+id/tv_item_name3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_toEndOf="@+id/img_item_photo3"
+                    android:layout_toRightOf="@+id/img_item_photo3"
+                    android:text="Kegiatan 3R"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_item_detail3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_item_name3"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_toEndOf="@+id/img_item_photo3"
+                    android:text="14 Mar 2020"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/tv_item_detail_next3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_item_detail3"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_toEndOf="@+id/img_item_photo3"
+                    android:ellipsize="end"
+                    android:maxLines="5"
+                    android:text="Lapangan Hijau "
+                    android:textColor="@android:color/black" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
 
         <RelativeLayout
             android:id="@+id/txt_petunjuk"
             android:layout_width="match_parent"
-            android:layout_height="453dp"
-            android:background="@color/grey">
+            android:layout_height="wrap_content"
+            android:background="@color/grey"
+            android:paddingStart="20dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="60dp">
 
             <TextView
                 android:id="@+id/txt_petunjuk1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="80dp"
                 android:layout_marginTop="20dp"
                 android:text="@string/awal_petunjuk"
                 android:textSize="16dp"
@@ -222,17 +508,17 @@
                 android:id="@+id/img_petunjuk1"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:layout_marginStart="35dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="60dp"
                 android:src="@drawable/guide1" />
 
             <TextView
                 android:id="@+id/txt_petunjuksatu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="80dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="90dp"
                 android:layout_toEndOf="@id/img_petunjuk1"
+                android:maxWidth="@dimen/activity_horizontal_margin"
                 android:text="@string/petunjuk_satu" />
 
             <ImageView
@@ -248,9 +534,10 @@
                 android:id="@+id/txt_petunjuk2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="190dp"
                 android:layout_toEndOf="@id/img_petunjuk2"
+                android:maxWidth="@dimen/activity_horizontal_margin"
                 android:text="@string/petunjuk_dua" />
 
             <ImageView
@@ -266,9 +553,10 @@
                 android:id="@+id/txt_petunjuk3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="300dp"
                 android:layout_toEndOf="@id/img_petunjuk3"
+                android:maxWidth="@dimen/activity_horizontal_margin"
                 android:text="@string/petunjuk_tiga" />
 
         </RelativeLayout>
