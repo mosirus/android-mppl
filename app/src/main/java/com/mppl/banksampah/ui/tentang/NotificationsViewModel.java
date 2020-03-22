@@ -1,4 +1,4 @@
-package com.mppl.banksampah.ui.notifications;
+package com.mppl.banksampah.ui.tentang;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

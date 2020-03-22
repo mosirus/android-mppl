@@ -77,7 +77,6 @@
     <string name="status_jemput">Status Jemput</string>
     <string name="jemput">Jemput</string>
     <string name="lokasi_penjemputan">Lokasi Penjemputan</string>
-    <string name="kegiatan">Kegiatan</string>
     <string name="SiPahias">SiPahias</string>
     <string name="no">No</string>
     <string name="rincian">Rincian</string>
@@ -118,4 +117,20 @@
         <item>Penukaran sampah plastik: 2 kg</item>
         <item>Penukaran sampah besi: 20 kg</item>
     </string-array>
+
+    <string name="navigation_drawer_open">navigation drawer open</string>
+    <string name="navigation_drawer_close">navigation drawer close</string>
+    <string name="navigation_view_item_1">Terima Sampah</string>
+    <string name="navigation_view_item_2">Jemput</string>
+    <string name="navigation_view_item_3">Daftar Pengguna</string>
+    <string name="navigation_view_item_4">Event</string>
+    <string name="navigation_view_item_5">Kupon</string>
+    <string name="navigation_view_item_6">Riwayat Tukar Sampah</string>
+    <string name="sipahias">SiPahias</string>
+    <string name="daftar_pengguna">Daftar Pengguna</string>
+    <string name="event">Event</string>
+    <string name="kupon">Kupon</string>
+    <string name="riwayat_tukar_poin">Riwayat Tukar Poin</string>
+    <string name="terima_sampah">Terima Sampah</string>
+    <string name="kegiatan">Kegiatan</string>
 </resources>

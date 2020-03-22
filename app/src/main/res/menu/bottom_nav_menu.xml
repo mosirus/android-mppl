@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/home_navigation"
+        android:icon="@drawable/home"
         android:title="@string/title_home" />
 
     <item
-        android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/tentang_navigation"
+        android:id="@+id/navigation_tentang"
+        android:icon="@drawable/tentang"
         android:title="@string/title_tentang" />
 
     <item
