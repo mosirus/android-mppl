@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:gravity="center"
             android:background="#3A7D77"
+            android:gravity="center"
             tools:ignore="MissingConstraints">
 
             <ImageView
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:foregroundGravity="center"
-                android:background="@drawable/sipahias_toolbar"
                 android:layout_marginLeft="135dp"
-                android:layout_marginRight="135dp"/>
+                android:layout_marginRight="135dp"
+                android:background="@drawable/sipahias_toolbar"
+                android:foregroundGravity="center"
+                android:contentDescription="@string/banner_image" />
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -43,112 +43,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="20dp"
                 android:layout_marginTop="90dp"
+                android:layout_marginBottom="20dp"
                 android:text="@string/daftar_pengguna"
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
 
-            <RelativeLayout
-                android:id="@+id/tentang1"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvDaftarPengguna"
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
-                android:layout_marginEnd="35dp"
-                android:layout_marginStart="35dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/kotak_shape"
-                android:padding="30dp"
-                tools:ignore="MissingConstraints">
-
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/tentang2"
-                android:layout_width="match_parent"
-                android:layout_height="130dp"
-                android:layout_marginEnd="35dp"
-                android:layout_marginStart="35dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/kotak_shape"
-                android:padding="30dp"
-                tools:ignore="MissingConstraints">
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/tentang3"
-                android:layout_width="match_parent"
-                android:layout_height="130dp"
-                android:layout_marginEnd="35dp"
-                android:layout_marginStart="35dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/kotak_shape"
-                android:padding="30dp"
-                tools:ignore="MissingConstraints">
-
-            </RelativeLayout>
-
-
-            <RelativeLayout
-                android:id="@+id/tentang4"
-                android:layout_width="match_parent"
-                android:layout_height="130dp"
-                android:layout_marginEnd="35dp"
-                android:layout_marginStart="35dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/kotak_shape"
-                android:padding="30dp"
-                tools:ignore="MissingConstraints">
-
-            </RelativeLayout>
-
-
-            <RelativeLayout
-                android:id="@+id/tentang5"
-                android:layout_width="match_parent"
-                android:layout_height="130dp"
-                android:layout_marginEnd="35dp"
-                android:layout_marginStart="35dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/kotak_shape"
-                android:padding="30dp"
-                tools:ignore="MissingConstraints">
-
-            </RelativeLayout>
-
+                android:layout_height="match_parent"
+                tools:listitem="@layout/item_cardview_daftar_pengguna"/>
 
         </LinearLayout>
-
-
-
-
-        <!--    <Button-->
-        <!--        android:id="@+id/btn_poin_masuk"-->
-        <!--        android:layout_width="wrap_content"-->
-        <!--        android:layout_height="wrap_content"-->
-        <!--        android:layout_marginStart="60dp"-->
-        <!--        android:layout_marginTop="24dp"-->
-        <!--        app:layout_constraintStart_toStartOf="parent"-->
-        <!--        app:layout_constraintTop_toBottomOf="@+id/textView3"-->
-        <!--        android:text="Poin Masuk"-->
-        <!--        android:background="@drawable/rectangle"-->
-        <!--        android:onClick="jumpToPage"-->
-        <!--        tools:ignore="MissingConstraints" />-->
-
-        <!--    <Button-->
-        <!--        android:id="@+id/btn_poin_keluar"-->
-        <!--        android:layout_width="wrap_content"-->
-        <!--        android:layout_height="wrap_content"-->
-        <!--        android:layout_marginTop="24dp"-->
-        <!--        android:layout_marginEnd="60dp"-->
-        <!--        app:layout_constraintEnd_toEndOf="parent"-->
-        <!--        app:layout_constraintTop_toBottomOf="@+id/textView3"-->
-        <!--        android:text="Poin Keluar"-->
-        <!--        android:background="@drawable/rectangle"-->
-        <!--        tools:ignore="MissingConstraints" />-->
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
