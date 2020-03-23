@@ -29,4 +29,11 @@
     <string name="app_logo">App Logo</string>
     <string name="my_point">Poinku :</string>
     <string name="point_info">Info Poin</string>
+
+    <string name="daftar_pengguna">Daftar Pengguna</string>
+    <string name="titikdua">:</string>
+    <string name="pekerjaan">Pekerjaan</string>
+    <string name="no_identitas">No Identitas</string>
+    <string name="alamat">Alamat</string>
+
 </resources>
