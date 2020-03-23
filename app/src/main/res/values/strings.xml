@@ -140,4 +140,6 @@
     <string name="start_value_point">0</string>
     <string name="list_barang">List Barang</string>
     <string name="list_kupon">List Kupon</string>
+    <string name="dummyname_listbarang">Nama Item</string>
+    <string name="dummyprice_listbarang">Harga Item</string>
 </resources>
