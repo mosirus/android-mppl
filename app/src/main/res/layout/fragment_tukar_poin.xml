@@ -108,11 +108,12 @@
             android:theme="@style/tkrpoinbtnactive"
             android:text="@string/list_barang"
             android:textSize="15dp"
+            android:textColor="@color/white"
             android:padding="10dp"
             android:layout_marginHorizontal="5dp"
             />
         <Button
-            android:id="@+id/ftbbtn_listkupon"
+            android:id="@+id/ftpbtn_listkupon"
             android:layout_height="match_parent"
             android:layout_width="120dp"
             android:background="@drawable/btn_frag_tukarpoin_inactive"

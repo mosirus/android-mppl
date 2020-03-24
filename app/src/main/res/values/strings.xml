@@ -142,4 +142,6 @@
     <string name="list_kupon">List Kupon</string>
     <string name="dummyname_listbarang">Nama Item</string>
     <string name="dummyprice_listbarang">Harga Item</string>
+    <string name="dummyname_listkupon">Nama Kupon</string>
+    <string name="dummyprice_listkupon">Harga Kupon</string>
 </resources>
