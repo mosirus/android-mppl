@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
-            android:text="@string/edit_event"
+            android:text="@string/tambah_event"
             android:textSize="28sp"
             android:textStyle="bold" />
 
@@ -25,7 +25,7 @@
             android:id="@+id/gbr_event"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/lelang"
+            android:src="@drawable/reduce-reuse-recycle"
             />
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -38,7 +38,7 @@
                 android:id="@+id/txtSuntingFoto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/ganti_foto"
+                android:text="@string/tambah_foto"
                 android:textColor="@color/bluedark"
                 android:textSize="20sp" />
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -58,14 +58,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:text="@string/nama_event"
-                android:textColor="@color/colorPrimary"
                 android:background="@drawable/style"
                 android:gravity="center_vertical"
+                android:text="@string/nama_reward"
+                android:textColor="@color/colorPrimary"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
                 android:textSize="20sp" />
-
 
 
             <EditText
@@ -73,79 +72,43 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/editnamaevent"
-                android:layout_marginTop="20dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:text="@string/waktu_tanggal"
-                android:textColor="@color/colorPrimary"
                 android:background="@drawable/style"
                 android:gravity="center_vertical"
+                android:text="@string/poin"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginTop="20dp"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
                 android:textSize="20sp" />
 
 
-            <EditText
-                android:id="@+id/edit_tempat"
-                android:layout_width="fill_parent"
+
+
+            <Spinner
+                android:id="@+id/spinner_jenis_sampah"
+                android:layout_width="371dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/edit_waktutanggal"
-                android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:background="@drawable/style"
-                android:gravity="center_vertical"
-                android:text="@string/tempat"
-                android:textColor="@color/colorPrimary"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:paddingStart="15dp"
+                android:background="@drawable/spinner_style"
+                android:entries="@array/jenis"
                 android:paddingEnd="15dp"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/deskripsi"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/edit_tempat"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp"
-
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/editdeskripsi"
-                android:layout_width="fill_parent"
-                android:layout_height="200dp"
-                android:layout_below="@id/edit_tempat"
-                android:layout_marginEnd="20dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="24dp"
-                android:gravity="top"
-                android:background="@drawable/style"
-                android:paddingEnd="15dp"
-                android:paddingStart="15dp"
-                android:text="@string/deskripsi"
                 android:textColor="@color/colorPrimary"
+                android:paddingStart="15dp"
+                android:prompt="@string/prompt_jenis_reward"
                 android:textSize="20sp" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/editdeskripsi"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/spinner_jenis_sampah"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal">
-
-
-                <Button
-                    android:id="@+id/btn_simpan_edit"
-                    android:layout_width="130dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="50dp"
-                    android:background="@drawable/btn_style"
-                    android:text="@string/simpan"
-                    android:textColor="@android:color/white" />
-
 
                 <Button
                     android:id="@+id/btn_batal_edit"
@@ -156,6 +119,20 @@
                     android:background="@drawable/cancel_btn_style"
                     android:text="@string/batal"
                     android:textColor="@android:color/white" />
+
+
+                <Button
+                    android:id="@+id/btn_simpan_edit"
+                    android:layout_width="130dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="50dp"
+                    android:background="@drawable/btn_style"
+                    android:text="@string/tambah"
+                    android:textColor="@android:color/white" />
+
+
+
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 

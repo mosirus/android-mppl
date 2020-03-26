@@ -38,6 +38,21 @@
     <string name="deskripsi">Deskripsi</string>
     <string name="simpan">Simpan</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="tambah_event">Tambah Event</string>
+    <string name="tambah_foto">Tambah Foto</string>
+    <string name="tambah">Tambah</string>
+
+    <string name="tambah_reward">Tambah Reward</string>
+    <string name="nama_reward">Nama</string>
+    <string name="edit_foto">Edit Foto</string>
+
+    <string name="prompt_jenis_reward">Jenis</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string-array name="jenis">
+        <item>Jenis</item>
+        <item>Barang</item>
+        <item>Kupon</item>
+    </string-array>
 </resources>
