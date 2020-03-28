@@ -8,4 +8,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="NavigationTheme" parent="AppTheme">
+        <item name="android:layout_marginTop">30dp</item>
+    </style>
+
+    <style name="tkrpoinbtnactive" parent="Theme.AppCompat.Light">
+        <item name="colorControlHighlight">@color/info_poin</item>
+    </style>
+
 </resources>

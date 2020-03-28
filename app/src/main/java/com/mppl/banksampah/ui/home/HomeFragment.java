@@ -4,19 +4,22 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.Button;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.mppl.banksampah.R;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private HomeViewModel homeViewModel;
+
+    private Button btnAntar;
+    private Button btnJemput;
+    Button btnTukarPoin;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -30,6 +33,40 @@ public class HomeFragment extends Fragment {
 //                textView.setText(s);
 //            }
 //        });
+
+        btnAntar = root.findViewById(R.id.btn_antar);
+        btnAntar.setOnClickListener(this);
+        btnJemput = root.findViewById(R.id.btn_jemput);
+        btnJemput.setOnClickListener(this);
+        btnTukarPoin = root.findViewById(R.id.btn_tukarpoin);
+        btnTukarPoin.setOnClickListener(this);
+
         return root;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.btn_antar) {
+            AntarSampahFragment fragment = new AntarSampahFragment();
+
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment, AntarSampahFragment.class.getSimpleName())
+                    .addToBackStack(null).commit();
+        }
+
+        else if (v.getId() == R.id.btn_jemput) {
+            JemputSampahFragment fragment = new JemputSampahFragment();
+
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment, JemputSampahFragment.class.getSimpleName())
+                    .addToBackStack(null).commit();
+        }
+        else if (v.getId() == R.id.btn_tukarpoin){
+            TukarPoinFragment fragment = new TukarPoinFragment();
+
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment, TukarPoinFragment.class.getSimpleName())
+                    .addToBackStack(null).commit();
+        }
     }
 }
