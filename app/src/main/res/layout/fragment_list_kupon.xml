@@ -143,76 +143,11 @@
             android:layout_marginTop="240dp"
             android:orientation="vertical">
 
-            <LinearLayout
-                xmlns:android="http://schemas.android.com/apk/res/android"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvtp_list_kupon"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:orientation="horizontal"
-                android:background="@drawable/background_item_list_barang"
-                android:layout_marginVertical="5dp">
-
-                <ImageView
-                    android:id="@+id/iv_list_barang1"
-                    android:layout_height="70dp"
-                    android:layout_width="70dp"
-                    android:background="@color/white"
-                    android:layout_marginLeft="10dp"
-                    android:layout_gravity="center"/>
-                <TextView
-                    android:id="@+id/tv_list_barang1"
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:layout_marginHorizontal="30dp"
-                    android:layout_gravity="center"
-                    android:text="@string/dummyname_listkupon"
-                    android:textSize="20dp"
-                    android:textColor="@color/colorBlack"/>
-                <Button
-                    android:id="@+id/btn_list_barang1"
-                    android:layout_height="60dp"
-                    android:layout_width="100dp"
-                    android:layout_gravity="center"
-                    android:text="@string/dummyprice_listkupon"
-                    android:layout_marginHorizontal="30dp"
-                    android:background="@drawable/btn_frag_tukarpoin_inactive"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:orientation="horizontal"
-                android:background="@drawable/background_item_list_barang"
-                android:layout_marginVertical="5dp">
-
-                <ImageView
-                    android:id="@+id/iv_list_barang2"
-                    android:layout_height="70dp"
-                    android:layout_width="70dp"
-                    android:background="@color/white"
-                    android:layout_marginLeft="10dp"
-                    android:layout_gravity="center"/>
-                <TextView
-                    android:id="@+id/tv_list_barang2"
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:layout_marginHorizontal="30dp"
-                    android:layout_gravity="center"
-                    android:text="@string/dummyname_listkupon"
-                    android:textSize="20dp"
-                    android:textColor="@color/colorBlack"/>
-                <Button
-                    android:id="@+id/btn_list_barang2"
-                    android:layout_height="60dp"
-                    android:layout_width="100dp"
-                    android:layout_gravity="center"
-                    android:text="@string/dummyprice_listkupon"
-                    android:layout_marginHorizontal="30dp"
-                    android:background="@drawable/btn_frag_tukarpoin_inactive"/>
-
-            </LinearLayout>
-
+                android:layout_height="match_parent"
+                tools:listitem="@layout/item_list_kupon"/>
         </LinearLayout>
 
     </RelativeLayout>
