@@ -69,6 +69,7 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
 
     private Button btn_simpan;
     private Button btn_batal;
+    private Button btn_edit_password;
 
     private String currentPassword;
     //Firebase
@@ -92,10 +93,6 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
         edt_id_number = root.findViewById(R.id.editidentitas);
         imageView = root.findViewById(R.id.fotoprofiledit);
 
-        edt_old_pass = root.findViewById(R.id.editkatasandilama);
-        edt_new_pass = root.findViewById(R.id.editkatasandibaru);
-        edt_new_pass_confirmation = root.findViewById(R.id.editkonfirmasikatasandi);
-
         ref = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser);
         ref.addValueEventListener(new ValueEventListener() {
 
@@ -107,8 +104,6 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
                 String alamat = dataSnapshot.child("alamat").getValue().toString();
                 String pekerjaan = dataSnapshot.child("pekerjaan").getValue().toString();
                 String no_identitas = dataSnapshot.child("no_identitas").getValue().toString();
-                currentPassword = dataSnapshot.child("password").getValue().toString();
-
 
                 edt_name.setText(nama);
                 edt_email.setText(email);
@@ -147,36 +142,14 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
 
         btn_simpan = root.findViewById(R.id.btn_simpan_edit);
         btn_batal = root.findViewById(R.id.btn_batal_edit);
+        btn_edit_password = root.findViewById(R.id.btn_edit_password);
 
         edt_gambar.setOnClickListener(this);
         btn_batal.setOnClickListener(this);
         btn_simpan.setOnClickListener(this);
+        btn_edit_password.setOnClickListener(this);
 
         return root;
-    }
-
-    private boolean updatePassword() {
-        String oldPass = edt_old_pass.getText().toString().trim();
-        String newPass = edt_new_pass.getText().toString().trim();
-        String newPassConfirmation = edt_new_pass_confirmation.getText().toString().trim();
-
-        boolean result = true;
-
-        if (oldPass.equals(currentPassword)) {
-            if (newPass.equals(newPassConfirmation)) {
-                user.updatePassword(newPass);
-                ref.child("password").setValue(newPass);
-                edt_new_pass.setError(null);
-                edt_new_pass_confirmation.setError(null);
-            } else {
-                edt_new_pass_confirmation.setError("Konfirmasi password tidak sesuai");
-                result = false;
-            }
-        } else {
-            edt_old_pass.setError("Password salah");
-            result = false;
-        }
-        return result;
     }
 
     @Override
@@ -193,6 +166,13 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
         } else if (v.getId() == R.id.txtSuntingFoto) {
             chooseImage();
         }
+        else if (v.getId() == R.id.btn_edit_password) {
+            EditPasswordFragment fragment = new EditPasswordFragment();
+
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment, EditPasswordFragment.class.getSimpleName())
+                    .addToBackStack(null).commit();
+        }
     }
 
     private void chooseImage() {
@@ -203,18 +183,6 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
     }
 
     private void updateProfile() {
-
-        if (!edt_old_pass.getText().toString().isEmpty()) {
-            if (edt_new_pass.getText().toString().isEmpty()) {
-                edt_new_pass.setError("Password baru tidak boleh kosong");
-                return;
-            } else {
-                updatePassword();
-                if (!updatePassword()) {
-                    return;
-                }
-            }
-        }
 
         final String namaEdit = edt_name.getText().toString().trim();
         String telpEdit = edt_telp.getText().toString().trim();

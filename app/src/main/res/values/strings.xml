@@ -82,7 +82,7 @@
     <string name="konfirmasi_kata_sandi">Konfirmasi Kata Sandi</string>
     <string name="alamat">Alamat</string>
     <string name="akun">Akun</string>
-    <string name="suntingprofil">Sunting Profil</string>
+    <string name="suntingprofil">Edit Profil</string>
     <string name="namalengkap">Nama Lengkap</string>
     <string name="email1">e-mail</string>
     <string name="notelepon">No. telepon</string>
@@ -162,7 +162,6 @@
     <string name="kegiatan">Kegiatan</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tv_tukarpoin">Tukar Poin</string>
     <string name="start_value_point">0</string>
     <string name="list_barang">List Barang</string>
@@ -171,4 +170,5 @@
     <string name="dummyprice_listbarang">Harga Item</string>
     <string name="dummyname_listkupon">Nama Kupon</string>
     <string name="dummyprice_listkupon">Harga Kupon</string>
+    <string name="ganti_kata_sandi">Ganti Kata Sandi</string>
 </resources>
