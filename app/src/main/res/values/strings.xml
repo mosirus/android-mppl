@@ -171,4 +171,7 @@
     <string name="dummyname_listkupon">Nama Kupon</string>
     <string name="dummyprice_listkupon">Harga Kupon</string>
     <string name="ganti_kata_sandi">Ganti Kata Sandi</string>
+    <string name="dummydate_sttp">Tanggal Penukaran</string>
+    <string name="dummyaction_sttp">Aksi Tukar Poin</string>
+    <string name="dummystatus_sttp">Status Penukaran</string>
 </resources>

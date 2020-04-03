@@ -74,7 +74,7 @@ public class ListKuponFragment extends Fragment implements View.OnClickListener 
             return viewHolder;
         }
         public void onBindViewHolder(ListViewHolder holder, int position){
-            holder.textView.setText(data[position]);
+            holder.namaKupon.setText(data[position]);
         }
         public int getItemCount(){
             return data.length;
@@ -82,10 +82,10 @@ public class ListKuponFragment extends Fragment implements View.OnClickListener 
     }
 
     public static class ListViewHolder extends RecyclerView.ViewHolder{
-        public TextView textView;
+        public TextView namaKupon;
         public ListViewHolder(View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.tv_list_kupon);
+            namaKupon = itemView.findViewById(R.id.tv_list_kupon);
         }
     }
 
