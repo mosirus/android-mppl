@@ -16,12 +16,16 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.mppl.banksampah.R;
@@ -83,20 +87,44 @@ public class AntarSampahFragment extends Fragment implements View.OnClickListene
     }
 
     private void makeRequest() {
-        String jenisSampah = spnrJenisSampah.getSelectedItem().toString();
-        String satuanSampah = spnrSatuan.getSelectedItem().toString();
-        String jumlahSampah = edtJumlahSampah.getText().toString();
-        String tanggal = pickedDate.getText().toString();
-        String currentuserId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
-
+        final String refKey = ref.push().getKey();
         if (validateForm()) {
-            ref.child("IdUser").setValue(currentuserId);
-            ref.child("JenisSampah").setValue(jenisSampah);
-            ref.child("Berat").setValue(jumlahSampah);
-            ref.child("Satuan").setValue(satuanSampah);
-            ref.child("Tanggal").setValue(tanggal);
-            ref.child("Status").setValue("Sedang diproses");
+            ref.addChildEventListener(new ChildEventListener() {
+                String jenisSampah = spnrJenisSampah.getSelectedItem().toString();
+                String satuanSampah = spnrSatuan.getSelectedItem().toString();
+                String jumlahSampah = edtJumlahSampah.getText().toString();
+                String tanggal = pickedDate.getText().toString();
+                String currentuserId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
 
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                    ref.child(currentuserId).child(refKey).child("JenisSampah").setValue(jenisSampah);
+                    ref.child(currentuserId).child(refKey).child("Berat").setValue(jumlahSampah);
+                    ref.child(currentuserId).child(refKey).child("Satuan").setValue(satuanSampah);
+                    ref.child(currentuserId).child(refKey).child("Tanggal").setValue(tanggal);
+                    ref.child(currentuserId).child(refKey).child("Status").setValue("Sedang diproses");
+                }
+
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                }
+
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
             new AlertDialog.Builder(Objects.requireNonNull(getActivity()))
                     .setTitle("Request Berhasil")
                     .setMessage("Request kamu berhasil dibuat, silahkan antar sampah ke pos terdekat")
@@ -107,13 +135,22 @@ public class AntarSampahFragment extends Fragment implements View.OnClickListene
                     .show();
         }
 
-
     }
 
     private boolean validateForm() {
         boolean result = true;
         if (TextUtils.isEmpty(edtJumlahSampah.getText().toString())) {
             edtJumlahSampah.setError("Harap masukkan jumlah sampah");
+            result = false;
+        }
+        else if (TextUtils.isEmpty(pickedDate.getText().toString())){
+            new AlertDialog.Builder(Objects.requireNonNull(getActivity()))
+                    .setMessage("Harap pilih tanggal pengantaran")
+                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    })
+                    .show();
             result = false;
         }
         return result;
