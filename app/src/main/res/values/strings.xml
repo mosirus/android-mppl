@@ -29,4 +29,11 @@
     <string name="app_logo">App Logo</string>
     <string name="my_point">Poinku :</string>
     <string name="point_info">Info Poin</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="jemput_sampah">Jemput Sampah</string>
+    <string name="lokasi">Lokasi</string>
+    <string name="tanggal">Tanggal</string>
 </resources>
