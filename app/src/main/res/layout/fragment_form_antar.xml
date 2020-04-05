@@ -51,6 +51,8 @@
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
+
+
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/form_antar"
             android:layout_width="match_parent"
@@ -76,6 +78,19 @@
                     android:prompt="@string/prompt_jenis_sampah" />
             </FrameLayout>
 
+            <EditText
+                android:id="@+id/edtJumlahSampah"
+                android:layout_width="match_parent"
+                android:layout_weight="0.31"
+                android:layout_height="32dp"
+                android:layout_marginStart="7dp"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:hint="@string/jumlah"
+                android:paddingStart="2dp"
+                android:textColorHint="@color/colorPrimary"
+                tools:ignore="LabelFor"
+                android:background="@drawable/style"/>
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -87,24 +102,13 @@
                 android:background="@drawable/spinner_style">
 
                 <Spinner
-                    android:id="@+id/spinner_detail_sampah"
+                    android:id="@+id/spinner_satuan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:entries="@array/detail_sampah"
-                    android:prompt="@string/prompt_jenis_sampah"
+                    android:entries="@array/satuan"
+                    android:prompt="@string/prompt_satuan_sampah"
                     android:textColor="@color/colorPrimary" />
             </FrameLayout>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_weight="0.3"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="7dp"
-                android:importantForAutofill="no"
-                android:inputType="number"
-                android:hint="@string/berat"
-                android:textColorHint="@color/colorPrimary"
-                tools:ignore="LabelFor" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -184,11 +188,12 @@
 
 
         <TextView
+            android:id="@+id/tv_daftar_lokasi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start|bottom"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="160dp"
             android:text="@string/daftar_lokasi_pengantaran_sampah"
             android:textColor="@color/bluedark"
             android:textSize="18sp" />

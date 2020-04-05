@@ -76,7 +76,7 @@ public class TukarPoinFragment extends Fragment implements View.OnClickListener 
         }
 
         public void onBindViewHolder(ListViewHolder holder, int position){
-            holder.textView.setText(data[position]);
+            holder.namaBarang.setText(data[position]);
         }
 
         public int getItemCount(){
@@ -85,10 +85,10 @@ public class TukarPoinFragment extends Fragment implements View.OnClickListener 
     }
 
     public static class ListViewHolder extends RecyclerView.ViewHolder{
-        public TextView textView;
+        public TextView namaBarang;
         public ListViewHolder(View itemView){
             super(itemView);
-            textView = itemView.findViewById(R.id.tv_list_barang);
+            namaBarang = itemView.findViewById(R.id.tv_list_barang);
         }
     }
 }

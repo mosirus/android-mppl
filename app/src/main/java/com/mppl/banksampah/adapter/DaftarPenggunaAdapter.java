@@ -7,11 +7,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mppl.banksampah.R;
 import com.mppl.banksampah.RiwayatPoin;
 import com.mppl.banksampah.admin.DaftarPengguna;
+import com.mppl.banksampah.admin.DaftarPenggunaDetailFragment;
+import com.mppl.banksampah.ui.akun.EditProfileFragment;
 
 import java.util.ArrayList;
 
@@ -20,9 +23,14 @@ public class DaftarPenggunaAdapter extends RecyclerView.Adapter<DaftarPenggunaAd
     private ArrayList<DaftarPengguna> listPengguna;
     private Context context;
 
-    public DaftarPenggunaAdapter(Context context) {
+    private OnItemClickCallback onItemClickCallback;
+    public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback;
+    }
+
+    public DaftarPenggunaAdapter(Context context, ArrayList<DaftarPengguna> p) {
         this.context = context;
-        listPengguna = new ArrayList<>();
+        listPengguna = p;
     }
 
     public void setListPengguna(ArrayList<DaftarPengguna> listPengguna) {
@@ -41,11 +49,16 @@ public class DaftarPenggunaAdapter extends RecyclerView.Adapter<DaftarPenggunaAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CardViewViewHolder holder, int position) {
-        DaftarPengguna daftarPengguna = getListPengguna().get(position);
+    public void onBindViewHolder(@NonNull final CardViewViewHolder holder, int position) {
+        holder.email.setText(listPengguna.get(position).getEmail());
+        holder.point.setText(String.valueOf(listPengguna.get(position).getPoint()));
 
-        holder.email.setText(daftarPengguna.getEmail());
-        holder.poin.setText(daftarPengguna.getPoin());
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                onItemClickCallback.onItemClicked(listPengguna.get(holder.getAdapterPosition()));
+//            }
+//        });
     }
 
     @Override
@@ -53,15 +66,21 @@ public class DaftarPenggunaAdapter extends RecyclerView.Adapter<DaftarPenggunaAd
         return listPengguna.size();
     }
 
-    public class CardViewViewHolder extends RecyclerView.ViewHolder {
-
+    static class CardViewViewHolder extends RecyclerView.ViewHolder {
         private TextView email;
-        private TextView poin;
+        private TextView point;
 
-        public CardViewViewHolder(@NonNull View itemView) {
+        CardViewViewHolder(@NonNull View itemView) {
             super(itemView);
-            email =itemView.findViewById(R.id.email_pengguna);
-            poin = itemView.findViewById(R.id.poin_pengguna);
+            email = itemView.findViewById(R.id.email_pengguna_adm);
+            point = itemView.findViewById(R.id.poin_pengguna_adm);
         }
     }
+
+
+    public interface OnItemClickCallback {
+        void onItemClicked(DaftarPengguna data);
+    }
 }
+
+
