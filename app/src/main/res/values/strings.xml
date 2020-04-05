@@ -33,16 +33,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
-    <string name="terima_sampah">Terima Sampah</string>
+
     <string name="permintaan_antar">Permintaan Antar</string>
     <string name="nama_pengguna">Nama Pengguna</string>
-    <string name="isi_form">Isi Form</string>
-    <string name="berat">Berat</string>
-    <string name="tanggal_waktu">Tanggal/Waktu</string>
-    <string name="tombol_toggle_date_picker">Tombol toggle date picker</string>
-    <string name="ok">OK</string>
 
-    <string name="prompt_jenis_sampah">Jenis Sampah</string>
     <string name="prompt_satuan_sampah">Satuan</string>
 
     <string-array name="satuan">
@@ -67,7 +61,7 @@
     <string name="edit_foto">Edit Foto</string>
 
     <string name="prompt_jenis_reward">Jenis</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string-array name="jenis">
