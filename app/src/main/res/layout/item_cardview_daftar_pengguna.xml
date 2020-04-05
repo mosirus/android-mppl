@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginLeft="8dp"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="20dp">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="12dp"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
+    android:background="@color/item_riwayat">
+
+    <TextView
+        android:id="@+id/email_pengguna_adm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="@string/email"/>
+
+    <TextView
+        android:id="@+id/poin_pengguna_adm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/email_pengguna_adm"
+        android:layout_marginTop="10dp"
+        tools:text="@string/poin"/>
+
+</RelativeLayout>
+
+</androidx.cardview.widget.CardView>
