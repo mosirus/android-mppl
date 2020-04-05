@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,6 +26,7 @@ import com.mppl.banksampah.R;
 import com.mppl.banksampah.RiwayatPoin;
 import com.mppl.banksampah.adapter.DaftarPenggunaAdapter;
 import com.mppl.banksampah.adapter.RiwayatPoinAdapter;
+import com.mppl.banksampah.ui.akun.EditProfileFragment;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -60,11 +62,6 @@ public class DaftarPenggunaFragment extends Fragment {
         rvDaftarPengguna = view.findViewById(R.id.rvDaftarPengguna);
         rvDaftarPengguna.setHasFixedSize(true);
         rvDaftarPengguna.setLayoutManager(new LinearLayoutManager(getContext()));
-
-//        progressDialog = new ProgressDialog(getActivity());
-//        progressDialog.setMessage("Loading Data from Firebase Database");
-//        progressDialog.show();
-
     }
 
     @Override
@@ -83,6 +80,17 @@ public class DaftarPenggunaFragment extends Fragment {
                 }
                 adapter = new DaftarPenggunaAdapter(getActivity(), daftarPenggunaArrayList);
                 rvDaftarPengguna.setAdapter(adapter);
+
+//                adapter.setOnItemClickCallback(new DaftarPenggunaAdapter.OnItemClickCallback() {
+//                    @Override
+//                    public void onItemClicked(DaftarPengguna data) {
+//                        DaftarPenggunaDetailFragment fragment = new DaftarPenggunaDetailFragment();
+//
+//                        FragmentManager fragmentManager = getChildFragmentManager();
+//                        fragmentManager.beginTransaction().replace(R.id.nav_host_admin_fragment, fragment, DaftarPenggunaDetailFragment.class.getSimpleName())
+//                                .addToBackStack(null).commit();
+//                    }
+//                });
             }
 
             @Override
@@ -92,7 +100,6 @@ public class DaftarPenggunaFragment extends Fragment {
         });
 
     }
-
 
 
 }
