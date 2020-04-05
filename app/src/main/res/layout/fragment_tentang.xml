@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:background="#3A7D77"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="30sp"
+                android:textColor="@android:color/white"
+                android:text="@string/SiPahias"
+                android:gravity="center"/>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <LinearLayout
+            android:id="@+id/tentang0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="90dp"
+                android:text="@string/tentang"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:text="@string/pos_pengumpulansampah"
+                android:textSize="23sp"
+                android:textStyle="bold"
+                card_view:layout_constraintStart_toStartOf="@id/textView"
+                card_view:layout_constraintTop_toBottomOf="@id/textView" />
+
+
+            <RelativeLayout
+                android:id="@+id/tentang1"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/item_riwayat"
+                android:padding="30dp"
+                tools:ignore="MissingConstraints">
+
+
+                <ImageView
+                    android:id="@+id/nav_tentang"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_location" />
+
+                <TextView
+                    android:id="@+id/txt_tentang1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@id/nav_tentang"
+                    android:text="@string/gd7"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/txt_tentang11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_tentang1"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@id/nav_tentang"
+                    android:text="@string/nogd7"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txt_tentang12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_tentang11"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@id/nav_tentang"
+                    android:text="@string/jam_tentang"
+                    android:textSize="15sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/tentang2"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/item_riwayat"
+                android:padding="30dp"
+                tools:ignore="MissingConstraints">
+
+                <ImageView
+                    android:id="@+id/nav_tentang2"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_location" />
+
+                <TextView
+                    android:id="@+id/txt_tentang2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@id/nav_tentang2"
+                    android:text="@string/gd9"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/txt_tentang21"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_tentang2"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@id/nav_tentang2"
+                    android:text="@string/nogd9"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txt_tentang22"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_tentang21"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@id/nav_tentang2"
+                    android:text="@string/jam_tentang"
+                    android:textSize="15sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/tentang3"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/item_riwayat"
+                android:padding="30dp"
+                tools:ignore="MissingConstraints">
+
+                <ImageView
+                    android:id="@+id/nav_tentang3"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_location" />
+
+                <TextView
+                    android:id="@+id/txt_tentang3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@id/nav_tentang3"
+                    android:text="@string/posstpm1"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/txt_tentang31"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_tentang3"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@id/nav_tentang3"
+                    android:text="@string/nostpm1"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txt_tentang32"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_tentang31"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@id/nav_tentang3"
+                    android:text="@string/jam_tentang"
+                    android:textSize="15sp" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/tentang4"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/item_riwayat"
+                android:padding="30dp"
+                tools:ignore="MissingConstraints">
+
+                <ImageView
+                    android:id="@+id/nav_tentang4"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_location" />
+
+                <TextView
+                    android:id="@+id/txt_tentang4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@id/nav_tentang4"
+                    android:text="@string/asnazaret"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/txt_tentang41"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_tentang4"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@id/nav_tentang4"
+                    android:text="@string/nostpm1"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txt_tentang42"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_tentang41"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@id/nav_tentang4"
+                    android:text="@string/jam_tentang"
+                    android:textSize="15sp" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/tentang5"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/item_riwayat"
+                android:padding="30dp"
+                tools:ignore="MissingConstraints">
+
+                <ImageView
+                    android:id="@+id/nav_tentang5"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_location" />
+
+                <TextView
+                    android:id="@+id/txt_tentang5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@id/nav_tentang5"
+                    android:text="@string/asmahanaim"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/txt_tentang51"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_tentang5"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@id/nav_tentang5"
+                    android:text="@string/asmahanaim"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txt_tentang52"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_tentang51"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@id/nav_tentang5"
+                    android:text="@string/jam_tentang"
+                    android:textSize="15sp" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/kegiatan"
+                android:textColor="#294C46"
+                android:textSize="24sp" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="4dp"
+                card_view:cardCornerRadius="4dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:id="@+id/img_item_photo"
+                        android:layout_width="150dp"
+                        android:layout_height="220dp"
+                        android:layout_marginBottom="4dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/lelang" />
+
+                    <TextView
+                        android:id="@+id/tv_item_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_toEndOf="@+id/img_item_photo"
+                        android:layout_toRightOf="@id/img_item_photo"
+                        android:text="Lelang Pakaian"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        tools:ignore="RtlHardcoded" />
+
+                    <TextView
+                        android:id="@+id/tv_item_detail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_item_name"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_toEndOf="@+id/img_item_photo"
+                        android:text="29 Feb 2020"
+                        android:textColor="@android:color/black" />
+
+                    <TextView
+                        android:id="@+id/tv_item_detail_next"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/tv_item_detail"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_toEndOf="@+id/img_item_photo"
+                        android:layout_toRightOf="@+id/img_item_photo"
+                        android:ellipsize="end"
+                        android:maxLines="5"
+                        android:text="Auditorium IT DEL"
+                        android:textColor="@android:color/black"
+                        tools:ignore="RtlHardcoded" />
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/card_view"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="4dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:id="@+id/img_item_photo2"
+                        android:layout_width="150dp"
+                        android:layout_height="220dp"
+                        android:layout_marginBottom="4dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/sale" />
+
+                    <TextView
+                        android:id="@+id/tv_item_name2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_toEndOf="@+id/img_item_photo2"
+                        android:layout_toRightOf="@+id/img_item_photo2"
+                        android:text="Preloved Sale"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        tools:ignore="RtlHardcoded" />
+
+                    <TextView
+                        android:id="@+id/tv_item_detail2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_item_name2"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_toEndOf="@+id/img_item_photo2"
+                        android:text="14 Mar 2020"
+                        android:textColor="@android:color/black" />
+
+                    <TextView
+                        android:id="@+id/tv_item_detail_next2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_item_detail2"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_toEndOf="@+id/img_item_photo2"
+                        android:layout_toRightOf="@+id/img_item_photo2"
+                        android:ellipsize="end"
+                        android:maxLines="5"
+                        android:text="Auditorium IT DEL "
+                        android:textColor="@android:color/black"
+                        tools:ignore="RtlHardcoded" />
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="4dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:id="@+id/img_item_photo3"
+                        android:layout_width="150dp"
+                        android:layout_height="220dp"
+                        android:layout_marginBottom="4dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/reduce" />
+
+                    <TextView
+                        android:id="@+id/tv_item_name3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_toEndOf="@+id/img_item_photo3"
+                        android:layout_toRightOf="@+id/img_item_photo3"
+                        android:text="Kegiatan 3R"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_item_detail3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_item_name3"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_toEndOf="@+id/img_item_photo3"
+                        android:text="14 Mar 2020"
+                        android:textColor="@android:color/black" />
+
+                    <TextView
+                        android:id="@+id/tv_item_detail_next3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_item_detail3"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_toEndOf="@+id/img_item_photo3"
+                        android:ellipsize="end"
+                        android:maxLines="5"
+                        android:text="Lapangan Hijau "
+                        android:textColor="@android:color/black" />
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+
+
+
+
+        </LinearLayout>
+
+
+
+
+        <!--    <Button-->
+        <!--        android:id="@+id/btn_poin_masuk"-->
+        <!--        android:layout_width="wrap_content"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_marginStart="60dp"-->
+        <!--        android:layout_marginTop="24dp"-->
+        <!--        app:layout_constraintStart_toStartOf="parent"-->
+        <!--        app:layout_constraintTop_toBottomOf="@+id/textView3"-->
+        <!--        android:text="Poin Masuk"-->
+        <!--        android:background="@drawable/rectangle"-->
+        <!--        android:onClick="jumpToPage"-->
+        <!--        tools:ignore="MissingConstraints" />-->
+
+        <!--    <Button-->
+        <!--        android:id="@+id/btn_poin_keluar"-->
+        <!--        android:layout_width="wrap_content"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_marginTop="24dp"-->
+        <!--        android:layout_marginEnd="60dp"-->
+        <!--        app:layout_constraintEnd_toEndOf="parent"-->
+        <!--        app:layout_constraintTop_toBottomOf="@+id/textView3"-->
+        <!--        android:text="Poin Keluar"-->
+        <!--        android:background="@drawable/rectangle"-->
+        <!--        tools:ignore="MissingConstraints" />-->
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

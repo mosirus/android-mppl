@@ -3,14 +3,17 @@ package com.mppl.banksampah;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,6 +23,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.mppl.banksampah.admin.AdminMainActivity;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "LoginActivity";
@@ -28,6 +32,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private FirebaseAuth auth;
     private EditText edtEmail;
     private EditText edtPass;
+    private TextView tvRegister;
     private Button btnLogin;
     private Button btnCancel;
     private ProgressBar progressBar;
@@ -44,12 +49,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         edtEmail = findViewById(R.id.tv_email);
         edtPass = findViewById(R.id.tv_pass);
+        tvRegister = findViewById(R.id.daftar_sekarang);
         btnLogin = findViewById(R.id.btn_masuk);
         btnCancel = findViewById(R.id.btn_batal);
         progressBar = findViewById(R.id.loadingProgress);
 
         btnLogin.setOnClickListener(this);
         btnCancel.setOnClickListener(this);
+        tvRegister.setOnClickListener(this);
     }
 
     //fungsi signin untuk mengkonfirmasi data pengguna yang sudah mendaftar sebelumnya
@@ -85,35 +92,20 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     //fungsi dipanggil ketika proses Authentikasi berhasil
     private void onAuthSuccess(FirebaseUser user) {
-        String username = usernameFromEmail(user.getEmail());
-
-        // membuat User admin baru
-        writeNewAdmin(user.getUid(), username, user.getEmail());
 
         // Go to MainActivity
-        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-        finish();
-    }
 
-    // menulis ke Database
-    private void writeNewAdmin(String userId, String name, String email) {
-        User user = new User(name, email);
-
-        database.child("admins").child(userId).setValue(user);
-    }
-
-    /*
-        ini fungsi buat bikin username dari email
-            contoh email: abcdefg@mail.com
-            maka username nya: abcdefg
-     */
-    private String usernameFromEmail(String email) {
-        if (email.contains("@")) {
-            return email.split("@")[0];
-        } else {
-            return email;
+        if (user.getUid().equals("Ydb0Zv17xzZ0X6VifzYNUJhkF8J2")){
+            startActivity(new Intent(LoginActivity.this, AdminMainActivity.class));
+            finish();
         }
+        else {
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            finish();
+        }
+
     }
+
 
     //fungsi untuk memvalidasi EditText email dan password agar tak kosong dan sesuai format
     private boolean validateForm() {
@@ -139,15 +131,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         int i = v.getId();
         if (i == R.id.btn_masuk) {
+            InputMethodManager inputManager = (InputMethodManager)
+                    getSystemService(Context.INPUT_METHOD_SERVICE);
+
+            inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                    InputMethodManager.HIDE_NOT_ALWAYS);
 
             signIn();
         }
-        if (i == R.id.btn_batal) {
-
-        } else if (i == R.id.btn_batal) {
+        else if (i == R.id.btn_batal) {
             Intent intent = new Intent(LoginActivity.this, StartActivity.class);
             startActivity(intent);
         }
+        else if (i == R.id.daftar_sekarang) {
+            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+            startActivity(intent);
+        }
+
     }
 
 }
