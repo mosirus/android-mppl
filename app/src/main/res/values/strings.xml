@@ -29,4 +29,34 @@
     <string name="app_logo">App Logo</string>
     <string name="my_point">Poinku :</string>
     <string name="point_info">Info Poin</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="terima_sampah">Terima Sampah</string>
+    <string name="permintaan_antar">Permintaan Antar</string>
+    <string name="nama_pengguna">Nama Pengguna</string>
+    <string name="isi_form">Isi Form</string>
+    <string name="berat">Berat</string>
+    <string name="tanggal_waktu">Tanggal/Waktu</string>
+    <string name="tombol_toggle_date_picker">Tombol toggle date picker</string>
+    <string name="ok">OK</string>
+
+    <string name="prompt_jenis_sampah">Jenis Sampah</string>
+    <string name="prompt_satuan_sampah">Satuan</string>
+
+    <string-array name="satuan">
+        <item>Satuan</item>
+        <item>Kg</item>
+        <item>Pieces</item>
+    </string-array>
+
+    <string-array name="jenis_sampah">
+        <item>Jenis Sampah</item>
+        <item>Kertas</item>
+        <item>Plastik</item>
+        <item>Logam</item>
+        <item>Lain_lain</item>
+    </string-array>
 </resources>
