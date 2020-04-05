@@ -8,25 +8,24 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="60dp"
             android:background="#3A7D77"
             android:gravity="center"
             tools:ignore="MissingConstraints">
 
-            <ImageView
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="135dp"
-                android:layout_marginRight="135dp"
-                android:background="@drawable/sipahias_toolbar"
-                android:foregroundGravity="center"
-                android:contentDescription="@string/banner_image" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/SiPahias"
+                android:textColor="@android:color/white"
+                android:textSize="30sp" />
 
         </androidx.appcompat.widget.Toolbar>
 

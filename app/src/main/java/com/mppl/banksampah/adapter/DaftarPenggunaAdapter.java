@@ -20,9 +20,9 @@ public class DaftarPenggunaAdapter extends RecyclerView.Adapter<DaftarPenggunaAd
     private ArrayList<DaftarPengguna> listPengguna;
     private Context context;
 
-    public DaftarPenggunaAdapter(Context context) {
+    public DaftarPenggunaAdapter(Context context, ArrayList<DaftarPengguna> p) {
         this.context = context;
-        listPengguna = new ArrayList<>();
+        listPengguna = p;
     }
 
     public void setListPengguna(ArrayList<DaftarPengguna> listPengguna) {
@@ -42,10 +42,8 @@ public class DaftarPenggunaAdapter extends RecyclerView.Adapter<DaftarPenggunaAd
 
     @Override
     public void onBindViewHolder(@NonNull CardViewViewHolder holder, int position) {
-        DaftarPengguna daftarPengguna = getListPengguna().get(position);
-
-        holder.email.setText(daftarPengguna.getEmail());
-        holder.poin.setText(daftarPengguna.getPoin());
+        holder.email.setText(listPengguna.get(position).getEmail());
+        holder.point.setText(String.valueOf(listPengguna.get(position).getPoint()));
     }
 
     @Override
@@ -53,15 +51,14 @@ public class DaftarPenggunaAdapter extends RecyclerView.Adapter<DaftarPenggunaAd
         return listPengguna.size();
     }
 
-    public class CardViewViewHolder extends RecyclerView.ViewHolder {
-
+    static class CardViewViewHolder extends RecyclerView.ViewHolder {
         private TextView email;
-        private TextView poin;
+        private TextView point;
 
-        public CardViewViewHolder(@NonNull View itemView) {
+        CardViewViewHolder(@NonNull View itemView) {
             super(itemView);
-            email =itemView.findViewById(R.id.email_pengguna);
-            poin = itemView.findViewById(R.id.poin_pengguna);
+            email = itemView.findViewById(R.id.email_pengguna_adm);
+            point = itemView.findViewById(R.id.poin_pengguna_adm);
         }
     }
 }

@@ -22,19 +22,18 @@
     android:background="@color/item_riwayat">
 
     <TextView
-        android:id="@+id/email_pengguna"
+        android:id="@+id/email_pengguna_adm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:text="@string/email"/>
 
     <TextView
-        android:id="@+id/poin_pengguna"
+        android:id="@+id/poin_pengguna_adm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/email_pengguna"
+        android:layout_below="@+id/email_pengguna_adm"
         android:layout_marginTop="10dp"
         tools:text="@string/poin"/>
-
 
 </RelativeLayout>
 

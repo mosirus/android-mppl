@@ -30,12 +30,13 @@ import com.google.firebase.storage.StorageReference;
 import com.mppl.banksampah.R;
 import com.mppl.banksampah.StartActivity;
 
+import java.util.Objects;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileFragment extends Fragment implements View.OnClickListener {
 
-    private String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
+    private String currentuser = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
 
     private ProfileViewModel homeViewModel;
     private DatabaseReference ref;
@@ -103,7 +104,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             public void onSuccess(Uri uri) {
                 String url = uri.toString();
 
-                if (isAdded()){
+                if (isAdded()) {
 
                     Glide.with(getParentFragment())
                             .load(url)
@@ -118,9 +119,6 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             }
         });
 
-
-
-
         editProfile = root.findViewById(R.id.txtsunting);
         editProfile.setOnClickListener(this);
         btn_keluar.setOnClickListener(this);
@@ -129,14 +127,11 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     }
 
     public void onViewCreated(View view, Bundle savedInstanceState) {
-
-
-        if (isAdded()){
+        if (isAdded()) {
 
         }
 
     }
-
 
     @Override
     public void onClick(View v) {
@@ -165,7 +160,6 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                         }
                     })
                     .show();
-
         }
     }
 }
