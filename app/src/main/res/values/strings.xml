@@ -38,6 +38,7 @@
     <string name="nama_pengguna">Nama Pengguna</string>
     <string name="isi_form">Isi Form</string>
     <string name="berat">Berat</string>
+    <string name="jumlah">Jumlah</string>
     <string name="tanggal_waktu">Tanggal/Waktu</string>
     <string name="tombol_toggle_date_picker">Tombol toggle date picker</string>
     <string name="ok">OK</string>
