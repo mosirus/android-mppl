@@ -6,6 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.mppl.banksampah.admin.AdminMainActivity;
 
 public class StartActivity extends AppCompatActivity implements View.OnClickListener {
     private Button btnLogin;
@@ -13,6 +18,20 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            // User is signed in
+            if (user.getUid().equals("Ydb0Zv17xzZ0X6VifzYNUJhkF8J2")) {
+                startActivity(new Intent(StartActivity.this, AdminMainActivity.class));
+                finish();
+            } else {
+                Intent i = new Intent(StartActivity.this, MainActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(i);
+            }
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
