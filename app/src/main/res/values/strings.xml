@@ -127,11 +127,30 @@
     <string name="status">Status</string>
     <string name="riwayat_poin">Riwayat Poin</string>
     <string name="tanggal">Tanggal</string>
+
+
+    <string name="tanggal_jemput">Tanggal Jemput</string>
+    <string name="tempat_penjemputan">Tempat Penjemputan</string>
+    <string name="terima">Terima</string>
+
+    <string name="prompt_jenis_sampah">Jenis Sampah</string>
+    <string name="prompt_satuan_sampah">Satuan</string>
+    <string name="berat">Berat</string>
+    <string name="titikdua">:</string>
+    <string name="terima_sampah">Terima Sampah</string>
+
+    <string-array name="satuan">
+        <item>Satuan</item>
+        <item>Kg</item>
+        <item>Pieces</item>
+    </string-array>
+
     <string name="title_tentang">Tentang</string>
     <string name="title_info">Info Poin</string>
     <string name="poinmasuk_tab">Poin Masuk</string>
     <string name="poinkeluar_tab">Poin Keluar</string>
     <string name="keterangan">Keterangan</string>
+
 
 
     <string-array name="jenis_sampah">
@@ -141,6 +160,7 @@
         <item>Logam</item>
         <item>Lain_lain</item>
     </string-array>
+
 
 
     <string-array name="detail_sampah">
@@ -196,5 +216,6 @@
     <string name="dummydate_pa">Tanggal Permintaan</string>
     <string name="dummyperson_pa">Peminta Antar</string>
     <string name="dummynumphone_pa">Nomor HP Peminta</string>
+
 
 </resources>
