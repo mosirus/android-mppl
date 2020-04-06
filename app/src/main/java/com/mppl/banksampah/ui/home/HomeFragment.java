@@ -5,42 +5,55 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.mppl.banksampah.R;
+
+import org.w3c.dom.Text;
+
+import java.util.Objects;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
 
-    private HomeViewModel homeViewModel;
-
-    private Button btnAntar;
-    private Button btnJemput;
-    Button btnTukarPoin;
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel.class);
+        HomeViewModel homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-//        final TextView textView = root.findViewById(R.id.text_home);
-//        homeViewModel.getText().observe(this, new Observer<String>() {
-//            @Override
-//            public void onChanged(@Nullable String s) {
-//                textView.setText(s);
-//            }
-//        });
 
-        btnAntar = root.findViewById(R.id.btn_antar);
+
+        Button btnAntar = root.findViewById(R.id.btn_antar);
         btnAntar.setOnClickListener(this);
-        btnJemput = root.findViewById(R.id.btn_jemput);
+        Button btnJemput = root.findViewById(R.id.btn_jemput);
         btnJemput.setOnClickListener(this);
-        btnTukarPoin = root.findViewById(R.id.btn_tukarpoin);
+        Button btnTukarPoin = root.findViewById(R.id.btn_tukarpoin);
         btnTukarPoin.setOnClickListener(this);
 
+        final TextView tvJumlahPoin = root.findViewById(R.id.jumlah_poin);
+        String currentuser = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser);
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String poin = Objects.requireNonNull(dataSnapshot.child("point").getValue()).toString();
+                tvJumlahPoin.setText(poin);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
         return root;
     }
 
