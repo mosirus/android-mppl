@@ -86,7 +86,7 @@
                 android:layout_marginStart="7dp"
                 android:importantForAutofill="no"
                 android:inputType="number"
-                android:hint="@string/jumlah"
+                android:hint="@string/jumlah2"
                 android:paddingStart="2dp"
                 android:textColorHint="@color/colorPrimary"
                 tools:ignore="LabelFor"

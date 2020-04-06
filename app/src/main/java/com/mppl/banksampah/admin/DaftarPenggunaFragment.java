@@ -81,16 +81,15 @@ public class DaftarPenggunaFragment extends Fragment {
                 adapter = new DaftarPenggunaAdapter(getActivity(), daftarPenggunaArrayList);
                 rvDaftarPengguna.setAdapter(adapter);
 
-//                adapter.setOnItemClickCallback(new DaftarPenggunaAdapter.OnItemClickCallback() {
-//                    @Override
-//                    public void onItemClicked(DaftarPengguna data) {
-//                        DaftarPenggunaDetailFragment fragment = new DaftarPenggunaDetailFragment();
-//
-//                        FragmentManager fragmentManager = getChildFragmentManager();
-//                        fragmentManager.beginTransaction().replace(R.id.nav_host_admin_fragment, fragment, DaftarPenggunaDetailFragment.class.getSimpleName())
-//                                .addToBackStack(null).commit();
-//                    }
-//                });
+                adapter.setOnItemClickCallback(new DaftarPenggunaAdapter.OnItemClickCallback() {
+                    @Override
+                    public void onItemClicked(DaftarPengguna data) {
+                        DaftarPenggunaDetailFragment fragment = new DaftarPenggunaDetailFragment();
+                        FragmentManager fragmentManager = getFragmentManager();
+                        fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment, DaftarPenggunaDetailFragment.class.getSimpleName())
+                                .addToBackStack(null).commit();
+                    }
+                });
             }
 
             @Override

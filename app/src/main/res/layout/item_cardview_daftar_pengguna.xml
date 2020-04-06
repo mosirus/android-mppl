@@ -11,7 +11,7 @@
     android:layout_marginRight="8dp"
     android:layout_marginLeft="8dp"
     app:cardUseCompatPadding="true"
-    app:cardCornerRadius="20dp">
+    app:cardCornerRadius="12dp">
 
 <RelativeLayout
     android:layout_width="match_parent"

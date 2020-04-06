@@ -8,28 +8,10 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/white">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:gravity="center"
-            android:background="#3A7D77"
-            tools:ignore="MissingConstraints">
-
-            <ImageView
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:foregroundGravity="center"
-                android:background="@drawable/sipahias_toolbar"
-                android:layout_marginLeft="135dp"
-                android:layout_marginRight="135dp"/>
-
-        </androidx.appcompat.widget.Toolbar>
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/tentang0"
@@ -44,39 +26,39 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginTop="30dp"
                 android:layout_marginBottom="20dp"
-                android:layout_marginTop="90dp"
                 android:text="@string/daftar_pengguna"
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
             <de.hdodenhof.circleimageview.CircleImageView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/fotoprofil"
-                app:civ_border_width="1dp"
-                app:civ_border_color="@color/colorPrimary"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:src="@drawable/user" />
+                android:src="@drawable/user"
+                app:civ_border_color="@color/colorPrimary"
+                app:civ_border_width="1dp" />
 
             <RelativeLayout
                 android:id="@+id/tentang2"
                 android:layout_width="match_parent"
                 android:layout_height="64dp"
-                android:layout_marginEnd="35dp"
-                android:layout_marginStart="35dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
                 android:padding="20dp"
                 tools:ignore="MissingConstraints">
 
                 <EditText
-                    android:layout_width="136dp"
+                    android:layout_width="149dp"
                     android:layout_height="27dp"
                     android:layout_marginStart="7dp"
-                    android:layout_toEndOf="@id/titikpertama" />
+                    android:layout_toEndOf="@id/titikpertama"
+                    tools:ignore="Autofill" />
 
                 <TextView
                     android:id="@+id/titikpertama"
@@ -101,14 +83,14 @@
                 android:id="@+id/tentang3"
                 android:layout_width="match_parent"
                 android:layout_height="66dp"
-                android:layout_marginEnd="35dp"
-                android:layout_marginStart="35dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
                 android:padding="20dp"
                 tools:ignore="MissingConstraints">
 
                 <EditText
-                    android:layout_width="136dp"
+                    android:layout_width="149dp"
                     android:layout_height="27dp"
                     android:layout_marginStart="7dp"
                     android:layout_toEndOf="@id/titikpertama1" />
@@ -138,14 +120,14 @@
                 android:id="@+id/tentang4"
                 android:layout_width="match_parent"
                 android:layout_height="64dp"
-                android:layout_marginEnd="35dp"
-                android:layout_marginStart="35dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
                 android:padding="20dp"
                 tools:ignore="MissingConstraints">
 
                 <EditText
-                    android:layout_width="136dp"
+                    android:layout_width="149dp"
                     android:layout_height="27dp"
                     android:layout_marginStart="7dp"
                     android:layout_toEndOf="@id/titikpertama2" />
@@ -174,14 +156,14 @@
                 android:id="@+id/tentang5"
                 android:layout_width="match_parent"
                 android:layout_height="67dp"
-                android:layout_marginEnd="35dp"
-                android:layout_marginStart="35dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
                 android:padding="20dp"
                 tools:ignore="MissingConstraints">
 
                 <EditText
-                    android:layout_width="136dp"
+                    android:layout_width="149dp"
                     android:layout_height="27dp"
                     android:layout_marginStart="7dp"
                     android:layout_toEndOf="@id/titikpertama3" />
@@ -210,14 +192,14 @@
                 android:id="@+id/tentang6"
                 android:layout_width="match_parent"
                 android:layout_height="67dp"
-                android:layout_marginEnd="35dp"
-                android:layout_marginStart="35dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
                 android:padding="20dp"
                 tools:ignore="MissingConstraints">
 
                 <EditText
-                    android:layout_width="136dp"
+                    android:layout_width="149dp"
                     android:layout_height="27dp"
                     android:layout_marginStart="7dp"
                     android:layout_toEndOf="@id/titikpertama4" />
@@ -246,14 +228,14 @@
                 android:id="@+id/tentang7"
                 android:layout_width="match_parent"
                 android:layout_height="67dp"
-                android:layout_marginEnd="35dp"
-                android:layout_marginStart="35dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
                 android:padding="20dp"
                 tools:ignore="MissingConstraints">
 
                 <EditText
-                    android:layout_width="136dp"
+                    android:layout_width="149dp"
                     android:layout_height="27dp"
                     android:layout_marginStart="7dp"
                     android:layout_toEndOf="@id/titikpertama5" />
@@ -277,19 +259,18 @@
 
             </RelativeLayout>
 
-
             <RelativeLayout
                 android:id="@+id/tentang8"
                 android:layout_width="match_parent"
                 android:layout_height="67dp"
-                android:layout_marginEnd="35dp"
-                android:layout_marginStart="35dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
                 android:padding="20dp"
                 tools:ignore="MissingConstraints">
 
                 <EditText
-                    android:layout_width="136dp"
+                    android:layout_width="149dp"
                     android:layout_height="27dp"
                     android:layout_marginStart="7dp"
                     android:layout_toEndOf="@id/titikpertama6" />
@@ -317,56 +298,24 @@
                 android:id="@+id/tentang9"
                 android:layout_width="match_parent"
                 android:layout_height="67dp"
-                android:layout_marginEnd="35dp"
-                android:layout_marginStart="35dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="5dp"
-                android:padding="20dp"
+                android:layout_marginEnd="20dp"
                 tools:ignore="MissingConstraints">
 
                 <Button
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:text="OK"
-                    android:textColor="@color/common_google_signin_btn_text_dark_pressed"
-                    android:background="@drawable/btn_style"
+                    android:id="@+id/btn_ok"
+                    android:layout_width="90dp"
+                    android:layout_height="35dp"
                     android:layout_marginStart="120dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="120dp"
-                    />
+                    android:background="@drawable/btn_style"
+                    android:text="@string/ok"
+                    android:textColor="@color/common_google_signin_btn_text_dark_pressed" />
 
             </RelativeLayout>
-
-
         </LinearLayout>
-
-
-
-
-        <!--    <Button-->
-        <!--        android:id="@+id/btn_poin_masuk"-->
-        <!--        android:layout_width="wrap_content"-->
-        <!--        android:layout_height="wrap_content"-->
-        <!--        android:layout_marginStart="60dp"-->
-        <!--        android:layout_marginTop="24dp"-->
-        <!--        app:layout_constraintStart_toStartOf="parent"-->
-        <!--        app:layout_constraintTop_toBottomOf="@+id/textView3"-->
-        <!--        android:text="Poin Masuk"-->
-        <!--        android:background="@drawable/rectangle"-->
-        <!--        android:onClick="jumpToPage"-->
-        <!--        tools:ignore="MissingConstraints" />-->
-
-        <!--    <Button-->
-        <!--        android:id="@+id/btn_poin_keluar"-->
-        <!--        android:layout_width="wrap_content"-->
-        <!--        android:layout_height="wrap_content"-->
-        <!--        android:layout_marginTop="24dp"-->
-        <!--        android:layout_marginEnd="60dp"-->
-        <!--        app:layout_constraintEnd_toEndOf="parent"-->
-        <!--        app:layout_constraintTop_toBottomOf="@+id/textView3"-->
-        <!--        android:text="Poin Keluar"-->
-        <!--        android:background="@drawable/rectangle"-->
-        <!--        tools:ignore="MissingConstraints" />-->
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
