@@ -15,12 +15,16 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.mppl.banksampah.R;
@@ -46,7 +50,7 @@ public class JemputSampahFragment extends Fragment implements View.OnClickListen
     private Button btnStatusJemput;
 
     private Spinner spnrJenisSampah;
-    private Spinner spnrNamaSampah;
+    private Spinner spnrSatuan;
     private EditText edtJumlahSampah;
     private EditText edtLokasiJemput;
 
@@ -76,7 +80,7 @@ public class JemputSampahFragment extends Fragment implements View.OnClickListen
         btnStatusJemput.setOnClickListener(this);
 
         spnrJenisSampah = root.findViewById(R.id.spinner_jenis_sampah);
-        spnrNamaSampah = root.findViewById(R.id.spinner_detail_sampah);
+        spnrSatuan = root.findViewById(R.id.spinner_satuan);
         edtJumlahSampah = root.findViewById(R.id.edtJumlahSampah);
         edtLokasiJemput = root.findViewById(R.id.edt_lokasi_jemput);
 
@@ -85,23 +89,47 @@ public class JemputSampahFragment extends Fragment implements View.OnClickListen
         return root;
     }
 
-    private void RequestJemput() {
-        String jenisSampah = spnrJenisSampah.getSelectedItem().toString();
-        String DetailSampah = spnrNamaSampah.getSelectedItem().toString();
-        String jumlahSampah = edtJumlahSampah.getText().toString();
-        String tanggal = pickedDate.getText().toString();
-        String alamatJemput = edtLokasiJemput.getText().toString();
-        String currentuserId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
-
+    private void requestJemput() {
+        final String refKey = ref.push().getKey();
         if (validateForm()) {
-            ref.child("IdUser").setValue(currentuserId);
-            ref.child("JenisSampah").setValue(jenisSampah);
-            ref.child("DetailSampah").setValue(DetailSampah);
-            ref.child("Berat").setValue(jumlahSampah);
-            ref.child("Tanggal").setValue(tanggal);
-            ref.child("AlamatJemput").setValue(alamatJemput);
-            ref.child("Status").setValue("Sedang diproses");
+            ref.addChildEventListener(new ChildEventListener() {
+                String jenisSampah = spnrJenisSampah.getSelectedItem().toString();
+                String satuanSampah = spnrSatuan.getSelectedItem().toString();
+                String jumlahSampah = edtJumlahSampah.getText().toString();
+                String tanggal = pickedDate.getText().toString();
+                String lokasiJemput = edtLokasiJemput.getText().toString();
+                String currentuserId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
 
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                    ref.child(currentuserId).child(refKey).child("JenisSampah").setValue(jenisSampah);
+                    ref.child(currentuserId).child(refKey).child("Berat").setValue(jumlahSampah);
+                    ref.child(currentuserId).child(refKey).child("Satuan").setValue(satuanSampah);
+                    ref.child(currentuserId).child(refKey).child("Tanggal").setValue(tanggal);
+                    ref.child(currentuserId).child(refKey).child("LokasiJemput").setValue(lokasiJemput);
+                    ref.child(currentuserId).child(refKey).child("Status").setValue("Sedang diproses");
+                }
+
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                }
+
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
             new AlertDialog.Builder(Objects.requireNonNull(getActivity()))
                     .setTitle("Request Berhasil")
                     .setMessage("Request kamu berhasil dibuat, Sampah Anda Akan Di Jemput Sesuai Dengan Lokasi Anda")
@@ -111,12 +139,23 @@ public class JemputSampahFragment extends Fragment implements View.OnClickListen
                     })
                     .show();
         }
+
     }
 
     private boolean validateForm() {
         boolean result = true;
         if (TextUtils.isEmpty(edtJumlahSampah.getText().toString())) {
             edtJumlahSampah.setError("Harap masukkan jumlah sampah");
+            result = false;
+        }
+        else if (TextUtils.isEmpty(pickedDate.getText().toString())){
+            new AlertDialog.Builder(Objects.requireNonNull(getActivity()))
+                    .setMessage("Harap pilih tanggal penjemputan")
+                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    })
+                    .show();
             result = false;
         }
         return result;
@@ -147,7 +186,7 @@ public class JemputSampahFragment extends Fragment implements View.OnClickListen
         }
 
         else if (v.getId() == R.id.btn_ok){
-            RequestJemput();
+            requestJemput();
         }
 
     }
@@ -180,7 +219,7 @@ public class JemputSampahFragment extends Fragment implements View.OnClickListen
                 /**
                  * Update TextView dengan tanggal yang kita pilih
                  */
-                pickedDate.setText("Tanggal dipilih : " + dateFormatter.format(newDate.getTime()));
+                pickedDate.setText(dateFormatter.format(newDate.getTime()));
             }
 
         }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));

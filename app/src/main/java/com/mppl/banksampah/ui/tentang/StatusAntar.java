@@ -5,12 +5,30 @@ import java.io.Serializable;
 public class StatusAntar implements Serializable {
     private String Berat;
     private String JenisSampah;
+    private String NamaSampah;
     private String Satuan;
     private String Status;
     private String Tanggal;
+    private String LokasiJemput;
 
     public String getBerat() {
         return Berat;
+    }
+
+    public String getNamaSampah() {
+        return NamaSampah;
+    }
+
+    public void setNamaSampah(String namaSampah) {
+        this.NamaSampah = namaSampah;
+    }
+
+    public String getLokasiJemput() {
+        return LokasiJemput;
+    }
+
+    public void setLokasiJemput(String lokasiJemput) {
+        this.LokasiJemput = lokasiJemput;
     }
 
     public void setBerat(String berat) {
@@ -52,11 +70,13 @@ public class StatusAntar implements Serializable {
     public StatusAntar() {
     }
 
-    public StatusAntar(String berat, String jenisSampah, String satuan, String status, String tanggal) {
+    public StatusAntar(String berat, String jenisSampah, String namaSampah, String satuan, String status, String tanggal, String lokasiJemput) {
         Berat = berat;
         JenisSampah = jenisSampah;
+        NamaSampah = namaSampah;
         Satuan = satuan;
         Status = status;
         Tanggal = tanggal;
+        LokasiJemput = lokasiJemput;
     }
 }
