@@ -40,7 +40,7 @@
     <string name="nama_pengguna">Nama Pengguna</string>
     <string name="isi_form">Isi Form</string>
     <string name="berat">Berat</string>
-    <string name="jumlah"><font size="15">Jumlah</font></string>
+    <string name="jumlah">Jumlah</string>
     <string name="tanggal_waktu">Tanggal/Waktu</string>
     <string name="tombol_toggle_date_picker">Tombol toggle date picker</string>
     <string name="ok">OK</string>
@@ -193,5 +193,8 @@
     <string name="dummyaction_sttp">Aksi Tukar Poin</string>
     <string name="dummystatus_sttp">Status Penukaran</string>
     <string name="kamu_belum_memiliki_request_antar">Kamu belum memiliki request antar</string>
+    <string name="dummydate_pa">Tanggal Permintaan</string>
+    <string name="dummyperson_pa">Peminta Antar</string>
+    <string name="dummynumphone_pa">Nomor HP Peminta</string>
 
 </resources>
