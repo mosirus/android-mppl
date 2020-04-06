@@ -36,4 +36,28 @@
     <string name="jemput_sampah">Jemput Sampah</string>
     <string name="lokasi">Lokasi</string>
     <string name="tanggal">Tanggal</string>
+
+    <string name="tanggal_jemput">Tanggal Jemput</string>
+    <string name="tempat_penjemputan">Tempat Penjemputan</string>
+    <string name="terima">Terima</string>
+
+    <string name="prompt_jenis_sampah">Jenis Sampah</string>
+    <string name="prompt_satuan_sampah">Satuan</string>
+    <string name="berat">Berat</string>
+    <string name="titikdua">:</string>
+    <string name="terima_sampah">Terima Sampah</string>
+
+    <string-array name="satuan">
+        <item>Satuan</item>
+        <item>Kg</item>
+        <item>Pieces</item>
+    </string-array>
+
+    <string-array name="jenis_sampah">
+        <item>Jenis Sampah</item>
+        <item>Kertas</item>
+        <item>Plastik</item>
+        <item>Logam</item>
+        <item>Lain_lain</item>
+    </string-array>
 </resources>
