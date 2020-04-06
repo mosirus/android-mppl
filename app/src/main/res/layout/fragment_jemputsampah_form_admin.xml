@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/judul_terima"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:text="@string/terima_sampah"
+            android:textSize="30sp" />
+
+        <RelativeLayout
+            android:id="@+id/detail_form_jemput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            />
+
+        <TextView
+            android:id="@+id/tanggal_jemput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tanggal_jemput"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="270dp"
+            android:textSize="16dp"
+            android:layout_marginTop="30dp"
+            />
+
+        <TextView
+            android:id="@+id/titikdua1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/titikdua"
+            android:textSize="16dp"
+            android:layout_marginTop="-20dp"
+            android:layout_marginStart="180dp"
+            android:layout_marginEnd="220dp"/>
+
+        <TextView
+            android:id="@+id/txt_tanggal1"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="200dp"
+            android:layout_marginTop="-30dp"
+            android:background="@drawable/style"
+            android:hint="20/02/2020"
+            android:gravity="center_vertical"
+            />
+
+        <TextView
+            android:id="@+id/tanggal_jemput1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/email"
+            android:textSize="16dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="280dp"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:id="@+id/titikdua2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/titikdua"
+            android:textSize="16dp"
+            android:layout_marginTop="-20dp"
+            android:layout_marginStart="180dp"
+            android:layout_marginEnd="220dp"/>
+
+        <TextView
+            android:id="@+id/txt_tanggal2"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="200dp"
+            android:layout_marginTop="-30dp"
+            android:textSize="14sp"
+            android:background="@drawable/style"
+            android:hint="Ivani.SQA@gmail.com"
+            android:gravity="center_vertical"
+            />
+
+        <TextView
+            android:id="@+id/tanggal_jemput2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tempat_penjemputan"
+            android:textSize="16dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="230dp"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:id="@+id/titikdua3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/titikdua"
+            android:textSize="16dp"
+            android:layout_marginTop="-20dp"
+            android:layout_marginStart="180dp"
+            android:layout_marginEnd="220dp"/>
+
+        <TextView
+            android:id="@+id/txt_tanggal3"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="200dp"
+            android:layout_marginTop="-30dp"
+            android:background="@drawable/style"
+            android:hint="GD 716"
+            android:gravity="center_vertical"
+            />
+
+
+        <TextView
+            android:id="@+id/tanggal_jemput3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/no_telp"
+            android:textSize="16dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="280dp"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:id="@+id/titikdua4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/titikdua"
+            android:textSize="16dp"
+            android:layout_marginTop="-20dp"
+            android:layout_marginStart="180dp"
+            android:layout_marginEnd="220dp"/>
+
+        <TextView
+            android:id="@+id/txt_tanggal4"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="200dp"
+            android:layout_marginTop="-30dp"
+            android:background="@drawable/style"
+            android:hint="08918237278"
+            android:gravity="center_vertical"
+            />
+
+
+        <RelativeLayout
+            android:id="@+id/namapengguna_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"/>
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/form_antar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_weight="0.2"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="6dp"
+                android:background="@drawable/spinner_style">
+
+                <Spinner
+                    android:id="@+id/spinner_jenis_sampah"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/jenis_sampah"
+                    android:prompt="@string/prompt_jenis_sampah"
+                    android:textColor="@color/colorPrimary"/>
+            </FrameLayout>
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_weight="0.3"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="7dp"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:hint="@string/berat"
+                android:textColorHint="@color/colorPrimary"
+                android:background="@drawable/style"
+                tools:ignore="LabelFor" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_weight="0.25"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="7dp"
+                android:background="@drawable/spinner_style">
+
+                <Spinner
+                    android:id="@+id/spinner_detail_sampah"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/satuan"
+                    android:prompt="@string/prompt_satuan_sampah"
+                    android:textColor="@color/colorPrimary" />
+            </FrameLayout>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <Button
+            android:id="@+id/btn_tambah_form"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/spinner_style"
+            android:drawableTop="@drawable/ic_add_black_24dp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="3dp"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="10dp">
+
+                <EditText
+                    android:id="@+id/_editpoin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/style"
+                    android:hint="10000"
+                    android:paddingStart="6dp"
+                    android:paddingEnd="6dp"
+                    android:textColorHint="@color/colorPrimary"
+                    />
+            </FrameLayout>
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="120dp"
+                android:gravity="end"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_batal_antar"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/cancel_btn_style"
+                    android:text="@string/batal"
+                    android:textColor="@android:color/white" />
+
+                <Button
+                    android:id="@+id/btn_ok"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/btn_style"
+                    android:text="@string/terima"
+                    android:textColor="@android:color/white" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </FrameLayout>
+
+
+
+    </LinearLayout>
+
+</ScrollView>
