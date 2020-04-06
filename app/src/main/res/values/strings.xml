@@ -192,5 +192,6 @@
     <string name="dummydate_sttp">Tanggal Penukaran</string>
     <string name="dummyaction_sttp">Aksi Tukar Poin</string>
     <string name="dummystatus_sttp">Status Penukaran</string>
+    <string name="kamu_belum_memiliki_request_antar">Kamu belum memiliki request antar</string>
 
 </resources>

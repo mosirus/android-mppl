@@ -77,7 +77,6 @@ public class DaftarPenggunaAdapter extends RecyclerView.Adapter<DaftarPenggunaAd
         }
     }
 
-
     public interface OnItemClickCallback {
         void onItemClicked(DaftarPengguna data);
     }
