@@ -47,7 +47,7 @@
 
     <string name="prompt_jenis_sampah">Jenis Sampah</string>
     <string name="prompt_satuan_sampah">Satuan</string>
-
+    <string name="judul_reward">Reward</string>
 
     <string name="edit_event">Edit Event</string>
     <string name="ganti_foto">Ganti Foto</string>
