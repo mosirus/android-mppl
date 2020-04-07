@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/viewprofile"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/profilatas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tambahreward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:text="@string/tambah_reward"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/gbr_event"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/reduce_reuse_recycle"
+            />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/edit_foto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/edit_foto"
+                android:textColor="@color/bluedark"
+                android:textSize="20sp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <RelativeLayout
+            android:id="@+id/form"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="100dp"
+            android:gravity="center">
+
+
+            <EditText
+                android:id="@+id/editnamaevent"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/style"
+                android:gravity="center_vertical"
+                android:text="@string/nama_reward"
+                android:textColor="@color/colorPrimary"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:textSize="20sp" />
+
+
+            <EditText
+                android:id="@+id/edit_waktutanggal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editnamaevent"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/style"
+                android:gravity="center_vertical"
+                android:text="@string/poin"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginTop="20dp"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:textSize="20sp" />
+
+
+
+            <Spinner
+                android:id="@+id/spinner_jenis_sampah"
+                android:layout_width="371dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/edit_waktutanggal"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/spinner_style"
+                android:entries="@array/jenis"
+                android:paddingEnd="15dp"
+                android:textColor="@color/colorPrimary"
+                android:paddingStart="15dp"
+                android:prompt="@string/prompt_jenis_reward"
+                android:textSize="20sp" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/spinner_jenis_sampah"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_batal_edit"
+                    android:layout_width="130dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/cancel_btn_style"
+                    android:text="@string/batal"
+                    android:textColor="@android:color/white" />
+
+
+                <Button
+                    android:id="@+id/btn_simpan_edit"
+                    android:layout_width="130dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="50dp"
+                    android:background="@drawable/btn_style"
+                    android:text="@string/tambah"
+                    android:textColor="@android:color/white" />
+
+
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</ScrollView>

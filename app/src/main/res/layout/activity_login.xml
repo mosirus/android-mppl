@@ -34,7 +34,8 @@
         android:background="@drawable/style"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
-        android:paddingLeft="15dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
         android:textColorHint="@color/colorPrimary" />
 
     <EditText
@@ -46,20 +47,21 @@
         android:background="@drawable/style"
         android:hint="@string/password"
         android:inputType="textPassword"
-        android:paddingLeft="15dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
         android:textColorHint="@color/colorPrimary" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
+        android:layout_width="320dp"
+        android:layout_gravity="center_horizontal"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:gravity="end"
         android:orientation="horizontal"
-        android:paddingEnd="40dp">
+        android:gravity="end">
 
         <Button
             android:id="@+id/btn_batal"
-            android:layout_width="250px"
+            android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/cancel_btn_style"
@@ -69,13 +71,34 @@
 
         <Button
             android:id="@+id/btn_masuk"
-            android:layout_width="250px"
+            android:layout_width="100dp"
             android:layout_height="40dp"
-            android:layout_gravity="center_horizontal"
             android:layout_marginLeft="20dp"
             android:background="@drawable/btn_style"
             android:text="@string/masuk"
             android:textColor="@android:color/white" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="Belum punya akun ? "/>
+        <TextView
+            android:id="@+id/daftar_sekarang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@android:color/holo_blue_dark"
+            android:text="@string/daftar_sekarang"/>
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <FrameLayout
