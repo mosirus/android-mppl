@@ -23,7 +23,7 @@
             android:textStyle="bold" />
 
         <ImageView
-            android:id="@+id/gbr_event"
+            android:id="@+id/penampung_gbr_event"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@color/dark_grey"
@@ -36,7 +36,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/txtSuntingFoto"
+                android:id="@+id/tvRewardUpdateFoto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tambah_foto"
@@ -112,7 +112,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btn_batal_edit"
+                    android:id="@+id/btnReward_batal_tambah"
                     android:layout_width="130dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="50dp"

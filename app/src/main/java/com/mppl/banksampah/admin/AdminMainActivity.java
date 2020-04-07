@@ -28,6 +28,8 @@ import java.util.List;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.jetbrains.annotations.NotNull;
+
 public class AdminMainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
 
@@ -57,7 +59,7 @@ public class AdminMainActivity extends AppCompatActivity implements NavigationVi
     }
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+    public boolean onNavigationItemSelected(@NotNull MenuItem menuItem) {
         switch (menuItem.getItemId()){
             case R.id.navigation1:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
