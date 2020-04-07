@@ -91,10 +91,6 @@ public class DaftarPenggunaAdapter extends RecyclerView.Adapter<DaftarPenggunaAd
             moveWithObjectIntent.putExtra(DaftarPenggunaDetailFragment.EXTRA, daftarPengguna);
             itemView.getContext().startActivity(moveWithObjectIntent);
 
-//            DaftarPenggunaDetailFragment fragment = new DaftarPenggunaDetailFragment();
-//            FragmentManager fragmentManager = getFragmentManager();
-//            fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment, DaftarPenggunaDetailFragment.class.getSimpleName())
-//                    .addToBackStack(null).commit();
         }
     }
 

@@ -1,5 +1,6 @@
 package com.mppl.banksampah.admin;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,15 +36,6 @@ public class AdminMainActivity extends AppCompatActivity implements NavigationVi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_main);
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerViewJemputList);
-
-        TableViewAdapter adapter = new TableViewAdapter(getJemputList());
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(linearLayoutManager);
-
-        recyclerView.setAdapter(adapter);
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -62,15 +54,6 @@ public class AdminMainActivity extends AppCompatActivity implements NavigationVi
                     new TerimaSampahFragment()).commit();
             navigationView.setCheckedItem(R.id.navigation1);
         }
-    }
-
-    private List getJemputList() {
-        List jemputList = new ArrayList<>();
-
-        jemputList.add(new JemputModel("04-06-2020", "laxojun1@gmail.com", "Audit"));
-        jemputList.add(new JemputModel("03-04-2020", "laxo@gmail.com", "EH"));
-
-        return  jemputList;
     }
 
     @Override
@@ -120,7 +103,6 @@ public class AdminMainActivity extends AppCompatActivity implements NavigationVi
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
-
 
     }
 

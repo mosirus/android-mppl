@@ -48,15 +48,16 @@ public class StatusAntarAdapter extends RecyclerView.Adapter<StatusAntarAdapter.
 
         holder.tvStatus.setText(list.get(position).getStatus());
         String status = list.get(position).getStatus();
-        if (status.equals("Sedang diproses")) {
-            holder.tvStatus.setTextColor(ContextCompat.getColor(context, R.color.proses));
-        }
-        else if (status.equals("Berhasil")) {
-            holder.tvStatus.setTextColor(ContextCompat.getColor(context, R.color.berhasil));
-        }
-
-        else if (status.equals("Tidak Berhasil")) {
-            holder.tvStatus.setTextColor(ContextCompat.getColor(context, R.color.gagal));
+        switch (status) {
+            case "Sedang diproses":
+                holder.tvStatus.setTextColor(ContextCompat.getColor(context, R.color.proses));
+                break;
+            case "Berhasil":
+                holder.tvStatus.setTextColor(ContextCompat.getColor(context, R.color.berhasil));
+                break;
+            case "Tidak Berhasil":
+                holder.tvStatus.setTextColor(ContextCompat.getColor(context, R.color.gagal));
+                break;
         }
 
     }

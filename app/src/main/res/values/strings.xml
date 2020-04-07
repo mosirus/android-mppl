@@ -48,11 +48,6 @@
     <string name="prompt_jenis_sampah">Jenis Sampah</string>
     <string name="prompt_satuan_sampah">Satuan</string>
 
-    <string-array name="satuan">
-        <item>Satuan</item>
-        <item>Kg</item>
-        <item>Pieces</item>
-    </string-array>
 
     <string name="edit_event">Edit Event</string>
     <string name="ganti_foto">Ganti Foto</string>
@@ -133,11 +128,6 @@
     <string name="tempat_penjemputan">Tempat Penjemputan</string>
     <string name="terima">Terima</string>
 
-    <string name="prompt_jenis_sampah">Jenis Sampah</string>
-    <string name="prompt_satuan_sampah">Satuan</string>
-    <string name="berat">Berat</string>
-    <string name="titikdua">:</string>
-    <string name="terima_sampah">Terima Sampah</string>
 
     <string-array name="satuan">
         <item>Satuan</item>
