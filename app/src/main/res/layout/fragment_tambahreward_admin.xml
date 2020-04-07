@@ -17,7 +17,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
-            android:text="@string/tambah_event"
+            android:text="@string/tambah_reward"
+            android:textColor="@color/colorBlack"
             android:textSize="28sp"
             android:textStyle="bold" />
 
@@ -25,7 +26,7 @@
             android:id="@+id/gbr_event"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/reduce_reuse_recycle"
+            android:src="@color/dark_grey"
             />
 
         <androidx.appcompat.widget.LinearLayoutCompat
