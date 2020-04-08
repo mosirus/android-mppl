@@ -148,7 +148,6 @@
     <string name="keterangan">Keterangan</string>
 
 
-
     <string-array name="jenis_sampah">
         <item>Jenis Sampah</item>
         <item>Kertas</item>
@@ -156,7 +155,6 @@
         <item>Logam</item>
         <item>Lain_lain</item>
     </string-array>
-
 
 
     <string-array name="detail_sampah">
@@ -212,5 +210,8 @@
     <string name="dummydate_pa">Tanggal Permintaan</string>
     <string name="dummyperson_pa">Peminta Antar</string>
     <string name="dummynumphone_pa">Nomor HP Peminta</string>
+    <string name="Daftar_Reward">Daftar</string>
+    <string name="Permintaan_Reward">Permintaan</string>
+    <string name="Riwayat_Reward">Riwayat</string>
 
 </resources>
