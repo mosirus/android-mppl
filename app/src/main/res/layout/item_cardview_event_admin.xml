@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginLeft="8dp"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="20dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:padding="20dp"
+        android:background="@color/item_riwayat">
+
+        <ImageView
+            android:id="@+id/event1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/lelang"
+            android:layout_marginEnd="200dp"
+            />
+
+        <TextView
+            android:id="@+id/ket_riwayat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/event1"
+            android:layout_marginEnd="95dp"
+            android:textStyle="bold"
+            android:layout_marginStart="-190dp"
+            android:layout_marginTop="30dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            tools:text="@string/keterangan"/>
+
+        <ImageView
+            android:id="@+id/editevent"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="-60dp"
+            android:layout_toEndOf="@id/ket_riwayat"
+            android:src="@drawable/pencil" />
+
+        <ImageView
+            android:id="@+id/buangevent"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="-15dp"
+            android:layout_toEndOf="@id/ket_riwayat"
+            android:src="@drawable/cross" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
