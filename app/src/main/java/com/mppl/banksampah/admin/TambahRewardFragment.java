@@ -187,6 +187,7 @@ public class TambahRewardFragment extends Fragment implements OnClickListener{
     }
 
     private void uploadKupon(){
+        final String refKey = database.push().getKey();
         if(!validasiFormTambahReward()){
             return;
         }
@@ -236,9 +237,9 @@ public class TambahRewardFragment extends Fragment implements OnClickListener{
             String Poin_Reward = poinReward.getText().toString().trim();
             String Jenis_Reward = jenisReward.getSelectedItem().toString().trim();
 
-            database.child(path1b).setValue(Nama_Reward);
-            database.child(path1c).setValue(Poin_Reward);
-            database.child(path1d).setValue(Jenis_Reward);
+            database.child(refKey).child(path1b).setValue(Nama_Reward);
+            database.child(refKey).child(path1c).setValue(Poin_Reward);
+            database.child(refKey).child(path1d).setValue(Jenis_Reward);
 
             KuponFragment fragment = new KuponFragment();
             FragmentManager fragmentManager = getFragmentManager();
