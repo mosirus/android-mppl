@@ -2,22 +2,17 @@ package com.mppl.banksampah.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Movie;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mppl.banksampah.R;
-import com.mppl.banksampah.RiwayatPoin;
-import com.mppl.banksampah.admin.DaftarPengguna;
+import com.mppl.banksampah.admin.model.DaftarPengguna;
 import com.mppl.banksampah.admin.DaftarPenggunaDetailFragment;
-import com.mppl.banksampah.admin.PermintaanAntarFragment;
-import com.mppl.banksampah.ui.akun.EditProfileFragment;
 
 import java.util.ArrayList;
 

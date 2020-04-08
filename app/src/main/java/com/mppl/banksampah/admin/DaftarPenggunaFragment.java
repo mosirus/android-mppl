@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,23 +14,16 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.mppl.banksampah.MainActivity;
 import com.mppl.banksampah.R;
-import com.mppl.banksampah.RiwayatPoin;
 import com.mppl.banksampah.adapter.DaftarPenggunaAdapter;
-import com.mppl.banksampah.adapter.RiwayatPoinAdapter;
-import com.mppl.banksampah.ui.akun.EditProfileFragment;
-
-import org.jetbrains.annotations.NotNull;
+import com.mppl.banksampah.admin.model.DaftarPengguna;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class DaftarPenggunaFragment extends Fragment {
 

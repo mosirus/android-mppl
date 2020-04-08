@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mppl.banksampah.R;
 import com.mppl.banksampah.adapter.TableViewAdapter;
+import com.mppl.banksampah.admin.model.JemputModel;
 
 import java.util.ArrayList;
 import java.util.List;

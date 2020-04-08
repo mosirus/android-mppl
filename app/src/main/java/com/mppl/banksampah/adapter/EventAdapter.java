@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.mppl.banksampah.R;
-import com.mppl.banksampah.ui.EventAdmin;
+import com.mppl.banksampah.admin.model.EventAdmin;
 
 import java.util.ArrayList;
 

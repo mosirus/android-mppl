@@ -1,7 +1,6 @@
 package com.mppl.banksampah.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +11,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mppl.banksampah.R;
-import com.mppl.banksampah.admin.DaftarPengguna;
-import com.mppl.banksampah.ui.tentang.StatusAntar;
+import com.mppl.banksampah.user.ui.tentang.StatusAntar;
 
 import java.util.ArrayList;
 

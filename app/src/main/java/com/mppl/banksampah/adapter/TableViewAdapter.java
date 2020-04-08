@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.mppl.banksampah.R;
-import com.mppl.banksampah.admin.JemputModel;
+import com.mppl.banksampah.admin.model.JemputModel;
 
 import java.util.List;
 

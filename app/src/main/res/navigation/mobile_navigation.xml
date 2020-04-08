@@ -7,14 +7,14 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.mppl.banksampah.ui.home.HomeFragment"
+        android:name="com.mppl.banksampah.user.ui.home.HomeFragment"
         android:label="@string/title_home"
         app:labelVisibilityMode="labeled"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_tentang"
-        android:name="com.mppl.banksampah.ui.tentang.TentangFragment"
+        android:name="com.mppl.banksampah.user.ui.tentang.TentangFragment"
         android:label="@string/title_home"
         app:labelVisibilityMode="labeled"
         tools:layout="@layout/fragment_home" />
@@ -22,14 +22,14 @@
 
     <fragment
         android:id="@+id/navigation_infopoin"
-        android:name="com.mppl.banksampah.ui.riwayatpoin.RiwayatPoinFragment"
+        android:name="com.mppl.banksampah.user.ui.riwayatpoin.RiwayatPoinFragment"
         android:label="@string/point_info"
         app:labelVisibilityMode="labeled"
         tools:layout="@layout/fragment_riwayatpoin" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.mppl.banksampah.ui.akun.ProfileFragment"
+        android:name="com.mppl.banksampah.user.ui.akun.ProfileFragment"
         android:label="@string/title_notifications"
         app:labelVisibilityMode="labeled"
         tools:layout="@layout/fragment_profile" />

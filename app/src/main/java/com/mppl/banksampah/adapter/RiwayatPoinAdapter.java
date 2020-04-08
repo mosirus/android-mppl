@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mppl.banksampah.R;
-import com.mppl.banksampah.RiwayatPoin;
+import com.mppl.banksampah.user.model.RiwayatPoin;
 
 import java.util.ArrayList;
 
