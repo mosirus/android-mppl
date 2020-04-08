@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Button xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="140dp"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/btn_style"
+    android:textColor="@android:color/white"
+    android:text="@string/keluar"
+    android:layout_height="35dp"/>
