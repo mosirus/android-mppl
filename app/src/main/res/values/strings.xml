@@ -29,6 +29,12 @@
     <string name="my_point">Poin :</string>
     <string name="point_info">Info Poin</string>
 
+    <string-array name="daftar_event">
+        <item>Lelang Pakaian</item>
+        <item>Preloved Sale</item>
+        <item>Kegiatan 3R</item>
+    </string-array>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
@@ -206,6 +212,5 @@
     <string name="dummydate_pa">Tanggal Permintaan</string>
     <string name="dummyperson_pa">Peminta Antar</string>
     <string name="dummynumphone_pa">Nomor HP Peminta</string>
-
 
 </resources>
