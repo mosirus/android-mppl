@@ -6,11 +6,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.mppl.banksampah.R;
 
@@ -19,6 +22,10 @@ public class KuponFragment extends Fragment implements OnClickListener{
     private Button btnTambahReward;
     private Button btnPermintaanReward;
     private Button btnRiwayatReward;
+
+    private RecyclerView rvListReward;
+
+    private String nama_reward[] = {"Reward1","Reward2","Reward3","Reward4"};
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,6 +39,11 @@ public class KuponFragment extends Fragment implements OnClickListener{
 
         btnRiwayatReward = root.findViewById(R.id.btnReward_riwayatReward);
         btnRiwayatReward.setOnClickListener(this);
+
+        rvListReward = root.findViewById(R.id.rv_list_reward);
+        rvListReward.setHasFixedSize(true);
+        rvListReward.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvListReward.setAdapter(new SimpleRVAdapter(nama_reward));
 
         return root;
     }
@@ -57,6 +69,39 @@ public class KuponFragment extends Fragment implements OnClickListener{
                     .addToBackStack(null).commit();
         }
 
+    }
+
+    public class SimpleRVAdapter extends RecyclerView.Adapter<ListViewHolder>{
+
+        private String[] data;
+        public SimpleRVAdapter(String[] dataset){
+            data = dataset;
+        }
+
+        @Override
+        public ListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_reward, parent, false);
+            ListViewHolder viewHolder = new ListViewHolder(view);
+            return viewHolder;
+        }
+
+        @Override
+        public void onBindViewHolder(ListViewHolder holder, int position) {
+            holder.namaReward.setText(data[position]);
+        }
+
+        @Override
+        public int getItemCount() {
+            return data.length;
+        }
+    }
+
+    public static class ListViewHolder extends RecyclerView.ViewHolder{
+        public TextView namaReward;
+        public ListViewHolder(View itemView){
+            super(itemView);
+            namaReward = itemView.findViewById(R.id.tv_list_reward);
+        }
     }
 }
 

@@ -213,5 +213,6 @@
     <string name="Daftar_Reward">Daftar</string>
     <string name="Permintaan_Reward">Permintaan</string>
     <string name="Riwayat_Reward">Riwayat</string>
+    <string name="dummyname_listReward">Nama Reward</string>
 
 </resources>

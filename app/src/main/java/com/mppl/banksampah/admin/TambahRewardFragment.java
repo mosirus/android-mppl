@@ -188,6 +188,7 @@ public class TambahRewardFragment extends Fragment implements OnClickListener{
 
     private void uploadKupon(){
         final String refKey = database.push().getKey();
+
         if(!validasiFormTambahReward()){
             return;
         }
@@ -207,6 +208,8 @@ public class TambahRewardFragment extends Fragment implements OnClickListener{
             String path1b = "Nama Reward";
             String path1c = "Poin Reward";
             String path1d = "Jenis Reward";
+
+            //upload gambar
             UploadTask uploadTask = reference.child(path1a).putBytes(bytes);
             uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
@@ -232,7 +235,7 @@ public class TambahRewardFragment extends Fragment implements OnClickListener{
                     });
 
 
-
+            //upload Data
             String Nama_Reward = namaReward.getText().toString().trim();
             String Poin_Reward = poinReward.getText().toString().trim();
             String Jenis_Reward = jenisReward.getSelectedItem().toString().trim();
