@@ -15,7 +15,17 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.mppl.banksampah.R;
+
+import java.util.ArrayList;
 
 public class KuponFragment extends Fragment implements OnClickListener{
 
@@ -26,6 +36,11 @@ public class KuponFragment extends Fragment implements OnClickListener{
     private RecyclerView rvListReward;
 
     private String nama_reward[] = {"Reward1","Reward2","Reward3","Reward4"};
+
+    private FirebaseAuth auth;
+    private FirebaseDatabase database;
+    private DatabaseReference reference;
+    private String GetUserID;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -44,6 +59,14 @@ public class KuponFragment extends Fragment implements OnClickListener{
         rvListReward.setHasFixedSize(true);
         rvListReward.setLayoutManager(new LinearLayoutManager(getContext()));
         rvListReward.setAdapter(new SimpleRVAdapter(nama_reward));
+
+        auth = FirebaseAuth.getInstance();
+
+        FirebaseUser user = auth.getCurrentUser();
+        GetUserID = user.getUid();
+
+        database =  FirebaseDatabase.getInstance();
+        reference = database.getReference();
 
         return root;
     }
@@ -103,5 +126,6 @@ public class KuponFragment extends Fragment implements OnClickListener{
             namaReward = itemView.findViewById(R.id.tv_list_reward);
         }
     }
+
 }
 

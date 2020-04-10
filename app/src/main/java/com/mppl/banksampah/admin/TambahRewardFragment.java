@@ -202,15 +202,15 @@ public class TambahRewardFragment extends Fragment implements OnClickListener{
             byte[] bytes = stream.toByteArray();
 
 
-            String namaGambar = UUID.randomUUID()+namaReward.getText().toString()+".jpg";
+            String namaGambar = namaReward.getText().toString()+".jpg";
             String path1 = "Reward";
-            String path1a = "Gambar Reward" + namaGambar;
+            String path1a = namaGambar;
             String path1b = "Nama Reward";
             String path1c = "Poin Reward";
             String path1d = "Jenis Reward";
 
             //upload gambar
-            UploadTask uploadTask = reference.child(path1a).putBytes(bytes);
+            UploadTask uploadTask = reference.child(namaGambar).putBytes(bytes);
             uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
