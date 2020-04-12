@@ -1,23 +1,15 @@
 package com.mppl.banksampah.admin.model;
 
-import java.util.Date;
-
 public class JemputModel {
-    private Date tanggal;
+    private int tanggal;
     private String email;
     private String lokasi;
 
 
-    public JemputModel(String tanggal, String email, String lokasi) {
+    public JemputModel(int tanggal, String email, String lokasi) {
     }
 
-    public Date getTanggal() {
-        return tanggal;
-    }
 
-    public void setTanggal(Date tanggal) {
-        this.tanggal = tanggal;
-    }
 
     public String getEmail() {
         return email;
@@ -33,5 +25,13 @@ public class JemputModel {
 
     public void setLokasi(String lokasi) {
         this.lokasi = lokasi;
+    }
+
+    public int getTanggal() {
+        return tanggal;
+    }
+
+    public void setTanggal(int tanggal) {
+        this.tanggal = tanggal;
     }
 }

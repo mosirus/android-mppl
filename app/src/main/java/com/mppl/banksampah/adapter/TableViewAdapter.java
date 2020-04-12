@@ -6,13 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.mppl.banksampah.R;
 import com.mppl.banksampah.admin.model.JemputModel;
 
 import java.util.List;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 
 public class TableViewAdapter extends RecyclerView.Adapter {
     private List jemputList;
@@ -67,7 +67,7 @@ public class TableViewAdapter extends RecyclerView.Adapter {
         return jemputList.size() + 1;
     }
 
-    public class RowViewHolder extends RecyclerView.ViewHolder {
+    public static class RowViewHolder extends RecyclerView.ViewHolder {
         TextView idTanggal;
         TextView idEmail;
         TextView idLokasi;
