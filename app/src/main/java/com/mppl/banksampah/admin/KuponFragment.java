@@ -7,6 +7,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,6 +25,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.mppl.banksampah.R;
+import com.mppl.banksampah.adapter.DaftarRewardAdapter;
+import com.mppl.banksampah.admin.model.Reward;
 
 import java.util.ArrayList;
 
@@ -42,6 +45,9 @@ public class KuponFragment extends Fragment implements OnClickListener{
     private DatabaseReference reference;
     private String GetUserID;
 
+    private ArrayList<Reward> listReward;
+    private DaftarRewardAdapter rewardAdapter;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_kupon, container, false);
@@ -58,7 +64,7 @@ public class KuponFragment extends Fragment implements OnClickListener{
         rvListReward = root.findViewById(R.id.rv_list_reward);
         rvListReward.setHasFixedSize(true);
         rvListReward.setLayoutManager(new LinearLayoutManager(getContext()));
-        rvListReward.setAdapter(new SimpleRVAdapter(nama_reward));
+        //rvListReward.setAdapter(new SimpleRVAdapter(nama_reward));
 
         auth = FirebaseAuth.getInstance();
 
@@ -66,7 +72,25 @@ public class KuponFragment extends Fragment implements OnClickListener{
         GetUserID = user.getUid();
 
         database =  FirebaseDatabase.getInstance();
-        reference = database.getReference();
+        reference = database.getReference().child("Reward");
+        listReward = new ArrayList<Reward>();
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
+                    Reward reward = snapshot.getValue(Reward.class);
+                    listReward.add(reward);
+                }
+                rewardAdapter = new DaftarRewardAdapter(getActivity(), listReward);
+                rvListReward.setAdapter(rewardAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getActivity(), "Gagal memuat data", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return root;
     }
@@ -94,7 +118,7 @@ public class KuponFragment extends Fragment implements OnClickListener{
 
     }
 
-    public class SimpleRVAdapter extends RecyclerView.Adapter<ListViewHolder>{
+    /*public class SimpleRVAdapter extends RecyclerView.Adapter<ListViewHolder>{
 
         private String[] data;
         public SimpleRVAdapter(String[] dataset){
@@ -125,7 +149,7 @@ public class KuponFragment extends Fragment implements OnClickListener{
             super(itemView);
             namaReward = itemView.findViewById(R.id.tv_list_reward);
         }
-    }
+    }*/
 
 }
 

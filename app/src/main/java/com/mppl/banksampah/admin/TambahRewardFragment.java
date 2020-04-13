@@ -36,6 +36,7 @@ import com.google.firebase.storage.UploadTask;
 import com.google.firebase.storage.StorageReference;
 import com.mppl.banksampah.MainActivity;
 import com.mppl.banksampah.R;
+import com.mppl.banksampah.admin.model.Reward;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -92,7 +93,7 @@ public class TambahRewardFragment extends Fragment implements OnClickListener{
 
         progressBar = root.findViewById(R.id.pbTambahReward);
 
-        database = FirebaseDatabase.getInstance().getReference().child(path1);
+        database = FirebaseDatabase.getInstance().getReference().child("Reward");
         reference = FirebaseStorage.getInstance().getReference().child(path1);
 
         return root;
@@ -240,9 +241,13 @@ public class TambahRewardFragment extends Fragment implements OnClickListener{
             String Poin_Reward = poinReward.getText().toString().trim();
             String Jenis_Reward = jenisReward.getSelectedItem().toString().trim();
 
-            database.child(refKey).child(path1b).setValue(Nama_Reward);
-            database.child(refKey).child(path1c).setValue(Poin_Reward);
-            database.child(refKey).child(path1d).setValue(Jenis_Reward);
+            Reward reward = new Reward(Nama_Reward,Poin_Reward,Jenis_Reward);
+            database.child(refKey).setValue(reward);
+
+
+            //database.child(refKey).child(path1b).setValue(Nama_Reward);
+            //database.child(refKey).child(path1c).setValue(Poin_Reward);
+            //database.child(refKey).child(path1d).setValue(Jenis_Reward);
 
             KuponFragment fragment = new KuponFragment();
             FragmentManager fragmentManager = getFragmentManager();
