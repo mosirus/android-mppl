@@ -11,7 +11,7 @@ public class Reward {
 
     }
 
-    public Reward(String namaReward1,String jenisReward1, String pointReward1){
+    public Reward(String namaReward1,String pointReward1, String jenisReward1){
         namaReward = namaReward1;
         jenisReward = jenisReward1;
         pointReward = pointReward1;
