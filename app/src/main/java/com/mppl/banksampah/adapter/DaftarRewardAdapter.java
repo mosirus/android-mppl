@@ -55,6 +55,11 @@ public class DaftarRewardAdapter extends RecyclerView.Adapter<DaftarRewardAdapte
     public void onBindViewHolder(@NonNull CardViewViewHolder holder, int position) {
         Reward reward = listReward.get(position);
         holder.namaReward.setText(listReward.get(position).getNamaReward());
+        Glide.with(holder.itemView.getContext())
+                .load(reward.getURLReward())
+                .apply(new RequestOptions().override(70,70))
+                .into(holder.gambarReward);
+
     }
 
     @Override

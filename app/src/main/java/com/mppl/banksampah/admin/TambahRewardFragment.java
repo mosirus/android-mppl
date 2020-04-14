@@ -65,7 +65,9 @@ public class TambahRewardFragment extends Fragment implements OnClickListener{
     private static final int REQUEST_CODE_GALLERY = 2;
 
     private StorageReference reference;
+    private StorageReference varReference;
     private DatabaseReference database;
+    private DatabaseReference varDatabase;
 
     private ProgressBar progressBar;
 
@@ -94,7 +96,9 @@ public class TambahRewardFragment extends Fragment implements OnClickListener{
         progressBar = root.findViewById(R.id.pbTambahReward);
 
         database = FirebaseDatabase.getInstance().getReference().child("Reward");
+        varDatabase = FirebaseDatabase.getInstance().getReference().child("URL");
         reference = FirebaseStorage.getInstance().getReference().child(path1);
+        varReference = FirebaseStorage.getInstance().getReference();
 
         return root;
     }
@@ -189,6 +193,7 @@ public class TambahRewardFragment extends Fragment implements OnClickListener{
 
     private void uploadKupon(){
         final String refKey = database.push().getKey();
+        final String varRef = varDatabase.push().getKey();
 
         if(!validasiFormTambahReward()){
             return;
@@ -203,7 +208,7 @@ public class TambahRewardFragment extends Fragment implements OnClickListener{
             byte[] bytes = stream.toByteArray();
 
 
-            String namaGambar = namaReward.getText().toString()+".jpg";
+            final String namaGambar = namaReward.getText().toString()+".jpg";
             String path1 = "Reward";
             String path1a = namaGambar;
             String path1b = "Nama Reward";
@@ -217,6 +222,18 @@ public class TambahRewardFragment extends Fragment implements OnClickListener{
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     progressBar.setVisibility(View.GONE);
                     Toast.makeText(getActivity(), "Upload Berhasil", Toast.LENGTH_SHORT).show();
+                    reference.child(namaGambar).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            String Nama_Reward = namaReward.getText().toString().trim();
+                            String Poin_Reward = poinReward.getText().toString().trim();
+                            String Jenis_Reward = jenisReward.getSelectedItem().toString().trim();
+                            String URL_Reward = uri.toString().trim();
+                            Reward reward = new Reward(Nama_Reward,Poin_Reward,Jenis_Reward,URL_Reward);
+
+                            database.child(refKey).setValue(reward);
+                        }
+                    });
                 }
             })
                     .addOnFailureListener(new OnFailureListener() {
@@ -234,20 +251,6 @@ public class TambahRewardFragment extends Fragment implements OnClickListener{
                             progressBar.setProgress( (int) progress);
                         }
                     });
-
-
-            //upload Data
-            String Nama_Reward = namaReward.getText().toString().trim();
-            String Poin_Reward = poinReward.getText().toString().trim();
-            String Jenis_Reward = jenisReward.getSelectedItem().toString().trim();
-
-            Reward reward = new Reward(Nama_Reward,Poin_Reward,Jenis_Reward);
-            database.child(refKey).setValue(reward);
-
-
-            //database.child(refKey).child(path1b).setValue(Nama_Reward);
-            //database.child(refKey).child(path1c).setValue(Poin_Reward);
-            //database.child(refKey).child(path1d).setValue(Jenis_Reward);
 
             KuponFragment fragment = new KuponFragment();
             FragmentManager fragmentManager = getFragmentManager();

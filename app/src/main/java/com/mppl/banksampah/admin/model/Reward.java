@@ -6,15 +6,17 @@ public class Reward {
     private String namaReward;
     private String pointReward;
     private String jenisReward;
+    private String URLReward;
 
     public Reward(){
 
     }
 
-    public Reward(String namaReward1,String pointReward1, String jenisReward1){
+    public Reward(String namaReward1, String pointReward1, String jenisReward1, String URLReward1){
         namaReward = namaReward1;
         pointReward = pointReward1;
         jenisReward = jenisReward1;
+        URLReward = URLReward1;
     }
 
     public String getNamaReward() {
@@ -39,6 +41,14 @@ public class Reward {
 
     public void setPointReward(String pointReward) {
         this.pointReward = pointReward;
+    }
+
+    public String getURLReward() {
+        return URLReward;
+    }
+
+    public void setURLReward(String URLReward) {
+        this.URLReward = URLReward;
     }
 
 }
