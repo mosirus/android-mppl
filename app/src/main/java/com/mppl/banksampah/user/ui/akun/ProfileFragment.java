@@ -98,7 +98,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             }
         });
 
-        reference = storageReference.child(currentuser).child("profile_image");
+        reference = storageReference.child("UserProfilePictures").child(currentuser).child("profile_image");
         reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {

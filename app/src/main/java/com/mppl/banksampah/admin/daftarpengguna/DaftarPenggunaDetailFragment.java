@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,8 +16,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.mppl.banksampah.R;
+
+import java.util.Objects;
 
 public class DaftarPenggunaDetailFragment extends Fragment {
 
@@ -29,6 +33,7 @@ public class DaftarPenggunaDetailFragment extends Fragment {
     private String strUserIdentityNumber;
     private String strUserAddress;
     private String userPoint;
+    private String strPhotoURL;
 
     @Nullable
     @Override
@@ -44,6 +49,7 @@ public class DaftarPenggunaDetailFragment extends Fragment {
             strUserIdentityNumber = bundle.getString("IdentityNumber");
             strUserAddress = bundle.getString("Address");
             userPoint = String.valueOf(bundle.getInt("Point"));
+            strPhotoURL = bundle.getString("PhotoURL");
         }
 
         Button btnOk = root.findViewById(R.id.btn_ok);
@@ -82,6 +88,7 @@ public class DaftarPenggunaDetailFragment extends Fragment {
         TextView tvUserId = view.findViewById(R.id.userId);
         TextView tvUserAddress = view.findViewById(R.id.userAdress);
         TextView tvUserPoint = view.findViewById(R.id.userPoint);
+        ImageView profilePic = view.findViewById(R.id.fotoprofil);
 
         tvUserPoint.setText(userPoint);
         tvUserName.setText(strUserName);
@@ -90,6 +97,12 @@ public class DaftarPenggunaDetailFragment extends Fragment {
         tvUserId.setText(strUserIdentityNumber);
         tvUserJob.setText(strUserJob);
         tvUserAddress.setText(strUserAddress);
+
+        if (strPhotoURL != null) {
+            Glide.with(Objects.requireNonNull(getContext()))
+                    .load(strPhotoURL)
+                    .into(profilePic);
+        }
     }
 
 }

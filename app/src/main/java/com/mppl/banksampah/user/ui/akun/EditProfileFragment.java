@@ -3,6 +3,7 @@ package com.mppl.banksampah.user.ui.akun;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -22,7 +23,6 @@ import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,8 +34,10 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.mppl.banksampah.R;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
+import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -44,18 +46,14 @@ import static android.app.Activity.RESULT_OK;
 public class EditProfileFragment extends Fragment implements View.OnClickListener {
 
     private String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();
-    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-    private ProfileViewModel homeViewModel;
     private DatabaseReference ref;
 
     private CircleImageView imageView;
 
-    private Uri pickedImgUri;
+    private static final int REQUEST_CODE_CAMERA = 1;
+    private static final int REQUEST_CODE_GALLERY = 2;
 
-    private final int PICK_IMAGE_REQUEST = 71;
-
-    private TextView edt_gambar;
     private EditText edt_name;
     private EditText edt_email;
     private EditText edt_telp;
@@ -63,28 +61,17 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
     private EditText edt_id_number;
     private EditText edt_address;
 
-    private EditText edt_old_pass;
-    private EditText edt_new_pass;
-    private EditText edt_new_pass_confirmation;
-
-    private Button btn_simpan;
-    private Button btn_batal;
-    private Button btn_edit_password;
-
-    private String currentPassword;
-    //Firebase
-    FirebaseStorage storage = FirebaseStorage.getInstance();
-    StorageReference storageReference = storage.getReference();
+    private FirebaseStorage storage = FirebaseStorage.getInstance();
+    private StorageReference storageReference = storage.getReference();
 
     private StorageReference reference;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this).get(ProfileViewModel.class);
+        ProfileViewModel homeViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
         View root = inflater.inflate(R.layout.fragment_profile_edit, container, false);
 
-        edt_gambar = root.findViewById(R.id.txtSuntingFoto);
+        TextView edt_gambar = root.findViewById(R.id.txtSuntingFoto);
         edt_name = root.findViewById(R.id.editnama);
         edt_email = root.findViewById(R.id.editemail);
         edt_address = root.findViewById(R.id.editalamat);
@@ -98,12 +85,12 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
 
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String nama = dataSnapshot.child("nama_lengkap").getValue().toString();
-                String email = dataSnapshot.child("email").getValue().toString();
-                String nomor_telepon = dataSnapshot.child("no_telp").getValue().toString();
-                String alamat = dataSnapshot.child("alamat").getValue().toString();
-                String pekerjaan = dataSnapshot.child("pekerjaan").getValue().toString();
-                String no_identitas = dataSnapshot.child("no_identitas").getValue().toString();
+                String nama = Objects.requireNonNull(dataSnapshot.child("nama_lengkap").getValue()).toString();
+                String email = Objects.requireNonNull(dataSnapshot.child("email").getValue()).toString();
+                String nomor_telepon = Objects.requireNonNull(dataSnapshot.child("no_telp").getValue()).toString();
+                String alamat = Objects.requireNonNull(dataSnapshot.child("alamat").getValue()).toString();
+                String pekerjaan = Objects.requireNonNull(dataSnapshot.child("pekerjaan").getValue()).toString();
+                String no_identitas = Objects.requireNonNull(dataSnapshot.child("no_identitas").getValue()).toString();
 
                 edt_name.setText(nama);
                 edt_email.setText(email);
@@ -119,14 +106,14 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
             }
         });
 
-        reference = storageReference.child(currentuser).child("profile_image");
+        reference = storageReference.child("UserProfilePictures").child(currentuser).child("profile_image");
         reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
                 String url = uri.toString();
 
                 if (isAdded()) {
-                    Glide.with(getContext())
+                    Glide.with(Objects.requireNonNull(getContext()))
                             .load(url)
                             .into(imageView);
                 }
@@ -140,9 +127,9 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
             }
         });
 
-        btn_simpan = root.findViewById(R.id.btn_simpan_edit);
-        btn_batal = root.findViewById(R.id.btn_batal_edit);
-        btn_edit_password = root.findViewById(R.id.btn_edit_password);
+        Button btn_simpan = root.findViewById(R.id.btn_simpan_edit);
+        Button btn_batal = root.findViewById(R.id.btn_batal_edit);
+        Button btn_edit_password = root.findViewById(R.id.btn_edit_password);
 
         edt_gambar.setOnClickListener(this);
         btn_batal.setOnClickListener(this);
@@ -161,6 +148,7 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
             ProfileFragment fragment = new ProfileFragment();
 
             FragmentManager fragmentManager = getFragmentManager();
+            assert fragmentManager != null;
             fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment, ProfileFragment.class.getSimpleName())
                     .addToBackStack(null).commit();
         } else if (v.getId() == R.id.txtSuntingFoto) {
@@ -169,17 +157,40 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
             EditPasswordFragment fragment = new EditPasswordFragment();
 
             FragmentManager fragmentManager = getFragmentManager();
+            assert fragmentManager != null;
             fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment, EditPasswordFragment.class.getSimpleName())
                     .addToBackStack(null).commit();
         }
     }
 
     private void chooseImage() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+        Intent GalleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(GalleryIntent, REQUEST_CODE_GALLERY);
     }
+
+//    private void chooseImage() {
+//        CharSequence[] pilihan = {"Kamera", "Galeri"};
+//        AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity())
+//                .setTitle("Upload Gambar Dari")
+//                .setItems(pilihan, new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        switch (which) {
+//                            case 0:
+//                                Intent CameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                                startActivityForResult(CameraIntent, REQUEST_CODE_CAMERA);
+//                                break;
+//
+//                            case 1:
+//                                Intent GalleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//                                startActivityForResult(GalleryIntent, REQUEST_CODE_GALLERY);
+//                                break;
+//                        }
+//                    }
+//                });
+//        dialog.create();
+//        dialog.show();
+//    }
 
     private void updateProfile() {
 
@@ -204,54 +215,75 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
-                && data != null && data.getData() != null) {
+    public void onActivityResult(int RequestCode, int resultCode, Intent data) {
+        super.onActivityResult(RequestCode, resultCode, data);
 
-            pickedImgUri = data.getData();
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), pickedImgUri);
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 5, baos);
-                byte[] dataImage = baos.toByteArray();
-                imageView.setImageBitmap(bitmap);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        switch (RequestCode) {
+            case REQUEST_CODE_CAMERA:
+                if (resultCode == RESULT_OK) {
+                    imageView.setVisibility(View.VISIBLE);
+                    Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+                    imageView.setImageBitmap(bitmap);
+                }
+                break;
+            case REQUEST_CODE_GALLERY:
+                if (resultCode == RESULT_OK) {
+                    imageView.setVisibility(View.VISIBLE);
+                    Uri pickedImgUri = data.getData();
+                    imageView.setImageURI(pickedImgUri);
+                }
+                break;
         }
     }
 
     private void uploadImage() {
-        if (pickedImgUri != null) {
-            final ProgressDialog progressDialog = new ProgressDialog(getActivity());
-            progressDialog.setTitle("Uploading...");
-            progressDialog.show();
+        final StorageReference reference = storageReference.child("UserProfilePictures").child(currentuser)
+                .child("profile_image");
 
-            StorageReference reference = storageReference.child(currentuser).child("profile_image");
+        final ProgressDialog progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setTitle("Uploading...");
+        progressDialog.show();
 
-            reference.putFile(pickedImgUri)
-                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            progressDialog.dismiss();
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            progressDialog.dismiss();
-                        }
-                    })
-                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                            double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot
-                                    .getTotalByteCount());
-                            progressDialog.setMessage("Uploaded " + (int) progress + "%");
-                        }
-                    });
-        }
+        imageView.setDrawingCacheEnabled(true);
+        imageView.buildDrawingCache();
+
+        Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 50, stream);
+        byte[] bytes = stream.toByteArray();
+
+        //upload gambar
+        UploadTask uploadTask = reference.putBytes(bytes);
+        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                progressDialog.dismiss();
+                reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        String photo_url = uri.toString().trim();
+                        ref.child("profile_image_url").setValue(photo_url);
+                    }
+                });
+            }
+        })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        progressDialog.dismiss();
+
+                    }
+                })
+                .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onProgress(@NotNull UploadTask.TaskSnapshot taskSnapshot) {
+                        double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot
+                                .getTotalByteCount());
+                        progressDialog.setMessage("Uploaded " + (int) progress + "%");
+                    }
+                });
     }
+
 
 }

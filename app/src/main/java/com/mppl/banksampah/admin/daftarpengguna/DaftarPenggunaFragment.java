@@ -90,6 +90,7 @@ public class DaftarPenggunaFragment extends Fragment {
                         String userJob = data.pekerjaan;
                         String userIdentityNumber = data.no_identitas;
                         int userPoint = data.point;
+                        String photo_url = data.profile_image_url;
 
                         Bundle bundle = new Bundle();
                         bundle.putString("Email", userEmail);
@@ -99,6 +100,7 @@ public class DaftarPenggunaFragment extends Fragment {
                         bundle.putString("Job", userJob);
                         bundle.putString("IdentityNumber", userIdentityNumber);
                         bundle.putInt("Point", userPoint);
+                        bundle.putString("PhotoURL", photo_url);
 
                         DaftarPenggunaDetailFragment fragment = new DaftarPenggunaDetailFragment();
                         fragment.setArguments(bundle);

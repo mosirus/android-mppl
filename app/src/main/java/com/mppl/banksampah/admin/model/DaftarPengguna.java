@@ -26,6 +26,7 @@ public class DaftarPengguna implements Serializable {
     public String alamat;
     public String no_identitas;
     public int point;
+    public String profile_image_url;
 
     public String getPekerjaan() {
         return pekerjaan;
@@ -45,6 +46,14 @@ public class DaftarPengguna implements Serializable {
 
     public String getNo_identitas() {
         return no_identitas;
+    }
+
+    public String getProfile_image_url() {
+        return profile_image_url;
+    }
+
+    public void setProfile_image_url(String profile_image_url) {
+        this.profile_image_url = profile_image_url;
     }
 
     public void setNo_identitas(String no_identitas) {
