@@ -1,4 +1,4 @@
-package com.mppl.banksampah.admin.Event;
+package com.mppl.banksampah.admin.event;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

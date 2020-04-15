@@ -1,4 +1,4 @@
-package com.mppl.banksampah.admin.Event;
+package com.mppl.banksampah.admin.event;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

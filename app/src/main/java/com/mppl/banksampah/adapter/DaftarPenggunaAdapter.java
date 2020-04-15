@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mppl.banksampah.R;
 import com.mppl.banksampah.admin.model.DaftarPengguna;
-import com.mppl.banksampah.admin.DaftarPenggunaDetailFragment;
+import com.mppl.banksampah.admin.daftarpengguna.DaftarPenggunaDetailFragment;
 
 import java.util.ArrayList;
 

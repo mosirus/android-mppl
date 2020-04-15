@@ -37,11 +37,24 @@
             android:textStyle="bold" />
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvDaftarPengguna"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:listitem="@layout/item_cardview_daftar_pengguna" />
+            android:layout_height="wrap_content">
+
+            <ProgressBar
+                android:id="@+id/loadingProgressPengguna"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:translationZ="180dp"
+                android:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvDaftarPengguna"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/item_cardview_daftar_pengguna" />
+        </FrameLayout>
 
     </LinearLayout>
 

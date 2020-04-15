@@ -1,10 +1,11 @@
-package com.mppl.banksampah.admin;
+package com.mppl.banksampah.admin.daftarpengguna;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.mppl.banksampah.R;
 import com.mppl.banksampah.adapter.DaftarPenggunaAdapter;
+import com.mppl.banksampah.admin.daftarpengguna.DaftarPenggunaDetailFragment;
 import com.mppl.banksampah.admin.model.DaftarPengguna;
 
 import java.util.ArrayList;
@@ -29,7 +31,7 @@ public class DaftarPenggunaFragment extends Fragment {
 
     private DatabaseReference databaseReference;
 
-    private ProgressDialog progressDialog;
+    private ProgressBar progressDialog;
 
     private RecyclerView rvDaftarPengguna;
     private DaftarPenggunaAdapter adapter;
@@ -44,7 +46,11 @@ public class DaftarPenggunaFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_daftarpengguna_admin, container, false);
+        View root =  inflater.inflate(R.layout.fragment_daftarpengguna_admin, container, false);
+        progressDialog = root.findViewById(R.id.loadingProgressPengguna);
+        progressDialog.setVisibility(View.VISIBLE);
+
+        return root;
     }
 
     @Override
@@ -72,6 +78,7 @@ public class DaftarPenggunaFragment extends Fragment {
                 }
                 adapter = new DaftarPenggunaAdapter(getActivity(), daftarPenggunaArrayList);
                 rvDaftarPengguna.setAdapter(adapter);
+                progressDialog.setVisibility(View.GONE);
 
                 adapter.setOnItemClickCallback(new DaftarPenggunaAdapter.OnItemClickCallback() {
                     @Override
