@@ -125,7 +125,7 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
             public void onSuccess(Uri uri) {
                 String url = uri.toString();
 
-                if (isAdded()){
+                if (isAdded()) {
                     Glide.with(getContext())
                             .load(url)
                             .into(imageView);
@@ -165,8 +165,7 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
                     .addToBackStack(null).commit();
         } else if (v.getId() == R.id.txtSuntingFoto) {
             chooseImage();
-        }
-        else if (v.getId() == R.id.btn_edit_password) {
+        } else if (v.getId() == R.id.btn_edit_password) {
             EditPasswordFragment fragment = new EditPasswordFragment();
 
             FragmentManager fragmentManager = getFragmentManager();

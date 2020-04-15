@@ -26,7 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:text="@string/daftar_pengguna"
                 android:textSize="30sp"
@@ -46,25 +46,25 @@
             <RelativeLayout
                 android:id="@+id/tentang2"
                 android:layout_width="match_parent"
-                android:layout_height="64dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp"
-                android:padding="20dp"
+                android:padding="5dp"
                 tools:ignore="MissingConstraints">
 
-                <EditText
-                    android:layout_width="149dp"
+                <TextView
+                    android:id="@+id/userName"
+                    android:layout_width="wrap_content"
                     android:layout_height="27dp"
                     android:layout_marginStart="7dp"
-                    android:layout_toEndOf="@id/titikpertama"
-                    tools:ignore="Autofill" />
+                    android:layout_toEndOf="@id/titikpertama" />
 
                 <TextView
                     android:id="@+id/titikpertama"
                     android:layout_width="10dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="19dp"
                     android:layout_toEndOf="@+id/txt_nama"
                     android:text="@string/titikdua"
                     android:textSize="16sp" />
@@ -82,15 +82,16 @@
             <RelativeLayout
                 android:id="@+id/tentang3"
                 android:layout_width="match_parent"
-                android:layout_height="66dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp"
-                android:padding="20dp"
+                android:padding="5dp"
                 tools:ignore="MissingConstraints">
 
-                <EditText
-                    android:layout_width="149dp"
+                <TextView
+                    android:id="@+id/userEmail"
+                    android:layout_width="wrap_content"
                     android:layout_height="27dp"
                     android:layout_marginStart="7dp"
                     android:layout_toEndOf="@id/titikpertama1" />
@@ -99,7 +100,7 @@
                     android:id="@+id/titikpertama1"
                     android:layout_width="10dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="85dp"
+                    android:layout_marginStart="86dp"
                     android:layout_toEndOf="@+id/txt_nama1"
                     android:text="@string/titikdua"
                     android:textSize="16sp" />
@@ -111,23 +112,21 @@
                     android:layout_marginEnd="0dp"
                     android:text="@string/email"
                     android:textSize="16sp" />
-
-
             </RelativeLayout>
-
 
             <RelativeLayout
                 android:id="@+id/tentang4"
                 android:layout_width="match_parent"
-                android:layout_height="64dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp"
-                android:padding="20dp"
+                android:padding="5dp"
                 tools:ignore="MissingConstraints">
 
-                <EditText
-                    android:layout_width="149dp"
+                <TextView
+                    android:id="@+id/userTelephone"
+                    android:layout_width="wrap_content"
                     android:layout_height="27dp"
                     android:layout_marginStart="7dp"
                     android:layout_toEndOf="@id/titikpertama2" />
@@ -136,7 +135,7 @@
                     android:id="@+id/titikpertama2"
                     android:layout_width="10dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="40dp"
+                    android:layout_marginStart="41dp"
                     android:layout_toEndOf="@+id/txt_nama2"
                     android:text="@string/titikdua"
                     android:textSize="16sp" />
@@ -155,15 +154,16 @@
             <RelativeLayout
                 android:id="@+id/tentang5"
                 android:layout_width="match_parent"
-                android:layout_height="67dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp"
-                android:padding="20dp"
+                android:padding="5dp"
                 tools:ignore="MissingConstraints">
 
-                <EditText
-                    android:layout_width="149dp"
+                <TextView
+                    android:id="@+id/userJob"
+                    android:layout_width="wrap_content"
                     android:layout_height="27dp"
                     android:layout_marginStart="7dp"
                     android:layout_toEndOf="@id/titikpertama3" />
@@ -172,7 +172,7 @@
                     android:id="@+id/titikpertama3"
                     android:layout_width="10dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="55dp"
+                    android:layout_marginStart="56dp"
                     android:layout_toEndOf="@+id/txt_nama3"
                     android:text="@string/titikdua"
                     android:textSize="16sp" />
@@ -191,15 +191,16 @@
             <RelativeLayout
                 android:id="@+id/tentang6"
                 android:layout_width="match_parent"
-                android:layout_height="67dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp"
-                android:padding="20dp"
+                android:padding="5dp"
                 tools:ignore="MissingConstraints">
 
-                <EditText
-                    android:layout_width="149dp"
+                <TextView
+                    android:id="@+id/userId"
+                    android:layout_width="wrap_content"
                     android:layout_height="27dp"
                     android:layout_marginStart="7dp"
                     android:layout_toEndOf="@id/titikpertama4" />
@@ -227,15 +228,16 @@
             <RelativeLayout
                 android:id="@+id/tentang7"
                 android:layout_width="match_parent"
-                android:layout_height="67dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp"
-                android:padding="20dp"
+                android:padding="5dp"
                 tools:ignore="MissingConstraints">
 
-                <EditText
-                    android:layout_width="149dp"
+                <TextView
+                    android:id="@+id/userAdress"
+                    android:layout_width="wrap_content"
                     android:layout_height="27dp"
                     android:layout_marginStart="7dp"
                     android:layout_toEndOf="@id/titikpertama5" />
@@ -262,15 +264,16 @@
             <RelativeLayout
                 android:id="@+id/tentang8"
                 android:layout_width="match_parent"
-                android:layout_height="67dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp"
-                android:padding="20dp"
+                android:padding="5dp"
                 tools:ignore="MissingConstraints">
 
-                <EditText
-                    android:layout_width="149dp"
+                <TextView
+                    android:id="@+id/userPoint"
+                    android:layout_width="wrap_content"
                     android:layout_height="27dp"
                     android:layout_marginStart="7dp"
                     android:layout_toEndOf="@id/titikpertama6" />
@@ -299,14 +302,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="67dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp"
                 tools:ignore="MissingConstraints">
 
                 <Button
                     android:id="@+id/btn_ok"
-                    android:layout_width="90dp"
-                    android:layout_height="35dp"
+                    android:layout_width="95dp"
+                    android:layout_height="40dp"
                     android:layout_marginStart="120dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="120dp"

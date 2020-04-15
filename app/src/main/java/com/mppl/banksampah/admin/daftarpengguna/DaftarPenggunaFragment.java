@@ -83,7 +83,25 @@ public class DaftarPenggunaFragment extends Fragment {
                 adapter.setOnItemClickCallback(new DaftarPenggunaAdapter.OnItemClickCallback() {
                     @Override
                     public void onItemClicked(DaftarPengguna data) {
+                        String userEmail = data.email;
+                        String userName = data.nama_lengkap;
+                        String userAddress = data.alamat;
+                        String userTelp = data.no_telp;
+                        String userJob = data.pekerjaan;
+                        String userIdentityNumber = data.no_identitas;
+                        int userPoint = data.point;
+
+                        Bundle bundle = new Bundle();
+                        bundle.putString("Email", userEmail);
+                        bundle.putString("Name", userName);
+                        bundle.putString("Address", userAddress);
+                        bundle.putString("Telp", userTelp);
+                        bundle.putString("Job", userJob);
+                        bundle.putString("IdentityNumber", userIdentityNumber);
+                        bundle.putInt("Point", userPoint);
+
                         DaftarPenggunaDetailFragment fragment = new DaftarPenggunaDetailFragment();
+                        fragment.setArguments(bundle);
                         FragmentManager fragmentManager = getFragmentManager();
                         fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment, DaftarPenggunaDetailFragment.class.getSimpleName())
                                 .addToBackStack(null).commit();

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class DaftarPengguna implements Serializable {
     public DaftarPengguna(String nama_lengkap, String email, String no_telp, String password,
-                String pekerjaan, String no_identitas, String alamat,int point) {
+                          String pekerjaan, String no_identitas, String alamat, int point) {
         this.nama_lengkap = nama_lengkap;
         this.email = email;
         this.no_telp = no_telp;
@@ -15,7 +15,7 @@ public class DaftarPengguna implements Serializable {
         this.point = point;
     }
 
-    public DaftarPengguna(){
+    public DaftarPengguna() {
     }
 
     public String nama_lengkap;
@@ -25,6 +25,7 @@ public class DaftarPengguna implements Serializable {
     public String pekerjaan;
     public String alamat;
     public String no_identitas;
+    public int point;
 
     public String getPekerjaan() {
         return pekerjaan;
@@ -49,8 +50,6 @@ public class DaftarPengguna implements Serializable {
     public void setNo_identitas(String no_identitas) {
         this.no_identitas = no_identitas;
     }
-
-    public int point;
 
     public String getNama_lengkap() {
         return nama_lengkap;
