@@ -4,7 +4,7 @@ import com.mppl.banksampah.R;
 
 public class Reward {
     private String namaReward;
-    private String pointReward;
+    private int pointReward;
     private String jenisReward;
     private String URLReward;
 
@@ -12,7 +12,7 @@ public class Reward {
 
     }
 
-    public Reward(String namaReward1, String pointReward1, String jenisReward1, String URLReward1){
+    public Reward(String namaReward1, int pointReward1, String jenisReward1, String URLReward1){
         namaReward = namaReward1;
         pointReward = pointReward1;
         jenisReward = jenisReward1;
@@ -35,11 +35,11 @@ public class Reward {
         this.jenisReward = jenisReward;
     }
 
-    public String getPointReward() {
+    public int getPointReward() {
         return pointReward;
     }
 
-    public void setPointReward(String pointReward) {
+    public void setPointReward(int pointReward) {
         this.pointReward = pointReward;
     }
 

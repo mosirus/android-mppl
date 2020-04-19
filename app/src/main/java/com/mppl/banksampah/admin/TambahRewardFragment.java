@@ -226,12 +226,25 @@ public class TambahRewardFragment extends Fragment implements OnClickListener{
                         @Override
                         public void onSuccess(Uri uri) {
                             String Nama_Reward = namaReward.getText().toString().trim();
-                            String Poin_Reward = poinReward.getText().toString().trim();
+                            int Poin_Reward = Integer.parseInt(poinReward.getText().toString().trim());
                             String Jenis_Reward = jenisReward.getSelectedItem().toString().trim();
                             String URL_Reward = uri.toString().trim();
-                            Reward reward = new Reward(Nama_Reward,Poin_Reward,Jenis_Reward,URL_Reward);
 
+                            Reward reward = new Reward(Nama_Reward,Poin_Reward,Jenis_Reward,URL_Reward);
                             database.child(refKey).setValue(reward);
+
+                            /*String param;
+                            param = "Barang";
+
+                            if(Jenis_Reward == param){
+                                Reward reward = new Reward(Nama_Reward,Poin_Reward,Jenis_Reward,URL_Reward);
+                                database.child("Barang").child(refKey).setValue(reward);
+                            }else{
+                                Reward reward = new Reward(Nama_Reward,Poin_Reward,Jenis_Reward,URL_Reward);
+                                database.child("Kupon").child(refKey).setValue(reward);
+                            }*/
+
+
                         }
                     });
                 }
