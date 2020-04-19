@@ -29,4 +29,39 @@
     <string name="app_logo">App Logo</string>
     <string name="my_point">Poinku :</string>
     <string name="point_info">Info Poin</string>
+
+
+    <string name="_04_06_2020">04–06–2020</string>
+    <string name="laxojun1_gmail_com">laxojun1@gmail.com</string>
+    <string name="audit">Audit</string>
+
+    <string name="riwayat_tukar_sampah">Riwayat Tukar Sampah</string>
+    <string name="_28_03_2020">28-03-2020</string>
+    <string name="email_nina">nina@gmail.com</string>
+    <string name="poin_nina">5000</string>
+    <string name="status_nina">Diterima</string>
+
+    <string name="email_ous">ivani@gmail.com</string>
+    <string name="poin_ous">5000</string>
+    <string name="status_ous">Diterima</string>
+
+    <string name="email_dian">dian@gmail.com</string>
+    <string name="poin_dian">7000</string>
+    <string name="status_dian">Ditolak</string>
+
+    <string name="email_lala">lala@gmail.com</string>
+    <string name="poin_lala">10000</string>
+    <string name="status_lala">Ditolak</string>
+
+    <string name="_28_02_2020">28-02-2020</string>
+    <string name="_23_01_2020">23-01-2020</string>
+    <string name="_21_01_2020">21-01-2020</string>
+
+    <string name="dummy_riwayat1">Tanggal</string>
+    <string name="dummy_riwayat2">Email</string>
+    <string name="dummy_riwayat3">No Telepon</string>
+    <string name="dummy_riwayat4">Jenis Sampah</string>
+    <string name="dummy_riwayat5">Poin</string>
+    <string name="tanggal">Tanggal</string>
+    <string name="status">Status</string>
 </resources>
