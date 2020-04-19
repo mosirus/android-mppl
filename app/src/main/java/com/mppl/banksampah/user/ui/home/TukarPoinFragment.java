@@ -2,6 +2,7 @@ package com.mppl.banksampah.user.ui.home;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,34 +13,78 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.mppl.banksampah.R;
+import com.mppl.banksampah.adapter.DaftarBarangUserAdapter;
+import com.mppl.banksampah.admin.model.Reward;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
 
 
 public class TukarPoinFragment extends Fragment implements View.OnClickListener {
 
     private Button btnListKupon;
     private Button btnstatus;
-    private RecyclerView rv_listBarang;
     private RecyclerView.LayoutManager layoutManager;
 
     private String[] nama_barang = {"Tupperware","Sendok","Payung","Pin Del"};
 
+    private FirebaseAuth auth;
+    private FirebaseDatabase database;
+    private DatabaseReference reference;
+    private String GetUserID;
+
+    private ArrayList<Reward> listBarang;
+    private DaftarBarangUserAdapter barangUserAdapter;
+    private RecyclerView rvListBarang;
+
     public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View root = inflater.inflate(R.layout.fragment_tukar_poin, container, false);
-
-        rv_listBarang = root.findViewById(R.id.rvtp_list_barang);
-        rv_listBarang.setHasFixedSize(true);
-        rv_listBarang.setLayoutManager(new LinearLayoutManager(getContext()));
-        rv_listBarang.setAdapter(new SimpleRVAdapter(nama_barang));
 
         btnListKupon = root.findViewById(R.id.ftpbtn_listkupon);
         btnListKupon.setOnClickListener(this);
 
         btnstatus = root.findViewById(R.id.ftpbtn_status);
         btnstatus.setOnClickListener(this);
+
+        rvListBarang = root.findViewById(R.id.rvtp_list_barang);
+        rvListBarang.setHasFixedSize(true);
+        rvListBarang.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        auth = FirebaseAuth.getInstance();
+        FirebaseUser user = auth.getCurrentUser();
+        GetUserID = user.getUid();
+
+        database = FirebaseDatabase.getInstance();
+        reference = database.getReference().child("Reward");
+        listBarang = new ArrayList<Reward>();
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
+                    Reward reward = dataSnapshot1.getValue(Reward.class);
+                    listBarang.add(reward);
+                }
+                barangUserAdapter = new DaftarBarangUserAdapter(getActivity(), listBarang);
+                rvListBarang.setAdapter(barangUserAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getActivity(), "Gagal memuat data", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return root;
     }
@@ -61,32 +106,4 @@ public class TukarPoinFragment extends Fragment implements View.OnClickListener 
 
     }
 
-    public class SimpleRVAdapter extends RecyclerView.Adapter<ListViewHolder>{
-        private String[] data;
-        public SimpleRVAdapter(String[] dataArgs){
-            data = dataArgs;
-        }
-
-        public ListViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_barang,parent,false);
-            ListViewHolder viewHolder = new ListViewHolder(view);
-            return viewHolder;
-        }
-
-        public void onBindViewHolder(ListViewHolder holder, int position){
-            holder.namaBarang.setText(data[position]);
-        }
-
-        public int getItemCount(){
-            return data.length;
-        }
-    }
-
-    public static class ListViewHolder extends RecyclerView.ViewHolder{
-        public TextView namaBarang;
-        public ListViewHolder(View itemView){
-            super(itemView);
-            namaBarang = itemView.findViewById(R.id.tv_list_barang);
-        }
-    }
 }
