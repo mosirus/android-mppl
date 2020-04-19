@@ -34,9 +34,6 @@ public class StatusTukarPoinFragment extends Fragment implements View.OnClickLis
         btnListBarang = root.findViewById(R.id.ftpbtn_listbarang);
         btnListBarang.setOnClickListener(this);
 
-        btnListKupon = root.findViewById(R.id.ftpbtn_listkupon);
-        btnListKupon.setOnClickListener(this);
-
         rv_ListStatus = root.findViewById(R.id.rv_list_sttp);
         rv_ListStatus.setHasFixedSize(true);
         rv_ListStatus.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -53,12 +50,7 @@ public class StatusTukarPoinFragment extends Fragment implements View.OnClickLis
             fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment, TukarPoinFragment.class.getSimpleName())
                     .addToBackStack(null).commit();
         }
-        else if(v.getId() == R.id.ftpbtn_listkupon){
-            ListKuponFragment fragment = new ListKuponFragment();
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment, ListKuponFragment.class.getSimpleName())
-                    .addToBackStack(null).commit();
-        }
+
     }
 
     public class SimpleRVAdapter extends RecyclerView.Adapter<ListViewHolder>{

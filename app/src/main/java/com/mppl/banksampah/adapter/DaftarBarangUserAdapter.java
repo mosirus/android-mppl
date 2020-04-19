@@ -52,6 +52,7 @@ public class DaftarBarangUserAdapter extends RecyclerView.Adapter<DaftarBarangUs
     public void onBindViewHolder(@NonNull CardViewHolder holder, int position) {
         Reward reward = listBarang.get(position);
         holder.namaBarang.setText(listBarang.get(position).getNamaReward());
+        holder.jenisBarang.setText("("+listBarang.get(position).getJenisReward()+")");
         Glide.with(holder.itemView.getContext())
                 .load(reward.getURLReward())
                 .apply(new RequestOptions().override(70,70))
@@ -66,6 +67,7 @@ public class DaftarBarangUserAdapter extends RecyclerView.Adapter<DaftarBarangUs
     public class CardViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView namaBarang;
         private ImageView gambarBarang;
+        private TextView jenisBarang;
         private Button btnBarang;
 
         public CardViewHolder(View itemView){
@@ -73,6 +75,7 @@ public class DaftarBarangUserAdapter extends RecyclerView.Adapter<DaftarBarangUs
             namaBarang = itemView.findViewById(R.id.tv_list_barang);
             gambarBarang = itemView.findViewById(R.id.iv_list_barang);
             btnBarang = itemView.findViewById(R.id.btn_list_barang);
+            jenisBarang = itemView.findViewById(R.id.tv_list_jenisreward);
         }
 
         @Override

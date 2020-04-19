@@ -218,5 +218,7 @@
     <string name="_04_06_2020">04–06–2020</string>
     <string name="laxojun1_gmail_com">laxojun1@gmail.com</string>
     <string name="audit">Audit</string>
+    <string name="judultp_listbarangkupon"><![CDATA[List Barang & Kupon]]></string>
+    <string name="jenis_reward">Jenis</string>
 
 </resources>
