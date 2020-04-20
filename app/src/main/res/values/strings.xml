@@ -248,8 +248,6 @@
     <string name="dummy_riwayat3">No Telepon</string>
     <string name="dummy_riwayat4">Jenis Sampah</string>
     <string name="dummy_riwayat5">Poin</string>
-    <string name="tanggal">Tanggal</string>
-    <string name="status">Status</string>
 
     <string name="judultp_listbarangkupon"><![CDATA[List Barang & Kupon]]></string>
     <string name="jenis_reward">Jenis</string>
