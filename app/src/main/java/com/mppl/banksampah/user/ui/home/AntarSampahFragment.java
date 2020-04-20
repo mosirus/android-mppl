@@ -28,6 +28,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.mppl.banksampah.R;
+import com.mppl.banksampah.user.model.AntarSampahUser;
 import com.mppl.banksampah.user.ui.tentang.TentangFragment;
 
 import java.text.SimpleDateFormat;
@@ -93,20 +94,24 @@ public class AntarSampahFragment extends Fragment implements View.OnClickListene
             ref.addChildEventListener(new ChildEventListener() {
                 String jenisSampah = spnrJenisSampah.getSelectedItem().toString();
                 String satuanSampah = spnrSatuan.getSelectedItem().toString();
-                String jumlahSampah = edtJumlahSampah.getText().toString();
+                int jumlahSampah = Integer.parseInt(edtJumlahSampah.getText().toString());
                 String tanggal = pickedDate.getText().toString();
-                String poin = tvPoinTransaksi.getText().toString();
+                int poin = Integer.parseInt(tvPoinTransaksi.getText().toString());
                 String currentuserId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail().replace('.','_');
+                String status = "Sedang diproses";
 
+                AntarSampahUser antarSampahUser = new AntarSampahUser(jenisSampah,satuanSampah,jumlahSampah,tanggal,poin,currentuserId,status);
 
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                    ref.child(currentuserId).child(refKey).child("JenisSampah").setValue(jenisSampah);
+                    /*ref.child(currentuserId).child(refKey).child("JenisSampah").setValue(jenisSampah);
                     ref.child(currentuserId).child(refKey).child("Berat").setValue(jumlahSampah);
                     ref.child(currentuserId).child(refKey).child("Satuan").setValue(satuanSampah);
                     ref.child(currentuserId).child(refKey).child("Tanggal").setValue(tanggal);
                     ref.child(currentuserId).child(refKey).child("Poin").setValue(poin);
-                    ref.child(currentuserId).child(refKey).child("Status").setValue("Sedang diproses");
+                    ref.child(currentuserId).child(refKey).child("Status").setValue("Sedang diproses");*/
+
+                    ref.child(refKey).setValue(antarSampahUser);
                 }
 
                 @Override

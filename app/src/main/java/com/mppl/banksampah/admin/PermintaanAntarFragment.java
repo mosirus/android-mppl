@@ -14,13 +14,36 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.mppl.banksampah.R;
+import com.mppl.banksampah.adapter.DaftarAntarSampahUserAdapter;
+import com.mppl.banksampah.user.model.AntarSampahUser;
+import com.mppl.banksampah.user.ui.home.AntarSampahFragment;
+
+import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class PermintaanAntarFragment extends Fragment implements OnClickListener{
     private Button btnIsiForm;
     private RecyclerView rvListPermintaanAntar;
+
+    private FirebaseAuth auth;
+    private FirebaseDatabase database;
+    private DatabaseReference reference;
+    private String GetUserID;
+
+    private ArrayList<AntarSampahUser> listAntarSampahUser;
+    private DaftarAntarSampahUserAdapter antarSampahUserAdapter;
+
 
     private String namaPeminta[] = {"Pangondion K Naibaho","Zephyr Sensei","Lae Monang","Sulastri Tambunan","Angel Napitupulu"};
 
@@ -32,10 +55,37 @@ public class PermintaanAntarFragment extends Fragment implements OnClickListener
         rvListPermintaanAntar = root.findViewById(R.id.pa_listPermintaan);
         rvListPermintaanAntar.setHasFixedSize(true);
         rvListPermintaanAntar.setLayoutManager(new LinearLayoutManager(getContext()));
-        rvListPermintaanAntar.setAdapter(new SimpleRVAdapter(namaPeminta));
+        //rvListPermintaanAntar.setAdapter(new SimpleRVAdapter(namaPeminta));
 
         btnIsiForm = root.findViewById(R.id.btn_isi_form);
         btnIsiForm.setOnClickListener(this);
+
+        auth = FirebaseAuth.getInstance();
+
+        FirebaseUser user = auth.getCurrentUser();
+        GetUserID = user.getUid();
+
+        String currentuserId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail().replace('.','_');
+        database = FirebaseDatabase.getInstance();
+        reference = database.getReference().child("AntarSampah");
+        listAntarSampahUser = new ArrayList<AntarSampahUser>();
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    AntarSampahUser antarSampahUser = snapshot.getValue(AntarSampahUser.class);
+                    listAntarSampahUser.add(antarSampahUser);
+                }
+                antarSampahUserAdapter = new DaftarAntarSampahUserAdapter(getActivity(),listAntarSampahUser);
+                rvListPermintaanAntar.setAdapter(antarSampahUserAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getActivity(), "Gagal memuat data", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return root;
     }
@@ -50,32 +100,5 @@ public class PermintaanAntarFragment extends Fragment implements OnClickListener
         }
     }
 
-    public class SimpleRVAdapter extends RecyclerView.Adapter<ListViewHolder>{
-        private String[] datas;
-        public SimpleRVAdapter(String[] dataset){
-            datas = dataset;
-        }
-        public ListViewHolder onCreateViewHolder(ViewGroup parent, int ViewType){
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_permintaan_antar,parent,false);
-            ListViewHolder viewHolder = new ListViewHolder(view);
-            return viewHolder;
-        }
 
-        @Override
-        public void onBindViewHolder(ListViewHolder holder, int position) {
-            holder.namaPeminta.setText(datas[position]);
-        }
-
-        public int getItemCount(){
-            return datas.length;
-        }
-    }
-
-    public static class ListViewHolder extends RecyclerView.ViewHolder{
-        public TextView namaPeminta;
-        public ListViewHolder(View itemView){
-            super(itemView);
-            namaPeminta = itemView.findViewById(R.id.tv_person_pa);
-        }
-    }
 }
