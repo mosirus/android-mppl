@@ -111,7 +111,7 @@ public class AntarSampahFragment extends Fragment implements View.OnClickListene
                     ref.child(currentuserId).child(refKey).child("Poin").setValue(poin);
                     ref.child(currentuserId).child(refKey).child("Status").setValue("Sedang diproses");*/
 
-                    ref.child(refKey).setValue(antarSampahUser);
+                    ref.child(currentuserId).child(refKey).setValue(antarSampahUser);
                 }
 
                 @Override

@@ -73,9 +73,11 @@ public class PermintaanAntarFragment extends Fragment implements OnClickListener
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    AntarSampahUser antarSampahUser = snapshot.getValue(AntarSampahUser.class);
-                    listAntarSampahUser.add(antarSampahUser);
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    for (DataSnapshot dataSnapshot1 : snapshot.getChildren()){
+                        AntarSampahUser antarSampahUser = dataSnapshot1.getValue(AntarSampahUser.class);
+                        listAntarSampahUser.add(antarSampahUser);
+                    }
                 }
                 antarSampahUserAdapter = new DaftarAntarSampahUserAdapter(getActivity(),listAntarSampahUser);
                 rvListPermintaanAntar.setAdapter(antarSampahUserAdapter);
