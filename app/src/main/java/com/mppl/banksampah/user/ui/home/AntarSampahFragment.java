@@ -50,6 +50,7 @@ public class AntarSampahFragment extends Fragment implements View.OnClickListene
     private Button btnBatal;
     private Button btnStatusAntar;
     private TextView tvDaftarLokasi;
+    private TextView tvPoinTransaksi;
     private Spinner spnrJenisSampah;
     private Spinner spnrSatuan;
     private EditText edtJumlahSampah;
@@ -78,6 +79,8 @@ public class AntarSampahFragment extends Fragment implements View.OnClickListene
         btnStatusAntar.setOnClickListener(this);
         tvDaftarLokasi = root.findViewById(R.id.tv_daftar_lokasi);
         tvDaftarLokasi.setOnClickListener(this);
+        tvPoinTransaksi = root.findViewById(R.id.tv_poin_transaksi);
+        tvPoinTransaksi.setText("100");
 
         ref = FirebaseDatabase.getInstance().getReference().child("AntarSampah");
 
@@ -92,7 +95,9 @@ public class AntarSampahFragment extends Fragment implements View.OnClickListene
                 String satuanSampah = spnrSatuan.getSelectedItem().toString();
                 String jumlahSampah = edtJumlahSampah.getText().toString();
                 String tanggal = pickedDate.getText().toString();
-                String currentuserId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
+                String poin = tvPoinTransaksi.getText().toString();
+                String currentuserId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail().replace('.','_');
+
 
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
@@ -100,6 +105,7 @@ public class AntarSampahFragment extends Fragment implements View.OnClickListene
                     ref.child(currentuserId).child(refKey).child("Berat").setValue(jumlahSampah);
                     ref.child(currentuserId).child(refKey).child("Satuan").setValue(satuanSampah);
                     ref.child(currentuserId).child(refKey).child("Tanggal").setValue(tanggal);
+                    ref.child(currentuserId).child(refKey).child("Poin").setValue(poin);
                     ref.child(currentuserId).child(refKey).child("Status").setValue("Sedang diproses");
                 }
 

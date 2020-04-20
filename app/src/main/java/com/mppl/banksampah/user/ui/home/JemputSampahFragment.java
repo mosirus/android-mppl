@@ -48,6 +48,7 @@ public class JemputSampahFragment extends Fragment implements View.OnClickListen
     private Button btnOk;
     private Button btnBatal;
     private Button btnStatusJemput;
+    private TextView tvPoinTransaksi;
 
     private Spinner spnrJenisSampah;
     private Spinner spnrSatuan;
@@ -84,6 +85,9 @@ public class JemputSampahFragment extends Fragment implements View.OnClickListen
         edtJumlahSampah = root.findViewById(R.id.edtJumlahSampah);
         edtLokasiJemput = root.findViewById(R.id.edt_lokasi_jemput);
 
+        tvPoinTransaksi = root.findViewById(R.id.tv_poin_transaksi);
+        tvPoinTransaksi.setText("100");
+
         ref = FirebaseDatabase.getInstance().getReference().child("JemputSampah");
 
         return root;
@@ -98,7 +102,9 @@ public class JemputSampahFragment extends Fragment implements View.OnClickListen
                 String jumlahSampah = edtJumlahSampah.getText().toString();
                 String tanggal = pickedDate.getText().toString();
                 String lokasiJemput = edtLokasiJemput.getText().toString();
-                String currentuserId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
+                String poin = tvPoinTransaksi.getText().toString();
+                //String currentuserId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
+                String currentuserId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail().replace('.','_');
 
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
@@ -107,6 +113,7 @@ public class JemputSampahFragment extends Fragment implements View.OnClickListen
                     ref.child(currentuserId).child(refKey).child("Satuan").setValue(satuanSampah);
                     ref.child(currentuserId).child(refKey).child("Tanggal").setValue(tanggal);
                     ref.child(currentuserId).child(refKey).child("LokasiJemput").setValue(lokasiJemput);
+                    ref.child(currentuserId).child(refKey).child("Poin").setValue(poin);
                     ref.child(currentuserId).child(refKey).child("Status").setValue("Sedang diproses");
                 }
 

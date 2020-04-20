@@ -62,7 +62,8 @@ public class StatusAntarFragment extends Fragment implements View.OnClickListene
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        String currentuserId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
+        //String currentuserId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
+        String currentuserId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail().replace('.','_');
         databaseReference = FirebaseDatabase.getInstance().getReference().child("AntarSampah").child(currentuserId);
         daftarStatusAntar = new ArrayList<StatusAntar>();
 

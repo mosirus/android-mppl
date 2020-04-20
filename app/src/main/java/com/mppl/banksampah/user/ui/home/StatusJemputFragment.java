@@ -69,7 +69,9 @@ public class StatusJemputFragment extends Fragment implements View.OnClickListen
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        String currentuserId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
+        //String currentuserId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
+        String currentuserId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail().replace('.','_');
+
         databaseReference = FirebaseDatabase.getInstance().getReference().child("JemputSampah").child(currentuserId);
         daftarStatusJemput = new ArrayList<StatusAntar>();
 

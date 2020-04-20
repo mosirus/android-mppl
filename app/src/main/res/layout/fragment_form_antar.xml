@@ -121,6 +121,19 @@
             android:background="@drawable/spinner_style"
             android:drawableTop="@drawable/ic_add_black_24dp" />
 
+        <TextView
+            android:id="@+id/tv_poin_transaksi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textSize="16sp"
+            android:textColor="@color/colorPrimary"
+            android:padding="8dp"
+            android:background="@drawable/spinner_style"
+            android:text="@string/poin"/>
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
