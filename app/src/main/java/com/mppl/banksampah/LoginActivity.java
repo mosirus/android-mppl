@@ -92,7 +92,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     //fungsi dipanggil ketika proses Authentikasi berhasil
     private void onAuthSuccess(FirebaseUser user) {
-
         // Go to MainActivity
 
         if (user.getUid().equals("Ydb0Zv17xzZ0X6VifzYNUJhkF8J2")){
