@@ -45,7 +45,8 @@ import static android.app.Activity.RESULT_OK;
 
 public class EditProfileFragment extends Fragment implements View.OnClickListener {
 
-    private String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    //private String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    private String currentuser = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail().replace('.','_');
 
     private DatabaseReference ref;
 
@@ -55,7 +56,6 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
     private static final int REQUEST_CODE_GALLERY = 2;
 
     private EditText edt_name;
-    private EditText edt_email;
     private EditText edt_telp;
     private EditText edt_job;
     private EditText edt_id_number;
@@ -73,7 +73,6 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
 
         TextView edt_gambar = root.findViewById(R.id.txtSuntingFoto);
         edt_name = root.findViewById(R.id.editnama);
-        edt_email = root.findViewById(R.id.editemail);
         edt_address = root.findViewById(R.id.editalamat);
         edt_telp = root.findViewById(R.id.editno);
         edt_job = root.findViewById(R.id.editpekerjaan);
@@ -86,14 +85,12 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String nama = Objects.requireNonNull(dataSnapshot.child("nama_lengkap").getValue()).toString();
-                String email = Objects.requireNonNull(dataSnapshot.child("email").getValue()).toString();
                 String nomor_telepon = Objects.requireNonNull(dataSnapshot.child("no_telp").getValue()).toString();
                 String alamat = Objects.requireNonNull(dataSnapshot.child("alamat").getValue()).toString();
                 String pekerjaan = Objects.requireNonNull(dataSnapshot.child("pekerjaan").getValue()).toString();
                 String no_identitas = Objects.requireNonNull(dataSnapshot.child("no_identitas").getValue()).toString();
 
                 edt_name.setText(nama);
-                edt_email.setText(email);
                 edt_telp.setText(nomor_telepon);
                 edt_address.setText(alamat);
                 edt_id_number.setText(no_identitas);

@@ -38,7 +38,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         btnTukarPoin.setOnClickListener(this);
 
         final TextView tvJumlahPoin = root.findViewById(R.id.jumlah_poin);
-        String currentuser = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
+        //String currentuser = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
+        String currentuser = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail().replace('.','_');
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser);
         ref.addValueEventListener(new ValueEventListener() {
             @Override

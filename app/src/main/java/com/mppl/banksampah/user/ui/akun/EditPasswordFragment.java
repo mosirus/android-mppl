@@ -22,10 +22,13 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.mppl.banksampah.R;
 
+import java.util.Objects;
+
 
 public class EditPasswordFragment extends Fragment implements View.OnClickListener {
 
-    private String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    //private String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    private String currentuser = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail().replace('.','_');
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     private ProfileViewModel homeViewModel;

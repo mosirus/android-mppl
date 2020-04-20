@@ -2,6 +2,7 @@ package com.mppl.banksampah;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -13,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -41,8 +43,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private EditText editTextPassword;
     private double point = 0;
 
-    private ProgressDialog progressDialog;
-
     private FirebaseAuth firebaseAuth;
     private DatabaseReference database;
 
@@ -51,10 +51,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        progressDialog = new ProgressDialog(this);
-
         firebaseAuth = FirebaseAuth.getInstance();
-
 
         btnDaftar = findViewById(R.id.btn_register);
         btnBatal = findViewById(R.id.btn_batal);
@@ -127,6 +124,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         if (!validateForm()) {
             return;
         } else {
+            final ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setTitle("Mendaftarkan Akun...");
+            progressDialog.show();
+
             firebaseAuth.createUserWithEmailAndPassword(acEmail, acPassword)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
 
@@ -134,13 +135,15 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 // Sign in success, update UI with the signed-in user's information
+                                progressDialog.dismiss();
                                 Log.d(TAG, "createUserWithEmail:success");
                                 onAuthSuccess(task.getResult().getUser());
                             } else {
                                 // If sign in fails, display a message to the user.
+                                progressDialog.dismiss();
                                 Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                                Toast.makeText(RegisterActivity.this, "Authentication failed.",
-                                        Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RegisterActivity.this, "Pendaftaran gagal, email mungkin sudah digunakan",
+                                        Toast.LENGTH_LONG).show();
                             }
                         }
                     });
@@ -153,18 +156,23 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         String acNamaLengkap = namaLengkap.getText().toString().trim();
         String acEmail = editTextEmail.getText().toString().trim();
         String acNoTelp = notelp.getText().toString().trim();
-        String acUsername = username.getText().toString().trim();
         String acPassword = editTextPassword.getText().toString().trim();
         int firstPoint = 0;
         String acPekerjaan = "";
         String acNoId = "";
         String acAlamat = "";
 
-        writeNewUser(user.getUid(), acNamaLengkap, acEmail, acNoTelp, acPassword, acNoId, acPekerjaan, acAlamat, firstPoint);
+        writeNewUser(user.getEmail().replace('.', '_'), acNamaLengkap, acEmail, acNoTelp, acPassword, acNoId, acPekerjaan, acAlamat, firstPoint);
 
         // Go to MainActivity
-        startActivity(new Intent(RegisterActivity.this, MainActivity.class));
-        finish();
+        new AlertDialog.Builder(this)
+                .setTitle("Pendaftaran Berhasil")
+                .setMessage("Tekan OK untuk menuju ke halaman utama")
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                    }
+                }).show();
     }
 
     private void writeNewUser(String userId, String nama, String email, String noTelp, String password,
