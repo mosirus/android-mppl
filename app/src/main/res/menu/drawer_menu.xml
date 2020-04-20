@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="all">
+        <item
+            android:id="@+id/navigation1"
+            android:checked="false"
+            android:icon="@drawable/terima_sampah"
+            android:title="@string/navigation_view_item_1" />
+
+        <item
+            android:id="@+id/navigation2"
+            android:checked="false"
+            android:icon="@drawable/pickup"
+            android:title="@string/navigation_view_item_2" />
+
+        <item
+            android:id="@+id/navigation3"
+            android:checked="false"
+            android:icon="@drawable/daftar_pengguna"
+            android:title="@string/navigation_view_item_3" />
+        <item
+            android:id="@+id/navigation4"
+            android:checked="false"
+            android:icon="@drawable/event"
+            android:title="@string/navigation_view_item_4" />
+        <item
+            android:id="@+id/navigation5"
+            android:checked="false"
+            android:icon="@drawable/kupon"
+            android:title="@string/navigation_view_item_5" />
+        <item
+            android:id="@+id/navigatin6"
+            android:checked="false"
+            android:icon="@drawable/riwayat"
+            android:title="@string/navigation_view_item_6" />
+    </group>
+
+    <item
+        android:id="@+id/nav_admin_keluar"
+        app:actionLayout="@layout/admin_logout_button"
+        android:checkable="false"
+        tools:ignore="MenuTitle" />
+
+</menu>
+
