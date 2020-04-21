@@ -42,7 +42,7 @@ public class StatusAntarAdapter extends RecyclerView.Adapter<StatusAntarAdapter.
 
         holder.tvRincian.setText(rincian);
         holder.tvTanggal.setText(String.valueOf(list.get(position).getTanggal()));
-        holder.tvPoin.setText("10");
+        holder.tvPoin.setText("100");
 
         holder.tvStatus.setText(list.get(position).getStatus());
         String status = list.get(position).getStatus();

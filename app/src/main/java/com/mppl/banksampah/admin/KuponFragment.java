@@ -117,39 +117,5 @@ public class KuponFragment extends Fragment implements OnClickListener{
         }
 
     }
-
-    /*public class SimpleRVAdapter extends RecyclerView.Adapter<ListViewHolder>{
-
-        private String[] data;
-        public SimpleRVAdapter(String[] dataset){
-            data = dataset;
-        }
-
-        @Override
-        public ListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_reward, parent, false);
-            ListViewHolder viewHolder = new ListViewHolder(view);
-            return viewHolder;
-        }
-
-        @Override
-        public void onBindViewHolder(ListViewHolder holder, int position) {
-            holder.namaReward.setText(data[position]);
-        }
-
-        @Override
-        public int getItemCount() {
-            return data.length;
-        }
-    }
-
-    public static class ListViewHolder extends RecyclerView.ViewHolder{
-        public TextView namaReward;
-        public ListViewHolder(View itemView){
-            super(itemView);
-            namaReward = itemView.findViewById(R.id.tv_list_reward);
-        }
-    }*/
-
 }
 

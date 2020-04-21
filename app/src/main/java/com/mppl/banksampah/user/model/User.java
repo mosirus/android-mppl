@@ -90,4 +90,6 @@ public class User implements Serializable {
         this.point = point;
     }
 
+
+
 }

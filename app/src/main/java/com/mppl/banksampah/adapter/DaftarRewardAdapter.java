@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,6 +17,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.mppl.banksampah.R;
 import com.mppl.banksampah.admin.model.Reward;
 
@@ -52,7 +59,7 @@ public class DaftarRewardAdapter extends RecyclerView.Adapter<DaftarRewardAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CardViewViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CardViewViewHolder holder, final int position) {
         Reward reward = listReward.get(position);
         holder.namaReward.setText(listReward.get(position).getNamaReward());
         Glide.with(holder.itemView.getContext())
@@ -70,6 +77,7 @@ public class DaftarRewardAdapter extends RecyclerView.Adapter<DaftarRewardAdapte
     public class CardViewViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView namaReward;
         private ImageView gambarReward;
+        private Button btnHapusReward;
 
         CardViewViewHolder(View itemView){
             super(itemView);

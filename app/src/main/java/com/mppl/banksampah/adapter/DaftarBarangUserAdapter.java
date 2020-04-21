@@ -57,6 +57,9 @@ public class DaftarBarangUserAdapter extends RecyclerView.Adapter<DaftarBarangUs
                 .load(reward.getURLReward())
                 .apply(new RequestOptions().override(70,70))
                 .into(holder.gambarBarang);
+        int a = listBarang.get(position).getPointReward();
+        String b = Integer.toString(a);
+        holder.poinBarang.setText(b+" Poin");
     }
 
     @Override
@@ -68,14 +71,15 @@ public class DaftarBarangUserAdapter extends RecyclerView.Adapter<DaftarBarangUs
         private TextView namaBarang;
         private ImageView gambarBarang;
         private TextView jenisBarang;
-        private Button btnBarang;
+        private TextView poinBarang;
+
 
         public CardViewHolder(View itemView){
             super(itemView);
             namaBarang = itemView.findViewById(R.id.tv_list_barang);
             gambarBarang = itemView.findViewById(R.id.iv_list_barang);
-            btnBarang = itemView.findViewById(R.id.btn_list_barang);
             jenisBarang = itemView.findViewById(R.id.tv_list_jenisreward);
+            poinBarang = itemView.findViewById(R.id.tv_list_poinreward);
         }
 
         @Override
@@ -83,6 +87,7 @@ public class DaftarBarangUserAdapter extends RecyclerView.Adapter<DaftarBarangUs
             int position = getAdapterPosition();
             Reward reward = getListBarang().get(position);
             reward.setNamaReward(reward.getNamaReward());
+            reward.setPointReward(reward.getPointReward());
 
             /*if(v.getId() == R.id.btn_list_barang){
 

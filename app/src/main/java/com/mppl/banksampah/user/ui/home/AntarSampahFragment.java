@@ -99,6 +99,8 @@ public class AntarSampahFragment extends Fragment implements View.OnClickListene
                 int poin = Integer.parseInt(tvPoinTransaksi.getText().toString());
                 String currentuserId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail().replace('.','_');
                 String status = "Sedang diproses";
+                //String noHpUser = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());
+
 
                 AntarSampahUser antarSampahUser = new AntarSampahUser(jenisSampah,satuanSampah,jumlahSampah,tanggal,poin,currentuserId,status);
 

@@ -8,6 +8,7 @@ public class AntarSampahUser {
     private int poin;
     private String currentId;
     private String status;
+    //private String noHpUser;
 
     public AntarSampahUser(){
 
@@ -21,6 +22,7 @@ public class AntarSampahUser {
         poin = poin1;
         currentId = currentId1;
         status = status1;
+        //noHpUser = noHpUser1;
     }
 
     public String getJenisSampah() {
@@ -79,4 +81,11 @@ public class AntarSampahUser {
         this.status = status;
     }
 
+    /*public String getNoHpUser() {
+        return noHpUser;
+    }
+
+    public void setNoHpUser(String noHpUser) {
+        this.noHpUser = noHpUser;
+    }*/
 }

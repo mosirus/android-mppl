@@ -47,6 +47,7 @@ public class DaftarAntarSampahUserAdapter extends RecyclerView.Adapter<DaftarAnt
 
     @Override
     public void onBindViewHolder(@NonNull CardViewHolder holder, int position) {
+        String email = listAntarSampahUser.get(position).getCurrentId().replace("_",".");
         AntarSampahUser antarSampahUser = listAntarSampahUser.get(position);
         holder.tvTanggalReqAntar.setText(listAntarSampahUser.get(position).getTanggal());
         holder.tvUserReqAntar.setText(listAntarSampahUser.get(position).getCurrentId());

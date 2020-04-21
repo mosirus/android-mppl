@@ -251,6 +251,8 @@
 
     <string name="judultp_listbarangkupon"><![CDATA[List Barang & Kupon]]></string>
     <string name="jenis_reward">Jenis</string>
+    <string name="harga_reward">Harga</string>
+    <string name="poin_reward">Poin Item</string>
 
 
 </resources>
