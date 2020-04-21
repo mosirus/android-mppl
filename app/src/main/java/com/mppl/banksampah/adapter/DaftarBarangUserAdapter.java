@@ -1,5 +1,7 @@
 package com.mppl.banksampah.adapter;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,6 +62,7 @@ public class DaftarBarangUserAdapter extends RecyclerView.Adapter<DaftarBarangUs
         int a = listBarang.get(position).getPointReward();
         String b = Integer.toString(a);
         holder.poinBarang.setText(b+" Poin");
+
     }
 
     @Override
@@ -72,7 +75,6 @@ public class DaftarBarangUserAdapter extends RecyclerView.Adapter<DaftarBarangUs
         private ImageView gambarBarang;
         private TextView jenisBarang;
         private TextView poinBarang;
-
 
         public CardViewHolder(View itemView){
             super(itemView);

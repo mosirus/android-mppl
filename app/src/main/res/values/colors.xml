@@ -20,6 +20,9 @@
     <color name="proses">#F3CC2F</color>
     <color name="berhasil">#218B2B</color>
     <color name="gagal">#E1393D</color>
+    <color name="green">#3CB371</color>
+    <color name="red">#FF3425</color>
+
 
 </resources>
 
