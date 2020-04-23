@@ -38,19 +38,11 @@ import java.util.Objects;
 
 public class AntarSampahFragment extends Fragment implements View.OnClickListener {
 
-    private HomeViewModel homeViewModel;
-
     private DatabaseReference ref;
 
-    private DatePickerDialog datePickerDialog;
     private SimpleDateFormat dateFormatter;
 
-    private ImageButton imgBtnDatePicker;
     private TextView pickedDate;
-    private Button btnOk;
-    private Button btnBatal;
-    private Button btnStatusAntar;
-    private TextView tvDaftarLokasi;
     private TextView tvPoinTransaksi;
     private Spinner spnrJenisSampah;
     private Spinner spnrSatuan;
@@ -58,27 +50,26 @@ public class AntarSampahFragment extends Fragment implements View.OnClickListene
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel.class);
+        HomeViewModel homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_form_antar, container, false);
 
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
 
         pickedDate = root.findViewById(R.id.picked_date);
-        btnBatal = root.findViewById(R.id.btn_batal_antar);
+        Button btnBatal = root.findViewById(R.id.btn_batal_antar);
         btnBatal.setOnClickListener(this);
-        btnOk = root.findViewById(R.id.btn_ok);
+        Button btnOk = root.findViewById(R.id.btn_ok);
         btnOk.setOnClickListener(this);
 
         spnrJenisSampah = root.findViewById(R.id.spinner_jenis_sampah);
         spnrSatuan = root.findViewById(R.id.spinner_satuan);
         edtJumlahSampah = root.findViewById(R.id.edtJumlahSampah);
 
-        imgBtnDatePicker = root.findViewById(R.id.date_picker_toggle);
+        ImageButton imgBtnDatePicker = root.findViewById(R.id.date_picker_toggle);
         imgBtnDatePicker.setOnClickListener(this);
-        btnStatusAntar = root.findViewById(R.id.btn_status_antar);
+        Button btnStatusAntar = root.findViewById(R.id.btn_status_antar);
         btnStatusAntar.setOnClickListener(this);
-        tvDaftarLokasi = root.findViewById(R.id.tv_daftar_lokasi);
+        TextView tvDaftarLokasi = root.findViewById(R.id.tv_daftar_lokasi);
         tvDaftarLokasi.setOnClickListener(this);
         tvPoinTransaksi = root.findViewById(R.id.tv_poin_transaksi);
         tvPoinTransaksi.setText("100");
@@ -92,21 +83,18 @@ public class AntarSampahFragment extends Fragment implements View.OnClickListene
         final String refKey = ref.push().getKey();
         if (validateForm()) {
             ref.addChildEventListener(new ChildEventListener() {
-                String jenisSampah = spnrJenisSampah.getSelectedItem().toString();
-                String satuanSampah = spnrSatuan.getSelectedItem().toString();
-                int jumlahSampah = Integer.parseInt(edtJumlahSampah.getText().toString());
-                String tanggal = pickedDate.getText().toString();
+                String JenisSampah = spnrJenisSampah.getSelectedItem().toString();
+                String Satuan = spnrSatuan.getSelectedItem().toString();
+                String Berat = edtJumlahSampah.getText().toString();
+                String Tanggal = pickedDate.getText().toString();
                 int poin = Integer.parseInt(tvPoinTransaksi.getText().toString());
-                String currentuserId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail().replace('.','_');
+                String currentuserId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail().replace('.', '_');
                 String status = "Sedang diproses";
-                //String noHpUser = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());
 
-
-                AntarSampahUser antarSampahUser = new AntarSampahUser(jenisSampah,satuanSampah,jumlahSampah,tanggal,poin,currentuserId,status);
+                AntarSampahUser antarSampahUser = new AntarSampahUser(JenisSampah, Satuan, Berat, Tanggal, poin, currentuserId, status);
 
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
                     ref.child(currentuserId).child(refKey).setValue(antarSampahUser);
                 }
 
@@ -147,8 +135,7 @@ public class AntarSampahFragment extends Fragment implements View.OnClickListene
         if (TextUtils.isEmpty(edtJumlahSampah.getText().toString())) {
             edtJumlahSampah.setError("Harap masukkan jumlah sampah");
             result = false;
-        }
-        else if (TextUtils.isEmpty(pickedDate.getText().toString())){
+        } else if (TextUtils.isEmpty(pickedDate.getText().toString())) {
             new AlertDialog.Builder(Objects.requireNonNull(getActivity()))
                     .setMessage("Harap pilih tanggal pengantaran")
                     .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
@@ -192,7 +179,7 @@ public class AntarSampahFragment extends Fragment implements View.OnClickListene
 
     private void showDateDialog() {
         Calendar newCalendar = Calendar.getInstance();
-        datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
 
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {

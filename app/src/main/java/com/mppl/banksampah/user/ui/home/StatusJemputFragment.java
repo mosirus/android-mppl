@@ -23,7 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.mppl.banksampah.R;
 import com.mppl.banksampah.adapter.StatusAntarAdapter;
-import com.mppl.banksampah.user.ui.tentang.StatusAntar;
+import com.mppl.banksampah.user.model.StatusAntar;
 
 import java.util.ArrayList;
 import java.util.Objects;
