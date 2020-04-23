@@ -106,12 +106,6 @@ public class AntarSampahFragment extends Fragment implements View.OnClickListene
 
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                    /*ref.child(currentuserId).child(refKey).child("JenisSampah").setValue(jenisSampah);
-                    ref.child(currentuserId).child(refKey).child("Berat").setValue(jumlahSampah);
-                    ref.child(currentuserId).child(refKey).child("Satuan").setValue(satuanSampah);
-                    ref.child(currentuserId).child(refKey).child("Tanggal").setValue(tanggal);
-                    ref.child(currentuserId).child(refKey).child("Poin").setValue(poin);
-                    ref.child(currentuserId).child(refKey).child("Status").setValue("Sedang diproses");*/
 
                     ref.child(currentuserId).child(refKey).setValue(antarSampahUser);
                 }

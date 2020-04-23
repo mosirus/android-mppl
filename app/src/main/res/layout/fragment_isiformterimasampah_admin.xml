@@ -58,7 +58,7 @@
             android:gravity="center"/>
 
         <EditText
-            android:id="@+id/edit_namapengguna"
+            android:id="@+id/edit_email_pengguna"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -66,7 +66,7 @@
             android:layout_marginEnd="16dp"
             android:paddingStart="6dp"
             android:paddingEnd="6dp"
-            android:hint="@string/nama_pengguna"
+            android:hint="@string/email_pengguna"
             android:background="@drawable/style"
             android:textColorHint="@color/colorPrimary"/>
 
@@ -75,7 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="16dp"
             android:orientation="horizontal">
 
@@ -92,10 +92,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:entries="@array/jenis_sampah"
-                    android:prompt="@string/prompt_jenis_sampah"
-                    android:textColor="@color/colorPrimary"/>
+                    android:prompt="@string/prompt_jenis_sampah" />
             </FrameLayout>
 
+            <EditText
+                android:id="@+id/edtJumlahSampah"
+                android:layout_width="match_parent"
+                android:layout_weight="0.31"
+                android:layout_height="32dp"
+                android:layout_marginStart="7dp"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:hint="@string/jumlah2"
+                android:paddingStart="2dp"
+                android:textColorHint="@color/colorPrimary"
+                tools:ignore="LabelFor"
+                android:background="@drawable/style"/>
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -107,24 +119,13 @@
                 android:background="@drawable/spinner_style">
 
                 <Spinner
-                    android:id="@+id/spinner_detail_sampah"
+                    android:id="@+id/spinner_satuan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:entries="@array/satuan"
                     android:prompt="@string/prompt_satuan_sampah"
                     android:textColor="@color/colorPrimary" />
             </FrameLayout>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_weight="0.3"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="7dp"
-                android:importantForAutofill="no"
-                android:inputType="number"
-                android:hint="@string/berat"
-                android:textColorHint="@color/colorPrimary"
-                tools:ignore="LabelFor" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -133,39 +134,35 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/spinner_style"
             android:drawableTop="@drawable/ic_add_black_24dp" />
+
+        <TextView
+            android:id="@+id/tv_poin_transaksi_terima"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textSize="16sp"
+            android:textColor="@color/colorPrimary"
+            android:padding="8dp"
+            android:background="@drawable/spinner_style"
+            android:text="@string/poin"/>
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp">
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp">
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="3dp"
-                android:layout_marginStart="3dp"
-                android:layout_marginTop="10dp">
 
-                <EditText
-                    android:id="@+id/_editpoin"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/style"
-                    android:hint="@string/poin"
-                    android:paddingStart="6dp"
-                    android:paddingEnd="6dp"
-                    android:textColorHint="@color/colorPrimary"
-                    />
-            </FrameLayout>
             <FrameLayout
                 android:id="@+id/date_picker_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="70dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/spinner_style"
                 android:orientation="horizontal"
                 android:padding="7dp">
@@ -175,8 +172,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="3dp"
-                    android:text="@string/tanggal_waktu"
-                    android:textColor="@color/colorPrimary"
+                    android:hint="@string/tanggal_waktu"
+                    android:textColorHint="@color/colorPrimary"
                     android:textSize="16sp" />
 
                 <ImageButton
@@ -196,7 +193,6 @@
                 android:layout_marginTop="120dp"
                 android:gravity="end"
                 android:orientation="horizontal">
-
 
                 <Button
                     android:id="@+id/btn_ok"

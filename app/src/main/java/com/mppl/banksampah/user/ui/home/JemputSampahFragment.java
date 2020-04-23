@@ -60,13 +60,6 @@ public class JemputSampahFragment extends Fragment implements View.OnClickListen
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_form_jemput, container, false);
-//        final TextView textView = root.findViewById(R.id.text_home);
-//        homeViewModel.getText().observe(this, new Observer<String>() {
-//            @Override
-//            public void onChanged(@Nullable String s) {
-//                textView.setText(s);
-//
-//        });
 
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
 
@@ -139,7 +132,7 @@ public class JemputSampahFragment extends Fragment implements View.OnClickListen
             });
             new AlertDialog.Builder(Objects.requireNonNull(getActivity()))
                     .setTitle("Request Berhasil")
-                    .setMessage("Request kamu berhasil dibuat, Sampah Anda Akan Di Jemput Sesuai Dengan Lokasi Anda")
+                    .setMessage("Request kamu berhasil dibuat, Sampah Anda Akan di Jemput Sesuai Dengan Lokasi Anda")
                     .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                         }
@@ -212,10 +205,6 @@ public class JemputSampahFragment extends Fragment implements View.OnClickListen
 
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-
-                /**
-                 * Method ini dipanggil saat kita selesai memilih tanggal di DatePicker
-                 */
 
                 /**
                  * Set Calendar untuk menampung tanggal yang dipilih
