@@ -95,8 +95,9 @@ public class DaftarBarangUserAdapter extends RecyclerView.Adapter<DaftarBarangUs
                 String poinRewardRequested = Integer.toString(listBarang.get(position).getPointReward());
                 String namaRewardRequested = listBarang.get(position).getNamaReward();
                 RequestedReward requestedReward = new RequestedReward(dateRequested,emailRequester,poinRewardRequested,namaRewardRequested);
+                String refkey = reference.push().getKey();
 
-                reference.setValue(requestedReward).addOnCompleteListener(new OnCompleteListener<Void>() {
+                reference.child(refkey).setValue(requestedReward).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         Toast.makeText(holder.itemView.getContext(), "Request berhasil dilakukan, silahkan tunggu persetujuan Admin", Toast.LENGTH_SHORT).show();
