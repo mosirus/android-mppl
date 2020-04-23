@@ -22,6 +22,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.mppl.banksampah.R;
 import com.mppl.banksampah.adapter.DaftarAntarSampahUserAdapter;
@@ -32,20 +33,15 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 
-public class PermintaanAntarFragment extends Fragment implements OnClickListener{
-    private Button btnIsiForm;
+public class PermintaanAntarFragment extends Fragment implements OnClickListener {
     private RecyclerView rvListPermintaanAntar;
 
     private FirebaseAuth auth;
     private FirebaseDatabase database;
     private DatabaseReference reference;
-    private String GetUserID;
 
     private ArrayList<AntarSampahUser> listAntarSampahUser;
     private DaftarAntarSampahUserAdapter antarSampahUserAdapter;
-
-
-    private String namaPeminta[] = {"Pangondion K Naibaho","Zephyr Sensei","Lae Monang","Sulastri Tambunan","Angel Napitupulu"};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,31 +51,30 @@ public class PermintaanAntarFragment extends Fragment implements OnClickListener
         rvListPermintaanAntar = root.findViewById(R.id.pa_listPermintaan);
         rvListPermintaanAntar.setHasFixedSize(true);
         rvListPermintaanAntar.setLayoutManager(new LinearLayoutManager(getContext()));
-        //rvListPermintaanAntar.setAdapter(new SimpleRVAdapter(namaPeminta));
 
-        btnIsiForm = root.findViewById(R.id.btn_isi_form);
+        Button btnIsiForm = root.findViewById(R.id.btn_isi_form);
         btnIsiForm.setOnClickListener(this);
 
         auth = FirebaseAuth.getInstance();
 
         FirebaseUser user = auth.getCurrentUser();
-        GetUserID = user.getUid();
 
-        String currentuserId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail().replace('.','_');
         database = FirebaseDatabase.getInstance();
         reference = database.getReference().child("AntarSampah");
         listAntarSampahUser = new ArrayList<AntarSampahUser>();
 
-        reference.addValueEventListener(new ValueEventListener() {
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    for (DataSnapshot dataSnapshot1 : snapshot.getChildren()){
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    for (DataSnapshot dataSnapshot1 : snapshot.getChildren()) {
                         AntarSampahUser antarSampahUser = dataSnapshot1.getValue(AntarSampahUser.class);
-                        listAntarSampahUser.add(antarSampahUser);
+                        if (dataSnapshot1.child("status").getValue().toString().equals("Sedang diproses")) {
+                            listAntarSampahUser.add(antarSampahUser);
+                        }
                     }
                 }
-                antarSampahUserAdapter = new DaftarAntarSampahUserAdapter(getActivity(),listAntarSampahUser);
+                antarSampahUserAdapter = new DaftarAntarSampahUserAdapter(getActivity(), listAntarSampahUser);
                 rvListPermintaanAntar.setAdapter(antarSampahUserAdapter);
             }
 
@@ -94,7 +89,7 @@ public class PermintaanAntarFragment extends Fragment implements OnClickListener
 
     @Override
     public void onClick(View v) {
-        if(v.getId() == R.id.btn_isi_form){
+        if (v.getId() == R.id.btn_isi_form) {
             TerimaSampahFragment fragment = new TerimaSampahFragment();
             FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment, TerimaSampahFragment.class.getSimpleName())
