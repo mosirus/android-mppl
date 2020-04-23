@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -29,29 +30,22 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class StatusJemputFragment extends Fragment implements View.OnClickListener {
-
-    private HomeViewModel homeViewModel;
-
-    private DatabaseReference databaseReference;
-
     private RecyclerView rvStatusJemput;
     private StatusAntarAdapter statusJemputAdapter;
 
     private ArrayList<StatusAntar> daftarStatusJemput;
 
-    private Button btnIsiForm;
-
-    private Button btnStatusJemput;
+    private TextView tvBelumRequest;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel.class);
+        HomeViewModel homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
 
         View root = inflater.inflate(R.layout.fragment_status_jemput, container, false);
 
-        btnIsiForm = root.findViewById(R.id.btn_isi_form);
+        Button btnIsiForm = root.findViewById(R.id.btn_isi_form);
         btnIsiForm.setOnClickListener(this);
+        tvBelumRequest = root.findViewById(R.id.tvBelumRequest);
 
         return root;
     }
@@ -69,10 +63,9 @@ public class StatusJemputFragment extends Fragment implements View.OnClickListen
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //String currentuserId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
-        String currentuserId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail().replace('.','_');
+        String currentuserId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail().replace('.', '_');
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("JemputSampah").child(currentuserId);
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("JemputSampah").child(currentuserId);
         daftarStatusJemput = new ArrayList<StatusAntar>();
 
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -82,8 +75,12 @@ public class StatusJemputFragment extends Fragment implements View.OnClickListen
                     StatusAntar statusAntar = dataSnapshot1.getValue(StatusAntar.class);
                     daftarStatusJemput.add(statusAntar);
                 }
-                statusJemputAdapter = new StatusAntarAdapter(getActivity(), daftarStatusJemput);
-                rvStatusJemput.setAdapter(statusJemputAdapter);
+                if (daftarStatusJemput.isEmpty()) {
+                    tvBelumRequest.setVisibility(View.VISIBLE);
+                } else {
+                    statusJemputAdapter = new StatusAntarAdapter(getActivity(), daftarStatusJemput);
+                    rvStatusJemput.setAdapter(statusJemputAdapter);
+                }
             }
 
             @Override
@@ -95,7 +92,7 @@ public class StatusJemputFragment extends Fragment implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.btn_isi_form){
+        if (v.getId() == R.id.btn_isi_form) {
             JemputSampahFragment fragment = new JemputSampahFragment();
 
             FragmentManager fragmentManager = getFragmentManager();

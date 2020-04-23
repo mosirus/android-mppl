@@ -30,14 +30,11 @@ import java.util.Objects;
 
 public class StatusAntarFragment extends Fragment implements View.OnClickListener {
 
-    private DatabaseReference databaseReference;
-
     private RecyclerView rvStatusAntar;
     private StatusAntarAdapter statusAntarAdapter;
 
     private ArrayList<StatusAntar> daftarStatusAntar;
 
-    private Button btnIsiForm;
     private TextView tvBelumRequest;
 
 
@@ -45,7 +42,7 @@ public class StatusAntarFragment extends Fragment implements View.OnClickListene
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_status_antar, container, false);
-        btnIsiForm = root.findViewById(R.id.btn_isi_form);
+        Button btnIsiForm = root.findViewById(R.id.btn_isi_form);
         btnIsiForm.setOnClickListener(this);
         tvBelumRequest = root.findViewById(R.id.tvBelumRequest);
 
@@ -66,7 +63,7 @@ public class StatusAntarFragment extends Fragment implements View.OnClickListene
         super.onCreate(savedInstanceState);
 
         String currentuserId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail().replace('.','_');
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("AntarSampah").child(currentuserId);
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("AntarSampah").child(currentuserId);
         daftarStatusAntar = new ArrayList<StatusAntar>();
 
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {

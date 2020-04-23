@@ -256,5 +256,6 @@
     <string name="questionbuyitem">Ingin menukar poin anda dengan barang ini?</string>
     <string name="tukarPoin">Tukar</string>
     <string name="email_pengguna">Email Pengguna</string>
+    <string name="kamu_belum_memiliki_request_jemput">Kamu belum memiliki request jemput</string>
 
 </resources>
