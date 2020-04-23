@@ -256,5 +256,10 @@
     <string name="questionbuyitem">Ingin menukar poin anda dengan barang ini?</string>
     <string name="tukarPoin">Tukar</string>
     <string name="email_pengguna">Email Pengguna</string>
+    <string name="dummydate_requestreward">Tanggal Request</string>
+    <string name="btn_tolak_requestreward">Tolak</string>
+    <string name="btn_terima_requestreward">TERIMA</string>
+    <string name="dummyperson_requestreward">Email</string>
+    <string name="dummyaction_requestreward">Aksi Request</string>
 
 </resources>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/background_item_list_barang"
+    android:layout_marginVertical="5dp"
+    android:layout_marginHorizontal="5dp">
+
+    <TextView
+        android:id="@+id/tv_date_requestreward"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="@string/dummydate_requestreward"
+        android:textSize="15dp"
+        android:textColor="@color/green"
+        android:padding="5dp"
+        android:layout_marginLeft="5dp"
+        />
+    <TextView
+        android:id="@+id/tv_person_requestreward"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="@string/dummyperson_requestreward"
+        android:textSize="15dp"
+        android:textColor="@color/green"
+        android:padding="5dp"
+        android:layout_marginLeft="5dp"
+        />
+    <TextView
+        android:id="@+id/tv_action_requestreward"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="@string/dummyaction_requestreward"
+        android:textSize="15dp"
+        android:textColor="@color/green"
+        android:padding="5dp"
+        android:layout_marginLeft="5dp"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <Button
+        android:id="@+id/btn_tolak_requestreward"
+        android:layout_height="40dp"
+        android:layout_width="100dp"
+        android:layout_marginHorizontal="20dp"
+        android:padding="10dp"
+        android:background="@drawable/cancel_btn_style"
+        android:text="@string/btn_tolak_requestreward"
+        android:textColor="@color/white"/>
+
+        <Button
+            android:id="@+id/btn_terima_requestreward"
+            android:layout_height="40dp"
+            android:layout_width="100dp"
+            android:layout_marginHorizontal="20dp"
+            android:padding="10dp"
+            android:background="@drawable/btn_style"
+            android:text="@string/btn_terima_requestreward"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+</LinearLayout>
