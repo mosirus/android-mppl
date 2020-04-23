@@ -260,5 +260,7 @@
     <string name="dummydate_requestreward">Tanggal Request</string>
     <string name="dummyperson_requestreward">Email Requester</string>
     <string name="dummyaction_requestreward">Aksi Request</string>
+    <string name="btn_tolak_requestreward">Tolak</string>
+    <string name="btn_terima_requestreward">Terima</string>
 
 </resources>
