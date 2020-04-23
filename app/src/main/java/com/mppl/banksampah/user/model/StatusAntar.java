@@ -1,4 +1,4 @@
-package com.mppl.banksampah.user.ui.tentang;
+package com.mppl.banksampah.user.model;
 
 import java.io.Serializable;
 

@@ -96,7 +96,7 @@ public class TerimaSampahFragment extends Fragment implements OnClickListener {
                         ref.addChildEventListener(new ChildEventListener() {
                             String jenisSampah = spnrJenisSampah.getSelectedItem().toString();
                             String satuanSampah = spnrSatuan.getSelectedItem().toString();
-                            int jumlahSampah = Integer.parseInt(edtJumlahSampah.getText().toString());
+                            String jumlahSampah = edtJumlahSampah.getText().toString();
                             String tanggal = pickedDate.getText().toString();
                             int poin = Integer.parseInt(tvPoinTransaksi.getText().toString());
                             String status = "Berhasil";

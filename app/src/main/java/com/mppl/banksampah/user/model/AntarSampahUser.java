@@ -1,68 +1,67 @@
 package com.mppl.banksampah.user.model;
 
 public class AntarSampahUser {
-    private String jenisSampah;
-    private String satuanSampah;
-    private int jumlahSampah;
-    private String tanggal;
-    private int poin;
+    private String JenisSampah;
+    private String Satuan;
+    private String Berat;
+    private String Tanggal;
+    private int Poin;
     private String currentId;
     private String status;
     //private String noHpUser;
 
-    public AntarSampahUser(){
+    public AntarSampahUser() {
 
     }
 
-    public AntarSampahUser(String jenisSampah1,String satuanSampah1, int jumlahSampah1, String tanggal1, int poin1, String currentId1,String status1){
-        jenisSampah = jenisSampah1;
-        satuanSampah = satuanSampah1;
-        jumlahSampah = jumlahSampah1;
-        tanggal = tanggal1;
-        poin = poin1;
-        currentId = currentId1;
-        status = status1;
-        //noHpUser = noHpUser1;
+    public AntarSampahUser(String jenisSampah, String satuan, String berat, String tanggal, int poin, String currentId, String status) {
+        JenisSampah = jenisSampah;
+        Satuan = satuan;
+        Berat = berat;
+        Tanggal = tanggal;
+        Poin = poin;
+        this.currentId = currentId;
+        this.status = status;
     }
 
     public String getJenisSampah() {
-        return jenisSampah;
+        return JenisSampah;
     }
 
     public void setJenisSampah(String jenisSampah) {
-        this.jenisSampah = jenisSampah;
+        JenisSampah = jenisSampah;
     }
 
-    public String getSatuanSampah() {
-        return satuanSampah;
+    public String getSatuan() {
+        return Satuan;
     }
 
-    public void setSatuanSampah(String satuanSampah) {
-        this.satuanSampah = satuanSampah;
+    public void setSatuan(String satuan) {
+        Satuan = satuan;
     }
 
-    public int getJumlahSampah() {
-        return jumlahSampah;
+    public String getBerat() {
+        return Berat;
     }
 
-    public void setJumlahSampah(int jumlahSampah) {
-        this.jumlahSampah = jumlahSampah;
+    public void setBerat(String berat) {
+        Berat = berat;
     }
 
     public String getTanggal() {
-        return tanggal;
+        return Tanggal;
     }
 
     public void setTanggal(String tanggal) {
-        this.tanggal = tanggal;
+        Tanggal = tanggal;
     }
 
     public int getPoin() {
-        return poin;
+        return Poin;
     }
 
     public void setPoin(int poin) {
-        this.poin = poin;
+        Poin = poin;
     }
 
     public String getCurrentId() {
@@ -81,11 +80,4 @@ public class AntarSampahUser {
         this.status = status;
     }
 
-    /*public String getNoHpUser() {
-        return noHpUser;
-    }
-
-    public void setNoHpUser(String noHpUser) {
-        this.noHpUser = noHpUser;
-    }*/
 }

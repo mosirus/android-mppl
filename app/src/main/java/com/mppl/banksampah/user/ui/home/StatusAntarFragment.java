@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,29 +23,28 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.mppl.banksampah.R;
 import com.mppl.banksampah.adapter.StatusAntarAdapter;
-import com.mppl.banksampah.user.ui.tentang.StatusAntar;
+import com.mppl.banksampah.user.model.StatusAntar;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class StatusAntarFragment extends Fragment implements View.OnClickListener {
 
-    private DatabaseReference databaseReference;
-
     private RecyclerView rvStatusAntar;
     private StatusAntarAdapter statusAntarAdapter;
 
     private ArrayList<StatusAntar> daftarStatusAntar;
 
-    private Button btnIsiForm;
+    private TextView tvBelumRequest;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_status_antar, container, false);
-        btnIsiForm = root.findViewById(R.id.btn_isi_form);
+        Button btnIsiForm = root.findViewById(R.id.btn_isi_form);
         btnIsiForm.setOnClickListener(this);
+        tvBelumRequest = root.findViewById(R.id.tvBelumRequest);
 
         return root;
     }
@@ -62,20 +62,24 @@ public class StatusAntarFragment extends Fragment implements View.OnClickListene
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //String currentuserId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
         String currentuserId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail().replace('.','_');
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("AntarSampah").child(currentuserId);
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("AntarSampah").child(currentuserId);
         daftarStatusAntar = new ArrayList<StatusAntar>();
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     StatusAntar statusAntar = dataSnapshot1.getValue(StatusAntar.class);
                     daftarStatusAntar.add(statusAntar);
                 }
-                statusAntarAdapter = new StatusAntarAdapter(getActivity(), daftarStatusAntar);
-                rvStatusAntar.setAdapter(statusAntarAdapter);
+                if (daftarStatusAntar.isEmpty()){
+                    tvBelumRequest.setVisibility(View.VISIBLE);
+                } else {
+                    statusAntarAdapter = new StatusAntarAdapter(getActivity(), daftarStatusAntar);
+                    rvStatusAntar.setAdapter(statusAntarAdapter);
+                }
+
             }
 
             @Override
