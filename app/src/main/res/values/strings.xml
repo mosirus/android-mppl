@@ -257,5 +257,8 @@
     <string name="tukarPoin">Tukar</string>
     <string name="email_pengguna">Email Pengguna</string>
     <string name="kamu_belum_memiliki_request_jemput">Kamu belum memiliki request jemput</string>
+    <string name="dummydate_requestreward">Tanggal Request</string>
+    <string name="dummyperson_requestreward">Email Requester</string>
+    <string name="dummyaction_requestreward">Aksi Request</string>
 
 </resources>
