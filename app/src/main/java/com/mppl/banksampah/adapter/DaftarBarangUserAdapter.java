@@ -1,12 +1,9 @@
 package com.mppl.banksampah.adapter;
 
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -94,7 +91,8 @@ public class DaftarBarangUserAdapter extends RecyclerView.Adapter<DaftarBarangUs
                 String emailRequester = userEmail;
                 String poinRewardRequested = Integer.toString(listBarang.get(position).getPointReward());
                 String namaRewardRequested = listBarang.get(position).getNamaReward();
-                RequestedReward requestedReward = new RequestedReward(dateRequested,emailRequester,poinRewardRequested,namaRewardRequested);
+                String statusSementara = "Sedang Diproses";
+                RequestedReward requestedReward = new RequestedReward(dateRequested,emailRequester,poinRewardRequested,namaRewardRequested,statusSementara);
                 String refkey = reference.push().getKey();
 
                 reference.child(refkey).setValue(requestedReward).addOnCompleteListener(new OnCompleteListener<Void>() {

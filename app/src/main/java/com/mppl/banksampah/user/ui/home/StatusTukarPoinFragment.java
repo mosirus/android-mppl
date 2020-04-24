@@ -2,6 +2,7 @@ package com.mppl.banksampah.user.ui.home;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,10 +13,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.mppl.banksampah.R;
+import com.mppl.banksampah.adapter.DaftarStRequestRewardUserAdapter;
+import com.mppl.banksampah.user.model.RequestedReward;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
 
 
 public class StatusTukarPoinFragment extends Fragment implements View.OnClickListener{
@@ -23,6 +36,14 @@ public class StatusTukarPoinFragment extends Fragment implements View.OnClickLis
     private Button btnListBarang;
     private Button btnListKupon;
     private RecyclerView rv_ListStatus;
+
+    private FirebaseAuth auth;
+    private FirebaseDatabase database;
+    private DatabaseReference reference;
+    private String getEmailUser;
+
+    private ArrayList<RequestedReward> listRequestedReward;
+    private DaftarStRequestRewardUserAdapter stRequestRewardUserAdapter;
 
     private String[] tanggal_status = {"18 Agustus 2020","04 November 2020","19 Desember 2020"};
 
@@ -37,7 +58,35 @@ public class StatusTukarPoinFragment extends Fragment implements View.OnClickLis
         rv_ListStatus = root.findViewById(R.id.rv_list_sttp);
         rv_ListStatus.setHasFixedSize(true);
         rv_ListStatus.setLayoutManager(new LinearLayoutManager(getContext()));
-        rv_ListStatus.setAdapter(new SimpleRVAdapter(tanggal_status));
+
+        auth = FirebaseAuth.getInstance();
+        FirebaseUser user = auth.getCurrentUser();
+        getEmailUser = user.getEmail().replace(".", "_");
+
+        database = FirebaseDatabase.getInstance();
+        reference = database.getReference().child("RequestRewardUser");
+        listRequestedReward = new ArrayList<RequestedReward>();
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                        for(DataSnapshot snapshot1 : snapshot.getChildren()){
+                            RequestedReward requestedReward = snapshot1.getValue(RequestedReward.class);
+                            if(snapshot1.child("emailRequester").getValue().toString().equals(getEmailUser)){
+                                listRequestedReward.add(requestedReward);
+                            }
+                        }
+                        stRequestRewardUserAdapter = new DaftarStRequestRewardUserAdapter(getActivity(),listRequestedReward);
+                        rv_ListStatus.setAdapter(stRequestRewardUserAdapter);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getActivity(), "Gagal memuat data", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return root;
     }
@@ -53,30 +102,4 @@ public class StatusTukarPoinFragment extends Fragment implements View.OnClickLis
 
     }
 
-    public class SimpleRVAdapter extends RecyclerView.Adapter<ListViewHolder>{
-        private String[] data;
-        public SimpleRVAdapter(String[] dataArgs){
-            data = dataArgs;
-        }
-        public ListViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_sttukarpoin, parent, false);
-            ListViewHolder viewHolder = new ListViewHolder(view);
-            return viewHolder;
-        }
-        public void onBindViewHolder(ListViewHolder holder, int position){
-            holder.tvTanggal.setText(data[position]);
-        }
-        public int getItemCount(){
-            return data.length;
-        }
-    }
-
-    public static class ListViewHolder extends RecyclerView.ViewHolder{
-        public TextView tvTanggal;
-        public ListViewHolder(View itemView){
-            super(itemView);
-            tvTanggal = itemView.findViewById(R.id.tv_date_sttp);
-        }
-
-    }
 }
