@@ -262,5 +262,9 @@
     <string name="dummyaction_requestreward">Aksi Request</string>
     <string name="btn_tolak_requestreward">Tolak</string>
     <string name="btn_terima_requestreward">Terima</string>
+    <string name="dummydate_riwayatreward">Tanggal Request</string>
+    <string name="dummyaction_riwayatreward">Aksi Request</string>
+    <string name="dummyperson_riwayatreward">Email Requester</string>
+    <string name="dummystatus_riwayatreward">Status Request</string>
 
 </resources>
