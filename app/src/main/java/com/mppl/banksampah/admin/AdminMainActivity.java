@@ -19,6 +19,8 @@ import com.mppl.banksampah.R;
 import com.mppl.banksampah.StartActivity;
 import com.mppl.banksampah.admin.daftarpengguna.DaftarPenggunaFragment;
 import com.mppl.banksampah.admin.event.EventFragment;
+import com.mppl.banksampah.admin.terimasampah.TerimaSampahFragment;
+import com.mppl.banksampah.admin.terimasampah.TerimaSampahFragmentContainer;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -45,7 +47,7 @@ public class AdminMainActivity extends AppCompatActivity implements NavigationVi
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new TerimaSampahFragment()).commit();
+                    new TerimaSampahFragmentContainer()).commit();
             navigationView.setCheckedItem(R.id.navigation1);
         }
     }
@@ -55,7 +57,7 @@ public class AdminMainActivity extends AppCompatActivity implements NavigationVi
         switch (menuItem.getItemId()){
             case R.id.navigation1:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new TerimaSampahFragment()).commit();
+                        new TerimaSampahFragmentContainer()).commit();
                 break;
             case R.id.navigation2:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,

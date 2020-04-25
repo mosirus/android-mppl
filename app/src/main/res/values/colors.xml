@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorBlack">#000000</color>
-    <color name="tabindicatorcolor">#2d2d2d</color>
+    <color name="tabindicatorcolor">#454545</color>
 
     <color name="spalshbag">#ffff</color>
     <color name="poinku">#FFA07A</color>
@@ -18,10 +18,12 @@
     <color name="item_riwayat">#E4E4E4</color>
     <color name="white">#FFFFFF</color>
     <color name="proses">#F3CC2F</color>
+    <color name="tulisan_hijau">#218B2B</color>
     <color name="berhasil">#218B2B</color>
     <color name="gagal">#E1393D</color>
     <color name="green">#3CB371</color>
     <color name="red">#FF3425</color>
+    <color name="button_hijau">#1D8927</color>
 
 
 </resources>

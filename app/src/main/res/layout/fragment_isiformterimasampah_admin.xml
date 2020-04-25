@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,65 +10,19 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:gravity="center_horizontal"
-            android:text="@string/terima_sampah"
-            android:textSize="30sp" />
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btn_isi_form"
-                android:layout_width="130dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center_vertical"
-                android:background="@drawable/btn_style"
-                android:text="@string/isi_form"
-                android:textColor="@android:color/white" />
-
-            <View
-                android:layout_width="2dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:background="@android:color/darker_gray" />
-
-            <Button
-                android:id="@+id/btn_status_antar"
-                android:layout_width="150dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center_vertical"
-                android:background="@drawable/btn_unclicked_style"
-                android:text="@string/permintaan_antar" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <RelativeLayout
-            android:id="@+id/namapengguna_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"/>
-
         <EditText
             android:id="@+id/edit_email_pengguna"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="16dp"
+            android:background="@drawable/style"
+            android:hint="@string/email"
             android:paddingStart="6dp"
             android:paddingEnd="6dp"
-            android:hint="@string/email_pengguna"
-            android:background="@drawable/style"
-            android:textColorHint="@color/colorPrimary"/>
+            android:textColor="@color/tulisan_hijau"
+            android:textColorHint="@color/tulisan_hijau" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/form_antar"
@@ -81,10 +35,10 @@
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_weight="0.2"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginEnd="6dp"
+                android:layout_weight="0.2"
                 android:background="@drawable/spinner_style">
 
                 <Spinner
@@ -98,24 +52,25 @@
             <EditText
                 android:id="@+id/edtJumlahSampah"
                 android:layout_width="match_parent"
-                android:layout_weight="0.31"
                 android:layout_height="32dp"
                 android:layout_marginStart="7dp"
+                android:layout_weight="0.31"
+                android:background="@drawable/style"
+                android:hint="@string/jumlah2"
                 android:importantForAutofill="no"
                 android:inputType="number"
-                android:hint="@string/jumlah2"
                 android:paddingStart="2dp"
-                android:textColorHint="@color/colorPrimary"
-                tools:ignore="LabelFor"
-                android:background="@drawable/style"/>
+                android:textColor="@color/tulisan_hijau"
+                android:textColorHint="@color/tulisan_hijau"
+                tools:ignore="LabelFor" />
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_weight="0.25"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="6dp"
                 android:layout_marginEnd="7dp"
+                android:layout_weight="0.25"
                 android:background="@drawable/spinner_style">
 
                 <Spinner
@@ -142,14 +97,14 @@
             android:id="@+id/tv_poin_transaksi_terima"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="16dp"
-            android:textSize="16sp"
-            android:textColor="@color/colorPrimary"
-            android:padding="8dp"
             android:background="@drawable/spinner_style"
-            android:text="@string/poin"/>
+            android:padding="8dp"
+            android:text="@string/poin"
+            android:textColor="@color/tulisan_hijau"
+            android:textSize="16sp" />
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -173,7 +128,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="3dp"
                     android:hint="@string/tanggal_waktu"
-                    android:textColorHint="@color/colorPrimary"
+                    android:textColor="@color/tulisan_hijau"
+                    android:textColorHint="@color/tulisan_hijau"
                     android:textSize="16sp" />
 
                 <ImageButton
@@ -196,18 +152,17 @@
 
                 <Button
                     android:id="@+id/btn_ok"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="5dp"
-                    android:background="@drawable/btn_style"
-                    android:text="@string/ok"
+                    android:background="@drawable/btn_style2"
+                    android:text="@string/terima"
                     android:textColor="@android:color/white" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
         </FrameLayout>
 
 
-
     </LinearLayout>
 
-</ScrollView>
+</RelativeLayout>

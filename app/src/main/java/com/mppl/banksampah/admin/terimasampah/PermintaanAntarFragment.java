@@ -1,4 +1,4 @@
-package com.mppl.banksampah.admin;
+package com.mppl.banksampah.admin.terimasampah;
 
 import android.os.Bundle;
 
@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,18 +21,15 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.mppl.banksampah.R;
 import com.mppl.banksampah.adapter.DaftarAntarSampahUserAdapter;
 import com.mppl.banksampah.user.model.AntarSampahUser;
-import com.mppl.banksampah.user.ui.home.AntarSampahFragment;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 
-public class PermintaanAntarFragment extends Fragment implements OnClickListener {
+public class PermintaanAntarFragment extends Fragment {
     private RecyclerView rvListPermintaanAntar;
 
     private FirebaseAuth auth;
@@ -51,9 +47,6 @@ public class PermintaanAntarFragment extends Fragment implements OnClickListener
         rvListPermintaanAntar = root.findViewById(R.id.pa_listPermintaan);
         rvListPermintaanAntar.setHasFixedSize(true);
         rvListPermintaanAntar.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        Button btnIsiForm = root.findViewById(R.id.btn_isi_form);
-        btnIsiForm.setOnClickListener(this);
 
         auth = FirebaseAuth.getInstance();
 
@@ -85,16 +78,6 @@ public class PermintaanAntarFragment extends Fragment implements OnClickListener
         });
 
         return root;
-    }
-
-    @Override
-    public void onClick(View v) {
-        if (v.getId() == R.id.btn_isi_form) {
-            TerimaSampahFragment fragment = new TerimaSampahFragment();
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment, TerimaSampahFragment.class.getSimpleName())
-                    .addToBackStack(null).commit();
-        }
     }
 
 

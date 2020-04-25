@@ -1,4 +1,4 @@
-package com.mppl.banksampah.admin;
+package com.mppl.banksampah.admin.terimasampah;
 
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
@@ -29,6 +29,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.mppl.banksampah.R;
+import com.mppl.banksampah.admin.terimasampah.PermintaanAntarFragment;
 import com.mppl.banksampah.user.model.AntarSampahUser;
 
 import java.text.SimpleDateFormat;
@@ -56,8 +57,6 @@ public class TerimaSampahFragment extends Fragment implements OnClickListener {
 
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
 
-        Button btnPermintaanAntar = root.findViewById(R.id.btn_status_antar);
-        btnPermintaanAntar.setOnClickListener(this);
         Button btnOK = root.findViewById(R.id.btn_ok);
         btnOK.setOnClickListener(this);
 
@@ -238,12 +237,7 @@ public class TerimaSampahFragment extends Fragment implements OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.btn_status_antar) {
-            PermintaanAntarFragment fragment = new PermintaanAntarFragment();
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment, PermintaanAntarFragment.class.getSimpleName())
-                    .addToBackStack(null).commit();
-        } else if (v.getId() == R.id.date_picker_toggle) {
+        if (v.getId() == R.id.date_picker_toggle) {
             showDateDialog();
         } else if (v.getId() == R.id.btn_ok) {
             new AlertDialog.Builder(Objects.requireNonNull(getActivity()))

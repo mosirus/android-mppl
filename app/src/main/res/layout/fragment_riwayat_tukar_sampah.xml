@@ -142,7 +142,7 @@
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="@string/status_nina"
-                android:textColor="@color/berhasil"
+                android:textColor="@color/tulisan_hijau"
                 android:textStyle="bold"
                 android:textAppearance="?android:attr/textAppearanceMedium"></TextView>
         </TableRow>
