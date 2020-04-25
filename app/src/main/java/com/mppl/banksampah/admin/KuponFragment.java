@@ -38,8 +38,6 @@ public class KuponFragment extends Fragment implements OnClickListener{
 
     private RecyclerView rvListReward;
 
-    private String nama_reward[] = {"Reward1","Reward2","Reward3","Reward4"};
-
     private FirebaseAuth auth;
     private FirebaseDatabase database;
     private DatabaseReference reference;

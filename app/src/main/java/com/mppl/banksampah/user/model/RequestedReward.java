@@ -5,16 +5,18 @@ public class RequestedReward {
     private String emailRequester;
     private String poinBarangRequest;
     private String namaBarangRequest;
+    private String statusRequested;
 
     public RequestedReward(){
 
     }
 
-    public RequestedReward(String tanggalRequest1, String emailRequester1, String poinBarangRequest1, String namaBarangRequest1){
+    public RequestedReward(String tanggalRequest1, String emailRequester1, String poinBarangRequest1, String namaBarangRequest1,String statusRequested1){
         tanggalRequest = tanggalRequest1;
         emailRequester = emailRequester1;
         poinBarangRequest = poinBarangRequest1;
         namaBarangRequest = namaBarangRequest1;
+        statusRequested = statusRequested1;
     }
 
     public String getTanggalRequest() {
@@ -47,5 +49,13 @@ public class RequestedReward {
 
     public void setNamaBarangRequest(String namaBarangRequest) {
         this.namaBarangRequest = namaBarangRequest;
+    }
+
+    public String getStatusRequested() {
+        return statusRequested;
+    }
+
+    public void setStatusRequested(String statusRequested) {
+        this.statusRequested = statusRequested;
     }
 }
