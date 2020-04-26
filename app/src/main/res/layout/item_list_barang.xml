@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@drawable/background_item_list_barang"
+    android:layout_marginVertical="5dp"
+    android:layout_marginHorizontal="5dp">
+
+    <ImageView
+        android:id="@+id/iv_list_barang"
+        android:layout_height="70dp"
+        android:layout_width="70dp"
+        android:background="@color/white"
+        android:layout_marginLeft="10dp"
+        android:layout_gravity="center"/>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="220dp"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+    <TextView
+        android:id="@+id/tv_list_barang"
+        android:layout_width="120dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:gravity="left"
+        android:layout_marginHorizontal="30dp"
+        android:text="@string/dummyname_listbarang"
+        android:textColor="@color/colorBlack"
+        android:textSize="20dp" />
+
+     <TextView
+         android:id="@+id/tv_list_jenisreward"
+         android:layout_width="120dp"
+         android:layout_height="30dp"
+         android:layout_gravity="center"
+         android:gravity="left"
+         android:layout_marginHorizontal="30dp"
+         android:text="@string/jenis_reward"
+         android:textColor="@color/colorBlack"
+         android:textSize="20dp"/>
+        <TextView
+            android:id="@+id/tv_list_poinreward"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:gravity="left"
+            android:layout_marginHorizontal="30dp"
+            android:text="@string/poin_reward"
+            android:textColor="@color/green"
+            android:textSize="20dp"/>
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/btn_list_barang"
+        android:layout_height="50dp"
+        android:layout_width="50dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="30dp"
+        android:background="@drawable/ic_shopping_basket_green_24dp"/>
+
+</LinearLayout>

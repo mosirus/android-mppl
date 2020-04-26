@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/edit_email_pengguna"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/style"
+            android:hint="@string/email"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:textColor="@color/tulisan_hijau"
+            android:textColorHint="@color/tulisan_hijau" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/form_antar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="0.2"
+                android:background="@drawable/spinner_style">
+
+                <Spinner
+                    android:id="@+id/spinner_jenis_sampah"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/jenis_sampah"
+                    android:prompt="@string/prompt_jenis_sampah" />
+            </FrameLayout>
+
+            <EditText
+                android:id="@+id/edtJumlahSampah"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_marginStart="7dp"
+                android:layout_weight="0.31"
+                android:background="@drawable/style"
+                android:hint="@string/jumlah2"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:paddingStart="2dp"
+                android:textColor="@color/tulisan_hijau"
+                android:textColorHint="@color/tulisan_hijau"
+                tools:ignore="LabelFor" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="7dp"
+                android:layout_weight="0.25"
+                android:background="@drawable/spinner_style">
+
+                <Spinner
+                    android:id="@+id/spinner_satuan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/satuan"
+                    android:prompt="@string/prompt_satuan_sampah"
+                    android:textColor="@color/colorPrimary" />
+            </FrameLayout>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <Button
+            android:id="@+id/btn_tambah_form"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/spinner_style"
+            android:drawableTop="@drawable/ic_add_black_24dp" />
+
+        <TextView
+            android:id="@+id/tv_poin_transaksi_terima"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/spinner_style"
+            android:padding="8dp"
+            android:text="@string/poin"
+            android:textColor="@color/tulisan_hijau"
+            android:textSize="16sp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp">
+
+
+            <FrameLayout
+                android:id="@+id/date_picker_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/spinner_style"
+                android:orientation="horizontal"
+                android:padding="7dp">
+
+                <TextView
+                    android:id="@+id/picked_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:hint="@string/tanggal_waktu"
+                    android:textColor="@color/tulisan_hijau"
+                    android:textColorHint="@color/tulisan_hijau"
+                    android:textSize="16sp" />
+
+                <ImageButton
+                    android:id="@+id/date_picker_toggle"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="5dp"
+                    android:contentDescription="@string/tombol_toggle_date_picker"
+                    android:src="@drawable/ic_event_black_24dp" />
+
+            </FrameLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="120dp"
+                android:gravity="end"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_ok"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/btn_style2"
+                    android:text="@string/terima"
+                    android:textColor="@android:color/white" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </FrameLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>
