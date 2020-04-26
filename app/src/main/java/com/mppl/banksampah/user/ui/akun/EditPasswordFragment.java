@@ -27,19 +27,14 @@ import java.util.Objects;
 
 public class EditPasswordFragment extends Fragment implements View.OnClickListener {
 
-    //private String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();
-    private String currentuser = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail().replace('.','_');
+    private String currentuser = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail().replace('.', '_');
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-    private ProfileViewModel homeViewModel;
     private DatabaseReference ref;
 
     private EditText edt_old_pass;
     private EditText edt_new_pass;
     private EditText edt_new_pass_confirmation;
-
-    private Button btn_simpan;
-    private Button btn_batal;
 
     private String currentPassword;
     //Firebase
@@ -47,8 +42,7 @@ public class EditPasswordFragment extends Fragment implements View.OnClickListen
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this).get(ProfileViewModel.class);
+        ProfileViewModel homeViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
         View root = inflater.inflate(R.layout.fragment_password_edit, container, false);
 
 
@@ -70,8 +64,8 @@ public class EditPasswordFragment extends Fragment implements View.OnClickListen
         });
 
 
-        btn_simpan = root.findViewById(R.id.btn_simpan_edit);
-        btn_batal = root.findViewById(R.id.btn_batal_edit);
+        Button btn_simpan = root.findViewById(R.id.btn_simpan_edit);
+        Button btn_batal = root.findViewById(R.id.btn_batal_edit);
 
         btn_batal.setOnClickListener(this);
         btn_simpan.setOnClickListener(this);
@@ -90,6 +84,7 @@ public class EditPasswordFragment extends Fragment implements View.OnClickListen
             if (newPass.equals(newPassConfirmation)) {
                 user.updatePassword(newPass);
                 ref.child("password").setValue(newPass);
+                user.updatePassword(newPass);
                 edt_new_pass.setError(null);
                 edt_new_pass_confirmation.setError(null);
             } else {
@@ -129,13 +124,18 @@ public class EditPasswordFragment extends Fragment implements View.OnClickListen
                     return;
                 }
             }
+
+            ProfileFragment fragment = new ProfileFragment();
+
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment, ProfileFragment.class.getSimpleName())
+                    .addToBackStack(null).commit();
+
+        } else {
+            edt_old_pass.setError("Masukkan password lama");
         }
 
-        ProfileFragment fragment = new ProfileFragment();
 
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment, ProfileFragment.class.getSimpleName())
-                .addToBackStack(null).commit();
     }
 
 }
