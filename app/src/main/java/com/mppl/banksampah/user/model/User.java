@@ -4,6 +4,20 @@ import java.io.Serializable;
 
 public class User implements Serializable {
 
+
+
+    public String nama_lengkap;
+    public String email;
+    public String no_telp;
+    public String password;
+    public String pekerjaan;
+    public String alamat;
+    public String no_identitas;
+
+    public User(){
+
+    }
+
     public User(String nama_lengkap, String email, String no_telp, String password,
                 String pekerjaan, String no_identitas, String alamat,int point) {
         this.nama_lengkap = nama_lengkap;
@@ -15,14 +29,6 @@ public class User implements Serializable {
         this.no_identitas = no_identitas;
         this.point = point;
     }
-
-    public String nama_lengkap;
-    public String email;
-    public String no_telp;
-    public String password;
-    public String pekerjaan;
-    public String alamat;
-    public String no_identitas;
 
     public String getPekerjaan() {
         return pekerjaan;
