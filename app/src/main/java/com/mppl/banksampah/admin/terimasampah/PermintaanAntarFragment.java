@@ -1,19 +1,16 @@
 package com.mppl.banksampah.admin.terimasampah;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -35,6 +32,8 @@ public class PermintaanAntarFragment extends Fragment {
     private FirebaseAuth auth;
     private FirebaseDatabase database;
     private DatabaseReference reference;
+
+    private String requestPushKey;
 
     private ArrayList<AntarSampahUser> listAntarSampahUser;
     private DaftarAntarSampahUserAdapter antarSampahUserAdapter;
@@ -63,12 +62,41 @@ public class PermintaanAntarFragment extends Fragment {
                     for (DataSnapshot dataSnapshot1 : snapshot.getChildren()) {
                         AntarSampahUser antarSampahUser = dataSnapshot1.getValue(AntarSampahUser.class);
                         if (dataSnapshot1.child("status").getValue().toString().equals("Sedang diproses")) {
+                            antarSampahUser.setPushKey(dataSnapshot1.getKey());
                             listAntarSampahUser.add(antarSampahUser);
                         }
                     }
                 }
                 antarSampahUserAdapter = new DaftarAntarSampahUserAdapter(getActivity(), listAntarSampahUser);
                 rvListPermintaanAntar.setAdapter(antarSampahUserAdapter);
+
+                antarSampahUserAdapter.setOnItemCallback(new DaftarAntarSampahUserAdapter.OnItemCallback() {
+                    @Override
+                    public void onItemclicked(AntarSampahUser data) {
+                        String userEmail = data.getCurrentId();
+                        String tanggalPermintaan = data.getTanggal();
+                        String jumlahSampah = data.getBerat();
+                        String satuanSampah = data.getSatuan();
+                        String jenisSampah = data.getJenisSampah();
+                        int poinTransaksi = data.getPoin();
+                        String pushKey = data.getPushKey();
+
+                        Bundle bundle = new Bundle();
+                        bundle.putString("UserEmail", userEmail);
+                        bundle.putString("Tanggal", tanggalPermintaan);
+                        bundle.putString("JumlahSampah", jumlahSampah);
+                        bundle.putString("Satuan", satuanSampah);
+                        bundle.putString("JenisSampah", jenisSampah);
+                        bundle.putInt("PoinTransaksi", poinTransaksi);
+                        bundle.putString("RequestChildKey", pushKey);
+
+                        KonfirmasiPermintaanFragment fragment = new KonfirmasiPermintaanFragment();
+                        fragment.setArguments(bundle);
+                        FragmentManager fragmentManager = getChildFragmentManager();
+                        fragmentManager.beginTransaction().replace(R.id.containerPermintaanAntar, fragment, KonfirmasiPermintaanFragment.class.getSimpleName())
+                                .addToBackStack(null).commit();
+                    }
+                });
             }
 
             @Override
@@ -80,5 +108,12 @@ public class PermintaanAntarFragment extends Fragment {
         return root;
     }
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            getFragmentManager().beginTransaction().detach(this).attach(this).commit();
+        }
+    }
 
 }

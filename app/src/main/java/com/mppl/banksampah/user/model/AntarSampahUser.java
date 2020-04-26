@@ -8,7 +8,7 @@ public class AntarSampahUser {
     private int Poin;
     private String currentId;
     private String status;
-    //private String noHpUser;
+    private String pushKey;
 
     public AntarSampahUser() {
 
@@ -78,6 +78,14 @@ public class AntarSampahUser {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getPushKey() {
+        return pushKey;
+    }
+
+    public void setPushKey(String pushKey) {
+        this.pushKey = pushKey;
     }
 
 }

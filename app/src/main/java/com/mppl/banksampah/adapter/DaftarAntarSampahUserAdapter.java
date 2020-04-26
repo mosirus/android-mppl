@@ -1,6 +1,8 @@
 package com.mppl.banksampah.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mppl.banksampah.R;
+import com.mppl.banksampah.admin.terimasampah.KonfirmasiPermintaanFragment;
 import com.mppl.banksampah.user.model.AntarSampahUser;
 import com.mppl.banksampah.user.model.User;
 
@@ -46,11 +49,18 @@ public class DaftarAntarSampahUserAdapter extends RecyclerView.Adapter<DaftarAnt
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CardViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final CardViewHolder holder, int position) {
         String email = listAntarSampahUser.get(position).getCurrentId().replace("_",".");
         AntarSampahUser antarSampahUser = listAntarSampahUser.get(position);
         holder.tvTanggalReqAntar.setText(listAntarSampahUser.get(position).getTanggal());
         holder.tvUserReqAntar.setText(listAntarSampahUser.get(position).getCurrentId());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemCallback.onItemclicked(listAntarSampahUser.get(holder.getAdapterPosition()));
+            }
+        });
     }
 
     @Override
@@ -61,13 +71,11 @@ public class DaftarAntarSampahUserAdapter extends RecyclerView.Adapter<DaftarAnt
     public class CardViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView tvTanggalReqAntar;
         private TextView tvUserReqAntar;
-        private TextView tvNoHPUserReqAntar;
 
-        public CardViewHolder(View itemView){
+        CardViewHolder(View itemView) {
             super(itemView);
             tvTanggalReqAntar = itemView.findViewById(R.id.tv_date_pa);
             tvUserReqAntar = itemView.findViewById(R.id.tv_person_pa);
-            tvNoHPUserReqAntar = itemView.findViewById(R.id.tv_phone_pa);
         }
 
         @Override
@@ -75,6 +83,11 @@ public class DaftarAntarSampahUserAdapter extends RecyclerView.Adapter<DaftarAnt
             int position = getAdapterPosition();
             AntarSampahUser antarSampahUser = getListAntarSampahUser().get(position);
             antarSampahUser.setCurrentId(antarSampahUser.getCurrentId());
+            antarSampahUser.setTanggal(antarSampahUser.getTanggal());
+
+            Intent moveWithObjectIntent = new Intent(itemView.getContext(), KonfirmasiPermintaanFragment.class);
+            moveWithObjectIntent.putExtra(KonfirmasiPermintaanFragment.EXTRA, (Parcelable) antarSampahUser);
+            itemView.getContext().startActivity(moveWithObjectIntent);
         }
     }
 
