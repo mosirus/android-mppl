@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -183,6 +184,11 @@ public class TambahRewardFragment extends Fragment implements OnClickListener{
         }
         if(TextUtils.isEmpty(jenisReward.getSelectedItem().toString())){
             Toast.makeText(getActivity(),"Pilih jenis Reward !",
+                    Toast.LENGTH_LONG).show();
+            result = false;
+        }
+        if(GambarPenampung.getDrawable() instanceof ColorDrawable){
+            Toast.makeText(getActivity(),"Ambil gambar terlebih dahulu !",
                     Toast.LENGTH_LONG).show();
             result = false;
         }
