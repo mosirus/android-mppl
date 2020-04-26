@@ -1,41 +1,49 @@
 package com.mppl.banksampah.admin.model;
 
 public class EventAdmin {
-    public String getNamaevent() {
-        return namaevent;
+    private int photoEvent;
+    private String namaEvent;
+    private String waktuEvent;
+    private String tempatEvent;
+    private String descEvent;
+
+    public int getPhotoEvent() {
+        return photoEvent;
     }
 
-    public void setNamaevent(String namaevent) {
-        this.namaevent = namaevent;
+    public void setPhotoEvent(int photoEvent) {
+        this.photoEvent = photoEvent;
     }
 
-    public String getTanggaldanwaktu() {
-        return tanggaldanwaktu;
+    public String getNamaEvent() {
+        return namaEvent;
     }
 
-    public void setTanggaldanwaktu(String tanggaldanwaktu) {
-        this.tanggaldanwaktu = tanggaldanwaktu;
+    public void setNamaEvent(String namaEvent) {
+        this.namaEvent = namaEvent;
     }
 
-    public String getDeskripsi() {
-        return deskripsi;
+    public String getWaktuEvent() {
+        return waktuEvent;
     }
 
-    public void setDeskripsi(String deskripsi) {
-        this.deskripsi = deskripsi;
+    public void setWaktuEvent(String waktuEvent) {
+        this.waktuEvent = waktuEvent;
     }
 
-    public String getTempat() {
-        return tempat;
+    public String getTempatEvent() {
+        return tempatEvent;
     }
 
-    public void setTempat(String tempat) {
-        this.tempat = tempat;
+    public void setTempatEvent(String tempatEvent) {
+        this.tempatEvent = tempatEvent;
     }
 
-    private String namaevent;
-    private String tanggaldanwaktu;
-    private String deskripsi;
-    private String tempat;
+    public String getDescEvent() {
+        return descEvent;
+    }
 
+    public void setDescEvent(String descEvent) {
+        this.descEvent = descEvent;
+    }
 }
