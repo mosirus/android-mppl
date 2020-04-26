@@ -96,7 +96,6 @@ public class JemputSampahFragment extends Fragment implements View.OnClickListen
                 String tanggal = pickedDate.getText().toString();
                 String lokasiJemput = edtLokasiJemput.getText().toString();
                 String poin = tvPoinTransaksi.getText().toString();
-                //String currentuserId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
                 String currentuserId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail().replace('.','_');
 
                 @Override
@@ -147,15 +146,36 @@ public class JemputSampahFragment extends Fragment implements View.OnClickListen
         if (TextUtils.isEmpty(edtJumlahSampah.getText().toString())) {
             edtJumlahSampah.setError("Harap masukkan jumlah sampah");
             result = false;
-        }
-        else if (TextUtils.isEmpty(pickedDate.getText().toString())){
+        } else if (TextUtils.isEmpty(pickedDate.getText().toString())) {
             new AlertDialog.Builder(Objects.requireNonNull(getActivity()))
-                    .setMessage("Harap pilih tanggal penjemputan")
+                    .setMessage("Harap pilih tanggal pengantaran")
                     .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                         }
                     })
                     .show();
+            result = false;
+        } else if (spnrJenisSampah.getSelectedItem().toString().equals("Jenis Sampah")) {
+            new AlertDialog.Builder(Objects.requireNonNull(getActivity()))
+                    .setMessage("Harap masukkan jenis sampah")
+                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    })
+                    .show();
+            result = false;
+
+        } else if (spnrSatuan.getSelectedItem().toString().equals("Satuan")) {
+            new AlertDialog.Builder(Objects.requireNonNull(getActivity()))
+                    .setMessage("Harap masukkan satuan sampah")
+                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    })
+                    .show();
+            result = false;
+        } else if (TextUtils.isEmpty(edtLokasiJemput.getText().toString())) {
+            edtLokasiJemput.setError("Harap masukkan lokasi penjemputan sampah");
             result = false;
         }
         return result;
