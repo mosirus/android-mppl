@@ -144,6 +144,25 @@ public class AntarSampahFragment extends Fragment implements View.OnClickListene
                     })
                     .show();
             result = false;
+        } else if (spnrJenisSampah.getSelectedItem().toString().equals("Jenis Sampah")) {
+            new AlertDialog.Builder(Objects.requireNonNull(getActivity()))
+                    .setMessage("Harap masukkan jenis sampah")
+                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    })
+                    .show();
+            result = false;
+
+        } else if (spnrSatuan.getSelectedItem().toString().equals("Satuan")) {
+            new AlertDialog.Builder(Objects.requireNonNull(getActivity()))
+                    .setMessage("Harap masukkan satuan sampah")
+                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    })
+                    .show();
+            result = false;
         }
         return result;
     }
