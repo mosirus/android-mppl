@@ -3,6 +3,7 @@ package com.mppl.banksampah.admin.terimasampah;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -136,7 +137,6 @@ public class KonfirmasiPermintaanFragment extends Fragment implements View.OnCli
         ref.child("berat").setValue(edtJumlahSampah.getText().toString());
 
         addUserPoint();
-
     }
 
     private void tolakRequest() {
@@ -164,6 +164,34 @@ public class KonfirmasiPermintaanFragment extends Fragment implements View.OnCli
 
     }
 
+    private boolean validateForm() {
+        boolean result = true;
+        if (TextUtils.isEmpty(edtJumlahSampah.getText().toString())) {
+            edtJumlahSampah.setError("Harap masukkan jumlah sampah");
+            result = false;
+        } else if (spnrJenisSampah.getSelectedItem().toString().equals("Jenis Sampah")) {
+            new androidx.appcompat.app.AlertDialog.Builder(Objects.requireNonNull(getActivity()))
+                    .setMessage("Harap masukkan jenis sampah")
+                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    })
+                    .show();
+            result = false;
+
+        } else if (spnrSatuan.getSelectedItem().toString().equals("Satuan")) {
+            new androidx.appcompat.app.AlertDialog.Builder(Objects.requireNonNull(getActivity()))
+                    .setMessage("Harap masukkan satuan sampah")
+                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    })
+                    .show();
+            result = false;
+        }
+        return result;
+    }
+
 
     @Override
     public void onClick(View v) {
@@ -172,16 +200,17 @@ public class KonfirmasiPermintaanFragment extends Fragment implements View.OnCli
                     .setMessage("Terima permintaan ?")
                     .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            terimaRequest();
+                            if (validateForm()) {
+                                terimaRequest();
 
-                            new AlertDialog.Builder(Objects.requireNonNull(getActivity()))
-                                    .setMessage("Permintaan antar telah diterima, poin akan ditambah ke akun user")
-                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            returnToList();
-                                        }
-                                    }).show();
-
+                                new AlertDialog.Builder(Objects.requireNonNull(getActivity()))
+                                        .setMessage("Permintaan antar telah diterima, poin akan ditambah ke akun user")
+                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                returnToList();
+                                            }
+                                        }).show();
+                            }
                         }
                     })
                     .setNegativeButton("Batal", new DialogInterface.OnClickListener() {
