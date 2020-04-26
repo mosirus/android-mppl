@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,13 +9,22 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="23dp"
         android:layout_marginTop="50dp"
+        android:layout_marginEnd="23dp"
         android:text="@string/riwayat_tukar_sampah"
         android:textSize="35sp"
-        android:textStyle="bold"
-        android:layout_marginStart="23dp"
-        android:layout_marginEnd="23dp"
-        />
+        android:textStyle="bold" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager_event"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/tab_event"
+        tools:ignore="MissingConstraints">
+
+    </androidx.viewpager.widget.ViewPager>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_event"
@@ -36,11 +44,11 @@
         android:id="@+id/rvRiwayatTukar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         android:layout_below="@id/textView"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="50dp"
         android:nestedScrollingEnabled="false"
         tools:listitem="@layout/table_list_riwayat_tukar_sampah" />
 
@@ -48,23 +56,14 @@
         android:id="@+id/btn_ok_riwayat_tukar"
         android:layout_width="130dp"
         android:layout_height="40dp"
-        android:layout_gravity="center_vertical"
         android:layout_below="@id/rvRiwayatTukar"
-        android:layout_marginTop="50dp"
+        android:layout_gravity="center_vertical"
         android:layout_marginStart="150dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="150dp"
         android:background="@drawable/btn_style"
         android:text="@string/ok"
         android:textColor="@android:color/white" />
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/view_pager_event"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        app:layout_constraintTop_toBottomOf="@+id/tab_event"
-        tools:ignore="MissingConstraints">
-
-    </androidx.viewpager.widget.ViewPager>
 
 </RelativeLayout>

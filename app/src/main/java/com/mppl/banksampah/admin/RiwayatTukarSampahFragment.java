@@ -4,7 +4,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -13,23 +20,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.mppl.banksampah.R;
 import com.mppl.banksampah.adapter.RiwayatTukarSampahAdapter;
-import com.mppl.banksampah.ui.home.HomeViewModel;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.RecyclerView;
 
 public class RiwayatTukarSampahFragment extends Fragment implements View.OnClickListener{
 
     private DatabaseReference refAntar;
     private DatabaseReference refJemput;
+    private Button btnOK;
 
     private SimpleDateFormat dateFormatter;
 
@@ -39,24 +38,21 @@ public class RiwayatTukarSampahFragment extends Fragment implements View.OnClick
     private TextView tvPoin;
     private TextView tvStatus;
 
-
-
     private RecyclerView rvRiwayatTukarSampah;
     private ArrayList<RiwayatTukarSampahFragment> listRiwayatTukar;
     private RiwayatTukarSampahAdapter riwayatTukarSampahAdapter;
-
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        HomeViewModel homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_riwayat_tukar_sampah, container,false);
 
-        tvTanggal = root.findViewById(R.id.tanggal_riwayat_tukar);
-        tvEmail = root.findViewById(R.id.email_riwayat_tukar);
-        tvPoin = root.findViewById(R.id.tvpoin_riwayat_tukar);
-        tvStatus = root.findViewById(R.id.status_riwayat_tukar);
+//        tvTanggal = root.findViewById(R.id.tanggal_riwayat_tukar);
+//        tvEmail = root.findViewById(R.id.email_riwayat_tukar);
+//        tvPoin = root.findViewById(R.id.tvpoin_riwayat_tukar);
+//        tvStatus = root.findViewById(R.id.status_riwayat_tukar);
+//        btnOK = root.findViewById();
 
         refAntar = FirebaseDatabase.getInstance().getReference().child("AntarSampah");
         refJemput = FirebaseDatabase.getInstance().getReference().child("JemputSampah");
@@ -71,8 +67,8 @@ public class RiwayatTukarSampahFragment extends Fragment implements View.OnClick
             RiwayatTukarSampahFragment fragment = new RiwayatTukarSampahFragment();
 
             FragmentManager fragmentManager = getFragmentManager();
-        } else if (v.getId() == R.id.btn_ok_riwayat_tukar){
-            makeRequest();
+//        } else if (v.getId() == R.id.btn_ok_riwayat_tukar){
+//            makeRequest();
         }
 
     }
