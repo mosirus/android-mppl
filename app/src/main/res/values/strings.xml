@@ -157,6 +157,8 @@
         <item>Lain_lain</item>
     </string-array>
 
+    <string name="jenis_sampahh">Jenis Sampah</string>
+
 
     <string-array name="detail_sampah">
         <item>Koran</item>

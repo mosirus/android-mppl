@@ -165,29 +165,6 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
         startActivityForResult(GalleryIntent, REQUEST_CODE_GALLERY);
     }
 
-//    private void chooseImage() {
-//        CharSequence[] pilihan = {"Kamera", "Galeri"};
-//        AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity())
-//                .setTitle("Upload Gambar Dari")
-//                .setItems(pilihan, new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        switch (which) {
-//                            case 0:
-//                                Intent CameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//                                startActivityForResult(CameraIntent, REQUEST_CODE_CAMERA);
-//                                break;
-//
-//                            case 1:
-//                                Intent GalleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//                                startActivityForResult(GalleryIntent, REQUEST_CODE_GALLERY);
-//                                break;
-//                        }
-//                    }
-//                });
-//        dialog.create();
-//        dialog.show();
-//    }
 
     private void updateProfile() {
 

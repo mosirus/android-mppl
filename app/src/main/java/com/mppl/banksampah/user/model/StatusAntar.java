@@ -10,6 +10,22 @@ public class StatusAntar implements Serializable {
     private String Status;
     private String Tanggal;
     private String LokasiJemput;
+    private String Poin;
+
+
+    public StatusAntar() {
+    }
+
+    public StatusAntar(String berat, String jenisSampah, String namaSampah, String satuan, String status, String tanggal, String lokasiJemput, String poin) {
+        Berat = berat;
+        JenisSampah = jenisSampah;
+        NamaSampah = namaSampah;
+        Satuan = satuan;
+        Status = status;
+        Tanggal = tanggal;
+        LokasiJemput = lokasiJemput;
+        Poin = poin;
+    }
 
     public String getBerat() {
         return Berat;
@@ -67,16 +83,11 @@ public class StatusAntar implements Serializable {
         Tanggal = tanggal;
     }
 
-    public StatusAntar() {
+    public String getPoin() {
+        return Poin;
     }
 
-    public StatusAntar(String berat, String jenisSampah, String namaSampah, String satuan, String status, String tanggal, String lokasiJemput) {
-        Berat = berat;
-        JenisSampah = jenisSampah;
-        NamaSampah = namaSampah;
-        Satuan = satuan;
-        Status = status;
-        Tanggal = tanggal;
-        LokasiJemput = lokasiJemput;
+    public void setPoin(String poin) {
+        Poin = poin;
     }
 }

@@ -126,7 +126,7 @@
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_marginEnd="6dp"
                 android:layout_weight="0.2"
@@ -134,10 +134,9 @@
 
                 <Spinner
                     android:id="@+id/spinner_jenis_sampah"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:entries="@array/jenis_sampah"
-                    android:prompt="@string/prompt_jenis_sampah" />
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:spinnerMode="dropdown" />
             </FrameLayout>
 
             <EditText
@@ -150,7 +149,7 @@
                 android:hint="@string/jumlah2"
                 android:importantForAutofill="no"
                 android:inputType="number"
-                android:paddingStart="2dp"
+                android:paddingStart="4dp"
                 android:textColor="@color/tulisan_hijau"
                 android:textColorHint="@color/tulisan_hijau"
                 tools:ignore="LabelFor,RtlSymmetry" />
@@ -175,21 +174,13 @@
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <Button
-            android:id="@+id/btn_tambah_form"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/spinner_style"
-            android:drawableTop="@drawable/ic_add_black_24dp" />
 
         <TextView
             android:id="@+id/tv_poin_transaksi_terima"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="45dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/spinner_style"
             android:padding="8dp"
