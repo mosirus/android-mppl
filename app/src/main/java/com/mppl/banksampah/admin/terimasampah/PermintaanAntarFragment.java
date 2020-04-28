@@ -33,8 +33,6 @@ public class PermintaanAntarFragment extends Fragment {
     private FirebaseDatabase database;
     private DatabaseReference reference;
 
-    private String requestPushKey;
-
     private ArrayList<AntarSampahUser> listAntarSampahUser;
     private DaftarAntarSampahUserAdapter antarSampahUserAdapter;
 
@@ -78,7 +76,7 @@ public class PermintaanAntarFragment extends Fragment {
                         String jumlahSampah = data.getBerat();
                         String satuanSampah = data.getSatuan();
                         String jenisSampah = data.getJenisSampah();
-                        int poinTransaksi = data.getPoin();
+                        String poinTransaksi = data.getPoin();
                         String pushKey = data.getPushKey();
 
                         Bundle bundle = new Bundle();
@@ -87,7 +85,7 @@ public class PermintaanAntarFragment extends Fragment {
                         bundle.putString("JumlahSampah", jumlahSampah);
                         bundle.putString("Satuan", satuanSampah);
                         bundle.putString("JenisSampah", jenisSampah);
-                        bundle.putInt("PoinTransaksi", poinTransaksi);
+                        bundle.putString("PoinTransaksi", poinTransaksi);
                         bundle.putString("RequestChildKey", pushKey);
 
                         KonfirmasiPermintaanFragment fragment = new KonfirmasiPermintaanFragment();

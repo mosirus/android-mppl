@@ -5,7 +5,7 @@ public class AntarSampahUser {
     private String Satuan;
     private String Berat;
     private String Tanggal;
-    private int Poin;
+    private String Poin;
     private String currentId;
     private String status;
     private String pushKey;
@@ -14,7 +14,7 @@ public class AntarSampahUser {
 
     }
 
-    public AntarSampahUser(String jenisSampah, String satuan, String berat, String tanggal, int poin, String currentId, String status) {
+    public AntarSampahUser(String jenisSampah, String satuan, String berat, String tanggal, String poin, String currentId, String status) {
         JenisSampah = jenisSampah;
         Satuan = satuan;
         Berat = berat;
@@ -56,11 +56,11 @@ public class AntarSampahUser {
         Tanggal = tanggal;
     }
 
-    public int getPoin() {
+    public String getPoin() {
         return Poin;
     }
 
-    public void setPoin(int poin) {
+    public void setPoin(String poin) {
         Poin = poin;
     }
 

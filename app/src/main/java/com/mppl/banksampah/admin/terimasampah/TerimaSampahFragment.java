@@ -3,11 +3,15 @@ package com.mppl.banksampah.admin.terimasampah;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -20,7 +24,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -29,10 +32,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.mppl.banksampah.R;
-import com.mppl.banksampah.admin.terimasampah.PermintaanAntarFragment;
 import com.mppl.banksampah.user.model.AntarSampahUser;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -51,33 +54,78 @@ public class TerimaSampahFragment extends Fragment implements OnClickListener {
     private EditText edtJumlahSampah;
     private String userEmail;
 
+    private ArrayList<String> listDataSampah = new ArrayList<>();
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_isiformterimasampah_admin, container, false);
 
+        spnrJenisSampah = root.findViewById(R.id.spinner_jenis_sampah);
+
+        loadDataSampah();
+
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(getActivity(), R.layout.support_simple_spinner_dropdown_item, listDataSampah);
+        spinnerArrayAdapter.add("Jenis Sampah");
+        spinnerArrayAdapter.notifyDataSetChanged();
+
+        spinnerArrayAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spnrJenisSampah.setAdapter(spinnerArrayAdapter);
+
+        return root;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
 
-        Button btnOK = root.findViewById(R.id.btn_ok);
+        Button btnOK = view.findViewById(R.id.btn_ok);
         btnOK.setOnClickListener(this);
 
-        pickedDate = root.findViewById(R.id.picked_date);
+        pickedDate = view.findViewById(R.id.picked_date);
 
         Date currentTime = Calendar.getInstance().getTime();
         pickedDate.setText(dateFormatter.format(currentTime));
 
-        spnrJenisSampah = root.findViewById(R.id.spinner_jenis_sampah);
-        spnrSatuan = root.findViewById(R.id.spinner_satuan);
-        edtJumlahSampah = root.findViewById(R.id.edtJumlahSampah);
-        edtEmailPengguna = root.findViewById(R.id.edit_email_pengguna);
-        tvPoinTransaksi = root.findViewById(R.id.tv_poin_transaksi_terima);
-        tvPoinTransaksi.setText("100");
+        spnrJenisSampah = view.findViewById(R.id.spinner_jenis_sampah);
+        spnrSatuan = view.findViewById(R.id.spinner_satuan);
+        edtJumlahSampah = view.findViewById(R.id.edtJumlahSampah);
+        edtEmailPengguna = view.findViewById(R.id.edit_email_pengguna);
+        tvPoinTransaksi = view.findViewById(R.id.tv_poin_transaksi_terima);
 
-        ImageButton imgBtnDatePicker = root.findViewById(R.id.date_picker_toggle);
+        ImageButton imgBtnDatePicker = view.findViewById(R.id.date_picker_toggle);
         imgBtnDatePicker.setOnClickListener(this);
 
         userEmail = edtEmailPengguna.getText().toString().replace('.', '_');
 
-        return root;
+        edtJumlahSampah.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                calculatePoint();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                calculatePoint();
+            }
+        });
+
+        spnrJenisSampah.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                calculatePoint();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+
+            }
+
+        });
     }
 
     private void terimaAntarSampah() {
@@ -97,7 +145,7 @@ public class TerimaSampahFragment extends Fragment implements OnClickListener {
                             String satuanSampah = spnrSatuan.getSelectedItem().toString();
                             String jumlahSampah = edtJumlahSampah.getText().toString();
                             String tanggal = pickedDate.getText().toString();
-                            int poin = Integer.parseInt(tvPoinTransaksi.getText().toString());
+                            String poin = tvPoinTransaksi.getText().toString();
                             String status = "Berhasil";
 
                             AntarSampahUser antarSampahUser = new AntarSampahUser(jenisSampah, satuanSampah, jumlahSampah, tanggal, poin, userEmail, status);
@@ -164,7 +212,7 @@ public class TerimaSampahFragment extends Fragment implements OnClickListener {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String userCurrentPoint = Objects.requireNonNull(dataSnapshot.child("point").getValue()).toString();
 
-                int finalPoint = Integer.parseInt(userCurrentPoint) + poin;
+                String finalPoint = String.valueOf(Integer.parseInt(userCurrentPoint) + poin);
                 userDataRef.child("point").setValue(finalPoint);
             }
 
@@ -172,6 +220,43 @@ public class TerimaSampahFragment extends Fragment implements OnClickListener {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
+    }
+
+    private void loadDataSampah() {
+        ref = FirebaseDatabase.getInstance().getReference().child("Jenis_Sampah");
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String dataSampah = snapshot.child("JenisSampah").getValue().toString();
+                    listDataSampah.add(dataSampah);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void calculatePoint() {
+        int jumlahSampah;
+        String[] strPoinSampah;
+        int poinSampah;
+
+        if (spnrJenisSampah.getSelectedItem().toString().equals("Jenis Sampah") ||
+                edtJumlahSampah.getText().toString().isEmpty()) {
+            tvPoinTransaksi.setText("Poin");
+        } else {
+            jumlahSampah = Integer.parseInt(edtJumlahSampah.getText().toString());
+            strPoinSampah = spnrJenisSampah.getSelectedItem().toString().split(" ");
+            poinSampah = Integer.parseInt(strPoinSampah[0]);
+
+            String jumlahPoin = String.valueOf(jumlahSampah * poinSampah);
+            tvPoinTransaksi.setText(jumlahPoin);
+        }
 
     }
 
