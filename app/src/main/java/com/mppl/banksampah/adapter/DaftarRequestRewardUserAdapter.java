@@ -33,7 +33,8 @@ public class DaftarRequestRewardUserAdapter extends RecyclerView.Adapter<DaftarR
     private FirebaseAuth auth;
     private FirebaseDatabase database;
     private DatabaseReference reference;
-    private  DatabaseReference reference2;
+    private DatabaseReference reference2;
+    private DatabaseReference reference3;
     private String getEmailUser;
 
     public DaftarRequestRewardUserAdapter(Context context1, ArrayList<RequestedReward> listRequestedRewards1){
@@ -87,12 +88,12 @@ public class DaftarRequestRewardUserAdapter extends RecyclerView.Adapter<DaftarR
                             if((snapshot_e1.child("namaBarangRequest").getValue().toString().equals(namaBarang)) &&
                                     (snapshot_e1.child("statusRequested").getValue().toString().equals(statusBarang))){
                                 RequestedReward requestedReward1 = snapshot_e1.getValue(RequestedReward.class);
-                                String newStatus = "Penukaran Berhasil";
+                                String newStatus = "Berhasil";
                                 requestedReward1.setStatusRequested(newStatus);
                                 snapshot_e1.getRef().setValue(requestedReward1).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
-                                        Toast.makeText(holder.itemView.getContext(), "Permintaan berhasil diterima", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(holder.itemView.getContext(), "Request berhasil diterima", Toast.LENGTH_SHORT).show();
                                     }
                                 });
                             }
@@ -121,6 +122,38 @@ public class DaftarRequestRewardUserAdapter extends RecyclerView.Adapter<DaftarR
                 });
             }
         });
+        holder.btnTolakRequest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                database = FirebaseDatabase.getInstance();
+                reference3 = database.getReference().child("RequestRewardUser").child(email);
+                reference3.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for(DataSnapshot snapshot_e1 : dataSnapshot.getChildren()){
+                            if((snapshot_e1.child("namaBarangRequest").getValue().toString().equals(namaBarang)) &&
+                                    (snapshot_e1.child("statusRequested").getValue().toString().equals(statusBarang))){
+                                RequestedReward requestedReward1 = snapshot_e1.getValue(RequestedReward.class);
+                                String newStatus = "Tidak Berhasil";
+                                requestedReward1.setStatusRequested(newStatus);
+                                snapshot_e1.getRef().setValue(requestedReward1).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        Toast.makeText(holder.itemView.getContext(), "Request ditolak", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+            }
+        });
     }
 
     @Override
@@ -133,6 +166,7 @@ public class DaftarRequestRewardUserAdapter extends RecyclerView.Adapter<DaftarR
         private TextView emailRequest;
         private TextView aksiRequest;
         private Button btnTerimaRequest;
+        private Button btnTolakRequest;
 
         public CardViewHolder(View itemView){
             super(itemView);
@@ -140,6 +174,7 @@ public class DaftarRequestRewardUserAdapter extends RecyclerView.Adapter<DaftarR
             emailRequest = itemView.findViewById(R.id.tv_person_requestreward);
             aksiRequest = itemView.findViewById(R.id.tv_action_requestreward);
             btnTerimaRequest = itemView.findViewById(R.id.btn_terima_requestreward);
+            btnTolakRequest = itemView.findViewById(R.id.btn_tolak_requestreward);
         }
 
         @Override
