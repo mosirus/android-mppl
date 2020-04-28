@@ -6,10 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -30,6 +33,7 @@ public class DaftarRequestRewardUserAdapter extends RecyclerView.Adapter<DaftarR
     private FirebaseAuth auth;
     private FirebaseDatabase database;
     private DatabaseReference reference;
+    private  DatabaseReference reference2;
     private String getEmailUser;
 
     public DaftarRequestRewardUserAdapter(Context context1, ArrayList<RequestedReward> listRequestedRewards1){
@@ -58,9 +62,13 @@ public class DaftarRequestRewardUserAdapter extends RecyclerView.Adapter<DaftarR
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CardViewHolder holder, int position) {
-        RequestedReward requestedReward = listRequestedRewards.get(position);
+    public void onBindViewHolder(@NonNull final CardViewHolder holder, int position) {
+        final RequestedReward requestedReward = listRequestedRewards.get(position);
         final String email = listRequestedRewards.get(position).getEmailRequester();
+
+        final String namaBarang = listRequestedRewards.get(position).getNamaBarangRequest();
+        final String statusBarang = listRequestedRewards.get(position).getStatusRequested();
+
         final int poin = Integer.parseInt(listRequestedRewards.get(position).getPoinBarangRequest());
         holder.tanggalRequest.setText(listRequestedRewards.get(position).getTanggalRequest());
         holder.emailRequest.setText(listRequestedRewards.get(position).getEmailRequester());
@@ -70,6 +78,34 @@ public class DaftarRequestRewardUserAdapter extends RecyclerView.Adapter<DaftarR
             public void onClick(View v) {
                 database = FirebaseDatabase.getInstance();
                 reference = database.getReference().child("Users").child(email);
+                reference2 = database.getReference().child("RequestRewardUser").child(email);
+
+                reference2.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for(DataSnapshot snapshot_e1 : dataSnapshot.getChildren()){
+                            if((snapshot_e1.child("namaBarangRequest").getValue().toString().equals(namaBarang)) &&
+                                    (snapshot_e1.child("statusRequested").getValue().toString().equals(statusBarang))){
+                                RequestedReward requestedReward1 = snapshot_e1.getValue(RequestedReward.class);
+                                String newStatus = "Penukaran Berhasil";
+                                requestedReward1.setStatusRequested(newStatus);
+                                snapshot_e1.getRef().setValue(requestedReward1).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        Toast.makeText(holder.itemView.getContext(), "Permintaan berhasil diterima", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+
                 reference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -81,7 +117,6 @@ public class DaftarRequestRewardUserAdapter extends RecyclerView.Adapter<DaftarR
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
-
                     }
                 });
             }
