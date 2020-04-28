@@ -96,7 +96,7 @@
         <LinearLayout
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_marginTop="170sp"
+            android:layout_marginTop="150sp"
             android:layout_marginLeft="10dp"
             android:orientation="horizontal">
 
@@ -126,10 +126,10 @@
 
         </LinearLayout>
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="240dp"
+            android:layout_marginTop="220dp"
             android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
@@ -138,7 +138,7 @@
                 android:layout_height="match_parent"
                 tools:listitem="@layout/item_list_sttukarpoin"/>
 
-        </LinearLayout>
+        </ScrollView>
 
 
     </RelativeLayout>
