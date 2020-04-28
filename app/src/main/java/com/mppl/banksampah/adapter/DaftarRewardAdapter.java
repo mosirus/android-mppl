@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
@@ -24,6 +25,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.mppl.banksampah.R;
+import com.mppl.banksampah.admin.EditRewardFragment;
 import com.mppl.banksampah.admin.model.Reward;
 
 import java.security.acl.Group;
@@ -59,8 +61,9 @@ public class DaftarRewardAdapter extends RecyclerView.Adapter<DaftarRewardAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CardViewViewHolder holder, final int position) {
-        Reward reward = listReward.get(position);
+    public void onBindViewHolder(@NonNull final CardViewViewHolder holder, final int position) {
+        final Reward reward = listReward.get(position);
+        Reward reward_e1 = listReward.get(position);
         holder.namaReward.setText(listReward.get(position).getNamaReward());
         Glide.with(holder.itemView.getContext())
                 .load(reward.getURLReward())
@@ -77,7 +80,6 @@ public class DaftarRewardAdapter extends RecyclerView.Adapter<DaftarRewardAdapte
     public class CardViewViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView namaReward;
         private ImageView gambarReward;
-        private Button btnHapusReward;
 
         CardViewViewHolder(View itemView){
             super(itemView);

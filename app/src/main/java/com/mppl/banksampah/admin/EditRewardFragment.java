@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import com.mppl.banksampah.R;
 
 public class EditRewardFragment extends Fragment {
+    public static final String EXTRA = "extra";
 
     @Nullable
     @Override
