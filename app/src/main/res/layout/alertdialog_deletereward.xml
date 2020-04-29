@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/border"
     android:orientation="vertical">
@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/questionbuyitem"
+        android:text="@string/questiondeletereward"
         android:textColor="@color/colorBlack"
         android:textSize="20dp"
         android:padding="10dp"/>
@@ -21,23 +21,23 @@
         android:layout_marginVertical="20dp">
 
         <Button
-            android:id="@+id/negativebuttondialogRewardUser"
-            android:layout_width="150dp"
+            android:id="@+id/negativedelbuttondialogRewardUser"
+            android:layout_width="120dp"
             android:layout_height="50dp"
             android:text="@string/batal"
             android:textColor="@color/white"
             android:textSize="20dp"
             android:background="@drawable/cancel_btn_style"
-            android:layout_marginHorizontal="20dp"/>
+            android:layout_marginHorizontal="10dp"/>
         <Button
-            android:id="@+id/positivebuttondialogRewardUser"
-            android:layout_width="150dp"
+            android:id="@+id/positivedelbuttondialogRewardUser"
+            android:layout_width="120dp"
             android:layout_height="50dp"
-            android:text="@string/tukarPoin"
+            android:text="@string/dummydelReward"
             android:textColor="@color/white"
             android:textSize="20dp"
             android:background="@drawable/btn_style"
-            android:layout_marginHorizontal="20dp"/>
+            android:layout_marginHorizontal="10dp"/>
 
     </LinearLayout>
 

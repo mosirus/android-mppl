@@ -1,9 +1,11 @@
 package com.mppl.banksampah.adapter;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -85,22 +87,43 @@ public class DaftarBarangUserAdapter extends RecyclerView.Adapter<DaftarBarangUs
         holder.btnBeliBarang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-                Date date = new Date();
-                String dateRequested = dateFormat.format(date).toString();
-                String emailRequester = userEmail;
-                String poinRewardRequested = Integer.toString(listBarang.get(position).getPointReward());
-                String namaRewardRequested = listBarang.get(position).getNamaReward();
-                String statusSementara = "Sedang Diproses";
-                RequestedReward requestedReward = new RequestedReward(dateRequested,emailRequester,poinRewardRequested,namaRewardRequested,statusSementara);
-                String refkey = reference.push().getKey();
+                final Dialog dialog = new Dialog(holder.itemView.getContext());
+                dialog.setContentView(R.layout.alertdialogrewarduser);
 
-                reference.child(refkey).setValue(requestedReward).addOnCompleteListener(new OnCompleteListener<Void>() {
+                TextView questionTextDialog = dialog.findViewById(R.id.tvquestion_dialogRewardUser);
+                questionTextDialog.setText("Kamu akan menggunakan " + listBarang.get(position).getPointReward() + " poin kamu untuk ditukarkan dengan satu buah " + listBarang.get(position).getNamaReward());
+                Button positiveDialogButton = dialog.findViewById(R.id.positivebuttondialogRewardUser);
+                Button negativeDialogButton = dialog.findViewById(R.id.negativebuttondialogRewardUser);
+                positiveDialogButton.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        Toast.makeText(holder.itemView.getContext(), "Request berhasil dilakukan, silahkan tunggu persetujuan Admin", Toast.LENGTH_SHORT).show();
+                    public void onClick(View v) {
+                        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                        Date date = new Date();
+                        String dateRequested = dateFormat.format(date).toString();
+                        String emailRequester = userEmail;
+                        String poinRewardRequested = Integer.toString(listBarang.get(position).getPointReward());
+                        String namaRewardRequested = listBarang.get(position).getNamaReward();
+                        String statusSementara = "Sedang Diproses";
+                        RequestedReward requestedReward = new RequestedReward(dateRequested,emailRequester,poinRewardRequested,namaRewardRequested,statusSementara);
+                        String refkey = reference.push().getKey();
+
+                        reference.child(refkey).setValue(requestedReward).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                Toast.makeText(holder.itemView.getContext(), "Request berhasil dilakukan, silahkan tunggu persetujuan Admin", Toast.LENGTH_SHORT).show();
+                                dialog.dismiss();
+                            }
+                        });
                     }
                 });
+                negativeDialogButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+
             }
         });
 

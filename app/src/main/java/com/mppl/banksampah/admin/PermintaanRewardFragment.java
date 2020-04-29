@@ -70,8 +70,11 @@ public class PermintaanRewardFragment extends Fragment implements OnClickListene
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     for(DataSnapshot snapshot1 : snapshot.getChildren()){
+                        String statParam = "Sedang Diproses";
                         RequestedReward requestedReward = snapshot1.getValue(RequestedReward.class);
-                        listRequestedReward.add(requestedReward);
+                        if(requestedReward.getStatusRequested().equals(statParam)){
+                            listRequestedReward.add(requestedReward);
+                        }
                     }
                     requestRewardUserAdapter = new DaftarRequestRewardUserAdapter(getActivity(),listRequestedReward);
                     rvListRequestedReward.setAdapter(requestRewardUserAdapter);

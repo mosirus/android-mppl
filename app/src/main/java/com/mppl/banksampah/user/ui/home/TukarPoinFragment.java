@@ -33,11 +33,7 @@ import java.util.ArrayList;
 
 public class TukarPoinFragment extends Fragment implements View.OnClickListener {
 
-    private Button btnListKupon;
     private Button btnstatus;
-    private RecyclerView.LayoutManager layoutManager;
-
-    private String[] nama_barang = {"Tupperware","Sendok","Payung","Pin Del"};
 
     private FirebaseAuth auth;
     private FirebaseDatabase database;

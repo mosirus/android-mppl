@@ -1,8 +1,5 @@
 package com.mppl.banksampah;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +12,9 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -110,14 +110,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private boolean validateForm() {
         boolean result = true;
         if (TextUtils.isEmpty(edtEmail.getText().toString())) {
-            edtEmail.setError("Required");
+            edtEmail.setError("Masukkan email");
             result = false;
         } else {
             edtEmail.setError(null);
         }
 
         if (TextUtils.isEmpty(edtPass.getText().toString())) {
-            edtPass.setError("Required");
+            edtPass.setError("Masukkan password");
             result = false;
         } else {
             edtPass.setError(null);
@@ -130,11 +130,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         int i = v.getId();
         if (i == R.id.btn_masuk) {
+
             InputMethodManager inputManager = (InputMethodManager)
                     getSystemService(Context.INPUT_METHOD_SERVICE);
 
-            inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
-                    InputMethodManager.HIDE_NOT_ALWAYS);
+            if (inputManager.isAcceptingText()) {
+                inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                        InputMethodManager.HIDE_NOT_ALWAYS);
+            }
 
             signIn();
         }

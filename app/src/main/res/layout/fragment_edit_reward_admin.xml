@@ -25,7 +25,7 @@
             android:id="@+id/gbr_event"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/reduce_reuse_recycle"
+            android:src="@color/dark_grey"
             />
 
         <androidx.appcompat.widget.LinearLayoutCompat
