@@ -19,32 +19,29 @@ public class RiwayatPoinAdapter extends RecyclerView.Adapter<RiwayatPoinAdapter.
     private ArrayList<RiwayatPoin> listRiwayat;
     private Context context;
 
-    public RiwayatPoinAdapter(Context context) {
+    public RiwayatPoinAdapter(Context context, ArrayList<RiwayatPoin> listPoin) {
         this.context = context;
-        listRiwayat = new ArrayList<>();
-    }
-
-    public void setListRiwayat(ArrayList<RiwayatPoin> listRiwayat) {
-        this.listRiwayat = listRiwayat;
-    }
-
-    public ArrayList<RiwayatPoin> getListRiwayat() {
-        return listRiwayat;
+        listRiwayat = listPoin;
     }
 
     @NonNull
     @Override
     public CardViewViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View mView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_cardview_riwayat, viewGroup, false);
+        View mView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_list_riwayat_poin_masuk, viewGroup, false);
         return new CardViewViewHolder(mView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CardViewViewHolder holder, int position) {
-        RiwayatPoin riwayatPoin = getListRiwayat().get(position);
+        String berat = (String.valueOf(listRiwayat.get(position).getBerat()));
+        String satuan = (String.valueOf(listRiwayat.get(position).getSatuan()));
+        String jenisSampah = (String.valueOf(listRiwayat.get(position).getJenisSampah()));
 
-        holder.tanggal.setText(riwayatPoin.getTanggal());
-        holder.keterangan.setText(riwayatPoin.getKeterangan());
+        String rincian = jenisSampah + " " + berat + " " + satuan;
+        holder.tvRincian.setText(rincian);
+
+        holder.tvTanggal.setText(String.valueOf(listRiwayat.get(position).getTanggal()));
+        holder.tvPoin.setText(String.valueOf(listRiwayat.get(position).getPoin()));
     }
 
     @Override
@@ -52,15 +49,16 @@ public class RiwayatPoinAdapter extends RecyclerView.Adapter<RiwayatPoinAdapter.
         return listRiwayat.size();
     }
 
-    public class CardViewViewHolder extends RecyclerView.ViewHolder {
+    static class CardViewViewHolder extends RecyclerView.ViewHolder {
+        private TextView tvTanggal;
+        private TextView tvRincian;
+        private TextView tvPoin;
 
-        private TextView tanggal;
-        private TextView keterangan;
-
-        public CardViewViewHolder(@NonNull View itemView) {
+        CardViewViewHolder(@NonNull View itemView) {
             super(itemView);
-            tanggal =itemView.findViewById(R.id.tanggal_riwayat);
-            keterangan = itemView.findViewById(R.id.ket_riwayat);
+            tvTanggal = itemView.findViewById(R.id.tv_date_pm);
+            tvRincian = itemView.findViewById(R.id.tv_rincian_pm);
+            tvPoin = itemView.findViewById(R.id.tv_poin_pm);
         }
     }
 }

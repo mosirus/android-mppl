@@ -268,5 +268,6 @@
     <string name="dummyaction_riwayatreward">Aksi Request</string>
     <string name="dummyperson_riwayatreward">Email Requester</string>
     <string name="dummystatus_riwayatreward">Status Request</string>
+    <string name="kamu_belum_memiliki_riwayat_poin">Kamu belum memiliki riwayat poin</string>
 
 </resources>
