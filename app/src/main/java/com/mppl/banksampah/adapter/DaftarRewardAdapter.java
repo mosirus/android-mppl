@@ -1,5 +1,6 @@
 package com.mppl.banksampah.adapter;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -7,8 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -18,6 +21,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,6 +31,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.mppl.banksampah.R;
 import com.mppl.banksampah.admin.EditRewardFragment;
+import com.mppl.banksampah.admin.KuponFragment;
 import com.mppl.banksampah.admin.model.Reward;
 
 import java.security.acl.Group;
@@ -34,6 +40,9 @@ import java.util.ArrayList;
 public class DaftarRewardAdapter extends RecyclerView.Adapter<DaftarRewardAdapter.CardViewViewHolder> {
     private ArrayList<Reward> listReward;
     private Context context;
+
+    private FirebaseDatabase database;
+    private  DatabaseReference reference;
 
     public DaftarRewardAdapter(Context context1, ArrayList<Reward> listReward1){
         context = context1;
@@ -69,6 +78,51 @@ public class DaftarRewardAdapter extends RecyclerView.Adapter<DaftarRewardAdapte
                 .load(reward.getURLReward())
                 .apply(new RequestOptions().override(70,70))
                 .into(holder.gambarReward);
+        holder.btnDeleteReward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Dialog confDeleteDialog = new Dialog(holder.itemView.getContext());
+                confDeleteDialog.setContentView(R.layout.alertdialog_deletereward);
+                Button deleteItem = confDeleteDialog.findViewById(R.id.positivedelbuttondialogRewardUser);
+                Button cancelDeleteItem = confDeleteDialog.findViewById(R.id.negativedelbuttondialogRewardUser);
+
+                deleteItem.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        database = FirebaseDatabase.getInstance();
+                        reference = database.getReference().child("Reward");
+                        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                                    if(snapshot.child("namaReward").getValue().toString().equals(listReward.get(position).getNamaReward())){
+                                        snapshot.getRef().removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                Toast.makeText(holder.itemView.getContext(), "Data reward berhasil dihapus", Toast.LENGTH_SHORT).show();
+                                                confDeleteDialog.dismiss();
+                                            }
+                                        });
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+                    }
+                });
+                cancelDeleteItem.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        confDeleteDialog.dismiss();
+                    }
+                });
+                confDeleteDialog.show();
+            }
+        });
 
     }
 
@@ -80,11 +134,13 @@ public class DaftarRewardAdapter extends RecyclerView.Adapter<DaftarRewardAdapte
     public class CardViewViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView namaReward;
         private ImageView gambarReward;
+        private ImageButton btnDeleteReward;
 
         CardViewViewHolder(View itemView){
             super(itemView);
             namaReward = itemView.findViewById(R.id.tv_list_reward);
             gambarReward = itemView.findViewById(R.id.iv_list_reward);
+            btnDeleteReward = itemView.findViewById(R.id.btnReward_hapus_reward);
         }
 
         @Override
@@ -99,4 +155,5 @@ public class DaftarRewardAdapter extends RecyclerView.Adapter<DaftarRewardAdapte
     public interface OnItemCallback{
         void onItemclicked(Reward data);
     }
+
 }

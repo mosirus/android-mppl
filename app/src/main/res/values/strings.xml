@@ -269,5 +269,7 @@
     <string name="dummyperson_riwayatreward">Email Requester</string>
     <string name="dummystatus_riwayatreward">Status Request</string>
     <string name="kamu_belum_memiliki_riwayat_poin">Kamu belum memiliki riwayat poin</string>
+    <string name="dummydelReward">Hapus</string>
+    <string name="questiondeletereward">Ingin menghapus data reward ?</string>
 
 </resources>
