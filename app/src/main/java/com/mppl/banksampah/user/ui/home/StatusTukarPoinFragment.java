@@ -52,6 +52,9 @@ public class StatusTukarPoinFragment extends Fragment implements View.OnClickLis
                              Bundle savedInstanceState) {
         View root =inflater.inflate(R.layout.fragment_status_tukar_poin, container, false);
 
+        btnListKupon = root.findViewById(R.id.ftpbtn_listkupon);
+        btnListKupon.setOnClickListener(this);
+
         btnListBarang = root.findViewById(R.id.ftpbtn_listbarang);
         btnListBarang.setOnClickListener(this);
 
@@ -97,6 +100,12 @@ public class StatusTukarPoinFragment extends Fragment implements View.OnClickLis
             TukarPoinFragment fragment = new TukarPoinFragment();
             FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment, TukarPoinFragment.class.getSimpleName())
+                    .addToBackStack(null).commit();
+        }
+        if(v.getId() == R.id.ftpbtn_listkupon){
+            KuponTukarPoinFragment fragment = new KuponTukarPoinFragment();
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment, KuponTukarPoinFragment.class.getSimpleName())
                     .addToBackStack(null).commit();
         }
 

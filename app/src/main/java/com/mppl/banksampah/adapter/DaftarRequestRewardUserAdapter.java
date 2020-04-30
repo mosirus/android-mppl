@@ -70,7 +70,7 @@ public class DaftarRequestRewardUserAdapter extends RecyclerView.Adapter<DaftarR
         final String namaBarang = listRequestedRewards.get(position).getNamaBarangRequest();
         final String statusBarang = listRequestedRewards.get(position).getStatusRequested();
 
-        final int poin = Integer.parseInt(listRequestedRewards.get(position).getPoinBarangRequest());
+        final int poinBarang = Integer.parseInt(listRequestedRewards.get(position).getPoinBarangRequest());
         holder.tanggalRequest.setText(listRequestedRewards.get(position).getTanggalRequest());
         holder.emailRequest.setText(listRequestedRewards.get(position).getEmailRequester());
         holder.aksiRequest.setText("Penukaran "+ listRequestedRewards.get(position).getPoinBarangRequest() +" Poin menjadi "+ listRequestedRewards.get(position).getNamaBarangRequest());
@@ -111,7 +111,7 @@ public class DaftarRequestRewardUserAdapter extends RecyclerView.Adapter<DaftarR
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         User user = dataSnapshot.getValue(User.class);
-                        int currentPoin = user.getPoint() - poin;
+                        int currentPoin = user.getPoint() - poinBarang;
                         user.setPoint(currentPoin);
                         dataSnapshot.getRef().setValue(user);
                     }

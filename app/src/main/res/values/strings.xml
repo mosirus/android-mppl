@@ -271,5 +271,7 @@
     <string name="kamu_belum_memiliki_riwayat_poin">Kamu belum memiliki riwayat poin</string>
     <string name="dummydelReward">Hapus</string>
     <string name="questiondeletereward">Ingin menghapus data reward ?</string>
+    <string name="judultp_listbarang">List Barang</string>
+    <string name="judultp_listkupon">List Kupon</string>
 
 </resources>

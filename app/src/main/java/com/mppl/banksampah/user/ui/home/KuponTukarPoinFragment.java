@@ -12,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,57 +25,56 @@ import com.mppl.banksampah.R;
 import com.mppl.banksampah.adapter.DaftarBarangUserAdapter;
 import com.mppl.banksampah.admin.model.Reward;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 
 
-public class TukarPoinFragment extends Fragment implements View.OnClickListener {
-
-    private Button btnstatus;
-    private Button btnListKupon;
+public class KuponTukarPoinFragment extends Fragment implements View.OnClickListener{
+    private Button btnListBarang;
+    private Button btnStTukarPoin;
 
     private FirebaseAuth auth;
     private FirebaseDatabase database;
     private DatabaseReference reference;
-    private String GetUserID;
+    private String getEmail;
 
-    private ArrayList<Reward> listBarang;
+    private ArrayList<Reward> listKupon;
     private DaftarBarangUserAdapter barangUserAdapter;
-    private RecyclerView rvListBarang;
+    private RecyclerView rvListKupon;
 
-    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View root = inflater.inflate(R.layout.fragment_tukar_poin, container, false);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View root = inflater.inflate(R.layout.fragment_kupon_tukar_poin, container, false);
 
-        btnstatus = root.findViewById(R.id.ftpbtn_status);
-        btnstatus.setOnClickListener(this);
-        btnListKupon = root.findViewById(R.id.ftpbtn_listkupon);
-        btnListKupon.setOnClickListener(this);
+        btnListBarang = root.findViewById(R.id.ftpbtn_listbarang);
+        btnListBarang.setOnClickListener(this);
 
-        rvListBarang = root.findViewById(R.id.rvtp_list_barang);
-        rvListBarang.setHasFixedSize(true);
-        rvListBarang.setLayoutManager(new LinearLayoutManager(getContext()));
+        btnStTukarPoin = root.findViewById(R.id.ftpbtn_status);
+        btnStTukarPoin.setOnClickListener(this);
 
-        auth = FirebaseAuth.getInstance();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
-        GetUserID = user.getUid();
+        getEmail = user.getEmail();
+
+        rvListKupon = root.findViewById(R.id.rvtp_list_kupon);
+        rvListKupon.setHasFixedSize(true);
+        rvListKupon.setLayoutManager(new LinearLayoutManager(getContext()));
 
         database = FirebaseDatabase.getInstance();
         reference = database.getReference().child("Reward");
-        listBarang = new ArrayList<Reward>();
+        listKupon = new ArrayList<Reward>();
 
-        reference.addValueEventListener(new ValueEventListener() {
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
-                    String jenisParam = "Barang";
+                    String jenisParam = "Kupon";
                     if(dataSnapshot1.child("jenisReward").getValue().toString().equals(jenisParam)){
                         Reward reward = dataSnapshot1.getValue(Reward.class);
-                        listBarang.add(reward);
+                        listKupon.add(reward);
                     }
                 }
-                barangUserAdapter = new DaftarBarangUserAdapter(getActivity(), listBarang);
-                rvListBarang.setAdapter(barangUserAdapter);
+                barangUserAdapter = new DaftarBarangUserAdapter(getActivity(), listKupon);
+                rvListKupon.setAdapter(barangUserAdapter);
             }
 
             @Override
@@ -85,24 +83,24 @@ public class TukarPoinFragment extends Fragment implements View.OnClickListener 
             }
         });
 
+
         return root;
     }
 
     @Override
     public void onClick(View v) {
+        if(v.getId() == R.id.ftpbtn_listbarang){
+            TukarPoinFragment fragment = new TukarPoinFragment();
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.nav_host_fragment,fragment, TukarPoinFragment.class.getSimpleName())
+                    .addToBackStack(null).commit();
+        }
         if(v.getId() == R.id.ftpbtn_status){
             StatusTukarPoinFragment fragment = new StatusTukarPoinFragment();
             FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment, StatusTukarPoinFragment.class.getSimpleName())
                     .addToBackStack(null).commit();
         }
-        if(v.getId() == R.id.ftpbtn_listkupon){
-            KuponTukarPoinFragment fragment = new KuponTukarPoinFragment();
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment, KuponTukarPoinFragment.class.getSimpleName())
-                    .addToBackStack(null).commit();
-        }
 
     }
-
 }
