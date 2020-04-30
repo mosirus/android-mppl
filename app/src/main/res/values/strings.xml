@@ -273,5 +273,6 @@
     <string name="questiondeletereward">Ingin menghapus data reward ?</string>
     <string name="judultp_listbarang">List Barang</string>
     <string name="judultp_listkupon">List Kupon</string>
+    <string name="edit_reward">Edit Reward</string>
 
 </resources>

@@ -3,6 +3,7 @@ package com.mppl.banksampah.adapter;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -123,6 +124,12 @@ public class DaftarRewardAdapter extends RecyclerView.Adapter<DaftarRewardAdapte
                 confDeleteDialog.show();
             }
         });
+        holder.btnEditReward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemCallback.onItemclicked(listReward.get(holder.getAdapterPosition()));
+            }
+        });
 
     }
 
@@ -135,20 +142,22 @@ public class DaftarRewardAdapter extends RecyclerView.Adapter<DaftarRewardAdapte
         private TextView namaReward;
         private ImageView gambarReward;
         private ImageButton btnDeleteReward;
+        private ImageButton btnEditReward;
 
         CardViewViewHolder(View itemView){
             super(itemView);
             namaReward = itemView.findViewById(R.id.tv_list_reward);
             gambarReward = itemView.findViewById(R.id.iv_list_reward);
             btnDeleteReward = itemView.findViewById(R.id.btnReward_hapus_reward);
+            btnEditReward = itemView.findViewById(R.id.btnReward_edit_reward);
+            btnEditReward.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
             int position = getAdapterPosition();
-            Reward reward = getListReward().get(position);
+            Reward listReward2 = getListReward().get(position);
 
-            reward.setNamaReward(reward.getNamaReward());
         }
     }
 
