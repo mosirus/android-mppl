@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,10 +32,12 @@ import java.util.ArrayList;
 public class KuponTukarPoinFragment extends Fragment implements View.OnClickListener{
     private Button btnListBarang;
     private Button btnStTukarPoin;
+    private TextView tvPoinUser;
 
     private FirebaseAuth auth;
     private FirebaseDatabase database;
     private DatabaseReference reference;
+    private DatabaseReference reference2;
     private String getEmail;
 
     private ArrayList<Reward> listKupon;
@@ -51,9 +54,11 @@ public class KuponTukarPoinFragment extends Fragment implements View.OnClickList
         btnStTukarPoin = root.findViewById(R.id.ftpbtn_status);
         btnStTukarPoin.setOnClickListener(this);
 
-        FirebaseAuth auth = FirebaseAuth.getInstance();
+        tvPoinUser = root.findViewById(R.id.textView_point);
+
+        auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
-        getEmail = user.getEmail();
+        getEmail = user.getEmail().replace(".","_");
 
         rvListKupon = root.findViewById(R.id.rvtp_list_kupon);
         rvListKupon.setHasFixedSize(true);
@@ -80,6 +85,19 @@ public class KuponTukarPoinFragment extends Fragment implements View.OnClickList
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(getActivity(), "Gagal memuat data", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        reference2 = database.getReference().child("Users").child(getEmail);
+        reference2.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                tvPoinUser.setText(dataSnapshot.child("point").getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
 

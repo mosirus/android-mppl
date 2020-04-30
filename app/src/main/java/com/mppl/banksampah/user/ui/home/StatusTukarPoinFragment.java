@@ -35,11 +35,14 @@ public class StatusTukarPoinFragment extends Fragment implements View.OnClickLis
 
     private Button btnListBarang;
     private Button btnListKupon;
+    private TextView tvPoinUser;
+
     private RecyclerView rv_ListStatus;
 
     private FirebaseAuth auth;
     private FirebaseDatabase database;
     private DatabaseReference reference;
+    private DatabaseReference reference2;
     private String getEmailUser;
 
     private ArrayList<RequestedReward> listRequestedReward;
@@ -57,6 +60,8 @@ public class StatusTukarPoinFragment extends Fragment implements View.OnClickLis
 
         btnListBarang = root.findViewById(R.id.ftpbtn_listbarang);
         btnListBarang.setOnClickListener(this);
+
+        tvPoinUser = root.findViewById(R.id.textView_point);
 
         rv_ListStatus = root.findViewById(R.id.rv_list_sttp);
         rv_ListStatus.setHasFixedSize(true);
@@ -88,6 +93,19 @@ public class StatusTukarPoinFragment extends Fragment implements View.OnClickLis
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(getActivity(), "Gagal memuat data", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        reference2 = database.getReference().child("Users").child(getEmailUser);
+        reference2.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                tvPoinUser.setText(dataSnapshot.child("point").getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
 

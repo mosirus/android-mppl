@@ -35,11 +35,13 @@ public class TukarPoinFragment extends Fragment implements View.OnClickListener 
 
     private Button btnstatus;
     private Button btnListKupon;
+    private TextView tvPoinUser;
 
     private FirebaseAuth auth;
     private FirebaseDatabase database;
     private DatabaseReference reference;
-    private String GetUserID;
+    private DatabaseReference reference2;
+    private String getEmailUser;
 
     private ArrayList<Reward> listBarang;
     private DaftarBarangUserAdapter barangUserAdapter;
@@ -52,6 +54,7 @@ public class TukarPoinFragment extends Fragment implements View.OnClickListener 
         btnstatus.setOnClickListener(this);
         btnListKupon = root.findViewById(R.id.ftpbtn_listkupon);
         btnListKupon.setOnClickListener(this);
+        tvPoinUser = root.findViewById(R.id.textView_point);
 
         rvListBarang = root.findViewById(R.id.rvtp_list_barang);
         rvListBarang.setHasFixedSize(true);
@@ -59,7 +62,7 @@ public class TukarPoinFragment extends Fragment implements View.OnClickListener 
 
         auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
-        GetUserID = user.getUid();
+        getEmailUser = user.getEmail().replace(".","_");
 
         database = FirebaseDatabase.getInstance();
         reference = database.getReference().child("Reward");
@@ -84,6 +87,20 @@ public class TukarPoinFragment extends Fragment implements View.OnClickListener 
                 Toast.makeText(getActivity(), "Gagal memuat data", Toast.LENGTH_SHORT).show();
             }
         });
+
+        reference2 = database.getReference().child("Users").child(getEmailUser);
+        reference2.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                tvPoinUser.setText(dataSnapshot.child("point").getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
 
         return root;
     }
