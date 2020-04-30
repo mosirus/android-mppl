@@ -28,6 +28,7 @@ import com.mppl.banksampah.R;
 import com.mppl.banksampah.adapter.DaftarRewardAdapter;
 import com.mppl.banksampah.admin.model.Reward;
 
+import java.net.URL;
 import java.util.ArrayList;
 
 public class KuponFragment extends Fragment implements OnClickListener{
@@ -35,6 +36,7 @@ public class KuponFragment extends Fragment implements OnClickListener{
     private Button btnTambahReward;
     private Button btnPermintaanReward;
     private Button btnRiwayatReward;
+
 
     private RecyclerView rvListReward;
 
@@ -82,6 +84,28 @@ public class KuponFragment extends Fragment implements OnClickListener{
                 }
                 rewardAdapter = new DaftarRewardAdapter(getActivity(), listReward);
                 rvListReward.setAdapter(rewardAdapter);
+
+                rewardAdapter.setOnItemCallback(new DaftarRewardAdapter.OnItemCallback() {
+                    @Override
+                    public void onItemclicked(Reward data) {
+                        String namaReward = data.getNamaReward();
+                        int pointReward = data.getPointReward();
+                        String jenisReward = data.getJenisReward();
+                        String URLReward = data.getURLReward();
+
+                        Bundle editRewardBundle = new Bundle();
+                        editRewardBundle.putString("namaReward",namaReward);
+                        editRewardBundle.putInt("pointReward",pointReward);
+                        editRewardBundle.putString("jenisReward",jenisReward);
+                        editRewardBundle.putString("urlReward", URLReward);
+
+                        EditRewardFragment fragment = new EditRewardFragment();
+                        fragment.setArguments(editRewardBundle);
+                        FragmentManager fragmentManager = getChildFragmentManager();
+                        fragmentManager.beginTransaction().replace(R.id.fragmentReward, fragment, EditRewardFragment.class.getSimpleName())
+                                .addToBackStack(null).commit();
+                    }
+                });
             }
 
             @Override
