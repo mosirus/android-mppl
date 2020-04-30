@@ -4,11 +4,12 @@
     android:id="@+id/containerPermintaanAntar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="50dp"
     android:background="@android:color/white">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
         android:orientation="vertical"
@@ -66,7 +67,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:nestedScrollingEnabled="false"
             tools:listitem="@layout/item_list_riwayat_poin_masuk" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>

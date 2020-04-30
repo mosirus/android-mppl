@@ -75,6 +75,30 @@ public class PoinMasukFragment extends Fragment {
                     }
                 }
 
+//                if (riwayatPoinArrayList.isEmpty()) {
+//                    tvBelumRequest.setVisibility(View.VISIBLE);
+//                } else {
+//                    adapter = new RiwayatPoinAdapter(getActivity(), riwayatPoinArrayList);
+//                    rvPoinMasuk.setAdapter(adapter);
+//                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getActivity(), "Gagal memuat data", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        databaseReferenceJemput.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    RiwayatPoin riwayatPoin = dataSnapshot1.getValue(RiwayatPoin.class);
+                    if (riwayatPoin.getStatus().equals("Berhasil")) {
+                        riwayatPoinArrayList.add(riwayatPoin);
+                    }
+                }
+
                 if (riwayatPoinArrayList.isEmpty()) {
                     tvBelumRequest.setVisibility(View.VISIBLE);
                 } else {
