@@ -142,7 +142,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                                 // If sign in fails, display a message to the user.
                                 progressDialog.dismiss();
                                 Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                                Toast.makeText(RegisterActivity.this, "Pendaftaran gagal, email mungkin sudah digunakan",
+                                Toast.makeText(RegisterActivity.this, "Pendaftaran gagal, email sudah digunakan atau password kurang dari 6 karakter",
                                         Toast.LENGTH_LONG).show();
                             }
                         }
