@@ -183,7 +183,7 @@ public class TambahRewardFragment extends Fragment implements OnClickListener{
             poinReward.setError(null);
         }
         if(TextUtils.isEmpty(jenisReward.getSelectedItem().toString())){
-            Toast.makeText(getActivity(),"Pilih jenis Reward !",
+            Toast.makeText(getActivity(),"Pilih jenis Reward terlebih dahulu !",
                     Toast.LENGTH_LONG).show();
             result = false;
         }
@@ -236,8 +236,10 @@ public class TambahRewardFragment extends Fragment implements OnClickListener{
                             String Jenis_Reward = jenisReward.getSelectedItem().toString().trim();
                             String URL_Reward = uri.toString().trim();
 
+                            String nama_Child = namaReward.getText().toString().trim();
+
                             Reward reward = new Reward(Nama_Reward,Poin_Reward,Jenis_Reward,URL_Reward);
-                            database.child(refKey).setValue(reward);
+                            database.child(nama_Child).setValue(reward);
 
                             /*String param;
                             param = "Barang";

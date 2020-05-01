@@ -275,5 +275,10 @@
     <string name="judultp_listkupon">List Kupon</string>
     <string name="edit_reward">Edit Reward</string>
     <string name="penukaran">Penukaran</string>
+    <string name="questioneditreward">Ingin menyimpan data reward yang baru ?</string>
+    <string name="dummyeditReward">Edit</string>
+    <string name="dummyeditreward">Edit</string>
+    <string name="questionchangereward">Terdapat perubahan yang anda buat, ingin kembali melanjutkan perubahan ?</string>
+    <string name="dummylanjuteditReward">Lanjut</string>
 
 </resources>
