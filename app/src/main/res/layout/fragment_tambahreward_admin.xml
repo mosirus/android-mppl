@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragmentTambahReward"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/viewprofile"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <LinearLayout
         android:id="@+id/profilatas"
@@ -152,3 +160,4 @@
 
     </LinearLayout>
 </ScrollView>
+</FrameLayout>

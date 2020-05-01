@@ -122,19 +122,19 @@ public class KuponFragment extends Fragment implements OnClickListener{
         if(v.getId() == R.id.btn_tambah_reward){
             TambahRewardFragment fragment = new TambahRewardFragment();
             FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment, TambahRewardFragment.class.getSimpleName())
+            fragmentManager.beginTransaction().replace(R.id.fragmentReward, fragment, TambahRewardFragment.class.getSimpleName())
                     .addToBackStack(null).commit();
         }
         if(v.getId() == R.id.btnReward_permintaanReward){
             PermintaanRewardFragment fragment = new PermintaanRewardFragment();
             FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment, PermintaanRewardFragment.class.getSimpleName())
+            fragmentManager.beginTransaction().replace(R.id.fragmentReward, fragment, PermintaanRewardFragment.class.getSimpleName())
                     .addToBackStack(null).commit();
         }
         if(v.getId() == R.id.btnReward_riwayatReward){
             RiwayatRewardFragment fragment = new RiwayatRewardFragment();
             FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment, RiwayatRewardFragment.class.getSimpleName())
+            fragmentManager.beginTransaction().replace(R.id.fragmentReward, fragment, RiwayatRewardFragment.class.getSimpleName())
                     .addToBackStack(null).commit();
         }
 
