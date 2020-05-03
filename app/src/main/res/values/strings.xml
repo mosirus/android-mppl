@@ -280,5 +280,6 @@
     <string name="dummyeditreward">Edit</string>
     <string name="questionchangereward">Terdapat perubahan yang anda buat, ingin kembali melanjutkan perubahan ?</string>
     <string name="dummylanjuteditReward">Lanjut</string>
+    <string name="text_no_info">Belum ada riwayat penukaran sampah terbaru</string>
 
 </resources>
