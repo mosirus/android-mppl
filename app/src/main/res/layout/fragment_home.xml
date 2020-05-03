@@ -4,7 +4,8 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -61,7 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:text="@string/app_name"
+                android:text="Bank Sampah"
                 android:textSize="19sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -113,6 +114,7 @@
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/riwayatPoinNotification"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -139,14 +141,14 @@
                         android:paddingBottom="10dp"
                         android:text="@string/riwayat_poin"
                         android:textColor="@android:color/white"
-                        android:textSize="16sp" />
+                        android:textSize="15sp" />
 
-                    <EditText
-                        android:id="@+id/in_date"
+                    <TextView
+                        android:id="@+id/tanggal_info"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:hint="@string/tanggal" />
+                        android:text="-" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -155,9 +157,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="15dp"
-                    android:text="@string/text_info" />
+                    android:text="@string/text_no_info" />
+
+                <TextView
+                    android:id="@+id/txt_info_poin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="15dp"
+                    android:text="@string/poin"
+                    android:visibility="gone" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -492,7 +504,7 @@
             android:paddingStart="20dp"
             android:paddingTop="20dp"
             android:paddingEnd="20dp"
-            android:paddingBottom="60dp">
+            android:paddingBottom="90dp">
 
             <TextView
                 android:id="@+id/txt_petunjuk1"

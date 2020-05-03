@@ -29,8 +29,11 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.UploadTask;
@@ -109,7 +112,7 @@ public class TambahRewardFragment extends Fragment implements OnClickListener{
         if(v.getId() == R.id.btnReward_batal_tambah){
             KuponFragment fragment = new KuponFragment();
             FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment, KuponFragment.class.getSimpleName())
+            fragmentManager.beginTransaction().replace(R.id.fragmentTambahReward, fragment, KuponFragment.class.getSimpleName())
                     .addToBackStack(null).commit();
         }
 
@@ -183,7 +186,7 @@ public class TambahRewardFragment extends Fragment implements OnClickListener{
             poinReward.setError(null);
         }
         if(TextUtils.isEmpty(jenisReward.getSelectedItem().toString())){
-            Toast.makeText(getActivity(),"Pilih jenis Reward !",
+            Toast.makeText(getActivity(),"Pilih jenis Reward terlebih dahulu !",
                     Toast.LENGTH_LONG).show();
             result = false;
         }
@@ -199,8 +202,6 @@ public class TambahRewardFragment extends Fragment implements OnClickListener{
 
     private void uploadKupon(){
         final String refKey = database.push().getKey();
-        final String varRef = varDatabase.push().getKey();
-
         if(!validasiFormTambahReward()){
             return;
         }
@@ -221,6 +222,8 @@ public class TambahRewardFragment extends Fragment implements OnClickListener{
             String path1c = "Poin Reward";
             String path1d = "Jenis Reward";
 
+
+
             //upload gambar
             UploadTask uploadTask = reference.child(namaGambar).putBytes(bytes);
             uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -236,20 +239,10 @@ public class TambahRewardFragment extends Fragment implements OnClickListener{
                             String Jenis_Reward = jenisReward.getSelectedItem().toString().trim();
                             String URL_Reward = uri.toString().trim();
 
+                            String nama_Child = namaReward.getText().toString().trim();
+
                             Reward reward = new Reward(Nama_Reward,Poin_Reward,Jenis_Reward,URL_Reward);
                             database.child(refKey).setValue(reward);
-
-                            /*String param;
-                            param = "Barang";
-
-                            if(Jenis_Reward == param){
-                                Reward reward = new Reward(Nama_Reward,Poin_Reward,Jenis_Reward,URL_Reward);
-                                database.child("Barang").child(refKey).setValue(reward);
-                            }else{
-                                Reward reward = new Reward(Nama_Reward,Poin_Reward,Jenis_Reward,URL_Reward);
-                                database.child("Kupon").child(refKey).setValue(reward);
-                            }*/
-
 
                         }
                     });

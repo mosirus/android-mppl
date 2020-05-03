@@ -212,7 +212,7 @@ public class TerimaSampahFragment extends Fragment implements OnClickListener {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String userCurrentPoint = Objects.requireNonNull(dataSnapshot.child("point").getValue()).toString();
 
-                String finalPoint = String.valueOf(Integer.parseInt(userCurrentPoint) + poin);
+                int finalPoint = Integer.parseInt(userCurrentPoint) + poin;
                 userDataRef.child("point").setValue(finalPoint);
             }
 

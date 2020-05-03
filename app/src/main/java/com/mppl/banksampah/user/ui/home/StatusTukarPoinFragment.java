@@ -35,11 +35,14 @@ public class StatusTukarPoinFragment extends Fragment implements View.OnClickLis
 
     private Button btnListBarang;
     private Button btnListKupon;
+    private TextView tvPoinUser;
+
     private RecyclerView rv_ListStatus;
 
     private FirebaseAuth auth;
     private FirebaseDatabase database;
     private DatabaseReference reference;
+    private DatabaseReference reference2;
     private String getEmailUser;
 
     private ArrayList<RequestedReward> listRequestedReward;
@@ -52,8 +55,13 @@ public class StatusTukarPoinFragment extends Fragment implements View.OnClickLis
                              Bundle savedInstanceState) {
         View root =inflater.inflate(R.layout.fragment_status_tukar_poin, container, false);
 
+        btnListKupon = root.findViewById(R.id.ftpbtn_listkupon);
+        btnListKupon.setOnClickListener(this);
+
         btnListBarang = root.findViewById(R.id.ftpbtn_listbarang);
         btnListBarang.setOnClickListener(this);
+
+        tvPoinUser = root.findViewById(R.id.textView_point);
 
         rv_ListStatus = root.findViewById(R.id.rv_list_sttp);
         rv_ListStatus.setHasFixedSize(true);
@@ -88,6 +96,19 @@ public class StatusTukarPoinFragment extends Fragment implements View.OnClickLis
             }
         });
 
+        reference2 = database.getReference().child("Users").child(getEmailUser);
+        reference2.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                tvPoinUser.setText(dataSnapshot.child("point").getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
         return root;
     }
 
@@ -97,6 +118,12 @@ public class StatusTukarPoinFragment extends Fragment implements View.OnClickLis
             TukarPoinFragment fragment = new TukarPoinFragment();
             FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment, TukarPoinFragment.class.getSimpleName())
+                    .addToBackStack(null).commit();
+        }
+        if(v.getId() == R.id.ftpbtn_listkupon){
+            KuponTukarPoinFragment fragment = new KuponTukarPoinFragment();
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment, KuponTukarPoinFragment.class.getSimpleName())
                     .addToBackStack(null).commit();
         }
 

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/containerPermintaanAntar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="50dp"
     android:background="@android:color/white">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="15dp"
         android:orientation="vertical"
         android:paddingStart="15dp"
@@ -21,7 +21,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="100dp"
+                android:layout_width="90dp"
                 android:layout_height="50dp"
                 android:background="@drawable/table_content_cell_bg3"
                 android:gravity="center"
@@ -30,20 +30,22 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:layout_width="185dp"
+                android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:background="@drawable/table_content_cell_bg3"
                 android:gravity="center"
+                android:layout_weight="2"
                 android:text="@string/rincian"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_gravity="end"
                 android:background="@drawable/table_content_cell_bg3"
                 android:gravity="center"
+                android:layout_weight="1"
                 android:text="@string/poin"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
@@ -66,7 +68,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:nestedScrollingEnabled="false"
             tools:listitem="@layout/item_list_riwayat_poin_masuk" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>

@@ -95,13 +95,13 @@ public class PermintaanRewardFragment extends Fragment implements OnClickListene
         if(v.getId() == R.id.btnReward_listReward){
             KuponFragment fragment = new KuponFragment();
             FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment, KuponFragment.class.getSimpleName())
+            fragmentManager.beginTransaction().replace(R.id.fragmentPermintaanReward, fragment, KuponFragment.class.getSimpleName())
                     .addToBackStack(null).commit();
         }
         if(v.getId() == R.id.btnReward_riwayatReward){
             RiwayatRewardFragment fragment = new RiwayatRewardFragment();
             FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment, RiwayatRewardFragment.class.getSimpleName())
+            fragmentManager.beginTransaction().replace(R.id.fragmentPermintaanReward, fragment, RiwayatRewardFragment.class.getSimpleName())
                     .addToBackStack(null).commit();
         }
 

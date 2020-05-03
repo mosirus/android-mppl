@@ -2,7 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="100dp"
     android:orientation="horizontal"
     android:background="@drawable/background_item_list_barang"
     android:layout_marginVertical="5dp"
@@ -23,7 +23,7 @@
         android:layout_gravity="center">
     <TextView
         android:id="@+id/tv_list_barang"
-        android:layout_width="120dp"
+        android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_gravity="center"
         android:gravity="left"
@@ -32,19 +32,9 @@
         android:textColor="@color/colorBlack"
         android:textSize="20dp" />
 
-     <TextView
-         android:id="@+id/tv_list_jenisreward"
-         android:layout_width="120dp"
-         android:layout_height="30dp"
-         android:layout_gravity="center"
-         android:gravity="left"
-         android:layout_marginHorizontal="30dp"
-         android:text="@string/jenis_reward"
-         android:textColor="@color/colorBlack"
-         android:textSize="20dp"/>
         <TextView
             android:id="@+id/tv_list_poinreward"
-            android:layout_width="120dp"
+            android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_gravity="center"
             android:gravity="left"

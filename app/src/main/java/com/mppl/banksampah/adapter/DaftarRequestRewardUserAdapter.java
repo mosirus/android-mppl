@@ -70,7 +70,7 @@ public class DaftarRequestRewardUserAdapter extends RecyclerView.Adapter<DaftarR
         final String namaBarang = listRequestedRewards.get(position).getNamaBarangRequest();
         final String statusBarang = listRequestedRewards.get(position).getStatusRequested();
 
-        final int poin = Integer.parseInt(listRequestedRewards.get(position).getPoinBarangRequest());
+        final int poinBarang = Integer.parseInt(listRequestedRewards.get(position).getPoinBarangRequest());
         holder.tanggalRequest.setText(listRequestedRewards.get(position).getTanggalRequest());
         holder.emailRequest.setText(listRequestedRewards.get(position).getEmailRequester());
         holder.aksiRequest.setText("Penukaran "+ listRequestedRewards.get(position).getPoinBarangRequest() +" Poin menjadi "+ listRequestedRewards.get(position).getNamaBarangRequest());
@@ -81,39 +81,47 @@ public class DaftarRequestRewardUserAdapter extends RecyclerView.Adapter<DaftarR
                 reference = database.getReference().child("Users").child(email);
                 reference2 = database.getReference().child("RequestRewardUser").child(email);
 
-                reference2.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for(DataSnapshot snapshot_e1 : dataSnapshot.getChildren()){
-                            if((snapshot_e1.child("namaBarangRequest").getValue().toString().equals(namaBarang)) &&
-                                    (snapshot_e1.child("statusRequested").getValue().toString().equals(statusBarang))){
-                                RequestedReward requestedReward1 = snapshot_e1.getValue(RequestedReward.class);
-                                String newStatus = "Berhasil";
-                                requestedReward1.setStatusRequested(newStatus);
-                                snapshot_e1.getRef().setValue(requestedReward1).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        Toast.makeText(holder.itemView.getContext(), "Request berhasil diterima", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
-
-
                 reference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         User user = dataSnapshot.getValue(User.class);
-                        int currentPoin = user.getPoint() - poin;
-                        user.setPoint(currentPoin);
-                        dataSnapshot.getRef().setValue(user);
+                        int userPoin = user.getPoint();
+                        if(userPoin >= poinBarang){
+                            //Mengurangi Poin
+                            int currentPoin = userPoin - poinBarang;
+                            user.setPoint(currentPoin);
+                            dataSnapshot.getRef().setValue(user);
+
+                            //Ubah status
+                            reference2.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    for(DataSnapshot snapshot_e1 : dataSnapshot.getChildren()){
+                                        if((snapshot_e1.child("namaBarangRequest").getValue().toString().equals(namaBarang)) &&
+                                                (snapshot_e1.child("statusRequested").getValue().toString().equals(statusBarang))){
+                                            RequestedReward requestedReward1 = snapshot_e1.getValue(RequestedReward.class);
+                                            String newStatus = "Berhasil";
+                                            requestedReward1.setStatusRequested(newStatus);
+                                            snapshot_e1.getRef().setValue(requestedReward1).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    Toast.makeText(holder.itemView.getContext(), "Request berhasil diterima", Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
+                                        }
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                }
+                            });
+
+                        }else{
+                            Toast.makeText(holder.itemView.getContext(), "Poin user tidak mencukupi, request tidak dapat diterima !", Toast.LENGTH_SHORT).show();
+                        }
+
                     }
 
                     @Override
