@@ -283,5 +283,9 @@
     <string name="text_no_info">Belum ada riwayat penukaran sampah terbaru</string>
     <string name="data_sampah">Data Sampah</string>
     <string name="tambah_sampah">Tambah Sampah</string>
+    <string name="berhasilquotes">BERHASIL</string>
+    <string name="tukarpoinberhasilquotes">Silahkan mendatangi pos terdekat untuk mendapatkan item anda</string>
+    <string name="tidakberhasilquotes">TIDAK BERHASIL</string>
+    <string name="tukarpointidakberhasilquotes">Kamu tidak memiliki cukup poin untuk ditukarkan</string>
 
 </resources>
