@@ -18,25 +18,35 @@
             android:title="@string/navigation_view_item_2" />
 
         <item
-            android:id="@+id/navigation3"
-            android:checked="false"
-            android:icon="@drawable/daftar_pengguna"
-            android:title="@string/navigation_view_item_3" />
-        <item
-            android:id="@+id/navigation4"
-            android:checked="false"
-            android:icon="@drawable/event"
-            android:title="@string/navigation_view_item_4" />
-        <item
             android:id="@+id/navigation5"
             android:checked="false"
             android:icon="@drawable/kupon"
             android:title="@string/navigation_view_item_5" />
+
+        <item
+            android:id="@+id/navigation7"
+            android:checked="false"
+            android:icon="@drawable/menu_sampah"
+            android:title="@string/data_sampah" />
+
+
         <item
             android:id="@+id/navigatin6"
             android:checked="false"
             android:icon="@drawable/riwayat"
             android:title="@string/navigation_view_item_6" />
+
+        <item
+            android:id="@+id/navigation4"
+            android:checked="false"
+            android:icon="@drawable/event"
+            android:title="@string/navigation_view_item_4" />
+
+        <item
+            android:id="@+id/navigation3"
+            android:checked="false"
+            android:icon="@drawable/daftar_pengguna"
+            android:title="@string/navigation_view_item_3" />
     </group>
 
     <item
