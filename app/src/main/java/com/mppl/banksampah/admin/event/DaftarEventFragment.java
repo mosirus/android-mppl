@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,9 +17,19 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.mppl.banksampah.R;
+import com.mppl.banksampah.adapter.DaftarRewardAdapter;
 import com.mppl.banksampah.adapter.EventAdapter;
+import com.mppl.banksampah.admin.EditRewardFragment;
 import com.mppl.banksampah.admin.model.EventAdmin;
+import com.mppl.banksampah.admin.model.Reward;
 
 import java.util.ArrayList;
 
@@ -27,12 +38,13 @@ public class DaftarEventFragment extends Fragment implements View.OnClickListene
     private RecyclerView rvDaftarEvent;
     private EventAdapter adapter;
 
-    private Button btnTambahEvent;
-//    private ImageButton btnEditEvent;
-//    private ImageButton btnHapusEvent;
+    private Button btnEditEvent;
+    private Button btnDeleteEvent;
 
-    private TypedArray eventPhoto;
-    private String[] nameEvent;
+    private FirebaseAuth auth;
+    private FirebaseDatabase database;
+    private DatabaseReference reference;
+    private String GetUserID;
 
     private ArrayList<EventAdmin> eventAdminArrayList;
 
@@ -40,25 +52,11 @@ public class DaftarEventFragment extends Fragment implements View.OnClickListene
 
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        prepare();
-        addItem();
-    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View root =  inflater.inflate(R.layout.fragment_daftar_event, container, false);
-
-//        btnEditEvent = root.findViewById(R.id.editevent);
-//        btnEditEvent.setOnClickListener(this);
-//        btnHapusEvent = root.findViewById(R.id.buangevent);
-//        btnHapusEvent.setOnClickListener(this);
-
         return root;
     }
 
@@ -66,30 +64,75 @@ public class DaftarEventFragment extends Fragment implements View.OnClickListene
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        btnTambahEvent = view.findViewById(R.id.btn_tambah_event);
-        btnTambahEvent.setOnClickListener(this);
+//        adapter = new EventAdapter(getContext());
+//        adapter.setListEvent(eventAdminArrayList);
 
-        adapter = new EventAdapter(getContext());
-        adapter.setListEvent(eventAdminArrayList);
-        rvDaftarEvent = view.findViewById(R.id.rvDaftarEvent);
-        rvDaftarEvent.setLayoutManager(new LinearLayoutManager(getActivity()));
-        rvDaftarEvent.setAdapter(adapter);
+          rvDaftarEvent = view.findViewById(R.id.rvDaftarEvent);
+//        rvDaftarEvent.setHasFixedSize(true);
+//        rvDaftarEvent.setLayoutManager(new LinearLayoutManager(getContext()));
+
     }
 
-    private void prepare(){
-        eventPhoto = getResources().obtainTypedArray(R.array.event_photo);
-        nameEvent = getResources().getStringArray(R.array.event_name);
-    }
 
-    private void addItem(){
-        eventAdminArrayList = new ArrayList<>();
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-        for(int i = 0; i < nameEvent.length; i++){
-            EventAdmin eventAdmin = new EventAdmin();
-            eventAdmin.setPhotoEvent(eventPhoto.getResourceId(i,-1));
-            eventAdmin.setNamaEvent(nameEvent[i]);
-            eventAdminArrayList.add(eventAdmin);
-        }
+        auth = FirebaseAuth.getInstance();
+
+        FirebaseUser user = auth.getCurrentUser();
+        GetUserID = user.getUid();
+
+        database =  FirebaseDatabase.getInstance();
+        reference = database.getReference().child("Event");
+        eventAdminArrayList = new ArrayList<EventAdmin>();
+
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
+                    EventAdmin event = snapshot.getValue(EventAdmin.class);
+                    eventAdminArrayList.add(event);
+                }
+                rvDaftarEvent.setHasFixedSize(true);
+                rvDaftarEvent.setLayoutManager(new LinearLayoutManager(getContext()));
+                adapter = new EventAdapter(getActivity(), eventAdminArrayList);
+                rvDaftarEvent.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+
+                adapter.setOnItemCallback(new EventAdapter.OnItemCallback() {
+                    @Override
+                    public void onItemclicked(EventAdmin data) {
+                        String nameEvent = data.getNamaEvent();
+                        String timeEvent = data.getWaktuEvent();
+                        String locEvent = data.getTempatEvent();
+                        String descEvent = data.getDescEvent();
+                        String URLEvent = data.getURLEvent();
+
+                        Bundle editEventBundle = new Bundle();
+                        editEventBundle.putString("namaEvent",nameEvent);
+                        editEventBundle.putString("waktuEvent",timeEvent);
+                        editEventBundle.putString("tempatEvent",locEvent);
+                        editEventBundle.putString("descEvent", descEvent);
+                        editEventBundle.putString("urlevent", URLEvent);
+
+                        EditEventFragment fragment = new EditEventFragment();
+                        fragment.setArguments(editEventBundle);
+                        FragmentManager fragmentManager = getFragmentManager();
+                        fragmentManager.beginTransaction().replace(R.id.tambahEvent_container, fragment, EditEventFragment.class.getSimpleName())
+                                .addToBackStack(null).commit();
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getActivity(), "Gagal memuat data", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
     }
 
     @Override
@@ -119,22 +162,6 @@ public class DaftarEventFragment extends Fragment implements View.OnClickListene
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.btn_tambah_event){
-            TambahEventFragment tambahEventFragment = new TambahEventFragment();
 
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.fragment_container, tambahEventFragment, TambahEventFragment.class.getSimpleName())
-                        .addToBackStack(null).commit();
-
-        }
-
-        if (v.getId() == R.id.editevent){
-            EditEventFragment editEventFragment = new EditEventFragment();
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.fragment_container, editEventFragment, EditEventFragment.class.getSimpleName())
-                    .addToBackStack(null).commit();
-        }else if (v.getId() == R.id.buangevent){
-
-        }
     }
 }

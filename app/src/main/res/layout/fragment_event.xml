@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -18,13 +19,38 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 
+    <LinearLayout
+        android:id="@+id/tambah_event"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_tambah_event"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:drawableTop="@drawable/ic_add_green_24p"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:text="@string/tambah"
+            android:textSize="20dp"/>
+
+    </LinearLayout>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_event"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/tambah_event"
         app:tabBackground="@color/item_riwayat"
         app:tabGravity="fill"
         app:tabIndicatorColor="@color/tabindicatorcolor"
@@ -42,7 +68,7 @@
         tools:ignore="MissingConstraints">
     </androidx.viewpager.widget.ViewPager>
 
-    <FrameLayout
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/tambahEvent_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

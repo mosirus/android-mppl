@@ -53,73 +53,98 @@
 
 
             <EditText
-                android:id="@+id/editnamaevent"
+                android:id="@+id/tambah_namaEvent"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:background="@drawable/style"
                 android:gravity="center_vertical"
-                android:text="@string/nama_event"
+                android:hint="@string/nama_event"
                 android:textColor="@color/colorPrimary"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
                 android:textSize="20sp" />
 
+            <FrameLayout
+                android:id="@+id/date_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tambah_namaEvent"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/style"
+                android:orientation="horizontal"
+                android:padding="7dp">
+
+                <TextView
+                    android:id="@+id/picked_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:hint="@string/tanggal_waktu"
+                    android:textColorHint="@color/colorPrimary"
+                    android:textSize="16sp" />
+
+                <ImageButton
+                    android:id="@+id/date_picker_toggle_event"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="5dp"
+                    android:contentDescription="@string/tombol_toggle_date_picker"
+                    android:src="@drawable/ic_event_black_24dp" />
+
+            </FrameLayout>
 
             <EditText
-                android:id="@+id/edit_waktutanggal"
+                android:id="@+id/tambah_tempat"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/editnamaevent"
+                android:layout_below="@id/date_field"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:background="@drawable/style"
                 android:gravity="center_vertical"
-                android:text="@string/waktu_tanggal"
+                android:hint="@string/tempat"
                 android:textColor="@color/colorPrimary"
                 android:layout_marginTop="20dp"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
                 android:textSize="20sp" />
 
-
             <EditText
-                android:id="@+id/edit_tempat"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/edit_waktutanggal"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:background="@drawable/style"
-                android:gravity="center_vertical"
-                android:text="@string/tempat"
-                android:textColor="@color/colorPrimary"
-                android:layout_marginTop="20dp"
-                android:paddingStart="15dp"
-                android:paddingEnd="15dp"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/editdeskripsi"
+                android:id="@+id/tambahdeskripsi"
                 android:layout_width="fill_parent"
                 android:layout_height="200dp"
-                android:layout_below="@id/edit_tempat"
+                android:layout_below="@id/tambah_tempat"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:background="@drawable/style"
                 android:gravity="top"
-                android:text="@string/deskripsi"
+                android:hint="@string/deskripsi"
                 android:textColor="@color/colorPrimary"
                 android:layout_marginTop="20dp"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
                 android:textSize="20sp" />
 
+            <DatePicker
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="-40dp"
+                android:layout_marginEnd="-20dp"
+                android:scaleType="fitXY"
+                android:scaleX=".7"
+                android:scaleY=".7"
+                android:visibility="gone" />
+
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/editdeskripsi"
+                android:layout_below="@id/tambahdeskripsi"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
@@ -148,6 +173,16 @@
 
 
             </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <ProgressBar
+                android:id="@+id/pbTambahEvent"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:max="100"
+                android:progress="0"
+                android:visibility="gone" />
 
         </RelativeLayout>
 

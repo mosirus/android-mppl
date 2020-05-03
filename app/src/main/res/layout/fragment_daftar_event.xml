@@ -11,22 +11,14 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btn_tambah_event"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
-            android:drawableTop="@drawable/ic_add_green_24p"
-            android:layout_gravity="center"
-            android:gravity="center"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:text="@string/tambah"
-            android:textSize="20dp"/>
+<!--        <Button-->
+<!--            android:id="@+id/btn_tambah_event"-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            android:drawableTop="@drawable/ic_add_green_24p"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:gravity="center"/>-->
 
     </LinearLayout>
 

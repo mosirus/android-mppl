@@ -12,7 +12,7 @@
     android:background="@drawable/background_item_list_barang">
 
     <ImageView
-        android:id="@+id/event1"
+        android:id="@+id/ivEventUser"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="5dp"
@@ -23,40 +23,46 @@
         android:background="@drawable/background_item_list_barang"/>
 
     <TextView
-        android:id="@+id/ket_riwayat"
+        android:id="@+id/tvNameEventUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+        android:layout_marginTop="5dp"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="20dp"
-        android:layout_toEndOf="@+id/event1"
+        android:layout_toEndOf="@+id/ivEventUser"
         android:textColor="@color/colorPrimary"
         android:textSize="18sp"
         android:textStyle="bold"
         tools:ignore="UnknownId"
-        tools:text="@string/keterangan" />
+        tools:text="@string/nama_event" />
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/tvTimeEventUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/ket_riwayat"
-        android:layout_marginStart="200dp"
-        android:layout_marginBottom="10dp"
-        android:layout_toEndOf="@+id/event1">
-        <Button
-            android:id="@+id/btn_editEvent"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:background="@drawable/pencil"
-            />
-        <Button
-            android:id="@+id/btn_deleteEvent"
-            android:layout_toEndOf="@+id/btn_editEvent"
-            android:layout_marginStart="20dp"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:background="@drawable/cross"/>
-    </LinearLayout>
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="20dp"
+        android:layout_toEndOf="@+id/ivEventUser"
+        android:layout_below="@+id/tvNameEventUser"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        tools:ignore="UnknownId"
+        tools:text="@string/waktu_tanggal" />
+
+    <TextView
+        android:id="@+id/tvLocEventUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="20dp"
+        android:layout_toEndOf="@+id/ivEventUser"
+        android:layout_below="@+id/tvTimeEventUser"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        tools:ignore="UnknownId"
+        tools:text="@string/lokasi" />
 
 
 </RelativeLayout>

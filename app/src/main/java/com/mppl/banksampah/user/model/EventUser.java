@@ -1,36 +1,23 @@
-package com.mppl.banksampah.admin.model;
+package com.mppl.banksampah.user.model;
 
-public class EventAdmin {
-//    private int photoEvent;
+public class EventUser {
     private String URLEvent;
     private String namaEvent;
     private String waktuEvent;
     private String tempatEvent;
-    private String descEvent;
 
-//    public int getPhotoEvent() {
-//        return photoEvent;
-//    }
-//
-//    public void setPhotoEvent(int photoEvent) {
-//        this.photoEvent = photoEvent;
-//    }
-
-
-    public EventAdmin() {
+    public EventUser(){
         this.URLEvent = URLEvent;
         this.namaEvent = namaEvent;
         this.waktuEvent = waktuEvent;
         this.tempatEvent = tempatEvent;
-        this.descEvent = descEvent;
     }
 
-    public EventAdmin(String URLEvent, String namaEvent, String waktuEvent, String tempatEvent, String descEvent) {
+    public EventUser(String URLEvent, String namaEvent, String waktuEvent, String tempatEvent) {
         this.URLEvent = URLEvent;
         this.namaEvent = namaEvent;
         this.waktuEvent = waktuEvent;
         this.tempatEvent = tempatEvent;
-        this.descEvent = descEvent;
     }
 
     public String getURLEvent() {
@@ -63,13 +50,5 @@ public class EventAdmin {
 
     public void setTempatEvent(String tempatEvent) {
         this.tempatEvent = tempatEvent;
-    }
-
-    public String getDescEvent() {
-        return descEvent;
-    }
-
-    public void setDescEvent(String descEvent) {
-        this.descEvent = descEvent;
     }
 }

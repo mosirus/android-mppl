@@ -6,14 +6,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,8 +25,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.mppl.banksampah.R;
+import com.mppl.banksampah.adapter.EventAdapter;
+import com.mppl.banksampah.adapter.EventAdapterUser;
+import com.mppl.banksampah.admin.event.EditEventFragment;
+import com.mppl.banksampah.admin.model.EventAdmin;
+import com.mppl.banksampah.user.model.EventUser;
 import com.mppl.banksampah.user.ui.riwayatpoin.RiwayatPoinFragment;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
@@ -31,6 +41,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     TextView tvJumlahPoinMasuk;
     TextView tvJumlahPoin;
 
+    private RecyclerView rvDaftarEvent;
+    private EventAdapterUser adapter;
+    private FirebaseAuth auth;
+    private FirebaseDatabase database;
+    private DatabaseReference reference;
+    private String GetUserID;
+    private ArrayList<EventUser> list;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_home, container, false);
@@ -38,6 +56,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
+        rvDaftarEvent = view.findViewById(R.id.rvDaftarEvent);
+
+        rvDaftarEvent.setHasFixedSize(true);
+        rvDaftarEvent.setLayoutManager(new LinearLayoutManager(getContext()));
+
         tvTanggalPoinMasuk = view.findViewById(R.id.tanggal_info);
         tvRincianPoinMasuk = view.findViewById(R.id.txt_info);
         tvJumlahPoinMasuk = view.findViewById(R.id.txt_info_poin);
@@ -54,6 +78,39 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         loadUserPoint();
         loadPointHistory();
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        auth = FirebaseAuth.getInstance();
+
+        FirebaseUser user = auth.getCurrentUser();
+        GetUserID = user.getUid();
+
+        database =  FirebaseDatabase.getInstance();
+        reference = database.getReference().child("Event");
+        list = new ArrayList<EventUser>();
+
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
+                    EventUser event = snapshot.getValue(EventUser.class);
+                    list.add(event);
+                }
+                adapter = new EventAdapterUser(getActivity(), list);
+                rvDaftarEvent.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getActivity(), "Gagal memuat data", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void loadUserPoint() {

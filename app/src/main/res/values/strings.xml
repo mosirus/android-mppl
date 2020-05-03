@@ -287,5 +287,7 @@
     <string name="tukarpoinberhasilquotes">Silahkan mendatangi pos terdekat untuk mendapatkan item anda</string>
     <string name="tidakberhasilquotes">TIDAK BERHASIL</string>
     <string name="tukarpointidakberhasilquotes">Kamu tidak memiliki cukup poin untuk ditukarkan</string>
+    <string name="daftar_event">Daftar Event</string>
+    <string name="riwayat_event">Riwayat Event</string>
 
 </resources>
