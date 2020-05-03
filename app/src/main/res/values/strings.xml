@@ -29,4 +29,13 @@
     <string name="app_logo">App Logo</string>
     <string name="my_point">Poinku :</string>
     <string name="point_info">Info Poin</string>
+
+
+    <string name="status">Status</string>
+    <string name="kamu_belum_memiliki_riwayat_poin">Kamu belum memiliki riwayat tukar sampah</string>
+    <string name="tanggal">Tanggal</string>
+    <string name="riwayat_tukar_sampah">Riwayat Tukar Sampah</string>
+    <string name="ok">OK</string>
+
+
 </resources>
