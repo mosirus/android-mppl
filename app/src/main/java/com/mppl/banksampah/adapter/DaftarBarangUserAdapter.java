@@ -17,11 +17,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.mppl.banksampah.R;
 import com.mppl.banksampah.admin.model.Reward;
 import com.mppl.banksampah.user.model.RequestedReward;
+import com.mppl.banksampah.user.model.User;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,6 +39,8 @@ public class DaftarBarangUserAdapter extends RecyclerView.Adapter<DaftarBarangUs
     private FirebaseAuth auth;
     private FirebaseDatabase database;
     private DatabaseReference reference;
+    private DatabaseReference reference2;
+
 
     private Context context;
     private ArrayList<Reward> listBarang;
@@ -70,8 +76,10 @@ public class DaftarBarangUserAdapter extends RecyclerView.Adapter<DaftarBarangUs
         FirebaseUser user = auth.getCurrentUser();
         final String userEmail = user.getEmail().replace(".","_");
 
+
         database = FirebaseDatabase.getInstance();
         reference = database.getReference().child("RequestRewardUser").child(userEmail);
+        reference2 = database.getReference().child("Users").child(userEmail);
 
 
         Reward reward = listBarang.get(position);
@@ -88,31 +96,68 @@ public class DaftarBarangUserAdapter extends RecyclerView.Adapter<DaftarBarangUs
             public void onClick(View v) {
                 final Dialog dialog = new Dialog(holder.itemView.getContext());
                 dialog.setContentView(R.layout.alertdialogrewarduser);
-
                 TextView questionTextDialog = dialog.findViewById(R.id.tvquestion_dialogRewardUser);
                 questionTextDialog.setText("Kamu akan menggunakan " + listBarang.get(position).getPointReward() + " poin kamu untuk ditukarkan dengan satu buah " + listBarang.get(position).getNamaReward());
                 Button positiveDialogButton = dialog.findViewById(R.id.positivebuttondialogRewardUser);
-                Button negativeDialogButton = dialog.findViewById(R.id.negativebuttondialogRewardUser);
+                final Button negativeDialogButton = dialog.findViewById(R.id.negativebuttondialogRewardUser);
+
                 positiveDialogButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-                        Date date = new Date();
-                        String dateRequested = dateFormat.format(date).toString();
-                        String emailRequester = userEmail;
-                        String poinRewardRequested = Integer.toString(listBarang.get(position).getPointReward());
-                        String namaRewardRequested = listBarang.get(position).getNamaReward();
-                        String statusSementara = "Sedang Diproses";
-                        RequestedReward requestedReward = new RequestedReward(dateRequested,emailRequester,poinRewardRequested,namaRewardRequested,statusSementara);
-                        String refkey = reference.push().getKey();
-
-                        reference.child(refkey).setValue(requestedReward).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        reference2.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                Toast.makeText(holder.itemView.getContext(), "Request berhasil dilakukan, silahkan tunggu persetujuan Admin", Toast.LENGTH_SHORT).show();
-                                dialog.dismiss();
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                User dumUser = dataSnapshot.getValue(User.class);
+                                int pointUser = dumUser.getPoint();
+                                if(pointUser >= listBarang.get(position).getPointReward()){
+                                    DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                                    Date date = new Date();
+                                    String dateRequested = dateFormat.format(date).toString();
+                                    String emailRequester = userEmail;
+                                    String poinRewardRequested = Integer.toString(listBarang.get(position).getPointReward());
+                                    String namaRewardRequested = listBarang.get(position).getNamaReward();
+                                    String statusSementara = "Sedang Diproses";
+                                    RequestedReward requestedReward = new RequestedReward(dateRequested,emailRequester,poinRewardRequested,namaRewardRequested,statusSementara);
+                                    String refkey = reference.push().getKey();
+
+                                    reference.child(refkey).setValue(requestedReward).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            dialog.dismiss();
+                                            final Dialog notifBerhasilTP = new Dialog(holder.itemView.getContext());
+                                            notifBerhasilTP.setContentView(R.layout.alertdialog_berhasiltukarpoin);
+                                            Button oknotifBerhasilTP = notifBerhasilTP.findViewById(R.id.okberhasiladtukarpoin);
+                                            oknotifBerhasilTP.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    notifBerhasilTP.dismiss();
+                                                }
+                                            });
+                                            notifBerhasilTP.show();
+                                        }
+                                    });
+                                }else{
+                                    dialog.dismiss();
+                                    final Dialog notifGagalTP = new Dialog(holder.itemView.getContext());
+                                    notifGagalTP.setContentView(R.layout.alertdialog_gagaltukarpoin);
+                                    Button oknotifGagalTP = notifGagalTP.findViewById(R.id.okgagaladtukarpoin);
+                                    oknotifGagalTP.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            notifGagalTP.dismiss();
+                                        }
+                                    });
+                                    notifGagalTP.show();
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
                             }
                         });
+
+
                     }
                 });
                 negativeDialogButton.setOnClickListener(new View.OnClickListener() {
