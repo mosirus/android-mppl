@@ -1,5 +1,10 @@
 package com.mppl.banksampah.admin;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,19 +12,13 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.Bundle;
-
-import android.view.MenuItem;
-
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.mppl.banksampah.R;
 import com.mppl.banksampah.StartActivity;
 import com.mppl.banksampah.admin.daftarpengguna.DaftarPenggunaFragment;
+import com.mppl.banksampah.admin.datasampah.DataSampahFragment;
 import com.mppl.banksampah.admin.event.EventFragment;
-import com.mppl.banksampah.admin.terimasampah.TerimaSampahFragment;
 import com.mppl.banksampah.admin.terimasampah.TerimaSampahFragmentContainer;
 
 import org.jetbrains.annotations.NotNull;
@@ -78,6 +77,10 @@ public class AdminMainActivity extends AppCompatActivity implements NavigationVi
             case R.id.navigatin6:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new RiwayatTukarSampahFragment()).commit();
+                break;
+            case R.id.navigation7:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new DataSampahFragment()).commit();
                 break;
             case R.id.nav_admin_keluar:
 

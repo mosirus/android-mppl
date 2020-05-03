@@ -187,7 +187,7 @@
     <string name="navigation_view_item_2">Jemput</string>
     <string name="navigation_view_item_3">Daftar Pengguna</string>
     <string name="navigation_view_item_4">Event</string>
-    <string name="navigation_view_item_5">Kupon</string>
+    <string name="navigation_view_item_5">Reward</string>
     <string name="navigation_view_item_6">Riwayat Tukar Sampah</string>
     <string name="sipahias">SiPahias</string>
     <string name="daftar_pengguna">Daftar Pengguna</string>
@@ -281,9 +281,7 @@
     <string name="questionchangereward">Terdapat perubahan yang anda buat, ingin kembali melanjutkan perubahan ?</string>
     <string name="dummylanjuteditReward">Lanjut</string>
     <string name="text_no_info">Belum ada riwayat penukaran sampah terbaru</string>
-    <string name="berhasilquotes">BERHASIL</string>
-    <string name="tukarpoinberhasilquotes">Silahkan mendatangi pos terdekat untuk mendapatkan item anda</string>
-    <string name="tidakberhasilquotes">TIDAK BERHASIL</string>
-    <string name="tukarpointidakberhasilquotes">Kamu tidak memiliki cukup poin untuk ditukarkan</string>
+    <string name="data_sampah">Data Sampah</string>
+    <string name="tambah_sampah">Tambah Sampah</string>
 
 </resources>
