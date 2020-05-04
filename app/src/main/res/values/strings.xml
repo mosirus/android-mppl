@@ -139,7 +139,6 @@
     <string-array name="satuan">
         <item>Satuan</item>
         <item>Kg</item>
-        <item>Pieces</item>
     </string-array>
 
     <string name="title_tentang">Tentang</string>
