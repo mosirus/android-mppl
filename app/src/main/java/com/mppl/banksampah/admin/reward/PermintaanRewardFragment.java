@@ -1,4 +1,4 @@
-package com.mppl.banksampah.admin;
+package com.mppl.banksampah.admin.reward;
 
 import android.os.Bundle;
 
@@ -24,6 +24,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.mppl.banksampah.R;
 import com.mppl.banksampah.adapter.DaftarRequestRewardUserAdapter;
+import com.mppl.banksampah.admin.reward.KuponFragment;
+import com.mppl.banksampah.admin.reward.RiwayatRewardFragment;
 import com.mppl.banksampah.user.model.RequestedReward;
 
 import java.util.ArrayList;

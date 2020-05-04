@@ -1,4 +1,4 @@
-package com.mppl.banksampah.admin;
+package com.mppl.banksampah.admin.reward;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -29,22 +29,16 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.UploadTask;
 import com.google.firebase.storage.StorageReference;
-import com.mppl.banksampah.MainActivity;
 import com.mppl.banksampah.R;
 import com.mppl.banksampah.admin.model.Reward;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.util.UUID;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -266,7 +260,7 @@ public class TambahRewardFragment extends Fragment implements OnClickListener{
 
             KuponFragment fragment = new KuponFragment();
             FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment, KuponFragment.class.getSimpleName())
+            fragmentManager.beginTransaction().replace(R.id.fragmentTambahReward, fragment, KuponFragment.class.getSimpleName())
                     .addToBackStack(null).commit();
 
         }

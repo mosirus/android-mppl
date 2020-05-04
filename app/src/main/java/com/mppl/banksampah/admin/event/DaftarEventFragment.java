@@ -1,18 +1,15 @@
 package com.mppl.banksampah.admin.event;
 
-import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentContainer;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,11 +22,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.mppl.banksampah.R;
-import com.mppl.banksampah.adapter.DaftarRewardAdapter;
 import com.mppl.banksampah.adapter.EventAdapter;
-import com.mppl.banksampah.admin.EditRewardFragment;
 import com.mppl.banksampah.admin.model.EventAdmin;
-import com.mppl.banksampah.admin.model.Reward;
 
 import java.util.ArrayList;
 

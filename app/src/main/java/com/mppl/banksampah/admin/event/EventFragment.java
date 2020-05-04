@@ -1,6 +1,5 @@
 package com.mppl.banksampah.admin.event;
 
-import android.icu.util.BuddhistCalendar;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,9 +9,6 @@ import android.widget.Button;
 import com.google.android.material.tabs.TabLayout;
 import com.mppl.banksampah.R;
 import com.mppl.banksampah.adapter.ViewPagerAdapter;
-import com.mppl.banksampah.admin.TambahRewardFragment;
-import com.mppl.banksampah.admin.terimasampah.PermintaanAntarFragment;
-import com.mppl.banksampah.admin.terimasampah.TerimaSampahFragment;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

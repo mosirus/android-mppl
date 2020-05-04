@@ -13,7 +13,6 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -38,14 +37,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.mppl.banksampah.R;
-import com.mppl.banksampah.admin.KuponFragment;
-import com.mppl.banksampah.admin.model.EventAdmin;
-
-import org.w3c.dom.Text;
 
 import java.io.ByteArrayOutputStream;
 import java.text.SimpleDateFormat;

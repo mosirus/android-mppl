@@ -1,4 +1,4 @@
-package com.mppl.banksampah.admin;
+package com.mppl.banksampah.admin.reward;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -14,11 +14,9 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
@@ -39,15 +37,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.mppl.banksampah.R;
-import com.mppl.banksampah.admin.model.Reward;
+import com.mppl.banksampah.admin.reward.KuponFragment;
 
 import java.io.ByteArrayOutputStream;
-import java.util.HashMap;
-import java.util.Map;
 
 import static android.app.Activity.RESULT_OK;
 

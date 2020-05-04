@@ -19,6 +19,7 @@ import com.mppl.banksampah.StartActivity;
 import com.mppl.banksampah.admin.daftarpengguna.DaftarPenggunaFragment;
 import com.mppl.banksampah.admin.datasampah.DataSampahFragment;
 import com.mppl.banksampah.admin.event.EventFragment;
+import com.mppl.banksampah.admin.reward.KuponFragment;
 import com.mppl.banksampah.admin.terimasampah.TerimaSampahFragmentContainer;
 
 import org.jetbrains.annotations.NotNull;
