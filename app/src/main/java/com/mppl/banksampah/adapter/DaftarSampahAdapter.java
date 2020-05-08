@@ -2,6 +2,7 @@ package com.mppl.banksampah.adapter;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +23,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.mppl.banksampah.R;
+import com.mppl.banksampah.admin.datasampah.EditSampahFragment;
 
 import java.util.ArrayList;
 
@@ -37,16 +39,15 @@ public class DaftarSampahAdapter extends RecyclerView.Adapter<DaftarSampahAdapte
         listSampah = list;
     }
 
-//    private OnItemCallback onItemCallback;
-//
-//    public void setOnItemCallback(OnItemCallback onItemCallback1) {
-//        onItemCallback = onItemCallback1;
-//    }
+    private DaftarSampahAdapter.OnItemCallback onItemCallback;
 
-    public void setListSampah(ArrayList<String> list) {
-        listSampah = list;
+    private ArrayList<String> getListSampah() {
+        return listSampah;
     }
 
+    public void setOnItemCallback(OnItemCallback onItemCallback1) {
+        onItemCallback = onItemCallback1;
+    }
 
     @NonNull
     @Override
@@ -69,6 +70,13 @@ public class DaftarSampahAdapter extends RecyclerView.Adapter<DaftarSampahAdapte
             final String[] poinSampah = dataSampah[0].split(" ");
             holder.tvNamaSampah.setText(dataSampah[1]);
             holder.tvPoinSampah.setText(poinSampah[0]);
+            holder.imgEdit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onItemCallback.onItemclicked(listSampah.get(holder.getAdapterPosition() - 1));
+
+                }
+            });
             holder.imgHapus.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -89,8 +97,8 @@ public class DaftarSampahAdapter extends RecyclerView.Adapter<DaftarSampahAdapte
                             reference.addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                    for(DataSnapshot snapshot1 : dataSnapshot.getChildren()){
-                                        if(snapshot1.child("JenisSampah").getValue().toString().equals(tujuan)){
+                                    for (DataSnapshot snapshot1 : dataSnapshot.getChildren()) {
+                                        if (snapshot1.child("JenisSampah").getValue().toString().equals(tujuan)) {
                                             snapshot1.getRef().removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
@@ -121,12 +129,6 @@ public class DaftarSampahAdapter extends RecyclerView.Adapter<DaftarSampahAdapte
             });
         }
 
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                onItemCallback.onItemclicked(listSampah.get(holder.getAdapterPosition()));
-//            }
-//        });
     }
 
     @Override
@@ -134,7 +136,11 @@ public class DaftarSampahAdapter extends RecyclerView.Adapter<DaftarSampahAdapte
         return listSampah.size() + 1;
     }
 
-    public class CardViewHolder extends RecyclerView.ViewHolder {
+    public interface OnItemCallback {
+        void onItemclicked(String data);
+    }
+
+    public class CardViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView tvNamaSampah;
         private TextView tvPoinSampah;
         private ImageView imgEdit;
@@ -148,10 +154,16 @@ public class DaftarSampahAdapter extends RecyclerView.Adapter<DaftarSampahAdapte
             imgHapus = itemView.findViewById(R.id.imgHapusSampah);
         }
 
-    }
+        @Override
+        public void onClick(View v) {
+            int position = getAdapterPosition();
+            String sampah = getListSampah().get(position - 1);
 
-//    public interface OnItemCallback {
-//        void onItemclicked(Sampah data);
-//    }
+            Intent moveWithObjectIntent = new Intent(itemView.getContext(), EditSampahFragment.class);
+            moveWithObjectIntent.putExtra(EditSampahFragment.EXTRA, sampah);
+            itemView.getContext().startActivity(moveWithObjectIntent);
+        }
+
+    }
 
 }

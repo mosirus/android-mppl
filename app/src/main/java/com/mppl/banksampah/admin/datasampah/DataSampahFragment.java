@@ -57,10 +57,25 @@ public class DataSampahFragment extends Fragment implements OnClickListener {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     String dataSampah = snapshot.child("JenisSampah").getValue().toString();
+                    String pushKey = dataSnapshot.getKey();
                     listDataSampah.add(dataSampah);
                 }
                 daftarSampahAdapter = new DaftarSampahAdapter(getContext(), listDataSampah);
                 rvDaftarSampah.setAdapter(daftarSampahAdapter);
+
+                daftarSampahAdapter.setOnItemCallback(new DaftarSampahAdapter.OnItemCallback() {
+                    @Override
+                    public void onItemclicked(String data) {
+                        Bundle bundle = new Bundle();
+                        bundle.putString("Data", data);
+
+                        EditSampahFragment fragment = new EditSampahFragment();
+                        fragment.setArguments(bundle);
+                        FragmentManager fragmentManager = getChildFragmentManager();
+                        fragmentManager.beginTransaction().replace(R.id.dataSampah, fragment, EditSampahFragment.class.getSimpleName())
+                                .addToBackStack(null).commit();
+                    }
+                });
             }
 
             @Override

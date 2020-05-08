@@ -49,6 +49,8 @@ public class TambahSampahFragment extends Fragment implements View.OnClickListen
             reference.child(refKey).child("Satuan").setValue("Kg");
 
             Toast.makeText(getContext(), "Data sampah berhasil ditambahkan", Toast.LENGTH_SHORT).show();
+            edtPoinSampah.getText().clear();
+            edtNamaSampah.getText().clear();
         }
     }
 

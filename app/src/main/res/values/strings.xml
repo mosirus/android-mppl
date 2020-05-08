@@ -289,5 +289,6 @@
     <string name="daftar_event">Daftar Event</string>
     <string name="riwayat_event">Riwayat Event</string>
     <string name="questiondeletesampah">Ingin menghapus data sampah ?</string>
+    <string name="edit_sampah">Edit Sampah</string>
 
 </resources>
