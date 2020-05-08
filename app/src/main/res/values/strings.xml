@@ -288,5 +288,6 @@
     <string name="tukarpointidakberhasilquotes">Kamu tidak memiliki cukup poin untuk ditukarkan</string>
     <string name="daftar_event">Daftar Event</string>
     <string name="riwayat_event">Riwayat Event</string>
+    <string name="questiondeletesampah">Ingin menghapus data sampah ?</string>
 
 </resources>

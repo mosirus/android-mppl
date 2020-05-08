@@ -27,6 +27,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.mppl.banksampah.R;
 import com.mppl.banksampah.admin.model.Reward;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class DaftarRewardAdapter extends RecyclerView.Adapter<DaftarRewardAdapter.CardViewViewHolder> {
@@ -75,8 +77,11 @@ public class DaftarRewardAdapter extends RecyclerView.Adapter<DaftarRewardAdapte
             public void onClick(View v) {
                 final Dialog confDeleteDialog = new Dialog(holder.itemView.getContext());
                 confDeleteDialog.setContentView(R.layout.alertdialog_deletereward);
+                TextView tvquestiondeleteReward = confDeleteDialog.findViewById(R.id.tvquestion_dialogRewardUser);
                 Button deleteItem = confDeleteDialog.findViewById(R.id.positivedelbuttondialogRewardUser);
                 Button cancelDeleteItem = confDeleteDialog.findViewById(R.id.negativedelbuttondialogRewardUser);
+
+                tvquestiondeleteReward.setText("Ingin menghapus " + listReward.get(position).getNamaReward() + " dari data reward?");
 
                 deleteItem.setOnClickListener(new View.OnClickListener() {
                     @Override
