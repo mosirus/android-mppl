@@ -20,14 +20,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.mppl.banksampah.R;
-import com.mppl.banksampah.adapter.DaftarRiwayatRewardAdminAdapter;
-import com.mppl.banksampah.adapter.EventAdapter;
 import com.mppl.banksampah.adapter.RiwayatEventAdapter;
-import com.mppl.banksampah.adapter.StatusAntarAdapter;
 import com.mppl.banksampah.admin.model.EventAdmin;
-import com.mppl.banksampah.admin.model.RiwayatEvent;
-import com.mppl.banksampah.user.model.RequestedReward;
-import com.mppl.banksampah.user.model.StatusAntar;
 
 import java.util.ArrayList;
 
@@ -35,7 +29,7 @@ public class RiwayatEventFragment extends Fragment {
 
     private RecyclerView rvRiwayatEvent;
     private RiwayatEventAdapter adapter;
-    private ArrayList<RiwayatEvent> list;
+    private ArrayList<EventAdmin> list;
 
     private FirebaseAuth auth;
     private FirebaseDatabase database;
@@ -68,13 +62,13 @@ public class RiwayatEventFragment extends Fragment {
 
         database =  FirebaseDatabase.getInstance();
         reference = database.getReference().child("Event");
-        list = new ArrayList<RiwayatEvent>();
+        list = new ArrayList<EventAdmin>();
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot: dataSnapshot.getChildren()){
-                    RiwayatEvent event = snapshot.getValue(RiwayatEvent.class);
+                    EventAdmin event = snapshot.getValue(EventAdmin.class);
                     list.add(event);
                 }
                 adapter = new RiwayatEventAdapter(getActivity(), list);

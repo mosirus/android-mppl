@@ -12,17 +12,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mppl.banksampah.R;
 import com.mppl.banksampah.admin.model.EventAdmin;
-import com.mppl.banksampah.admin.model.RiwayatEvent;
-import com.mppl.banksampah.user.model.StatusAntar;
 
 import java.util.ArrayList;
 
 public class RiwayatEventAdapter extends RecyclerView.Adapter<RiwayatEventAdapter.CardViewViewHolder> {
 
-    private ArrayList<RiwayatEvent> riwayatEventArrayList;
+    private ArrayList<EventAdmin> riwayatEventArrayList;
     private Context context;
 
-    public RiwayatEventAdapter(Context context, ArrayList<RiwayatEvent> list){
+    public RiwayatEventAdapter(Context context, ArrayList<EventAdmin> list){
         this.context = context;
         riwayatEventArrayList = list;
     }
@@ -49,10 +47,10 @@ public class RiwayatEventAdapter extends RecyclerView.Adapter<RiwayatEventAdapte
         }
 
         else{
-            RiwayatEvent currentPosition = riwayatEventArrayList.get(position - 1);
+            EventAdmin currentPosition = riwayatEventArrayList.get(position - 1);
 
-            String time = (String.valueOf(currentPosition.getTimeEvent()));
-            String name = (String.valueOf(currentPosition.getNameEvent()));
+            String time = (String.valueOf(currentPosition.getWaktuEvent()));
+            String name = (String.valueOf(currentPosition.getNamaEvent()));
 
             holder.tvTimeEvent.setText(time);
             holder.tvNameEvent.setText(name);
