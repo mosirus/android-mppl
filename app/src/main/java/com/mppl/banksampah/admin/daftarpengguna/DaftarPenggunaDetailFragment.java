@@ -1,5 +1,6 @@
 package com.mppl.banksampah.admin.daftarpengguna;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,10 +18,15 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.mppl.banksampah.R;
 
 import java.util.Objects;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class DaftarPenggunaDetailFragment extends Fragment {
 
@@ -34,6 +40,11 @@ public class DaftarPenggunaDetailFragment extends Fragment {
     private String strUserAddress;
     private String userPoint;
     private String strPhotoURL;
+
+    private CircleImageView ivfotoprofil;
+
+    private FirebaseStorage storage;
+    private StorageReference reference;
 
     @Nullable
     @Override
@@ -74,6 +85,8 @@ public class DaftarPenggunaDetailFragment extends Fragment {
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
 
+        ivfotoprofil = root.findViewById(R.id.ivfotoprofil);
+
         return root;
     }
 
@@ -88,7 +101,7 @@ public class DaftarPenggunaDetailFragment extends Fragment {
         TextView tvUserId = view.findViewById(R.id.userId);
         TextView tvUserAddress = view.findViewById(R.id.userAdress);
         TextView tvUserPoint = view.findViewById(R.id.userPoint);
-        ImageView profilePic = view.findViewById(R.id.fotoprofil);
+        //ImageView profilePic = view.findViewById(R.id.fotoprofil);
 
         tvUserPoint.setText(userPoint);
         tvUserName.setText(strUserName);
@@ -98,11 +111,26 @@ public class DaftarPenggunaDetailFragment extends Fragment {
         tvUserJob.setText(strUserJob);
         tvUserAddress.setText(strUserAddress);
 
-        if (strPhotoURL != null) {
-            Glide.with(Objects.requireNonNull(getContext()))
+        String emailtujuan = strUserEmail.replace(".","_").toLowerCase();
+        storage = FirebaseStorage.getInstance();
+        reference = storage.getReference().child("UserProfilePictures").child(emailtujuan).child("profile_image");
+        reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                String url = uri.toString();
+                if(url != null){
+                    Glide.with(getActivity())
+                            .load(url)
+                            .into(ivfotoprofil);
+                }
+            }
+        });
+
+        /*if (strPhotoURL != null) {
+            Glide.with(getActivity())
                     .load(strPhotoURL)
-                    .into(profilePic);
-        }
+                    .into(ivfotoprofil);
+        }*/
     }
 
 }
