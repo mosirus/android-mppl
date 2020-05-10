@@ -70,7 +70,7 @@ public class KonfirmasiJemputFragment extends Fragment implements View.OnClickLi
             jenisSampah = bundle.getString("JenisSampah");
             poinSampah = bundle.getString("PoinTransaksi");
             requestChildKey = bundle.getString("RequestChildKey");
-            lokasiJemput = bundle.getString("LokasiPenjemputan");
+            lokasiJemput = bundle.getString("LokasiJemput");
         }
         return root;
     }
