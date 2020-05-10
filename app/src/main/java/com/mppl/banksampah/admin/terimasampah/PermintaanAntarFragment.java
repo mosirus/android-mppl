@@ -29,10 +29,6 @@ import java.util.ArrayList;
 public class PermintaanAntarFragment extends Fragment {
     private RecyclerView rvListPermintaanAntar;
 
-    private FirebaseAuth auth;
-    private FirebaseDatabase database;
-    private DatabaseReference reference;
-
     private ArrayList<AntarSampahUser> listAntarSampahUser;
     private DaftarAntarSampahUserAdapter antarSampahUserAdapter;
 
@@ -45,12 +41,12 @@ public class PermintaanAntarFragment extends Fragment {
         rvListPermintaanAntar.setHasFixedSize(true);
         rvListPermintaanAntar.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        auth = FirebaseAuth.getInstance();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
 
         FirebaseUser user = auth.getCurrentUser();
 
-        database = FirebaseDatabase.getInstance();
-        reference = database.getReference().child("AntarSampah");
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference reference = database.getReference().child("AntarSampah");
         listAntarSampahUser = new ArrayList<AntarSampahUser>();
 
         reference.addListenerForSingleValueEvent(new ValueEventListener() {

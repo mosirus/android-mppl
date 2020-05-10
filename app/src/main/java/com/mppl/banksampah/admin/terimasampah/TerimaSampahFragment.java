@@ -64,7 +64,7 @@ public class TerimaSampahFragment extends Fragment implements OnClickListener {
 
         loadDataSampah();
 
-        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(getActivity(), R.layout.support_simple_spinner_dropdown_item, listDataSampah);
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>(getActivity(), R.layout.support_simple_spinner_dropdown_item, listDataSampah);
         spinnerArrayAdapter.add("Jenis Sampah");
         spinnerArrayAdapter.notifyDataSetChanged();
 

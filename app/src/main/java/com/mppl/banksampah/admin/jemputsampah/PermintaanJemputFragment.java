@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -47,11 +46,9 @@ public class PermintaanJemputFragment extends Fragment {
 
         auth = FirebaseAuth.getInstance();
 
-        final FirebaseUser user = auth.getCurrentUser();
-
         database = FirebaseDatabase.getInstance();
         reference = database.getReference().child("JemputSampah");
-        listJemputSampah = new ArrayList<JemputSampahUser>();
+        listJemputSampah = new ArrayList<>();
 
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

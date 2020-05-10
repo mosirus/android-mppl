@@ -82,7 +82,7 @@ public class KonfirmasiJemputFragment extends Fragment implements View.OnClickLi
 
         loadDataSampah();
 
-        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(getActivity(), R.layout.support_simple_spinner_dropdown_item, listDataSampah);
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>(getActivity(), R.layout.support_simple_spinner_dropdown_item, listDataSampah);
         spinnerArrayAdapter.add(jenisSampah);
         spinnerArrayAdapter.notifyDataSetChanged();
 
@@ -111,7 +111,6 @@ public class KonfirmasiJemputFragment extends Fragment implements View.OnClickLi
 
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                // telpUser = dataSnapshot.child("Users").getValue().toString();
                 telpUser = dataSnapshot.child("no_telp").getValue().toString();
                 tvTelpUser.setText(telpUser);
             }

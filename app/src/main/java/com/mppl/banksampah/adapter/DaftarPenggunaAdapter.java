@@ -11,8 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mppl.banksampah.R;
-import com.mppl.banksampah.admin.model.DaftarPengguna;
 import com.mppl.banksampah.admin.daftarpengguna.DaftarPenggunaDetailFragment;
+import com.mppl.banksampah.admin.model.DaftarPengguna;
 
 import java.util.ArrayList;
 
@@ -31,10 +31,6 @@ public class DaftarPenggunaAdapter extends RecyclerView.Adapter<DaftarPenggunaAd
         this.onItemClickCallback = onItemClickCallback;
     }
 
-    public void setListPengguna(ArrayList<DaftarPengguna> listPengguna) {
-        this.listPengguna = listPengguna;
-    }
-
     private ArrayList<DaftarPengguna> getListPengguna() {
         return listPengguna;
     }
@@ -49,7 +45,7 @@ public class DaftarPenggunaAdapter extends RecyclerView.Adapter<DaftarPenggunaAd
     @Override
     public void onBindViewHolder(@NonNull final CardViewViewHolder holder, int position) {
         holder.email.setText(listPengguna.get(position).getEmail());
-        holder.point.setText(String.valueOf(listPengguna.get(position).getPoint() + " Poin"));
+        holder.point.setText(listPengguna.get(position).getPoint() + " Poin");
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

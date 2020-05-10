@@ -6,14 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.mppl.banksampah.R;
 import com.mppl.banksampah.admin.RiwayatTukarSampahFragment;
 
 import java.util.ArrayList;
-
-import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.RecyclerView;
 
 public class RiwayatTukarSampahAdapter extends RecyclerView.Adapter<RiwayatTukarSampahAdapter.CardViewViewHolder> {
 
@@ -57,12 +57,6 @@ public class RiwayatTukarSampahAdapter extends RecyclerView.Adapter<RiwayatTukar
             holder.tvStatus.setTextColor(ContextCompat.getColor(context, R.color.colorPrimary));
             holder.tvStatus.setTextSize(15);
         }
-   /*     else {
-            RiwayatTukarSampah currentPosition = list.get(position-1);
-
-            String
-        }
-*/
     }
 
     @Override

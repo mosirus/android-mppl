@@ -7,20 +7,17 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
+
 import com.google.android.material.tabs.TabLayout;
 import com.mppl.banksampah.R;
 import com.mppl.banksampah.adapter.ViewPagerAdapter;
 
 
-public class  TerimaSampahFragmentContainer extends Fragment {
-
-    private TerimaSampahViewModel terimaSampahViewModel;
+public class TerimaSampahFragmentContainer extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        terimaSampahViewModel = ViewModelProviders.of(this).get(TerimaSampahViewModel.class);
         View root = inflater.inflate(R.layout.fragment_terimasampah, container, false);
 
         TabLayout tabLayout = root.findViewById(R.id.tab_terima_sampah);
