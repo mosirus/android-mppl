@@ -12,6 +12,8 @@
         android:layout_weight="0.66"
         android:background="@drawable/table_content_cell_bg"
         android:gravity="center"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
         android:text="@string/_04_06_2020"
         android:textSize="12sp" />
 
@@ -23,6 +25,8 @@
         android:layout_weight="1"
         android:background="@drawable/table_content_cell_bg"
         android:gravity="center"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
         android:text="@string/laxojun1_gmail_com"
         android:textSize="12sp" />
 
@@ -34,6 +38,8 @@
         android:layout_weight="0.7"
         android:background="@drawable/table_content_cell_bg"
         android:gravity="center"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
         android:text="@string/audit"
         android:textSize="12sp" />
 
