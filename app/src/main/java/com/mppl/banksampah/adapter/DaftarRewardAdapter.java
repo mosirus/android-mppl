@@ -98,6 +98,7 @@ public class DaftarRewardAdapter extends RecyclerView.Adapter<DaftarRewardAdapte
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 Toast.makeText(holder.itemView.getContext(), "Data reward berhasil dihapus", Toast.LENGTH_SHORT).show();
                                                 confDeleteDialog.dismiss();
+
                                             }
                                         });
                                     }

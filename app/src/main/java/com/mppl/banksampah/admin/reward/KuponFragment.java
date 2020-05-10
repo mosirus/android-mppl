@@ -26,6 +26,7 @@ import com.mppl.banksampah.adapter.DaftarRewardAdapter;
 import com.mppl.banksampah.admin.model.Reward;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class KuponFragment extends Fragment implements OnClickListener{
 
@@ -80,6 +81,7 @@ public class KuponFragment extends Fragment implements OnClickListener{
                 }
                 rewardAdapter = new DaftarRewardAdapter(getActivity(), listReward);
                 rvListReward.setAdapter(rewardAdapter);
+                rewardAdapter.notifyDataSetChanged();
 
                 rewardAdapter.setOnItemCallback(new DaftarRewardAdapter.OnItemCallback() {
                     @Override
