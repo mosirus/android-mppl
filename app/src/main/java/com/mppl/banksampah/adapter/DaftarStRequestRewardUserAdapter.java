@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mppl.banksampah.R;
@@ -51,7 +52,11 @@ public class DaftarStRequestRewardUserAdapter extends RecyclerView.Adapter<Dafta
         holder.aksiRequest.setText("Penukaran "+ listRequestedRewards.get(position).getPoinBarangRequest() +" Poin Menjadi " + listRequestedRewards.get(position).getNamaBarangRequest());
         holder.statusRequest.setText(listRequestedRewards.get(position).getStatusRequested());
         if(listRequestedRewards.get(position).getStatusRequested().equals("Sedang Diproses")){
-            holder.statusRequest.setTextColor(R.color.proses);
+            holder.statusRequest.setTextColor(ContextCompat.getColor(context,R.color.proses));
+        }else if(listRequestedRewards.get(position).getStatusRequested().equals("Berhasil")){
+            holder.statusRequest.setTextColor(ContextCompat.getColor(context,R.color.berhasil));
+        }else{
+            holder.statusRequest.setTextColor(ContextCompat.getColor(context,R.color.gagal));
         }
 
 
