@@ -48,7 +48,7 @@
             android:layout_marginEnd="220dp"/>
 
         <TextView
-            android:id="@+id/txt_tanggal1"
+            android:id="@+id/tglJemputAdmin"
             android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="200dp"
@@ -80,16 +80,15 @@
             android:layout_marginEnd="220dp"/>
 
         <TextView
-            android:id="@+id/txt_tanggal2"
+            android:id="@+id/userEmailJemput"
             android:layout_width="180dp"
-            android:layout_height="wrap_content"
+            android:layout_height="56dp"
             android:layout_marginStart="200dp"
             android:layout_marginTop="-30dp"
-            android:textSize="14sp"
             android:background="@drawable/style"
-            android:hint="Ivani.SQA@gmail.com"
             android:gravity="center_vertical"
-            />
+            android:hint="Ivani.SQA@gmail.com"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tanggal_jemput2"
@@ -113,7 +112,7 @@
             android:layout_marginEnd="220dp"/>
 
         <TextView
-            android:id="@+id/txt_tanggal3"
+            android:id="@+id/tmptPenjemputanAdmin"
             android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="200dp"
@@ -146,7 +145,7 @@
             android:layout_marginEnd="220dp"/>
 
         <TextView
-            android:id="@+id/txt_tanggal4"
+            android:id="@+id/telpUserAdmin"
             android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="200dp"
@@ -175,35 +174,33 @@
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_weight="0.2"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_marginEnd="6dp"
+                android:layout_weight="0.2"
                 android:background="@drawable/spinner_style">
 
                 <Spinner
-                    android:id="@+id/spinner_jenis_sampah"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:entries="@array/jenis_sampah"
-                    android:prompt="@string/prompt_jenis_sampah"
-                    android:textColor="@color/colorPrimary"/>
+                    android:id="@+id/spinner_jenis_sampah_Admin"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:spinnerMode="dropdown" />
             </FrameLayout>
 
-
             <EditText
+                android:id="@+id/edtJumlahSampahAdmin"
                 android:layout_width="match_parent"
-                android:layout_weight="0.3"
-                android:layout_height="wrap_content"
+                android:layout_height="32dp"
                 android:layout_marginStart="7dp"
+                android:layout_weight="0.31"
+                android:background="@drawable/style"
+                android:hint="@string/jumlah2"
                 android:importantForAutofill="no"
                 android:inputType="number"
-                android:textSize="16sp"
-                android:gravity="center"
-                android:hint="@string/berat"
-                android:textColorHint="@color/colorPrimary"
-                android:background="@drawable/style"
-                tools:ignore="LabelFor" />
+                android:paddingStart="4dp"
+                android:textColor="@color/tulisan_hijau"
+                android:textColorHint="@color/tulisan_hijau"
+                tools:ignore="LabelFor,RtlSymmetry" />
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -215,7 +212,7 @@
                 android:background="@drawable/spinner_style">
 
                 <Spinner
-                    android:id="@+id/spinner_detail_sampah"
+                    android:id="@+id/spinner_satuan_Admin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:entries="@array/satuan"
@@ -227,7 +224,7 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <Button
-            android:id="@+id/btn_tambah_form"
+            android:id="@+id/btn_tambah_form_Admin"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginStart="16dp"
@@ -249,7 +246,7 @@
                 android:layout_marginTop="10dp">
 
                 <EditText
-                    android:id="@+id/_editpoin"
+                    android:id="@+id/tv_poin_transaksi_terima_Admin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/style"
@@ -269,7 +266,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btn_batal_antar"
+                    android:id="@+id/btn_batal_antar_Admin"
                     android:layout_width="120dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="5dp"
@@ -279,7 +276,7 @@
                     android:textColor="@android:color/white" />
 
                 <Button
-                    android:id="@+id/btn_ok"
+                    android:id="@+id/btn_terima_Admin"
                     android:layout_width="120dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="5dp"

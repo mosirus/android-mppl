@@ -19,6 +19,7 @@ import com.mppl.banksampah.StartActivity;
 import com.mppl.banksampah.admin.daftarpengguna.DaftarPenggunaFragment;
 import com.mppl.banksampah.admin.datasampah.DataSampahFragment;
 import com.mppl.banksampah.admin.event.EventFragment;
+import com.mppl.banksampah.admin.jemputsampah.PermintaanJemputFragment;
 import com.mppl.banksampah.admin.reward.KuponFragment;
 import com.mppl.banksampah.admin.terimasampah.TerimaSampahFragmentContainer;
 
@@ -61,7 +62,7 @@ public class AdminMainActivity extends AppCompatActivity implements NavigationVi
                 break;
             case R.id.navigation2:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new JemputFragment()).commit();
+                        new PermintaanJemputFragment()).commit();
                 break;
             case R.id.navigation3:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
