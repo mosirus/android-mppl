@@ -80,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:nestedScrollingEnabled="false"
-            tools:listitem="@layout/table_list_riwayat_tukar_sampah" />
+            tools:listitem="@layout/table_list_riwayat_jemput_sampah" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

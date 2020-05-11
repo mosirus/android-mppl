@@ -12,9 +12,10 @@ import com.mppl.banksampah.R;
 public class RiwayatJemputSampahFragment extends Fragment {
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_riwayat_jemput_sampah, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+        View root = inflater.inflate(R.layout.fragment_riwayat_jemput_sampah, container, false);
+
+        return root;
     }
 
 }

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tanggal_riwayat_jemput"
+        android:layout_width="match_parent"
+        android:layout_weight="1.07"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:background="@drawable/table_content_cell_bg2"
+        android:textSize="9sp"
+        android:text="@string/tanggal"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/email_riwayat_jemput"
+        android:layout_width="match_parent"
+        android:layout_weight="0.8"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:background="@drawable/table_content_cell_bg2"
+        android:gravity="center"
+        android:text="@string/email"
+        android:textSize="9sp" />
+
+    <TextView
+        android:id="@+id/tvpoin_riwayat_jemput"
+        android:layout_width="match_parent"
+        android:layout_weight="1.07"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:background="@drawable/table_content_cell_bg2"
+        android:textSize="9sp"
+        android:text="@string/poin"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/status_riwayat_jemput"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:background="@drawable/table_content_cell_bg2"
+        android:textSize="9sp"
+        android:text="@string/status"
+        android:gravity="center"/>
+
+
+</LinearLayout>
