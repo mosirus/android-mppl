@@ -6,21 +6,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.mppl.banksampah.R;
+//import com.mppl.banksampah.admin.model.AntarModel;
+import com.mppl.banksampah.user.model.AntarSampahUser;
+
+import java.util.ArrayList;
+
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mppl.banksampah.R;
-import com.mppl.banksampah.admin.RiwayatTukarSampahFragment;
-
-import java.util.ArrayList;
-
 public class RiwayatTukarSampahAdapter extends RecyclerView.Adapter<RiwayatTukarSampahAdapter.CardViewViewHolder> {
 
-    private ArrayList<RiwayatTukarSampahFragment> list;
+    private ArrayList<AntarSampahUser> list;
     private Context context;
 
-    public RiwayatTukarSampahAdapter(Context context, ArrayList<RiwayatTukarSampahFragment> listRiwayatTukar){
+    public RiwayatTukarSampahAdapter(Context context, ArrayList<AntarSampahUser> listRiwayatTukar){
         this.context = context;
         list = listRiwayatTukar;
     }
@@ -34,34 +35,32 @@ public class RiwayatTukarSampahAdapter extends RecyclerView.Adapter<RiwayatTukar
 
     @Override
     public void onBindViewHolder(@NonNull final CardViewViewHolder holder, int position) {
+        AntarSampahUser currentPosition = list.get(position);
+        String tanggal = (String.valueOf(currentPosition.getTanggal()));
+        String email = (String.valueOf(currentPosition.getCurrentId()));
+        String poin = (String.valueOf(currentPosition.getPoin()));
+        String status = (String.valueOf(currentPosition.getStatus()));
 
-        if (position == 0){
-            holder.tvTanggal.setBackgroundResource(R.drawable.table_content_cell_bg2);
-            holder.tvEmail.setBackgroundResource(R.drawable.table_content_cell_bg2);
-            holder.tvPoin.setBackgroundResource(R.drawable.table_content_cell_bg2);
-            holder.tvStatus.setBackgroundResource(R.drawable.table_content_cell_bg2);
-
-            holder.tvTanggal.setText("Tanggal");
-            holder.tvTanggal.setTextColor(ContextCompat.getColor(context, R.color.colorPrimary));
-            holder.tvTanggal.setTextSize(14);
-
-            holder.tvEmail.setText("Email");
-            holder.tvEmail.setTextColor(ContextCompat.getColor(context, R.color.colorPrimary));
-            holder.tvEmail.setTextSize(15);
-
-            holder.tvPoin.setText("Poin");
-            holder.tvPoin.setTextColor(ContextCompat.getColor(context, R.color.colorPrimary));
-            holder.tvPoin.setTextSize(15);
-
-            holder.tvStatus.setText("Status");
-            holder.tvStatus.setTextColor(ContextCompat.getColor(context, R.color.colorPrimary));
-            holder.tvStatus.setTextSize(15);
+        holder.tvTanggal.setText(tanggal);
+        holder.tvEmail.setText(email);
+        holder.tvPoin.setText(poin);
+        holder.tvStatus.setText(status);
+        switch (status) {
+            case "Berhasil":
+                holder.tvStatus.setTextColor(ContextCompat.getColor(context, R.color.berhasil));
+                holder.tvStatus.setText("Diterima");
+                break;
+            case "Tidak Berhasil":
+                holder.tvStatus.setTextColor(ContextCompat.getColor(context, R.color.gagal));
+                holder.tvStatus.setText("Ditolak");
+                break;
         }
+//    }
     }
 
     @Override
     public int getItemCount() {
-        return list.size() + 1;
+        return list.size();
     }
 
 
@@ -71,7 +70,7 @@ public class RiwayatTukarSampahAdapter extends RecyclerView.Adapter<RiwayatTukar
         private TextView tvPoin;
         private TextView tvStatus;
 
-         CardViewViewHolder(@NonNull View itemView) {
+        CardViewViewHolder(@NonNull View itemView) {
             super(itemView);
             tvTanggal = itemView.findViewById(R.id.tanggal_riwayat_tukar);
             tvEmail = itemView.findViewById(R.id.email_riwayat_tukar);

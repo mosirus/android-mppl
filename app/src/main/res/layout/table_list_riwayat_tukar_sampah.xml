@@ -7,7 +7,8 @@
 
     <TextView
         android:id="@+id/tanggal_riwayat_tukar"
-        android:layout_width="68dp"
+        android:layout_width="match_parent"
+        android:layout_weight="1.07"
         android:layout_height="match_parent"
         android:layout_gravity="top"
         android:background="@drawable/table_content_cell_bg2"
@@ -17,7 +18,8 @@
 
     <TextView
         android:id="@+id/email_riwayat_tukar"
-        android:layout_width="123dp"
+        android:layout_width="match_parent"
+        android:layout_weight="0.8"
         android:layout_height="match_parent"
         android:layout_gravity="top"
         android:background="@drawable/table_content_cell_bg2"
@@ -27,7 +29,8 @@
 
     <TextView
         android:id="@+id/tvpoin_riwayat_tukar"
-        android:layout_width="51dp"
+        android:layout_width="match_parent"
+        android:layout_weight="1.07"
         android:layout_height="match_parent"
         android:layout_gravity="top"
         android:background="@drawable/table_content_cell_bg2"
@@ -37,7 +40,8 @@
 
     <TextView
         android:id="@+id/status_riwayat_tukar"
-        android:layout_width="86dp"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
         android:layout_height="match_parent"
         android:layout_gravity="top"
         android:background="@drawable/table_content_cell_bg2"
