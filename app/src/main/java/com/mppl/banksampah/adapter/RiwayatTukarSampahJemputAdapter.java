@@ -6,14 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.mppl.banksampah.R;
 import com.mppl.banksampah.user.model.JemputSampahUser;
 
 import java.util.ArrayList;
-
-import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.RecyclerView;
 
 public class RiwayatTukarSampahJemputAdapter extends RecyclerView.Adapter<RiwayatTukarSampahJemputAdapter.CardViewViewHolder> {
     private ArrayList<JemputSampahUser> list;
@@ -27,7 +27,7 @@ public class RiwayatTukarSampahJemputAdapter extends RecyclerView.Adapter<Riwaya
     @NonNull
     @Override
     public CardViewViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-        View mView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.table_list_riwayat_tukar_sampah, viewGroup, false);
+        View mView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.table_list_riwayat_jemput_sampah, viewGroup, false);
         return new CardViewViewHolder(mView);
     }
 
@@ -46,7 +46,7 @@ public class RiwayatTukarSampahJemputAdapter extends RecyclerView.Adapter<Riwaya
         switch (status){
             case "Berhasil":
                 holder.tvStatus.setTextColor(ContextCompat.getColor(context, R.color.berhasil));
-                holder.tvStatus.setText("Berhasil");
+                holder.tvStatus.setText("Diterima");
                 break;
             case "Tidak Berhasil":
                 holder.tvStatus.setTextColor(ContextCompat.getColor(context, R.color.gagal));
@@ -57,7 +57,7 @@ public class RiwayatTukarSampahJemputAdapter extends RecyclerView.Adapter<Riwaya
 
     @Override
     public int getItemCount() {
-        return 0;
+        return list.size();
     }
 
     static class CardViewViewHolder extends RecyclerView.ViewHolder{
@@ -68,10 +68,10 @@ public class RiwayatTukarSampahJemputAdapter extends RecyclerView.Adapter<Riwaya
 
         CardViewViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvTanggal = itemView.findViewById(R.id.tanggal_riwayat_tukar);
-            tvEmail = itemView.findViewById(R.id.email_riwayat_tukar);
-            tvPoin = itemView.findViewById(R.id.tvpoin_riwayat_tukar);
-            tvStatus = itemView.findViewById(R.id.status_riwayat_tukar);
+            tvTanggal = itemView.findViewById(R.id.tanggal_riwayat_jemput);
+            tvEmail = itemView.findViewById(R.id.email_riwayat_jemput);
+            tvPoin = itemView.findViewById(R.id.tvpoin_riwayat_jemput);
+            tvStatus = itemView.findViewById(R.id.status_riwayat_jemput);
         }
     }
 }
