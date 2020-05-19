@@ -292,8 +292,6 @@ public class EditEventFragment extends Fragment implements View.OnClickListener 
                                             snapshot1.child("tempatEvent").getRef().setValue(newLocEvent);
                                             snapshot1.child("descEvent").getRef().setValue(newDesEvent);
                                             snapshot1.child("urlreward").getRef().setValue(newURL_Reward);
-                                            Toast.makeText(getActivity(), "Upload Berhasil", Toast.LENGTH_SHORT).show();
-
                                         }
                                     });
                                 }
@@ -326,10 +324,14 @@ public class EditEventFragment extends Fragment implements View.OnClickListener 
 
 
 
-            EventFragment fragment = new EventFragment();
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment, EventFragment.class.getSimpleName())
-                    .addToBackStack(null).commit();
+//            EventFragment fragment = new EventFragment();
+//            FragmentManager fragmentManager = getChildFragmentManager();
+//            fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment, EventFragment.class.getSimpleName())
+//                    .addToBackStack(null).commit();
+
+            returnToList();
+
+            Toast.makeText(getContext(), "Edit Berhasil", Toast.LENGTH_SHORT).show();
 
         }
     }

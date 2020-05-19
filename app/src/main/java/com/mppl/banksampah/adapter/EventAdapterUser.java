@@ -2,10 +2,12 @@ package com.mppl.banksampah.adapter;
 
 import android.content.Context;
 import android.media.Image;
+import android.text.style.AlignmentSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.mppl.banksampah.R;
 import com.mppl.banksampah.admin.model.EventAdmin;
 import com.mppl.banksampah.user.model.EventUser;
@@ -23,6 +27,14 @@ public class EventAdapterUser extends RecyclerView.Adapter<EventAdapterUser.Card
 
     private ArrayList<EventUser> listEvent;
     private Context context;
+
+    private FirebaseDatabase database;
+    private DatabaseReference reference;
+
+    private OnItemCallback onItemCallback;
+    public void setOnItemCallback(OnItemCallback onItemCallback){
+        this.onItemCallback = onItemCallback;
+    }
 
     public EventAdapterUser(Context context, ArrayList<EventUser> list){
         this.context = context;
@@ -37,7 +49,7 @@ public class EventAdapterUser extends RecyclerView.Adapter<EventAdapterUser.Card
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CardViewViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final CardViewViewHolder holder, int position) {
         EventUser eventUser = listEvent.get(position);
         holder.tvNameEvent.setText(eventUser.getNamaEvent());
         holder.tvTimeEvent.setText(eventUser.getWaktuEvent());
@@ -46,6 +58,13 @@ public class EventAdapterUser extends RecyclerView.Adapter<EventAdapterUser.Card
                 .load(eventUser.getURLEvent())
                 .apply(new RequestOptions())
                 .into(holder.imgEvent);
+
+        holder.rlEventUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemCallback.onItemclicked(listEvent.get(holder.getAdapterPosition()));
+            }
+        });
     }
 
     @Override
@@ -53,12 +72,13 @@ public class EventAdapterUser extends RecyclerView.Adapter<EventAdapterUser.Card
         return listEvent.size();
     }
 
-    public class CardViewViewHolder extends RecyclerView.ViewHolder {
+    public class CardViewViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private ImageView imgEvent;
         private TextView tvNameEvent;
         private TextView tvTimeEvent;
         private TextView tvLocEvent;
+        private RelativeLayout rlEventUser;
 
         public CardViewViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -67,6 +87,17 @@ public class EventAdapterUser extends RecyclerView.Adapter<EventAdapterUser.Card
             tvNameEvent = itemView.findViewById(R.id.tvNameEventUser);
             tvTimeEvent = itemView.findViewById(R.id.tvTimeEventUser);
             tvLocEvent = itemView.findViewById(R.id.tvLocEventUser);
+            rlEventUser = itemView.findViewById(R.id.rl_event_user);
         }
+
+        @Override
+        public void onClick(View v) {
+            int position = getAdapterPosition();
+            EventUser listArrayEvent = listEvent.get(position);
+        }
+    }
+
+    public interface OnItemCallback{
+        void onItemclicked(EventUser data);
     }
 }

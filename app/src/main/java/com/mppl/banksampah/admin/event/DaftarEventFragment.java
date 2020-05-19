@@ -62,6 +62,9 @@ public class DaftarEventFragment extends Fragment implements View.OnClickListene
 //        adapter.setListEvent(eventAdminArrayList);
 
           rvDaftarEvent = view.findViewById(R.id.rvDaftarEvent);
+
+          rvDaftarEvent.setHasFixedSize(true);
+          rvDaftarEvent.setLayoutManager(new LinearLayoutManager(getContext()));
 //        rvDaftarEvent.setHasFixedSize(true);
 //        rvDaftarEvent.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -89,8 +92,6 @@ public class DaftarEventFragment extends Fragment implements View.OnClickListene
                     EventAdmin event = snapshot.getValue(EventAdmin.class);
                     eventAdminArrayList.add(event);
                 }
-                rvDaftarEvent.setHasFixedSize(true);
-                rvDaftarEvent.setLayoutManager(new LinearLayoutManager(getContext()));
                 adapter = new EventAdapter(getActivity(), eventAdminArrayList);
                 rvDaftarEvent.setAdapter(adapter);
                 adapter.notifyDataSetChanged();

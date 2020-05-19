@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#3A7D77"
+        android:gravity="center"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/SiPahias"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@android:color/white"
+            android:textSize="30sp" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/tvKegiatan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:text="@string/kegiatan"
+        android:layout_marginTop="25dp"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold"/>
+
+    <ImageView
+        android:id="@+id/gbr_detail_event"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/tvKegiatan"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        tools:src="@drawable/reduce_reuse_recycle"/>
+
+    <TextView
+        android:id="@+id/tvname_detail_event"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gbr_detail_event"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_marginLeft="20dp"
+        tools:text="@string/nama_event"/>
+
+    <TextView
+        android:id="@+id/tvtime_detail_event"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvname_detail_event"
+        android:layout_marginLeft="20dp"
+        android:textSize="20dp"
+        tools:text="@string/waktu_tanggal"/>
+
+    <TextView
+        android:id="@+id/tvlocation_detail_event"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvtime_detail_event"
+        android:layout_marginLeft="20dp"
+        android:textSize="20dp"
+        tools:text="@string/waktu_tanggal"/>
+    <TextView
+        android:id="@+id/tvdesc_detail_event"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvlocation_detail_event"
+        android:layout_marginLeft="20dp"
+        android:textSize="20dp"
+        tools:text="@string/deskripsi"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvdesc_detail_event"
+        android:layout_marginLeft="20dp"
+        android:textSize="20dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/ket_detail_event"/>
+
+</RelativeLayout>

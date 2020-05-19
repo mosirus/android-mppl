@@ -25,10 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.mppl.banksampah.R;
-import com.mppl.banksampah.adapter.EventAdapter;
 import com.mppl.banksampah.adapter.EventAdapterUser;
-import com.mppl.banksampah.admin.event.EditEventFragment;
-import com.mppl.banksampah.admin.model.EventAdmin;
 import com.mppl.banksampah.user.model.EventUser;
 import com.mppl.banksampah.user.ui.riwayatpoin.RiwayatPoinFragment;
 
@@ -104,6 +101,30 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 adapter = new EventAdapterUser(getActivity(), list);
                 rvDaftarEvent.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
+
+                adapter.setOnItemCallback(new EventAdapterUser.OnItemCallback() {
+                    @Override
+                    public void onItemclicked(EventUser data) {
+                        String nameEvent = data.getNamaEvent();
+                        String timeEvent = data.getWaktuEvent();
+                        String locEvent = data.getTempatEvent();
+                        String descEvent = data.getDescEvent();
+                        String URLEvent = data.getURLEvent();
+
+                        Bundle detailEventBundle = new Bundle();
+                        detailEventBundle.putString("namaEvent",nameEvent);
+                        detailEventBundle.putString("waktuEvent",timeEvent);
+                        detailEventBundle.putString("tempatEvent",locEvent);
+                        detailEventBundle.putString("descEvent", descEvent);
+                        detailEventBundle.putString("urlevent", URLEvent);
+
+                        DetailEventFragment fragment = new DetailEventFragment();
+                        fragment.setArguments(detailEventBundle);
+                        FragmentManager fragmentManager = getFragmentManager();
+                        fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment, DetailEventFragment.class.getSimpleName())
+                                .addToBackStack(null).commit();
+                    }
+                });
             }
 
             @Override

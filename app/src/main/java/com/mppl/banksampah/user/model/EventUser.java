@@ -5,19 +5,22 @@ public class EventUser {
     private String namaEvent;
     private String waktuEvent;
     private String tempatEvent;
+    private String descEvent;
 
     public EventUser(){
         this.URLEvent = URLEvent;
         this.namaEvent = namaEvent;
         this.waktuEvent = waktuEvent;
         this.tempatEvent = tempatEvent;
+        this.descEvent = descEvent;
     }
 
-    public EventUser(String URLEvent, String namaEvent, String waktuEvent, String tempatEvent) {
+    public EventUser(String URLEvent, String namaEvent, String waktuEvent, String tempatEvent, String descEvent) {
         this.URLEvent = URLEvent;
         this.namaEvent = namaEvent;
         this.waktuEvent = waktuEvent;
         this.tempatEvent = tempatEvent;
+        this.descEvent = descEvent;
     }
 
     public String getURLEvent() {
@@ -50,5 +53,13 @@ public class EventUser {
 
     public void setTempatEvent(String tempatEvent) {
         this.tempatEvent = tempatEvent;
+    }
+
+    public String getDescEvent() {
+        return descEvent;
+    }
+
+    public void setDescEvent(String descEvent) {
+        this.descEvent = descEvent;
     }
 }
