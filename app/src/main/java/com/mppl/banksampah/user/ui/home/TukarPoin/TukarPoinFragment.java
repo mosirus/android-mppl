@@ -1,4 +1,4 @@
-package com.mppl.banksampah.user.ui.home;
+package com.mppl.banksampah.user.ui.home.TukarPoin;
 
 import android.os.Bundle;
 
@@ -50,12 +50,6 @@ public class TukarPoinFragment extends Fragment implements View.OnClickListener 
     public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View root = inflater.inflate(R.layout.fragment_tukar_poin, container, false);
 
-        btnstatus = root.findViewById(R.id.ftpbtn_status);
-        btnstatus.setOnClickListener(this);
-        btnListKupon = root.findViewById(R.id.ftpbtn_listkupon);
-        btnListKupon.setOnClickListener(this);
-        tvPoinUser = root.findViewById(R.id.textView_point);
-
         rvListBarang = root.findViewById(R.id.rvtp_list_barang);
         rvListBarang.setHasFixedSize(true);
         rvListBarang.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -88,37 +82,12 @@ public class TukarPoinFragment extends Fragment implements View.OnClickListener 
             }
         });
 
-        reference2 = database.getReference().child("Users").child(getEmailUser);
-        reference2.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                tvPoinUser.setText(dataSnapshot.child("point").getValue().toString());
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-
         return root;
     }
 
     @Override
     public void onClick(View v) {
-        if(v.getId() == R.id.ftpbtn_status){
-            StatusTukarPoinFragment fragment = new StatusTukarPoinFragment();
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment, StatusTukarPoinFragment.class.getSimpleName())
-                    .addToBackStack(null).commit();
-        }
-        if(v.getId() == R.id.ftpbtn_listkupon){
-            KuponTukarPoinFragment fragment = new KuponTukarPoinFragment();
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment, KuponTukarPoinFragment.class.getSimpleName())
-                    .addToBackStack(null).commit();
-        }
+
 
     }
 

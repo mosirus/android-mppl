@@ -27,6 +27,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.mppl.banksampah.R;
 import com.mppl.banksampah.adapter.EventAdapterUser;
 import com.mppl.banksampah.user.model.EventUser;
+import com.mppl.banksampah.user.ui.home.TukarPoin.ContTukarPoin;
+import com.mppl.banksampah.user.ui.home.TukarPoin.TukarPoinFragment;
 import com.mppl.banksampah.user.ui.riwayatpoin.RiwayatPoinFragment;
 
 import java.util.ArrayList;
@@ -198,10 +200,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment, JemputSampahFragment.class.getSimpleName())
                     .addToBackStack(null).commit();
         } else if (v.getId() == R.id.btn_tukarpoin) {
-            TukarPoinFragment fragment = new TukarPoinFragment();
+            ContTukarPoin fragment = new ContTukarPoin();
 
             FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment, TukarPoinFragment.class.getSimpleName())
+            fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment, ContTukarPoin.class.getSimpleName())
                     .addToBackStack(null).commit();
         } else if (v.getId() == R.id.riwayatPoinNotification) {
             RiwayatPoinFragment fragment = new RiwayatPoinFragment();
