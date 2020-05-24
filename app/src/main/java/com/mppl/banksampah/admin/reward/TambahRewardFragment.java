@@ -104,9 +104,9 @@ public class TambahRewardFragment extends Fragment implements OnClickListener{
     @Override
     public void onClick(View v) {
         if(v.getId() == R.id.btnReward_batal_tambah){
-            KuponFragment fragment = new KuponFragment();
+            RewardFragment fragment = new RewardFragment();
             FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.fragmentTambahReward, fragment, KuponFragment.class.getSimpleName())
+            fragmentManager.beginTransaction().replace(R.id.fragmentTambahReward, fragment, RewardFragment.class.getSimpleName())
                     .addToBackStack(null).commit();
         }
 
@@ -258,9 +258,9 @@ public class TambahRewardFragment extends Fragment implements OnClickListener{
                         }
                     });
 
-            KuponFragment fragment = new KuponFragment();
+            RewardFragment fragment = new RewardFragment();
             FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.fragmentTambahReward, fragment, KuponFragment.class.getSimpleName())
+            fragmentManager.beginTransaction().replace(R.id.fragmentTambahReward, fragment, RewardFragment.class.getSimpleName())
                     .addToBackStack(null).commit();
 
         }

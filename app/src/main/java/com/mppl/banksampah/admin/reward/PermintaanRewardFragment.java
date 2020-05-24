@@ -49,12 +49,6 @@ public class PermintaanRewardFragment extends Fragment implements OnClickListene
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_permintaan_reward, container, false);
 
-        btnListReward = root.findViewById(R.id.btnReward_listReward);
-        btnListReward.setOnClickListener(this);
-
-        btnRiwayatReward = root.findViewById(R.id.btnReward_riwayatReward);
-        btnRiwayatReward.setOnClickListener(this);
-
         rvListRequestedReward = root.findViewById(R.id.rv_item_requestReward);
         rvListRequestedReward.setHasFixedSize(true);
         rvListRequestedReward.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -94,18 +88,6 @@ public class PermintaanRewardFragment extends Fragment implements OnClickListene
 
     @Override
     public void onClick(View v) {
-        if(v.getId() == R.id.btnReward_listReward){
-            KuponFragment fragment = new KuponFragment();
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.fragmentPermintaanReward, fragment, KuponFragment.class.getSimpleName())
-                    .addToBackStack(null).commit();
-        }
-        if(v.getId() == R.id.btnReward_riwayatReward){
-            RiwayatRewardFragment fragment = new RiwayatRewardFragment();
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.fragmentPermintaanReward, fragment, RiwayatRewardFragment.class.getSimpleName())
-                    .addToBackStack(null).commit();
-        }
 
 
     }

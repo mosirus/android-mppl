@@ -8,85 +8,7 @@
     android:background="@color/white">
 <ScrollView
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <LinearLayout
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="@string/judul_reward"
-            android:textSize="30dp"
-            android:textColor="@color/antar"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp">
-
-            <Button
-                android:id="@+id/btnReward_listReward"
-                android:layout_height="40dp"
-                android:layout_width="115dp"
-                android:background="@drawable/btn_style"
-                android:layout_marginHorizontal="10dp"
-                android:text="@string/Daftar_Reward"
-                android:textSize="15dp"
-                android:textColor="@color/white"/>
-            <Button
-                android:id="@+id/btnReward_permintaanReward"
-                android:layout_height="40dp"
-                android:layout_width="115dp"
-                android:background="@drawable/btn_unclicked_style"
-                android:layout_marginHorizontal="10dp"
-                android:text="@string/Permintaan_Reward"
-                android:textColor="@color/colorBlack"
-                android:textSize="15dp"/>
-            <Button
-                android:id="@+id/btnReward_riwayatReward"
-                android:layout_height="40dp"
-                android:layout_width="115dp"
-                android:background="@drawable/btn_unclicked_style"
-                android:layout_marginHorizontal="10dp"
-                android:text="@string/Riwayat_Reward"
-                android:textColor="@color/colorBlack"
-                android:textSize="15dp"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_marginTop="25dp">
-
-            <Button
-                android:id="@+id/btn_tambah_reward"
-                android:layout_height="40dp"
-                android:layout_width="40dp"
-                android:layout_marginLeft="10dp"
-                android:drawableTop="@drawable/ic_add_green_24p"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:text="@string/tambah"
-                android:textSize="20dp"
-                android:layout_gravity="center"
-                android:textColor="@color/colorBlack"
-                android:layout_marginLeft="5dp"/>
-
-        </LinearLayout>
-
-        <ScrollView
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_marginTop="30dp">
+    android:layout_height="wrap_content">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_list_reward"
@@ -94,8 +16,5 @@
                 android:layout_height="wrap_content"
                 tools:listitem="@layout/item_list_reward"/>
 
-        </ScrollView>
-
-    </LinearLayout>
 </ScrollView>
 </FrameLayout>
