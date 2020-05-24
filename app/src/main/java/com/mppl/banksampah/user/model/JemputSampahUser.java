@@ -10,11 +10,13 @@ public class JemputSampahUser {
     private String Tanggal;
     private String pushKey;
     private String Email;
+    private String currentId;
+
 
     public JemputSampahUser() {
     }
 
-    public JemputSampahUser(String berat, String jenisSampah, String lokasiJemput, String poin, String satuan, String status, String tanggal, String pushKey, String email) {
+    public JemputSampahUser(String berat, String jenisSampah, String lokasiJemput, String poin, String satuan, String status, String tanggal, String pushKey, String email, String currentId) {
         Berat = berat;
         JenisSampah = jenisSampah;
         LokasiJemput = lokasiJemput;
@@ -24,6 +26,7 @@ public class JemputSampahUser {
         Tanggal = tanggal;
         this.pushKey = pushKey;
         Email = email;
+        this.currentId = currentId;
     }
 
     public String getBerat() {
@@ -80,6 +83,14 @@ public class JemputSampahUser {
 
     public void setTanggal(String tanggal) {
         Tanggal = tanggal;
+    }
+
+    public String getCurrentId() {
+        return currentId;
+    }
+
+    public void setCurrentId(String currentId) {
+        this.currentId = currentId;
     }
 
     public String getPushKey() {
