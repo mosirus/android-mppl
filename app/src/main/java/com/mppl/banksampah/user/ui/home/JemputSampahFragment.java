@@ -151,6 +151,7 @@ public class JemputSampahFragment extends Fragment implements View.OnClickListen
                     ref.child(currentuserId).child(refKey).child("LokasiJemput").setValue(lokasiJemput);
                     ref.child(currentuserId).child(refKey).child("Poin").setValue(poin);
                     ref.child(currentuserId).child(refKey).child("Status").setValue("Sedang diproses");
+                    ref.child(currentuserId).child(refKey).child("currentId").setValue(currentuserId);
                 }
 
                 @Override
