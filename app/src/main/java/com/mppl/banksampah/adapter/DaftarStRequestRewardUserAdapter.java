@@ -49,7 +49,7 @@ public class DaftarStRequestRewardUserAdapter extends RecyclerView.Adapter<Dafta
     public void onBindViewHolder(@NonNull CardViewHolder holder, int position) {
         RequestedReward requestedReward = listRequestedRewards.get(position);
         holder.tanggalRequest.setText(listRequestedRewards.get(position).getTanggalRequest());
-        holder.aksiRequest.setText("Penukaran "+ listRequestedRewards.get(position).getPoinBarangRequest() +" Poin Menjadi " + listRequestedRewards.get(position).getNamaBarangRequest());
+        holder.aksiRequest.setText(listRequestedRewards.get(position).getNamaBarangRequest() + " " + listRequestedRewards.get(position).getPoinBarangRequest() + " Poin");
         holder.statusRequest.setText(listRequestedRewards.get(position).getStatusRequested());
         if(listRequestedRewards.get(position).getStatusRequested().equals("Sedang Diproses")){
             holder.statusRequest.setTextColor(ContextCompat.getColor(context,R.color.proses));
