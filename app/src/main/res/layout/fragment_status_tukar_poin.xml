@@ -36,7 +36,7 @@
                 android:layout_weight="0.8"
                 android:background="@drawable/table_content_cell_bg3"
                 android:gravity="center"
-                android:text="@string/email"
+                android:text="@string/judulaksisttp"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
 

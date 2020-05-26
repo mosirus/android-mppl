@@ -51,8 +51,11 @@ public class DaftarRiwayatRewardAdminAdapter extends RecyclerView.Adapter<Daftar
     public void onBindViewHolder(@NonNull CardViewHolder holder, int position) {
         RequestedReward requestedReward = listRequestedRewards.get(position);
         holder.tanggalRequest.setText(listRequestedRewards.get(position).getTanggalRequest());
+        holder.tanggalRequest.setTextColor(ContextCompat.getColor(context,R.color.colorBlack));
         holder.emailRequester.setText(listRequestedRewards.get(position).getEmailRequester());
-        holder.aksiRequest.setText("Penukaran " + listRequestedRewards.get(position).getPoinBarangRequest() + " poin menjadi " + listRequestedRewards.get(position).getNamaBarangRequest());
+        holder.emailRequester.setTextColor(ContextCompat.getColor(context,R.color.colorBlack));
+        holder.aksiRequest.setText(listRequestedRewards.get(position).getNamaBarangRequest() + " " + listRequestedRewards.get(position).getPoinBarangRequest() + " poin");
+        holder.aksiRequest.setTextColor(ContextCompat.getColor(context,R.color.colorBlack));
         holder.statusRequest.setText(listRequestedRewards.get(position).getStatusRequested());
         String statusParam = listRequestedRewards.get(position).getStatusRequested();
         if(statusParam.equals("Sedang Diproses")){

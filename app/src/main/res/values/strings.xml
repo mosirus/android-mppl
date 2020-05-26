@@ -294,5 +294,6 @@
     <string name="dumdate_sttp">Tanggal STTP</string>
     <string name="dumaction_sttp">Aksi STTP</string>
     <string name="dumstatus_sttp">Status STTP</string>
+    <string name="judulaksisttp">Penukaran</string>
 
 </resources>
