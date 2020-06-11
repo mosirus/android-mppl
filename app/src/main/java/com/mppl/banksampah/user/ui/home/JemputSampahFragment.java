@@ -260,6 +260,15 @@ public class JemputSampahFragment extends Fragment implements View.OnClickListen
         } else if (TextUtils.isEmpty(edtLokasiJemput.getText().toString())) {
             edtLokasiJemput.setError("Harap masukkan lokasi penjemputan sampah");
             result = false;
+        } else if (Integer.parseInt(tvPoinTransaksi.getText().toString()) < 3000) {
+            new AlertDialog.Builder(Objects.requireNonNull(getActivity()))
+                    .setMessage("Poin transaksi belum memenuhi minimal poin penjemputan (3000 Poin)")
+                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    })
+                    .show();
+            result = false;
         }
         return result;
     }
